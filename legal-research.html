@@ -739,9 +739,10 @@ $('#logdl').addEventListener('click',()=>{const a=document.createElement('a');a.
  if(p){const s=document.getElementById('p'+p);if(s){s.classList.add('show');
   const framed=window.self!==window.top;const bar=document.createElement('div');bar.className='gbar';bar.id='gbar';
   const ext='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
-  bar.innerHTML='<span class="gt" aria-hidden="true"><span></span></span><span class="gc"></span><span class="gbtns"><button class="gbtn" type="button" id="logb"><span aria-hidden="true">📓</span><span class="lbl">Research log</span></button>'+((framed||p===21)?'<button class="gbtn" type="button" id="ntab" aria-label="Open in new window">'+ext+'<span class="lbl">Open in new window</span></button>':'')+'</span>';
+  bar.innerHTML='<span class="gt" aria-hidden="true"><span></span></span><span class="gc"></span><span class="gbtns"><button class="gbtn" type="button" id="logb"><span aria-hidden="true">📓</span><span class="lbl">Research log</span></button>'+((framed||p===21)?'<button class="gbtn" type="button" id="ntab" aria-label="Open in new window">'+ext+'<span class="lbl">Open in new window</span></button>':'<button class="gbtn" type="button" id="bktut"><span aria-hidden="true">←</span><span class="lbl">Back to tutorial</span></button>')+'</span>';
   s.querySelector('.in').prepend(bar);
   $('#logb').addEventListener('click',openLog);
+  const bk=$('#bktut');if(bk)bk.addEventListener('click',()=>{try{if(window.opener&&!window.opener.closed)window.opener.focus()}catch(e){}window.close();setTimeout(()=>{if(!window.closed){bk.querySelector('.lbl').textContent='Close this tab to return';bk.setAttribute('aria-live','polite')}},300)});
   const nb=$('#ntab');if(nb)nb.addEventListener('click',()=>{let u=location.href;if(p===21){u='https://www.library.unsw.edu.au/';try{const q=new URL(new URLSearchParams(location.search).get('site')||'');if(q.protocol==='https:'&&/(^|\.)library\.unsw\.edu\.au$/.test(q.hostname))u=q.href}catch(e){}}const w=window.open(u,'lr'+p,'popup=yes,width=1280,height=860');if(w)G.addKid(w)})}}
  bindPops();G.init()})();
 </script>
