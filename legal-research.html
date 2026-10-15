@@ -135,7 +135,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .doc .para{display:flex;gap:10px}.doc .para .pnum{font-weight:700;min-width:26px}
 .doc .sect{font-weight:700;margin:12px 0 2px}
 .doc .pg{border:1px solid #ddd;border-radius:6px;padding:10px 12px;margin:0 0 10px;background:#fff}
-.doc .pgl{font-family:"Lexend",system-ui,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#777;margin:0 0 4px}
+.doc .pgl{font-family:"Lexend",system-ui,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#595959;margin:0 0 4px}
 .meter{font-weight:500;font-size:14px;margin:10px 0 0}
 .hl{background:#fff3a0}
 /* trail (p8) */
@@ -228,6 +228,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .checklist li:not(.d)::before{content:"○ ";color:var(--muted)}
 .refs p{margin:0 0 8px;padding-left:24px;text-indent:-24px;font-size:14px}.refs a{word-break:break-all;font-size:13px}
 #spmo .btn.on{background:var(--yellow);color:#000}
+.brow{position:relative}.rsel{position:absolute;left:-9999px;top:0}.rsel:focus{left:auto;right:6px;top:-12px;z-index:3;background:var(--yellow);color:#000;border:2px solid #111;border-radius:6px;font:600 12px Lexend,system-ui,sans-serif;padding:2px 8px}
 </style>
 </head>
 <body>
@@ -666,11 +667,10 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
  <div class="row" style="margin-top:12px"><button class="btn" type="button" id="hgo">Search HeinOnline</button>${gn(4,'Run it for real','<p>Opens HeinOnline with your search and filters. Follow the prompts to log in if asked.</p>',true)}</div><p class="fb" id="hfb" aria-live="polite"></p>
  <div class="tip"><p><b>Tip:</b> Similar words go in the same row (OR). Different ideas go in different rows (AND). * finds word endings, so infring* finds infringe, infringed and infringement.</p></div>`;
  function q(){return rows.filter(r=>r.length).map(r=>r.length>1?'('+r.join(' OR ')+')':r[0]).join(' AND ')}
- function draw(){rowsH.innerHTML=rows.map((r,k)=>`<div class="brow${k===cur?' sel':''}" data-r="${k}"><span class="op">${k?'AND':''}</span><div class="field" tabindex="0" role="button" aria-label="Row ${k+1}${k===cur?', selected':''}">${r.length?r.map((w,j)=>`${j?'<span class="or">OR</span>':''}<span class="term">${esc(w)}<button type="button" data-x="${j}" aria-label="Remove ${esc(w)}">×</button></span>`).join(''):`<span class="ph">${k===cur?'Select words from the bank':'Select this row to add words'}</span>`}${k===0?gn(1,'Add words','<p>Select a row, then select words from the keyword bank. Each row is one idea.</p>',true):''}${k===1?gn(2,'Similar words in one row','<p>Put similar words in the same row, for example fabric OR textile OR print. Each new row joins with AND.</p>',true):''}</div></div>`).join('');
+ function draw(){rowsH.innerHTML=rows.map((r,k)=>`<div class="brow${k===cur?' sel':''}" data-r="${k}"><span class="op">${k?'AND':''}</span><button type="button" class="rsel" aria-pressed="${k===cur}">Use row ${k+1}</button><div class="field" role="group" aria-label="Row ${k+1}${k===cur?', selected':''}">${r.length?r.map((w,j)=>`${j?'<span class="or">OR</span>':''}<span class="term">${esc(w)}<button type="button" data-x="${j}" aria-label="Remove ${esc(w)}">×</button></span>`).join(''):`<span class="ph">${k===cur?'Select words from the bank':'Select this row to add words'}</span>`}${k===0?gn(1,'Add words','<p>Select a row, then select words from the keyword bank. Each row is one idea.</p>',true):''}${k===1?gn(2,'Similar words in one row','<p>Put similar words in the same row, for example fabric OR textile OR print. Each new row joins with AND.</p>',true):''}</div></div>`).join('');
   bindPops(rowsH);$('#hq').textContent=q()||'Add words to the rows';}
- rowsH.addEventListener('click',e=>{if(e.target.closest('.popwrap'))return;const x=e.target.closest('[data-x]');const row=e.target.closest('.brow');if(!row)return;const k=+row.dataset.r;if(x){rows[k].splice(+x.dataset.x,1);draw();return}cur=k;draw()});
- rowsH.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('field')){e.preventDefault();cur=+e.target.closest('.brow').dataset.r;draw();rowsH.querySelector(`.brow[data-r="${cur}"] .field`).focus()}});
- $('#hbank').addEventListener('click',e=>{const c=e.target.closest('[data-w]');if(!c)return;const w=c.dataset.w;if(!rows[cur].includes(w))rows[cur].push(w);draw()});
+ rowsH.addEventListener('click',e=>{if(e.target.closest('.popwrap'))return;const x=e.target.closest('[data-x]');const row=e.target.closest('.brow');if(!row)return;const k=+row.dataset.r;if(x){rows[k].splice(+x.dataset.x,1);draw();return}const rs=e.target.closest('.rsel');cur=k;draw();if(rs)rowsH.querySelector(`.brow[data-r="${k}"] .rsel`).focus()});
+  $('#hbank').addEventListener('click',e=>{const c=e.target.closest('[data-w]');if(!c)return;const w=c.dataset.w;if(!rows[cur].includes(w))rows[cur].push(w);draw()});
  $('#hEx').addEventListener('click',()=>{rows=[['copyright'],['"artistic work"','fabric','textile'],['"substantial part"','reproduc*','infring*']];cur=0;draw()});
  $('#hClr').addEventListener('click',()=>{rows=[[],[],[]];cur=0;draw()});
  const url=()=>{let f='';if($('#hfa').checked)f+='&face_quers='+encodeURIComponent('type:article');if($('#hfl').checked)f+='&face_quers='+encodeURIComponent('location_ms:"Australia"');return HEIN.replace('{q}',encodeURIComponent(q()).replace(/%20/g,'+')).replace('{f}',f)};
