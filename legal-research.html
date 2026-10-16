@@ -244,7 +244,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 <p>In early 2025, Sunshine Designs discovered that <b>Gemeni Collective Retail Group</b>, a national fast-fashion retailer, had launched a new clothing range containing fabric prints that appeared strikingly similar to the Sun in Bloom artworks. The new collection included dresses, skirts, shirts and scarves displaying nearly identical floral arrangements, colour palettes, motifs and compositional elements.</p>
 </div>
 <p class="boxh" style="margin-top:14px">Where this question takes you</p>
-<div class="stops"><div><b>Case law</b>Seafolly v Fewstone [2014] FCA 321</div><div><b>Legislation</b>Copyright Act 1968 (Cth)</div><div><b>Extrinsic materials</b>Hansard and explanatory memoranda</div><div><b>Commentary</b>Journals, grey literature and news</div></div>
+<div class="stops" role="list"><div role="listitem"><b>Case law</b> Seafolly v Fewstone [2014] FCA 321</div><div role="listitem"><b>Legislation</b> Copyright Act 1968 (Cth)</div><div role="listitem"><b>Extrinsic materials</b> Hansard and explanatory memoranda</div><div role="listitem"><b>Commentary</b> Journals, grey literature and news</div></div>
 <p class="small" style="margin-top:12px">The scenario is fictional. The cases, legislation and sources used in the activities are real.</p>
 </div></section>
 
@@ -481,8 +481,8 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
  <tr><td>Legislation</td><td><i>Copyright Act 1968</i> (Cth) s 74(1), div 8 pt III<br><i>Designs Act 2003</i> (Cth) s 18 ${g(6)}</td></tr>
  <tr><td>Cases cited</td><td><div class="ln" style="width:90%"></div><div class="ln" style="width:70%"></div>${g(7)}</td></tr></table>
  <p class="dh" style="margin:12px 0 4px">REASONS FOR JUDGMENT ${g(8)}</p>
- <div class="para"><span class="pnum">1</span><div style="flex:1"><div class="ln"></div><div class="ln" style="width:85%"></div></div></div>
- <div class="para"><span class="pnum">2</span><div style="flex:1"><div class="ln"></div><div class="ln" style="width:60%"></div></div></div>
+ <div class="para" aria-hidden="true"><span class="pnum">1</span><div style="flex:1"><div class="ln"></div><div class="ln" style="width:85%"></div></div></div>
+ <div class="para" aria-hidden="true"><span class="pnum">2</span><div style="flex:1"><div class="ln"></div><div class="ln" style="width:60%"></div></div></div>
  <p class="small" style="font-family:Lexend,system-ui,sans-serif;margin:10px 0 0">Shortened from the judgment. Catchwords extract only.</p></div>`;
  bindPops(host);
  const seen=new Set();host.addEventListener('popopen',e=>{seen.add(e.target.dataset.pop);upd()});
@@ -742,6 +742,13 @@ $('#logm').addEventListener('click',e=>{if(e.target.id==='logm')$('#logm').hidde
 $('#logcp').addEventListener('click',e=>copyText(logText(),e.currentTarget));
 $('#logdl').addEventListener('click',()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([logText()],{type:'text/plain'}));a.download='jurd7155-research-log.txt';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)});
 
+
+/* ===== Screen reader tidy-ups ===== */
+(function(){function tidy(){
+ document.querySelectorAll('.simhd,.boxh,.simhead .t,.simhead > div > b').forEach(e=>{if(!e.hasAttribute('role')){e.setAttribute('role','heading');e.setAttribute('aria-level','3')}});
+ document.querySelectorAll('label[for]').forEach(l=>{const el=document.getElementById(l.htmlFor);if(!el||el.hasAttribute('aria-label')||!l.querySelector('.popwrap'))return;const t=[...l.childNodes].filter(n=>!(n.nodeType===1&&n.classList.contains('popwrap'))).map(n=>n.textContent).join('').replace(/\s+/g,' ').trim();if(t)el.setAttribute('aria-label',t)});
+}
+tidy();new MutationObserver(()=>{clearTimeout(window.__tdy);window.__tdy=setTimeout(tidy,50)}).observe(document.body,{childList:true,subtree:true})})();
 /* ================= Boot ================= */
 (function(){const p=window.__part;
  if(p){const s=document.getElementById('p'+p);if(s){s.classList.add('show');
