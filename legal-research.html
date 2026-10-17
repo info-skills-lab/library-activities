@@ -229,6 +229,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .refs p{margin:0 0 8px;padding-left:24px;text-indent:-24px;font-size:14px}.refs a{word-break:break-all;font-size:13px}
 #emy .btn.on,#spmo .btn.on{background:var(--yellow);color:#000}
 .brow{position:relative}.rsel{position:absolute;left:-9999px;top:0}.rsel:focus{left:auto;right:6px;top:-12px;z-index:3;background:var(--yellow);color:#000;border:2px solid #111;border-radius:6px;font:600 12px Lexend,system-ui,sans-serif;padding:2px 8px}
+.emrows tbody tr{cursor:pointer}.emrows tbody tr:hover{background:#fff8c4}.emrows tr.rok{background:#eef8f0;outline:2.5px solid #1a7f37}.emrows tr.rno td{color:#9a2b2b;text-decoration:line-through}.rowbtn{all:unset;cursor:pointer;font:inherit;color:inherit}.rowbtn:focus-visible{outline:3px solid #111;outline-offset:2px;border-radius:3px}
 </style>
 </head>
 <body>
@@ -326,6 +327,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 <p><i>Copyright Act 1968</i> (Cth) <a href="https://www.legislation.gov.au/C1968A00063/latest/text" target="_blank" rel="noopener">https://www.legislation.gov.au/C1968A00063/latest/text</a>.</p>
 <p><i>Copyright Amendment (Moral Rights) Act 2000</i> (Cth) <a href="https://www.legislation.gov.au/C2004A00752/latest/versions" target="_blank" rel="noopener">https://www.legislation.gov.au/C2004A00752/latest/versions</a>.</p>
 <p><i>Encyclopaedic Australian Legal Dictionary</i> (online at 13 October 2026).</p>
+<p><i>Encyclopaedic Australian Legal Dictionary</i> (online at 14 October 2026) ‘explanatory memorandum’.</p>
 <p>House of Representatives, Parliament of Australia, <i>House of Representatives Practice</i> (7th ed) ch 10 <a href="https://www.aph.gov.au/About_Parliament/House_of_Representatives/Powers_practice_and_procedure/Practice7/HTML/Chapter10/Bills%E2%80%94the_parliamentary_process" target="_blank" rel="noopener">https://www.aph.gov.au/About_Parliament/House_of_Representatives/Powers_practice_and_procedure/Practice7/HTML/Chapter10/Bills%E2%80%94the_parliamentary_process</a>.</p>
 <p>House of Representatives, Parliament of Australia, <i>Parliamentary Debates</i> (Hansard), 16 May 1968, 1527 (Nigel Bowen, Attorney-General). Extracts used under the Parliament of Australia’s copyright terms.</p>
 <p>Parliament of Australia, Parliamentary Library, <i>Explanatory Memoranda Index</i> <a href="https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Parliamentary_Library/Browse_by_Topic/law/explanmem" target="_blank" rel="noopener">https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Parliamentary_Library/Browse_by_Topic/law/explanmem</a>.</p>
@@ -590,29 +592,31 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
 /* ================= P18 Explanatory memorandum ================= */
 (function(){const host=$('#em');if(!host)return;
  const EM_INDEX='https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Parliamentary_Library/Browse_by_Topic/law/explanmem';
- const EM_GET='https://www.aph.gov.au/About_Parliament/Parliamentary_departments/Parliamentary_Library/Browse_by_Topic/law/explanmem/getexplanmem';
  const YRS=['1950–60','1960–66','1967–69','1970–72','1973–75','1976–77'];
  host.innerHTML=`<div class="box"><p class="boxh">Choose the right years ${gn(1,'An index by year','<p>The index lists explanatory memoranda from 1901 to 1982, grouped by the years Bills were introduced. Use the year in the Bill’s title.</p>')}</p><div class="row" id="emy" role="group" aria-label="Index years">${YRS.map(y=>`<button class="btn ghost" type="button" data-y="${y}">${y}</button>`).join('')}</div><p class="fb" id="emyf" aria-live="polite"></p></div><div id="em2"></div><div id="em3"></div>`;
  bindPops(host);
  host.querySelectorAll('#emy button').forEach(b=>b.addEventListener('click',()=>{host.querySelectorAll('#emy button').forEach(x=>x.classList.toggle('on',x===b));const f=$('#emyf');
   if(b.dataset.y!=='1967–69'){f.innerHTML='<span class="no">Not this range. The Copyright Bill 1968 was introduced in 1968.</span>';return}
   f.innerHTML='<span class="ok">✓ Right. The Bill was introduced in 1968, so it’s in 1967–69.</span>';if(!$('#emr'))step2()}));
- function step2(){const d=$('#em2');d.innerHTML=`<div class="box"><p class="boxh">Find the row for the Bill ${gn(2,'Reading the index','<p>EM means explanatory memorandum and CM means comparative memorandum. Chamber shows where it was presented, Reps for the House of Representatives.</p>')}</p>
-  <table class="etable" style="margin:0 0 10px"><caption class="small" style="text-align:left;caption-side:top;font-family:inherit">From the index, 1967–69 (extract)</caption><thead><tr><th scope="col">Bill title</th><th scope="col">Date</th><th scope="col">CM or EM</th><th scope="col">Pages</th><th scope="col">Chamber</th></tr></thead><tbody>
-  <tr><td>Copyright Bill 1968</td><td>15.5.1968</td><td>CM</td><td>33</td><td>Reps</td></tr>
-  <tr><td>Copyright Bill 1968</td><td>15.5.1968</td><td>CM</td><td>33</td><td>Senate</td></tr>
-  <tr><td>Customs Bill 1968</td><td>c. 5.1968</td><td>EM</td><td>4</td><td>Senate</td></tr></tbody></table><div id="emr"></div></div>`;bindPops(d);
-  mcq($('#emr'),{q:'Which row should you use?',shuffle:false,opts:[
-   {t:'Copyright Bill 1968 · 15.5.1968 · CM · Reps',ok:1,fb:'Right. The Bill started in the House of Representatives. The Senate row is the same memorandum, presented again in the Senate.'},
-   {t:'Copyright Bill 1968 · 15.5.1968 · CM · Senate',fb:'This is the same memorandum, presented again when the Bill reached the Senate. Choose the chamber where the Bill started.'},
-   {t:'Customs Bill 1968 · c. 5.1968 · EM · Senate',fb:'That’s a different Bill. Check the title.'}]},()=>step3())}
+ function step2(){const d=$('#em2');const R=[
+   {c:['Copyright Bill 1968','15.5.1968','CM','33','Reps'],ok:1,fb:'Right. The Bill started in the House of Representatives. The Senate row is the same memorandum, presented again in the Senate.'},
+   {c:['Copyright Bill 1968','15.5.1968','CM','33','Senate'],fb:'This is the same memorandum, presented again when the Bill reached the Senate. Choose the chamber where the Bill started.'},
+   {c:['Customs Bill 1968','c. 5.1968','EM','4','Senate'],fb:'That’s a different Bill. Check the title.'}];
+  d.innerHTML=`<div class="box"><p class="boxh">Find the row for the Bill ${gn(2,'Reading the index','<p>EM means explanatory memorandum and CM means comparative memorandum. Chamber shows where it was presented, Reps for the House of Representatives.</p>')}</p>
+  <p style="margin:0 0 6px">Select the row you would use.</p>
+  <table class="etable emrows" style="margin:0"><caption class="small" style="text-align:left;caption-side:top;font-family:inherit">From the index, 1967–69 (extract)</caption><thead><tr><th scope="col">Bill title</th><th scope="col">Date</th><th scope="col">CM or EM</th><th scope="col">Pages</th><th scope="col">Chamber</th></tr></thead><tbody>
+  ${R.map((r,k)=>`<tr data-k="${k}"><td><button type="button" class="rowbtn" data-k="${k}" aria-label="Choose row: ${r.c.join(', ')}">${r.c[0]}</button></td><td>${r.c[1]}</td><td>${r.c[2]}</td><td>${r.c[3]}</td><td>${r.c[4]}</td></tr>`).join('')}</tbody></table><p class="fb" id="emrf" aria-live="polite"></p></div>`;bindPops(d);
+  let solved=false;const pick=k=>{if(solved)return;const r=R[k],tr=d.querySelector(`tr[data-k="${k}"]`);
+   if(r.ok){solved=true;tr.classList.add('rok');d.querySelectorAll('.rowbtn').forEach(b=>b.disabled=true);$('#emrf').innerHTML='<span class="ok">✓ '+r.fb+'</span>';step3()}
+   else{tr.classList.add('rno');$('#emrf').innerHTML='<span class="no">'+r.fb+'</span>'}};
+  d.querySelector('tbody').addEventListener('click',e=>{const tr=e.target.closest('tr[data-k]');if(tr)pick(+tr.dataset.k)})}
  function step3(){const d=$('#em3');d.innerHTML=`<div class="box"><p class="boxh">Read what the entry tells you ${gn(3,'Notes column','<p>The index’s notes give the memorandum’s full title, which tells you what it covers.</p>')}</p><div id="emq"></div><div id="emend"></div></div>`;bindPops(d);
   mcq($('#emq'),{q:'The entry’s note reads “Memorandum showing alterations made to the Copyright Bill 1967 as presented to the House of Representatives on 18 May 1967.” What does this memorandum mainly explain?',opts:[
    {t:'The changes since the 1967 Bill',ok:1,fb:'Right. It’s a comparative memorandum. It shows how the 1968 Bill differs from the 1967 Bill, which lapsed.'},
    {t:'Every section of the Act',fb:'Not quite. The note says it shows the alterations made to the 1967 Bill.'},
    {t:'The second reading speech',fb:'Second reading speeches are published in Hansard, not in this index.'}]},()=>{
    G.log('em','Explanatory memorandum','Copyright Bill 1968, comparative memorandum, House of Representatives, 15 May 1968 (Parliamentary Library, Explanatory Memoranda Index)');
-   $('#emend').innerHTML=`<div class="row" style="margin-top:10px"><a class="btn" href="${EM_INDEX}" target="_blank" rel="noopener">Open the Explanatory Memoranda Index</a><a class="btn ghost" href="${EM_GET}" target="_blank" rel="noopener">How to get a copy</a></div><div class="tip"><p><b>Tip:</b> Explanatory memoranda have been standard practice for government Bills since 1982. For most Bills from 1996 onwards, find the Bill first. The memorandum is linked to it.</p></div>`;
+   $('#emend').innerHTML=`<div class="row" style="margin-top:10px"><a class="btn" href="${EM_INDEX}" target="_blank" rel="noopener">Open the Explanatory Memoranda Index</a></div><div class="tip"><p><b>Tip:</b> Explanatory memoranda have been standard practice for government Bills since 1982. For most Bills from 1996 onwards, find the Bill first. The memorandum is linked to it.</p></div>`;
    G.complete(18)})}
 })();
 
