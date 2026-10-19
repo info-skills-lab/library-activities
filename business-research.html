@@ -541,6 +541,20 @@ body::after{display:none}
 .sdgl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
 @media (max-width:820px){.sdgl{grid-template-columns:1fr}}
 .reportlink{display:flex;gap:10px;align-items:center;background:var(--soft);border-radius:8px;padding:8px 12px;margin:8px 0;font-size:14px}
+/* Choosing the right source: head-to-head rounds */
+.tt-need{max-width:none;background:var(--yellow);color:#000;border:2px solid var(--ink);border-radius:12px;padding:12px 16px;font-weight:600;font-size:17px;display:flex;justify-content:space-between;gap:12px;align-items:center;margin:0}
+.tt-need small{font-weight:400;font-size:13px;white-space:nowrap}
+.tt-vs{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:stretch;margin-top:14px}
+@media (max-width:560px){.tt-vs{grid-template-columns:minmax(0,1fr)}.tt-or{justify-self:center}}
+.tt-opt{font:inherit;text-align:left;border:2px solid var(--ink);border-radius:14px;padding:16px;background:var(--bg);color:var(--ink);box-shadow:4px 4px 0 var(--ink);display:flex;flex-direction:column;gap:4px;cursor:pointer}
+.tt-opt:hover:not(:disabled){background:var(--soft)}
+.tt-opt .n{font-weight:700;font-size:18px}.tt-opt .h{font-size:13px;color:var(--muted)}
+.tt-opt.right{border-color:var(--good);box-shadow:4px 4px 0 var(--good)}.tt-opt.right .n::before{content:"✓ ";color:var(--good)}
+.tt-opt.wrong{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}.tt-opt.wrong .n::before{content:"✗ ";color:var(--bad)}
+.tt-opt:disabled{cursor:default}
+.tt-or{align-self:center;font-weight:700;background:#111;color:#ffe000;border-radius:999px;width:46px;height:46px;display:grid;place-items:center}
+.tt-dots{display:flex;gap:6px;margin-top:12px;align-items:center;font-size:13.5px}
+.tt-dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink)}.tt-dot.ok{background:var(--good);border-color:var(--good)}.tt-dot.no{background:var(--bad);border-color:var(--bad)}.tt-dot.cur{background:var(--yellow)}
 /* PESTEL flip cards */
 .fgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 @media (max-width:760px){.fgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -716,8 +730,8 @@ body::after{display:none}
 <header class="top"><span class="brand">Review mode</span><span class="ttl">All slides. Add ?part= and a number to show one slide.</span>
 <nav class="dots" aria-label="Slides"><button class="dot" type="button" data-go="0" aria-label="Go to Choosing the right source (part 1)">1</button><button class="dot" type="button" data-go="1" aria-label="Go to Pick the right place to search (part 3)">3</button><button class="dot" type="button" data-go="2" aria-label="Go to Highlight the keywords (part 15)">15</button><button class="dot" type="button" data-go="3" aria-label="Go to Find sources for the 5Ws (part 16)">16</button><button class="dot" type="button" data-go="4" aria-label="Go to Find sources for PESTEL (part 4)">4</button><button class="dot" type="button" data-go="5" aria-label="Go to Build a Boolean search (part 14)">14</button><button class="dot" type="button" data-go="6" aria-label="Go to Boolean or natural language search? (part 6)">6</button><button class="dot" type="button" data-go="7" aria-label="Go to Effective prompting (part 7)">7</button><button class="dot" type="button" data-go="8" aria-label="Go to Search your approved journals (part 5)">5</button><button class="dot" type="button" data-go="9" aria-label="Go to Searching for grey literature (part 8)">8</button><button class="dot" type="button" data-go="10" aria-label="Go to Searching news media (part 9)">9</button><button class="dot" type="button" data-go="11" aria-label="Go to Find sources for the SDGs (part 11)">11</button><button class="dot" type="button" data-go="12" aria-label="Go to Find out about ethical frameworks (part 10)">10</button><button class="dot" type="button" data-go="13" aria-label="Go to We’re here to help (part 13)">13</button><button class="dot" type="button" data-go="14" aria-label="Go to Your results (part 19)">19</button><button class="dot" type="button" data-go="15" aria-label="Go to Your badge (part 20)">20</button><button class="dot" type="button" data-go="16" aria-label="Go to UNSW Library website (part 18)">18</button></nav></header>
 <main class="deck" id="deck">
-<section class="slide" id="p1" aria-labelledby="h1"><div class="in"><div class="sh"><h2 id="h1">Choosing the right source</h2></div><p class="lead">Match each answer to the source type that fits it best.</p>
-<div class="panel" id="a1"></div>
+<section class="slide" id="p1" aria-labelledby="h1"><div class="in"><div class="sh"><h2 id="h1">Choosing the right source</h2></div><p class="lead">Each round gives you a research need and two source types. Pick the better one.</p>
+<div id="a1"></div>
 <div class="nextbar"><span></span><button class="btn" type="button" data-go="1">Next &rarr;</button></div></div></section>
 <section class="slide" id="p3" aria-labelledby="h3"><div class="in"><div class="sh"><h2 id="h3">Pick the right place to search</h2></div><p class="lead">Read each question, then choose the best place to start.</p>
 <div class="stepper" id="a3"></div>
@@ -951,15 +965,29 @@ function bindSim(){
 renderSim();
 
 /* ===== Slide 1: Choosing the right source ===== */
-if($('#a1'))makeSorter($('#a1'),{part:1,binsFirst:true,cols:3,binsLabel:'Source types',poolLabel:'Drag the following answers into the correct source type box',bins:[
- {id:'co',label:'Company reports',hint:'One company'},{id:'in',label:'Industry reports',hint:'A whole sector'},{id:'su',label:'Sustainability reports',hint:'ESG commitments'},
- {id:'ac',label:'Scholarly articles',hint:'Theory and evidence'},{id:'ne',label:'News sources',hint:'Current events, commentary'},{id:'gr',label:'Grey literature',hint:'Government and organisation reports'}],items:[
- {t:'What brands and products does Adidas sell?',a:'co',why:'A question about one company fits a company report.'},
- {t:'How big is the global sportswear market, and is it growing?',a:'in',why:'Market size and growth are covered in industry reports.'},
- {t:'What has Nike committed to in its latest Impact Report?',a:['su','co'],why:'Nike’s Impact Report is its sustainability report. Remember it presents the company’s own view.'},
- {t:'What does research say about the environmental cost of overproduction?',a:'ac',why:'Scholarly articles bring theory and evidence together.'},
- {t:'What have journalists reported about a supplier factory this year?',a:'ne',why:'News gives current events and outside views. Check who published it and when.'},
- {t:'What do government reports say about modern slavery in clothing supply chains?',a:'gr',why:'Government and organisation reports are grey literature: official, often free, and usually a PDF.'}]});
+(function(){const root=$('#a1');if(!root)return;
+const T={co:['Company report','One company'],in:['Industry report','A whole sector'],su:['Sustainability report','ESG commitments'],ac:['Scholarly article','Theory and evidence'],ne:['News source','Current events, commentary'],gr:['Grey literature','Government and organisation reports']};
+const R=[
+{q:'What brands and products does Adidas sell?',o:['co','ac'],a:'co',why:'A question about one company fits a company report.'},
+{q:'How big is the global sportswear market, and is it growing?',o:['co','in'],a:'in',why:'Market size and growth are covered in industry reports.'},
+{q:'What has Nike committed to in its latest Impact Report?',o:['su','ne'],a:'su',why:'Nike’s Impact Report is its sustainability report. Remember it presents the company’s own view.'},
+{q:'What does research say about the environmental cost of overproduction?',o:['ac','co'],a:'ac',why:'Scholarly articles bring theory and evidence together.'},
+{q:'What have journalists reported about a supplier factory this year?',o:['in','ne'],a:'ne',why:'News gives current events and outside views. Check who published it and when.'},
+{q:'What do government reports say about modern slavery in clothing supply chains?',o:['gr','su'],a:'gr',why:'Government and organisation reports are grey literature: official, often free, and usually a PDF.'}];
+let i=0,res=[];
+function dots(){return `<div class="tt-dots"><span aria-hidden="true" style="display:flex;gap:6px">${R.map((_,k)=>`<span class="tt-dot ${k<res.length?(res[k]?'ok':'no'):k===i?'cur':''}"></span>`).join('')}</span><span>${res.filter(Boolean).length} of ${res.length} right so far</span></div>`}
+function draw(focus){
+  if(i>=R.length){const n=res.filter(Boolean).length;root.innerHTML=`<p class="tt-need" tabindex="-1">You got ${n} of ${R.length} right.<small>All done</small></p>${dots()}<div class="actions" style="margin-top:12px"><button class="btn ghost" type="button" data-again>Start again</button></div>`;
+    root.querySelector('[data-again]').addEventListener('click',()=>{i=0;res=[];draw(true)});if(focus)root.querySelector('.tt-need').focus();G.complete(1,n===R.length);return}
+  const r=R[i],[a,b]=r.o;
+  const opt=k=>`<button class="tt-opt" type="button" data-k="${k}"><span class="n">${T[k][0]}</span><span class="h">${T[k][1]}</span></button>`;
+  root.innerHTML=`<p class="tt-need" tabindex="-1">${esc(r.q)}<small>Round ${i+1} of ${R.length}</small></p><div class="tt-vs" role="group" aria-label="Pick the better source type">${opt(a)}<span class="tt-or" aria-hidden="true">OR</span>${opt(b)}</div><p class="st-fb" aria-live="polite"></p>${dots()}<div class="st-nav"><button class="btn" type="button" data-nx hidden>${i<R.length-1?'Next round →':'See your score'}</button></div>`;
+  const fb=root.querySelector('.st-fb'),nx=root.querySelector('[data-nx]');
+  root.querySelectorAll('.tt-opt').forEach(btn=>btn.addEventListener('click',()=>{const ok=btn.dataset.k===r.a;res.push(ok);
+    root.querySelectorAll('.tt-opt').forEach(x=>{x.disabled=true;if(x.dataset.k===r.a)x.classList.add('right')});if(!ok)btn.classList.add('wrong');
+    fb.innerHTML=`<span class="v ${ok?'ok':'no'}">${ok?'Right.':'Not quite.'}</span> ${esc(r.why)}`;root.querySelector('.tt-dots').outerHTML=dots();nx.hidden=false;nx.focus()}));
+  nx.addEventListener('click',()=>{i++;draw(true)});if(focus)root.querySelector('.tt-need').focus()}
+draw(false)})();
 
 /* ===== Slide 2: Selecting the right report ===== */
 (function(){const host=$('#a2');if(!host)return;
