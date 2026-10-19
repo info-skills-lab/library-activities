@@ -230,6 +230,13 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 #emy .btn.on,#spmo .btn.on{background:var(--yellow);color:#000}
 .brow{position:relative}.rsel{position:absolute;left:-9999px;top:0}.rsel:focus{left:auto;right:6px;top:-12px;z-index:3;background:var(--yellow);color:#000;border:2px solid #111;border-radius:6px;font:600 12px Lexend,system-ui,sans-serif;padding:2px 8px}
 .emrows tbody tr{cursor:pointer}.emrows tbody tr:hover{background:#fff8c4}.emrows tr.rok{background:#eef8f0;outline:2.5px solid #1a7f37}.emrows tr.rno td{color:#9a2b2b;text-decoration:line-through}.rowbtn{all:unset;cursor:pointer;font:inherit;color:inherit}.rowbtn:focus-visible{outline:3px solid #111;outline-offset:2px;border-radius:3px}
+/* P10 layout: fields in rows on the left, search box on the right */
+.gslay{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:16px;align-items:start}
+.gslay .grid2{grid-template-columns:minmax(0,1fr)}
+.gslay .gsside{display:flex;flex-direction:column;gap:12px;min-width:0}
+.gslay .gsside .tip{margin:0}
+.gslay .searchline{flex-wrap:wrap;margin-top:0}.gslay .searchline code{flex:1 1 100%;order:2;overflow-wrap:anywhere}.gslay .searchline .l{flex:1 1 auto}
+@media (max-width:760px){.gslay{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -623,14 +630,14 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
 
 /* ================= P10 Google Advanced Search ================= */
 (function(){const host=$('#gs');if(!host)return;
- host.innerHTML=`<div class="box"><div class="simhead"><span class="t">Google Advanced Search · practice version</span><span class="row"><button class="linkbtn" type="button" id="gex">Load example</button><button class="linkbtn" type="button" id="gclr">Clear</button></span></div>
+ host.innerHTML=`<div class="gslay"><div class="box"><div class="simhead"><span class="t">Google Advanced Search · practice version</span><span class="row"><button class="linkbtn" type="button" id="gex">Load example</button><button class="linkbtn" type="button" id="gclr">Clear</button></span></div>
  <div class="grid2"><div><label class="f" for="gall">All these words ${gn(1,'Key concepts','<p>Type the main ideas from your research question, such as copyright fashion designs.</p>')}</label><input type="text" id="gall" placeholder="e.g. copyright fashion designs"></div>
  <div><label class="f" for="gphr">This exact phrase ${gn(2,'Exact phrase','<p>Keeps words together, for example designs overlap or substantial part.</p>',true)}</label><input type="text" id="gphr" placeholder="e.g. designs system"></div>
  <div><label class="f" for="gsite">Site or domain ${gn(3,'Limit by site or domain','<p>.gov.au finds Australian government sources. .org.au finds organisations such as legal centres and peak bodies. You can also limit to one trusted website, such as apo.org.au.</p>')}</label><select id="gsite"><option value="">Any site</option><option value=".gov.au">.gov.au (government)</option><option value=".org.au">.org.au (organisations)</option><option value=".edu.au">.edu.au (universities)</option><option value="apo.org.au">apo.org.au (Analysis &amp; Policy Observatory)</option></select></div>
- <div><label class="f" for="gft">File type ${gn(4,'Reports are often PDFs','<p>Reports, reviews and submissions are usually published as PDFs.</p>',true)}</label><select id="gft"><option value="">Any format</option><option value="pdf">PDF</option></select></div></div>
- <div class="searchline"><span class="l">Your search</span><code id="gq"></code><button class="btn small ghost" type="button" id="gcp">Copy</button></div>
+ <div><label class="f" for="gft">File type ${gn(4,'Reports are often PDFs','<p>Reports, reviews and submissions are usually published as PDFs.</p>',true)}</label><select id="gft"><option value="">Any format</option><option value="pdf">PDF</option></select></div></div></div>
+ <div class="gsside"><div class="box"><div class="searchline"><span class="l">Your search</span><code id="gq"></code><button class="btn small ghost" type="button" id="gcp">Copy</button></div>
  <div class="row" style="margin-top:12px"><button class="btn" type="button" id="ggo">Search Google</button></div><p class="fb" id="gfb" aria-live="polite"></p></div>
- <div class="tip"><p><b>Tip:</b> APO (Analysis &amp; Policy Observatory) collects Australian policy reports. Choose apo.org.au in the site list to search it through Google.</p></div>`;
+ <div class="tip"><p><b>Tip:</b> APO (Analysis &amp; Policy Observatory) collects Australian policy reports. Choose apo.org.au in the site list to search it through Google.</p></div></div></div>`;
  bindPops(host);
  const q=()=>{const a=$('#gall').value.trim(),p=$('#gphr').value.trim().replace(/"/g,''),s=$('#gsite').value,f=$('#gft').value;return [a,p?`"${p}"`:'',s?'site:'+s:'',f?'filetype:'+f:''].filter(Boolean).join(' ')};
  const draw=()=>$('#gq').textContent=q()||'Fill in the fields above';
@@ -793,7 +800,7 @@ tidy();new MutationObserver(()=>{clearTimeout(window.__tdy);window.__tdy=setTime
  if(p){const s=document.getElementById('p'+p);if(s){s.classList.add('show');
   const framed=window.self!==window.top;const bar=document.createElement('div');bar.className='gbar';bar.id='gbar';
   const ext='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
-  bar.innerHTML='<span class="gt" aria-hidden="true"><span></span></span><span class="gc"></span><span class="gbtns"><button class="gbtn" type="button" id="logb"><span aria-hidden="true">📓</span><span class="lbl">Research log</span></button>'+((framed||p===21)?'<button class="gbtn" type="button" id="ntab" aria-label="Open in new window">'+ext+'<span class="lbl">Open in new window</span></button>':'<button class="gbtn" type="button" id="bktut"><span aria-hidden="true">←</span><span class="lbl">Back to tutorial</span></button>')+'</span>';
+  bar.innerHTML='<span class="gt" aria-hidden="true"><span></span></span><span class="gc"></span><span class="gbtns"><button class="gbtn" type="button" id="logb" aria-label="Research log"><span aria-hidden="true">📓</span><span class="lbl">Research log</span></button>'+((framed||p===21)?'<button class="gbtn" type="button" id="ntab" aria-label="Open in new window">'+ext+'<span class="lbl">Open in new window</span></button>':'<button class="gbtn" type="button" id="bktut" aria-label="Back to tutorial"><span aria-hidden="true">←</span><span class="lbl">Back to tutorial</span></button>')+'</span>';
   s.querySelector('.in').prepend(bar);
   $('#logb').addEventListener('click',openLog);
   const bk=$('#bktut');if(bk)bk.addEventListener('click',()=>{try{if(window.opener&&!window.opener.closed)window.opener.focus()}catch(e){}window.close();setTimeout(()=>{if(!window.closed){bk.querySelector('.lbl').textContent='Close this tab to return';bk.setAttribute('aria-live','polite')}},300)});
