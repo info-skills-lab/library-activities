@@ -541,6 +541,37 @@ body::after{display:none}
 .sdgl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
 @media (max-width:820px){.sdgl{grid-template-columns:1fr}}
 .reportlink{display:flex;gap:10px;align-items:center;background:var(--soft);border-radius:8px;padding:8px 12px;margin:8px 0;font-size:14px}
+/* PESTEL flip cards */
+.fgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.fgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.fgrid{grid-template-columns:minmax(0,1fr)}}
+.fc{font:inherit;text-align:left;border:2px solid var(--ink);border-radius:12px;min-height:160px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;gap:10px;background:var(--bg);color:var(--ink);box-shadow:4px 4px 0 var(--yellow);cursor:pointer}
+.fc:hover{background:var(--soft)}.fc .fq{font-weight:600;font-size:15px;margin:0}.fc .fh{font-size:13px;color:var(--muted)}
+.fc.back{background:#111111;color:#ffffff;border-color:#111111;cursor:default}
+.fc.back .fcat{color:#ffe000;font-weight:700;font-size:19px;margin:0 0 4px}.fc.back .fwhy{font-size:14px;color:#e6e6e6;margin:0}
+.fc.back .flook{font-size:13.5px;border-top:1px dashed #ffe000;padding-top:8px;margin:0;color:#ffffff}.fc.back .flook b{color:#ffe000}
+@keyframes fcflip{from{transform:rotateY(90deg)}to{transform:none}}
+.fc.back.anim{animation:fcflip .35s ease-out}
+@media (prefers-reduced-motion:reduce){.fc.back.anim{animation:none}}
+.fstat{margin:12px 0 0;font-size:14px}
+/* 5Ws which W */
+.w5{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:760px){.w5{grid-template-columns:minmax(0,1fr)}}
+.w5src{border:2px solid var(--ink);border-radius:14px;padding:16px 18px;box-shadow:6px 6px 0 var(--yellow);position:relative;background:var(--bg)}
+.w5src .ty{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.w5src .ti{font-weight:700;font-size:18px;margin:0 0 6px}.w5src .ex{font-size:14px;margin:0}
+.w5src .ct{position:absolute;top:12px;right:14px;font-size:12px;color:var(--muted)}
+.w5btns{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:14px}
+@media (max-width:480px){.w5btns{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.w5b{font:inherit;border:2px solid var(--ink);border-radius:10px;text-align:center;padding:10px 4px;font-weight:700;background:var(--bg);color:var(--ink);cursor:pointer}
+.w5b small{display:block;font-weight:300;font-size:12px;color:var(--muted)}
+.w5b:hover:not(:disabled){background:var(--soft)}
+.w5b.right{background:var(--good);border-color:var(--good);color:#fff}.w5b.right small{color:#fff}
+.w5b.wrong{border-color:var(--bad);text-decoration:line-through}.w5b:disabled{cursor:default}
+.w5ans{border:2px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--panel)}
+.w5ans h3{margin:0 0 8px;font-size:15px}.w5ans ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.w5ans li{font-size:13.5px;border-left:4px solid var(--yellow);padding:2px 0 2px 8px}.w5ans li b{display:inline-block;min-width:3.6em}
+.w5ans .none{font-size:13.5px;color:var(--muted);margin:0}
 /* badge wall */
 .wall .bh2{background-color:#ffe000;background-image:linear-gradient(100deg,#ffe000 50%,rgba(255,224,0,0) 82%),repeating-linear-gradient(-6deg,rgba(255,255,255,0) 0,rgba(255,255,255,0) 11px,#fff 11px,#fff 14px);border-radius:8px;padding:22px 26px;color:#000;margin-bottom:12px}
 .wall .bh2 .kick{margin:0 0 4px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;max-width:none}
@@ -700,11 +731,11 @@ body::after{display:none}
 <div class="actions"><button class="btn" type="button" id="hlShow">Show suggestions</button><button class="btn ghost" type="button" id="hlClear">Clear</button></div><p class="status" id="hlStatus" aria-live="polite"></p>
 <p class="cite" style="margin-top:8px"><b>Try a real article:</b> Dragomir, V.D. et al. (2026) ‘Assessing contributions to the UN Sustainable Development Goals through the European Sustainability Reporting Standards’, <i>Humanities and Social Sciences Communications</i>, 13, article 187. <a href="https://doi.org/10.1057/s41599-025-06485-1" target="_blank" rel="noopener">Open the article</a></p></div>
 <div class="nextbar"><button class="arrow" type="button" data-go="1">&larr; Previous</button><button class="btn" type="button" data-go="3">Next &rarr;</button></div></div></section>
-<section class="slide" id="p16" aria-labelledby="h16"><div class="in"><div class="sh"><h2 id="h16">Find sources for the 5Ws</h2></div><p class="lead">Choose the source most likely to answer each question.</p>
-<div class="stepper" id="a16"></div>
+<section class="slide" id="p16" aria-labelledby="h16"><div class="in"><div class="sh"><h2 id="h16">Find sources for the 5Ws</h2></div><p class="lead">Each card describes a source. Pick the W it helps you answer best.</p>
+<div id="a16"></div>
 <div class="nextbar"><button class="arrow" type="button" data-go="2">&larr; Previous</button><button class="btn" type="button" data-go="4">Next &rarr;</button></div></div></section>
-<section class="slide" id="p4" aria-labelledby="h4"><div class="in"><div class="sh"><h2 id="h4">Find sources for PESTEL</h2></div><p class="lead">Match each answer to a PESTEL category.</p>
-<div class="panel sorter across" id="a4"></div>
+<section class="slide" id="p4" aria-labelledby="h4"><div class="in"><div class="sh"><h2 id="h4">Find sources for PESTEL</h2></div><p class="lead">Guess the PESTEL factor for each question, then flip the card to check it and see where to look.</p>
+<div id="a4"></div>
 <div class="nextbar"><button class="arrow" type="button" data-go="3">&larr; Previous</button><button class="btn" type="button" data-go="5">Next &rarr;</button></div></div></section>
 <section class="slide" id="p14" aria-labelledby="h14"><div class="in"><div class="sh"><h2 id="h14">Build a Boolean search</h2></div><div class="bblay"><aside class="bank" aria-labelledby="bankh"><h3 id="bankh">Keyword bank</h3><p class="hint2">Select a word to add it to the highlighted row.</p><div id="tray"></div>
 <div class="own"><label for="ownin">Add your own word</label><input type="text" id="ownin" placeholder="Type a word, then press Enter"></div></aside><div class="bb" id="bb"></div></div>
@@ -951,20 +982,49 @@ makeStepper($('#a3'),[
 {q:'You need to know about a recent change to supply-chain laws.',c:D,a:4,why:'Government sites and credible news cover current regulation.'}],{part:3});}
 
 /* ===== Slide 4: PESTEL ===== */
-if($('#a4'))makeSorter($('#a4'),{part:4,binsFirst:true,binsLabel:'PESTEL categories',poolLabel:'Drag the following answers into the correct PESTEL category box',bins:[{id:'P',label:'Political'},{id:'E',label:'Economic'},{id:'S',label:'Social'},{id:'T',label:'Technological'},{id:'N',label:'Environmental'},{id:'L',label:'Legal'}],items:[
-{t:'How stable are the governments in countries where sportswear is made?',a:'P',why:'Government stability is a political factor.'},
-{t:'How do exchange rates affect the price of imported sportswear?',a:'E',why:'Exchange rates and prices are economic factors.'},
-{t:'How do attitudes to fast fashion differ between age groups?',a:'S',why:'Attitudes and consumer behaviour are social factors.'},
-{t:'What tools can trace materials through a supply chain?',a:'T',why:'Tracing tools are technological.'},
-{t:'How much water does textile production use?',a:'N',why:'Water use is an environmental factor.'},
-{t:'What laws require large companies to report on modern slavery risks?',a:'L',why:'Reporting duties set by law are legal factors.'}]});
+(function(){const root=$('#a4');if(!root)return;
+const C=[
+{q:'How stable are the governments in countries where sportswear is made?',cat:'Political',why:'Government stability is a political factor.',look:'News databases such as Factiva, and government websites.'},
+{q:'How do exchange rates affect the price of imported sportswear?',cat:'Economic',why:'Exchange rates and prices are economic factors.',look:'Industry reports such as IBISWorld, and the Australian Bureau of Statistics.'},
+{q:'How do attitudes to fast fashion differ between age groups?',cat:'Social',why:'Attitudes and consumer behaviour are social factors.',look:'Scholarly articles, news and consumer surveys.'},
+{q:'What tools can trace materials through a supply chain?',cat:'Technological',why:'Tracing tools are technological.',look:'Industry reports and trade news.'},
+{q:'How much water does textile production use?',cat:'Environmental',why:'Water use is an environmental factor.',look:'Company sustainability reports, and UN and government reports.'},
+{q:'What laws require large companies to report on modern slavery risks?',cat:'Legal',why:'Reporting duties set by law are legal factors.',look:'Government websites and the Federal Register of Legislation.'}];
+const flipped=new Set();
+root.innerHTML=`<div class="fgrid">${C.map((c,k)=>`<button class="fc" type="button" data-k="${k}"><p class="fq">${esc(c.q)}</p><span class="fh" aria-hidden="true">↻ Select to flip</span><span class="sr">Flip card to see the PESTEL factor</span></button>`).join('')}</div><p class="fstat" aria-live="polite">0 of ${C.length} cards flipped. Flip them all to complete the activity.</p>`;
+const stat=root.querySelector('.fstat');
+root.querySelectorAll('.fc').forEach(b=>b.addEventListener('click',()=>{const k=+b.dataset.k,c=C[k];
+  const d=document.createElement('div');d.className='fc back anim';d.tabIndex=-1;d.setAttribute('role','group');d.setAttribute('aria-label',c.q);
+  d.innerHTML=`<div><p class="fcat">${esc(c.cat)}</p><p class="fwhy">${esc(c.why)}</p></div><p class="flook"><b>Where to look</b> ${esc(c.look)}</p>`;
+  b.replaceWith(d);d.focus();flipped.add(k);
+  stat.textContent=flipped.size<C.length?`${c.cat}. ${flipped.size} of ${C.length} cards flipped.`:`${c.cat}. All ${C.length} cards flipped. Activity complete.`;
+  if(flipped.size===C.length)G.complete(4,true)}))})();
 
 /* ===== Slide 16: 5Ws ===== */
-if($('#a16'))makeStepper($('#a16'),[
-{q:'Which source might show where a company operates or sources its products (the “where”)?',c:['A company or sustainability report','An ethics textbook','A social media post'],a:0,why:'Company and sustainability reports may list operating or supplier locations. Check the date.'},
-{q:'Which source could show how much a company emits or wastes (the “what”)?',c:['A sustainability or impact report','A product advertisement','A fan forum'],a:0,why:'Sustainability reports set out emissions and waste figures. Check how they’re measured and the year.'},
-{q:'Which sources could show how an issue has developed over time (the “when”)?',c:['Only this week’s news','News archives and scholarly articles from several years','One company press release'],a:1,why:'Sources from several years show how an issue has developed.'},
-{q:'Which source could explain who is affected by an issue (the “who”)?',c:['Research and credible news on workers, communities or consumers','The company’s logo guidelines','A product catalogue'],a:0,why:'Research and credible news describe the people and groups affected.'}],{part:16});
+(function(){const root=$('#a16');if(!root)return;
+const W=[['Who','is affected'],['What','is done'],['Where','it happens'],['When','over time'],['Why','it matters']];
+const S=[
+{ty:'Company document',ti:'A brand’s published list of supplier factories',ex:'Factory names, addresses and countries, updated by the company.',a:'Where',short:'Supplier factory list',why:'Supplier lists show where products are made. Check when the list was last updated.'},
+{ty:'Company report',ti:'A company’s latest sustainability or impact report',ex:'Figures on emissions, water use and waste, with targets.',a:'What',short:'Sustainability or impact report',why:'Impact reports set out what a company does and measures. Remember it’s the company’s own view.'},
+{ty:'News database',ti:'News coverage of garment worker safety across ten years',ex:'Articles from a news database such as Factiva, from 2013 to today.',a:'When',short:'Ten years of news coverage',why:'Coverage across many years shows how an issue has developed over time.'},
+{ty:'Scholarly article',ti:'A study based on interviews with garment workers',ex:'Researchers report workers’ pay, hours and conditions in their own words.',a:'Who',short:'Study interviewing workers',why:'Research with workers shows who is affected and how.'},
+{ty:'Scholarly article',ti:'An article applying ethical frameworks to fast fashion',ex:'Weighs harms and duties to argue what brands should do.',a:'Why',short:'Ethics article on fast fashion',why:'Ethical analysis explains why an issue matters.'}];
+let i=0,miss=0,ans=[];
+function answered(){return `<div class="w5ans"><h3>Answered</h3>${ans.length?`<ul>${ans.map(x=>`<li><b>${x.a}</b> ${esc(x.short)}</li>`).join('')}</ul>`:'<p class="none">Your answers will appear here.</p>'}</div>`}
+function draw(focus){
+  if(i>=S.length){root.innerHTML=`<div class="w5"><div class="w5src"><p class="ti" tabindex="-1">All done</p><p class="ex">You matched all ${S.length} sources${miss?'':' on the first try'}. Use the 5Ws to plan which sources you need for your report.</p><div class="actions" style="margin-top:12px"><button class="btn ghost" type="button" data-again>Start again</button></div></div>${answered()}</div>`;
+    root.querySelector('[data-again]').addEventListener('click',()=>{i=0;miss=0;ans=[];draw(true)});if(focus)root.querySelector('.ti').focus();G.complete(16,miss===0);return}
+  const c=S[i];
+  root.innerHTML=`<div class="w5"><div><div class="w5src"><span class="ct">${i+1} of ${S.length}</span><p class="ty">${esc(c.ty)}</p><p class="ti" tabindex="-1">${esc(c.ti)}</p><p class="ex">${esc(c.ex)}</p></div>
+  <div class="w5btns" role="group" aria-label="Which W does this source answer?">${W.map(([w,sub])=>`<button class="w5b" type="button" data-w="${w}">${w}<small>${sub}</small></button>`).join('')}</div>
+  <p class="st-fb" aria-live="polite"></p><div class="st-nav"><button class="btn" type="button" data-nx hidden>${i<S.length-1?'Next source →':'Finish'}</button></div></div>${answered()}</div>`;
+  const fb=root.querySelector('.st-fb'),nx=root.querySelector('[data-nx]');
+  root.querySelectorAll('.w5b').forEach(b=>b.addEventListener('click',()=>{
+    if(b.dataset.w===c.a){b.classList.add('right');root.querySelectorAll('.w5b').forEach(x=>x.disabled=true);fb.innerHTML=`<span class="v ok">Right.</span> ${esc(c.why)}`;ans.push(c);
+      root.querySelector('.w5ans').outerHTML=answered();nx.hidden=false;nx.focus()}
+    else{b.classList.add('wrong');b.disabled=true;miss++;fb.innerHTML=`<span class="v no">Not quite.</span> Try another W.`}}));
+  nx.addEventListener('click',()=>{i++;draw(true)});if(focus)root.querySelector('.ti').focus()}
+draw(false)})();
 
 /* ===== Slide 15: Highlight the keywords ===== */
 (function(){const qh=$('#qline');if(!qh)return;
