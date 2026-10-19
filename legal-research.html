@@ -252,7 +252,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 </head>
 <body>
 <header class="top"><h1>Legal research skills</h1><p>JURD7155 Legal Research and Writing · UNSW Library. Each section below is one right panel in the LibWizard tutorial (use ?part=N).</p></header>
-<nav class="toc" aria-label="Parts"><a href="?part=1">1 Research question</a><a href="?part=4">4 Primary or secondary</a><a href="?part=5">5 Secondary sources</a><a href="?part=6">6 Judgments</a><a href="?part=7">7 Navigating an Act</a><a href="?part=8">8 Tracking changes</a><a href="?part=9">9 Second reading speech</a><a href="?part=18">18 Explanatory memorandum</a><a href="?part=10">10 Grey literature search</a><a href="?part=11">11 Evaluating grey literature</a><a href="?part=12">12 News</a><a href="?part=14">14 Law journals</a><a href="?part=15">15 AI and natural language</a><a href="?part=16">16 Check your learning</a><a href="?part=17">17 Help and references</a><a href="?part=21&amp;site=https://subjectguides.library.unsw.edu.au/">21 Bar only</a></nav>
+<nav class="toc" aria-label="Parts"><a href="?part=1">1 Research question</a><a href="?part=4">4 Primary or secondary</a><a href="?part=5">5 Secondary sources</a><a href="?part=6">6 Judgments</a><a href="?part=7">7 Elements of legislation</a><a href="?part=8">8 Tracking changes</a><a href="?part=9">9 Second reading speech</a><a href="?part=18">18 Explanatory memorandum</a><a href="?part=10">10 Grey literature search</a><a href="?part=11">11 Evaluating grey literature</a><a href="?part=12">12 News</a><a href="?part=14">14 Law journals</a><a href="?part=15">15 AI and natural language</a><a href="?part=16">16 Check your learning</a><a href="?part=17">17 Help and references</a><a href="?part=21&amp;site=https://subjectguides.library.unsw.edu.au/">21 Bar only</a></nav>
 <main id="main">
 
 <section class="slide" id="p1" aria-labelledby="h1"><div class="in"><div class="sh"><h2 id="h1">The research question</h2></div>
@@ -284,19 +284,19 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 <div class="tabp" id="p6b" role="tabpanel" aria-labelledby="t6b" hidden><p class="lead">The catchwords sum up the legal issues. Reuse them to find similar cases in Lexis+.</p><div id="cw"></div></div>
 </div></section>
 
-<section class="slide" id="p7" aria-labelledby="h7"><div class="in"><div class="sh"><h2 id="h7">Navigating an Act</h2></div>
+<section class="slide" id="p7" aria-labelledby="h7"><div class="in"><div class="sh"><h2 id="h7">Elements of legislation</h2></div>
 <p class="lead">The Copyright Act 1968 (Cth), Compilation No. 65. Select each yellow number, then answer the two questions.</p>
 <div class="grid2"><div id="adoc"></div><div id="aq"></div></div>
 </div></section>
 
 <section class="slide" id="p8" aria-labelledby="h8"><div class="in"><div class="sh"><h2 id="h8">Tracking changes to an Act</h2></div>
 <p class="lead">Follow Part IX (moral rights) of the Copyright Act 1968 through four questions. Each answer tells you where to look next.</p>
-<p style="margin:-6px 0 12px"><b>Select each question on the left to open it</b>, then answer it on the right.</p>
+<p style="margin:-6px 0 12px"><b>Answer each question in turn.</b> The list on the left shows your progress.</p>
 <div class="trailwrap"><ol class="trail" id="trail"></ol><div id="tpanel"></div></div>
 </div></section>
 
 <section class="slide" id="p9" aria-labelledby="h9"><div class="in"><div class="sh"><h2 id="h9">Find the second reading speech</h2></div>
-<p class="lead">Find the second reading speech for the Bill that became the Copyright Act 1968. Follow the yellow numbers.</p>
+<p class="lead">Find the second reading speech for the Copyright Bill 1968, which became the <i>Copyright Act 1968</i>. Follow the yellow numbers.</p>
 <div id="sp"></div>
 </div></section>
 
@@ -390,7 +390,7 @@ const APO='https://apo.org.au/';
 const WESTLAW_PRIMO=''; /* add the Westlaw Australia Primo record link here if wanted */
 
 /* ---------- Progress ---------- */
-const ACTS={4:'Primary or secondary?',5:'Starting with secondary sources',6:'Understanding judgments',7:'Navigating an Act',8:'Tracking changes to an Act',9:'Find the second reading speech',10:'Searching for grey literature',11:'Evaluating grey literature',12:'Finding news',14:'Searching law journal databases',15:'AI and natural language searching',18:'Find the explanatory memorandum'};
+const ACTS={4:'Primary or secondary?',5:'Starting with secondary sources',6:'Understanding judgments',7:'Elements of legislation',8:'Tracking changes to an Act',9:'Find the second reading speech',10:'Searching for grey literature',11:'Evaluating grey literature',12:'Finding news',14:'Searching law journal databases',15:'AI and natural language searching',18:'Find the explanatory memorandum'};
 const ACT_ORDER=[4,5,6,7,8,9,18,10,11,12,14,15];
 const G=(function(){
  const KEY='lr-jurd7155-v1';let st={done:{},log:{}};
@@ -459,7 +459,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
 
 /* ================= P5 Sort the steps ================= */
 (function(){const host=$('#scn');if(!host)return;
- const RIGHT=['Get an overview in a legal encyclopaedia','Look up the cases and legislation it cites','Read journal articles for deeper analysis','Check the source is up to date'];
+ const RIGHT=['Get an overview in a legal encyclopaedia','Look up the cases and legislation it cites','Read journal articles for deeper analysis','Cross-check the key laws in current legislation databases'];
  const START=[0,3,1,2];let order=START.slice();
  function draw(focusK,dir){
   host.innerHTML=`<ol class="sortl">${order.map((k,pos)=>`<li data-k="${k}"><span class="n" aria-hidden="true">${pos+1}</span><span>${esc(RIGHT[k])}<span class="mk"></span></span><span class="mv"><button type="button" data-up="${pos}" aria-label="Move up: ${esc(RIGHT[k])}" ${pos===0?'disabled':''}>↑</button><button type="button" data-dn="${pos}" aria-label="Move down: ${esc(RIGHT[k])}" ${pos===order.length-1?'disabled':''}>↓</button></span></li>`).join('')}</ol>
@@ -496,7 +496,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
  <tr><td>Judge</td><td>DODDS-STREETON J ${g(3)}</td></tr>
  <tr><td>Date of judgment</td><td>1 April 2014 ${g(4)}</td></tr>
  <tr><td>Catchwords</td><td><span class="hl">COPYRIGHT – the applicant owned copyright in the English Rose and Covent Garden artworks used on fabric to produce swimwear – whether the respondent's Rosette print infringed the applicant's copyright in the English Rose artwork …</span> ${g(5)}</td></tr>
- <tr><td>Legislation</td><td><i>Copyright Act 1968</i> (Cth) s 74(1), div 8 pt III<br><i>Designs Act 2003</i> (Cth) s 18 ${g(6)}</td></tr>
+ <tr><td>Legislation</td><td><i>Copyright Act 1968</i> (Cth) ss 14, 31, 36, 37, 38, 74, 77, 115 and 116<br><i>Designs Act 2003</i> (Cth) s 18 ${g(6)}</td></tr>
  <tr><td>Cases cited</td><td><div class="ln" style="width:90%"></div><div class="ln" style="width:70%"></div>${g(7)}</td></tr></table>
  <p class="dh" style="margin:12px 0 4px">REASONS FOR JUDGMENT ${g(8)}</p>
  <div class="para" aria-hidden="true"><span class="pnum">1</span><div style="flex:1"><div class="ln"></div><div class="ln" style="width:85%"></div></div></div>
@@ -536,7 +536,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
   ['Contents','<p>Lists the Parts, Divisions and sections, with page numbers.</p>'+S('Contents')],
   ['Long title','<p>"An Act relating to copyright and the protection of certain performances, and for other purposes".</p>'+S('page 1')],
   ['Section 1 Short title','<p>"This Act may be cited as the Copyright Act 1968."</p>'+S('page 1, s 1')],
-  ['Section 10 Interpretation','<p>Part II, Interpretation. Section 10 defines terms used in the Act, including "artistic work".</p>'+S('Part II, s 10, pages 4–7')],
+  ['Section 10 Interpretation','<p>Part II, Interpretation. Section 10 defines terms used in the Act, including "artistic work".</p>'+S('Part II, s 10, pages 4–26')],
   ['Section 14','<p>"Acts done in relation to substantial part of work or other subject-matter deemed to be done in relation to the whole".</p>'+S('Part II, s 14, page 30')],
   ['Part IX','<p>"Moral rights of performers and of authors of literary, dramatic, musical or artistic works and cinematograph films". You will track its history on the next slide.</p>'+S('Part IX, page 449')],
   ['Endnotes','<p>Endnote 3, the legislation history, gives information about each law that has amended the compiled law, including commencement details. Endnote 4, the amendment history, gives information about amendments at the provision level.</p>'+S('Endnote 1, page 606')]];
@@ -560,17 +560,17 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
 
 /* ================= P8 Tracking changes ================= */
 (function(){const trail=$('#trail');if(!trail)return;
- const E4=`<div class="etwrap"><p class="et">Endnote 4—Amendment history</p><table class="etable"><tr><th>Provision affected</th><th>How affected</th></tr><tr><td>Part IX heading</td><td>rs. No. 120, 2004</td></tr><tr class="hl"><td>Part IX</td><td>rs. No. 159, 2000</td></tr><tr><td>s 189</td><td>rs No. 159, 2000<br>am No. 159, 2000; No 120, 2004</td></tr><tr><td>Division 2A</td><td>ad No 120, 2004</td></tr><tr><td>s. 195AC</td><td>ad. No. 159, 2000</td></tr></table><p class="small" style="margin:6px 0 0">ad = added · am = amended · rs = repealed and substituted (Endnote 2, Abbreviation key)</p></div>`;
+ const E4=`<div class="etwrap"><p class="et">Endnote 4—Amendment history</p><table class="etable"><tr><th>Provision affected</th><th>How affected</th></tr><tr><td>Part IX heading</td><td>rs No 120, 2004</td></tr><tr class="hl"><td>Part IX</td><td>rs No 159, 2000</td></tr><tr><td>s 189</td><td>rs No. 159, 2000<br>am No. 159, 2000; No 120, 2004</td></tr><tr><td>Division 2A</td><td>ad No 120, 2004</td></tr><tr><td>s 195AC</td><td>ad No 159, 2000</td></tr></table><p class="small" style="margin:6px 0 0">ad = added · am = amended · rs = repealed and substituted (Endnote 2, Abbreviation key)</p></div>`;
  const E3=`<div class="etwrap"><p class="et">Endnote 3—Legislation history</p><table class="etable"><tr><th>Act</th><th>Number and year</th><th>Assent</th><th>Commencement</th><th>Application, saving and transitional provisions</th></tr><tr class="hl"><td>Copyright Amendment (Moral Rights) Act 2000</td><td>159, 2000</td><td>21 Dec 2000</td><td>Sch 2: 4 Mar 2001 (s 2(3))<br>Remainder: Royal Assent</td><td>Sch 1 (item 3)</td></tr><tr><td>Designs (Consequential Amendments) Act 2003</td><td>148, 2003</td><td>17 Dec 2003</td><td>Sch 1: 17 June 2004 (s 2(1) item 2)</td><td>Sch 1 (items 15–20)</td></tr><tr><td>US Free Trade Agreement Implementation Act 2004</td><td>120, 2004</td><td>16 Aug 2004</td><td>Various dates (see s 2(1))</td><td>Sch 9 (various items)</td></tr></table></div>`;
  const Q=[
   {t:'Has it changed?',w:'Endnote 4, Amendment history',show:E4,q:'What happened to Part IX in 2000?',a:'rs No 159, 2000',opts:[{t:'It was added',fb:'Added would show "ad". Check the abbreviation key.'},{t:'It was repealed and substituted',ok:1,fb:'Right. "rs" means repealed and substituted. Part IX was replaced by Act No 159 of 2000.'},{t:'It was amended',fb:'Amended would show "am". Check the abbreviation key.'}]},
   {t:'Which Act changed it?',w:'Endnote 3, Legislation history',show:E3,q:'Which Act is No 159 of 2000?',a:'Copyright Amendment (Moral Rights) Act 2000',opts:[{t:'Copyright Amendment (Moral Rights) Act 2000',ok:1,fb:'Right. Match the number and year in Endnote 3 to find the amending Act\'s title.'},{t:'Designs (Consequential Amendments) Act 2003',fb:'That is No 148 of 2003.'},{t:'US Free Trade Agreement Implementation Act 2004',fb:'That is No 120 of 2004. It changed Part IX later.'}]},
-  {t:'When did the change start?',w:'Endnote 3, or s 2 of the amending Act',show:E3,q:'The Act received Royal Assent on 21 December 2000. When did the parts other than Schedule 2 commence?',a:'Royal Assent, 21 Dec 2000 (Sch 2: 4 Mar 2001)',opts:[{t:'21 December 2000, on Royal Assent',ok:1,fb:'Right. "Remainder: Royal Assent" means those parts started on 21 December 2000. Schedule 2 started later, on 4 March 2001. Check s 2 of the amending Act to confirm which Schedule replaced Part IX, and Sch 1 item 3 for which works the changes apply to.'},{t:'4 March 2001',fb:'That is when Schedule 2 commenced. Read the "Remainder" line.'},{t:'28 days after Royal Assent',fb:'That is the default when an Act has no commencement provision. This Act sets its own dates.'}]},
+  {t:'When did the change start?',w:'Endnote 3, or s 2 of the amending Act',show:E3,q:'The Act received Royal Assent on 21 December 2000. When did the parts other than Schedule 2 commence?',a:'Royal Assent, 21 Dec 2000 (Sch 2: 4 Mar 2001)',opts:[{t:'21 December 2000, on Royal Assent',ok:1,fb:'Right. "Remainder: Royal Assent" means those parts started on 21 December 2000. Schedule 2 started later, on 4 March 2001. Section 2 of the amending Act confirms that Schedule 1, which replaced Part IX, started on Royal Assent. Check Sch 1 item 3 for which works the changes apply to.'},{t:'4 March 2001',fb:'That is when Schedule 2 commenced. Read the "Remainder" line.'},{t:'On the 28th day after Royal Assent',fb:'That is the default when an Act has no commencement provision (Acts Interpretation Act 1901 (Cth) s 3A). This Act sets its own dates.'}]},
   {t:'Why was it changed?',w:'Extrinsic materials',show:'<div class="tip" style="margin-top:0"><p>The endnotes tell you what changed and when. To find out why, look at the extrinsic materials for the amending Bill, here the Copyright Amendment (Moral Rights) Bill 1999.</p></div>',q:'Where would you find Parliament\'s reasons for introducing moral rights?',a:'Explanatory memorandum and second reading speech',opts:[{t:'The explanatory memorandum and second reading speech for the Bill',ok:1,fb:'Right. You\'ll find a second reading speech on the next slide.'},{t:'Endnote 4',fb:'Endnote 4 shows what changed, not why.'},{t:'The Seafolly judgment',fb:'A later case may discuss the provisions, but Parliament\'s reasons are in the extrinsic materials.'}]}];
  let cur=0;const solved=[];
  function drawTrail(){trail.innerHTML=Q.map((x,k)=>`<li class="${solved[k]?'done':k===cur?'on':''}"><span class="dot">${solved[k]?'✓':k+1}</span><div class="tq"><b>${esc(x.t)}</b>Look in: ${esc(x.w)}${solved[k]?`<span class="ans">${esc(x.a)}</span>`:''}</div></li>`).join('')}
  function drawPanel(){const x=Q[cur];const p=$('#tpanel');
-  if(cur>=Q.length){p.innerHTML=`<div class="box"><p class="ok" style="margin:0 0 6px">✓ Trail complete</p><p style="margin:0">You traced Part IX to the Copyright Amendment (Moral Rights) Act 2000, found when it started, and where to look for why.</p></div><div class="tip"><p><b>Tip:</b> The same provisions can change more than once. Part IX was amended again in 2004, which added Division 2A. Check the endnotes for every amending Act.</p></div><div class="row"><a class="btn ghost" href="${FEDREG_DL}" target="_blank" rel="noopener">Open on the Federal Register</a></div>`;G.complete(8);return}
+  if(cur>=Q.length){p.innerHTML=`<div class="box"><p class="ok" style="margin:0 0 6px">✓ Trail complete</p><p style="margin:0">You traced Part IX to the Copyright Amendment (Moral Rights) Act 2000, found when it started, and where to look for why.</p></div><div class="tip"><p><b>Tip:</b> The same provisions can change more than once. Part IX was amended again in 2004, which added Division 2A, Right of attribution of performership. Check the endnotes for every amending Act.</p></div><div class="row"><a class="btn ghost" href="${FEDREG_DL}" target="_blank" rel="noopener">Open on the Federal Register</a></div>`;G.complete(8);return}
   p.innerHTML=`<p class="boxh">Question ${cur+1} of ${Q.length} · ${esc(x.t)}</p>${x.show}<div class="box" style="margin-top:12px" id="tq"></div><div id="tn"></div><p class="src">Sources: Copyright Act 1968 (Cth), Compilation No. 65, Endnotes 2–4; House of Representatives Practice (7th ed) ch 10.</p><div class="row" style="margin-top:8px"><a class="btn ghost small" href="${FEDREG_DL}" target="_blank" rel="noopener">Open on the Federal Register</a></div>`;
   mcq($('#tq'),{q:x.q,opts:x.opts},()=>{solved[cur]=1;drawTrail();$('#tn').innerHTML=`<button class="btn" type="button">${cur+1<Q.length?'Next question':'Finish'}</button>`;$('#tn button').addEventListener('click',()=>{cur++;drawTrail();drawPanel()})})}
  drawTrail();drawPanel()})();
@@ -579,7 +579,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
 (function(){const host=$('#sp');if(!host)return;
  host.innerHTML=`<div class="box"><div class="simhead"><span class="t">ParlInfo Search · practice search</span></div>
  <div class="grid2"><div><label class="f" for="spq">Search for ${gn(1,'Search terms','<p>Search for <b>Copyright Bill 1968</b>. A Bill\'s title usually matches the Act\'s, but the year is when the Bill was introduced, so it can differ.</p>')}</label><input type="text" id="spq" placeholder="e.g. a Bill title"></div>
- <div><label class="f" for="spdb">Database ${gn(2,'Choose Hansard','<p>Second reading speeches are published in Hansard, the record of parliamentary debates. Most Bills start in the House of Representatives.</p>',true)}</label><select id="spdb"><option value="">Choose a database</option><option value="h">House of Representatives Hansard</option><option value="s">Senate Hansard</option><option value="b">Bills</option></select></div></div>
+ <div><label class="f" for="spdb">Database ${gn(2,'Choose Hansard','<p>Second reading speeches are published in Hansard, the record of parliamentary debates. Most government Bills start in the House of Representatives.</p>',true)}</label><select id="spdb"><option value="">Choose a database</option><option value="h">House of Representatives Hansard</option><option value="s">Senate Hansard</option><option value="b">Bills</option></select></div></div>
  <div class="row" style="margin-top:10px"><button class="btn" type="button" id="sps">Search</button><span class="small" id="spm" aria-live="polite"></span></div></div>
  <div id="spr"></div>`;
  bindPops(host);
@@ -597,7 +597,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
     {t:'COPYRIGHT BILL 1968 · House of Representatives Hansard · 16 May 1968. “Bill presented by Mr Bowen, and read a first time.”',fb:'This is the first reading. The Bill is presented and read a first time, with no explanation of it.'},
     {t:'COPYRIGHT BILL 1968 · Second Reading · House of Representatives Hansard · 16 May 1968. Mr BOWEN: “I move: That the Bill be now read a second time. Honourable members will recall that in May last year I introduced the Copyright…”',ok:1,fb:'Right. The mover says “I move” and “read a second time”, then explains the Bill’s purpose. That wording is the sign of a second reading speech, whatever order the results are in.'}]},()=>{G.log('speech2','Second reading speech','Copyright Bill 1968, House of Representatives, 16 May 1968 (Mr Bowen, Attorney-General)');check()})}))}
  function check(){const d=$('#spd');d.innerHTML=`<div class="box"><p class="boxh">Check your citation ${gn(4,'Try it in ParlInfo','<p>Select <b>Run this search in ParlInfo</b>. Under <b>Browse By</b>, choose a month, then open the result where the mover says “I move” and “read a second time”. Check the date and page.</p>')}</p><div id="spe"></div><div class="row" style="margin-top:10px"><a class="btn ghost" href="${PI_SEARCH}" target="_blank" rel="noopener">Run this search in ParlInfo</a></div></div>`;bindPops(d);
-  mcq($('#spe'),{q:'How would you refer to the speech?',opts:[{t:'Hansard, House of Representatives, 16 May 1968, p 1527',ok:1,fb:'Right. Note the chamber, date and page.'},{t:'Hansard, Senate, 16 May 1968, p 1527',fb:'Check the chamber.'},{t:'Hansard, House of Representatives, 18 May 1967, p 2327',fb:'That is the speech for the earlier 1967 Bill.'}]},()=>{d.querySelector('.box').insertAdjacentHTML('beforeend','<div class="tip"><p><b>Tip:</b> For Bills from the mid-1990s onwards, the Bill homepage on the Parliament of Australia website collects the explanatory memorandum, second reading speech and Bills Digest in one place.</p></div>');G.complete(9)})}
+  mcq($('#spe'),{q:'How would you refer to the speech?',opts:[{t:'Hansard, House of Representatives, 16 May 1968, p 1527',ok:1,fb:'Right. Note the chamber, date and page.'},{t:'Hansard, Senate, 16 May 1968, p 1527',fb:'Check the chamber.'},{t:'Hansard, House of Representatives, 18 May 1967, p 2327',fb:'That is the speech for the earlier 1967 Bill.'}]},()=>{d.querySelector('.box').insertAdjacentHTML('beforeend','<div class="tip"><p><b>Tip:</b> For Bills from 1996 onwards, the Bill homepage on the Parliament of Australia website collects the explanatory memorandum, second reading speech and Bills Digest in one place.</p></div>');G.complete(9)})}
 })();
 
 /* ================= P18 Explanatory memorandum ================= */
