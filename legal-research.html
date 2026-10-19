@@ -578,7 +578,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
 /* ================= P9 Second reading speech ================= */
 (function(){const host=$('#sp');if(!host)return;
  host.innerHTML=`<div class="box"><div class="simhead"><span class="t">ParlInfo Search · practice search</span></div>
- <div class="grid2"><div><label class="f" for="spq">Search for ${gn(1,'Search terms','<p>Search for the Bill\'s title. It is usually the same as the Act\'s title, but the year is when the Bill was introduced, so it can differ. For example, the Copyright Amendment (Moral Rights) Bill 1999 became the Copyright Amendment (Moral Rights) Act 2000.</p>')}</label><input type="text" id="spq" placeholder="e.g. a Bill title"></div>
+ <div class="grid2"><div><label class="f" for="spq">Search for ${gn(1,'Search terms','<p>Search for <b>Copyright Bill 1968</b>. A Bill\'s title usually matches the Act\'s, but the year is when the Bill was introduced, so it can differ.</p>')}</label><input type="text" id="spq" placeholder="e.g. a Bill title"></div>
  <div><label class="f" for="spdb">Database ${gn(2,'Choose Hansard','<p>Second reading speeches are published in Hansard, the record of parliamentary debates. Most Bills start in the House of Representatives.</p>',true)}</label><select id="spdb"><option value="">Choose a database</option><option value="h">House of Representatives Hansard</option><option value="s">Senate Hansard</option><option value="b">Bills</option></select></div></div>
  <div class="row" style="margin-top:10px"><button class="btn" type="button" id="sps">Search</button><span class="small" id="spm" aria-live="polite"></span></div></div>
  <div id="spr"></div>`;
