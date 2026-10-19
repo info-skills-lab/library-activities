@@ -237,6 +237,17 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .gslay .gsside .tip{margin:0}
 .gslay .searchline{flex-wrap:wrap;margin-top:0}.gslay .searchline code{flex:1 1 100%;order:2;overflow-wrap:anywhere}.gslay .searchline .l{flex:1 1 auto}
 @media (max-width:760px){.gslay{grid-template-columns:minmax(0,1fr)}}
+/* P5 sort the steps */
+.sortl{list-style:none;margin:0;padding:0;display:grid;gap:8px;max-width:640px}
+.sortl li{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;border:2px solid var(--ink);border-radius:10px;padding:10px 12px;background:var(--card)}
+.sortl .n{width:30px;height:30px;border-radius:50%;background:var(--yellow);color:#000;border:2px solid #000;display:grid;place-items:center;font-weight:700}
+.sortl .mv{display:flex;gap:6px}
+.sortl .mv button{font:inherit;font-weight:700;width:34px;height:34px;border:1.5px solid var(--ink);border-radius:6px;background:var(--card);color:var(--ink);cursor:pointer}
+.sortl .mv button:disabled{opacity:.35;cursor:default}
+.sortl li.sok{border-color:var(--good);box-shadow:inset 6px 0 0 var(--good)}
+.sortl li.sno{border-color:var(--bad);box-shadow:inset 6px 0 0 var(--bad)}
+.sortl .mk{font-weight:700;margin-left:6px}.sortl li.sok .mk{color:var(--good)}.sortl li.sno .mk{color:var(--bad)}
+.sortfb{margin:12px 0 0}
 </style>
 </head>
 <body>
@@ -263,7 +274,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 </div></section>
 
 <section class="slide" id="p5" aria-labelledby="h5"><div class="in"><div class="sh"><h2 id="h5">Starting with secondary sources</h2></div>
-<p class="lead">You're new to copyright law. Choose where to look at each step.</p>
+<p class="lead">Put the research steps in order. Use the arrows to move them.</p>
 <div class="scn" id="scn"></div>
 </div></section>
 
@@ -446,29 +457,21 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
  function meter(){const n=Object.keys(ans).length;$('#flipm').textContent=n+' of '+items.length+' cards turned';if(n===items.length){$('#flipm').innerHTML='<span class="ok">✓ All sorted. Primary sources are the law itself. Secondary sources help you find and understand it.</span>';G.complete(4)}}
  meter()})();
 
-/* ================= P5 Scenario ================= */
+/* ================= P5 Sort the steps ================= */
 (function(){const host=$('#scn');if(!host)return;
- const steps=[
-  {q:"You've been given the Sunshine Designs question, but you've never studied copyright. Where do you start?",opts:[
-   {t:'A legal encyclopaedia entry on copyright in artistic works',ok:1,fb:"Good start. Encyclopaedias such as Halsbury's Laws of Australia (Lexis+) and The Laws of Australia (Westlaw Australia) give a reliable overview and cite the key cases and legislation."},
-   {t:'Search case law for "Gemeni Collective"',fb:'The scenario is fictitious, and even for real parties, you need the legal principles first. Start with an overview.'},
-   {t:'Ask a search engine and use the top result',fb:'Fine for getting started, but you can\'t rely on it. Start with an authoritative legal overview.'}]},
-  {q:'The encyclopaedia explains "substantial part" and cites s 14 of the Copyright Act 1968 and several cases. What next?',opts:[
-   {t:'Note the cases and sections it cites, then look them up',ok:1,fb:'Right. Secondary sources point you to the primary sources, which are the law itself.'},
-   {t:'Quote the encyclopaedia as the law',fb:'Secondary sources explain the law but aren\'t the law. Go to the cases and legislation.'},
-   {t:'Stop there, as you have your answer',fb:'An overview is a starting point. Check the primary sources it cites.'}]},
-  {q:'You want deeper analysis of copyright in fashion and textile designs. Where do you look?',opts:[
-   {t:'Law journal articles in HeinOnline or Informit',ok:1,fb:'Right. Journal articles analyse an issue in depth, often written by academics and practitioners in the area.'},
-   {t:"A fashion retailer's website",fb:'A retailer has its own interests. Look for expert legal analysis.'},
-   {t:'A general encyclopaedia such as Wikipedia',fb:'Not a legal authority. Use law journals for in-depth analysis.'}]},
-  {q:'You find a useful textbook chapter, but the edition is from 2010. What do you do?',opts:[
-   {t:'Use it to find the key sources, then check whether the law has changed since',ok:1,fb:'Right. Always check currency. The Act may have been amended and new cases decided since.'},
-   {t:'Rely on it, as textbooks are always accurate',fb:'Textbooks can date quickly. Check for later amendments and cases.'},
-   {t:'Ignore it completely',fb:'Older sources can still help you understand an area. Just check what has changed since.'}]}];
- let i=0;
- function draw(){if(i>=steps.length){host.innerHTML=`<div class="trailmini">${steps.map(()=>'<span class="done"></span>').join('')}</div><div class="box"><p class="ok" style="margin:0 0 6px">✓ Scenario complete</p><p style="margin:0">Secondary sources give you the overview and lead you to the cases and legislation. Use them to start, check their currency, and rely on the primary sources.</p></div><button class="btn ghost" type="button" id="scnr">Start again</button>`;$('#scnr').addEventListener('click',()=>{i=0;draw()});G.complete(5);return}
-  const s=steps[i];host.innerHTML=`<div class="trailmini">${steps.map((_,k)=>`<span class="${k<i?'done':k===i?'on':''}"></span>`).join('')}</div><p class="step">Step ${i+1} of ${steps.length}</p><p class="q">${esc(s.q)}</p><div id="scq"></div><div id="scn2"></div>`;
-  mcq($('#scq'),{opts:s.opts},()=>{$('#scn2').innerHTML=`<button class="btn" type="button" style="margin-top:10px">${i+1<steps.length?'Next step':'Finish'}</button>`;$('#scn2 button').addEventListener('click',()=>{i++;draw();host.querySelector('.q,.box')?.focus?.()})})}
+ const RIGHT=['Get an overview in a legal encyclopaedia','Look up the cases and legislation it cites','Read journal articles for deeper analysis','Check the source is up to date'];
+ const START=[0,3,1,2];let order=START.slice();
+ function draw(focusK,dir){
+  host.innerHTML=`<ol class="sortl">${order.map((k,pos)=>`<li data-k="${k}"><span class="n" aria-hidden="true">${pos+1}</span><span>${esc(RIGHT[k])}<span class="mk"></span></span><span class="mv"><button type="button" data-up="${pos}" aria-label="Move up: ${esc(RIGHT[k])}" ${pos===0?'disabled':''}>↑</button><button type="button" data-dn="${pos}" aria-label="Move down: ${esc(RIGHT[k])}" ${pos===order.length-1?'disabled':''}>↓</button></span></li>`).join('')}</ol>
+  <div class="row" style="margin-top:12px"><button class="btn" type="button" id="srtchk">Check order</button><button class="btn ghost" type="button" id="srtrst">Start again</button></div><p class="sortfb" id="srtfb" aria-live="polite"></p>`;
+  host.querySelectorAll('[data-up],[data-dn]').forEach(b=>b.addEventListener('click',()=>{const up=b.hasAttribute('data-up'),pos=+(up?b.dataset.up:b.dataset.dn),to=up?pos-1:pos+1;
+    const k=order[pos];[order[pos],order[to]]=[order[to],order[pos]];draw(k,up?'up':'dn');$('#srtfb').textContent=`Moved to position ${to+1}.`}));
+  $('#srtchk').addEventListener('click',check);
+  $('#srtrst').addEventListener('click',()=>{order=START.slice();draw();$('#srtfb').textContent=''});
+  if(focusK!==undefined){const li=host.querySelector(`li[data-k="${focusK}"]`);let b=li.querySelector(dir==='up'?'[data-up]':'[data-dn]');if(b.disabled)b=li.querySelector(dir==='up'?'[data-dn]':'[data-up]');b.focus()}}
+ function check(){let n=0;host.querySelectorAll('.sortl li').forEach((li,pos)=>{const ok=+li.dataset.k===pos;if(ok)n++;li.classList.toggle('sok',ok);li.classList.toggle('sno',!ok);li.querySelector('.mk').innerHTML=ok?'✓<span class="sr"> right place</span>':'✗<span class="sr"> wrong place</span>'});
+  if(n===RIGHT.length){$('#srtfb').innerHTML='<span class="ok">✓ Right order.</span> Secondary sources give you the overview and lead you to the cases and legislation. Use them to start, check their currency, and rely on the primary sources.';G.complete(5)}
+  else $('#srtfb').innerHTML=`<span class="no">${n} of ${RIGHT.length} in the right place.</span> Move the steps marked ✗ and check again.`}
  draw()})();
 
 /* ================= P6 Judgment ================= */
