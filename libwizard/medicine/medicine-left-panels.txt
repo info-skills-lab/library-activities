@@ -1,0 +1,49 @@
+Medicine HDR Essentials · LibWizard left panels
+===============================================
+
+Paste each slide’s code into its left panel (Source view), then select Save Changes.
+Right-panel codes are in medicine-embed-codes.txt.
+
+========== 1. Welcome to Medicine HDR Essentials ==========
+
+<h3 style="border-bottom:4px solid #ffe000; padding-bottom:6px">Welcome to Medicine HDR Essentials</h3><p>This tutorial shows you how to find, search and evaluate medical research using the Library collection. The research question on the right is used throughout.</p><p>You’ll learn to</p><ul><li><strong>Break down</strong> a research question into concepts and synonyms</li><li><strong>Combine</strong> keywords with AND and OR</li><li><strong>Search</strong> Scopus, Web of Science and PubMed, including MeSH headings</li><li><strong>Refine</strong> a search that has too many or too few results</li><li><strong>Evaluate</strong> sources and use AI tools responsibly</li></ul><h4>What to do</h4><ol><li>Read the research question on the right.</li><li>Answer the question about therapy studies.</li></ol><p>Your progress shows in the black bar at the top of each activity. Select <strong>Research log</strong> to see the searches you build.</p><p><a href="https://info-skills-lab.github.io/library-activities/medicine-research.html?part=1" target="_blank" rel="noopener">Open the research question activity in a new window</a></p>
+
+========== 2. Medicine & health Subject Guide ==========
+
+<h3 style="border-bottom:4px solid #ffe000; padding-bottom:6px">Medicine &amp; health Subject Guide</h3><p>The Library’s subject guides are a great starting point for discovering databases relevant to your research. The <strong>Core databases</strong> page is open on the right.</p><h4>What to do</h4><ol><li>Browse the tabs to see how the databases are grouped.</li><li>Find <strong>PubMed</strong>, <strong>Scopus</strong> and <strong>Web of Science</strong>. You’ll use them later in this tutorial.</li><li>Note which other databases might suit your own research.</li></ol><p><a href="https://subjectguides.library.unsw.edu.au/medicine-health/core-databases" target="_blank" rel="noopener">Open the Medicine &amp; health Subject Guide in a new window</a></p><div style="background:#d9edf7; border:1px solid #bce8f1; border-radius:4px; color:#1f4e66; margin:10px 0 0 0; padding:10px 14px"><p style="margin:0"><strong>Tip:</strong> Always open databases from the subject guide or Library Search so you can access UNSW subscriptions.</p></div>
+
+========== 3. Breaking down the question ==========
+
+<h3 style="border-bottom:4px solid #ffe000; padding-bottom:6px">Breaking down the question</h3><p>Before you search, break your question into its key concepts. Then think of the different words authors might use for each one.</p><h4>What to do</h4><ol><li>Watch the video on the right.</li><li>In Activity 1, <strong>Find the concepts</strong>, choose a tag, then select the words in the question. Select <strong>Check</strong>.</li><li>In Activity 2, <strong>Choose synonyms</strong>, select the synonyms you would add for each concept. Your search builds as you choose.</li></ol><p><a href="https://info-skills-lab.github.io/library-activities/medicine-research.html?part=2" target="_blank" rel="noopener">Open the breaking down the question activity in a new window</a></p><div style="background:#d9edf7; border:1px solid #bce8f1; border-radius:4px; color:#1f4e66; margin:10px 0 0 0; padding:10px 14px"><p style="margin:0"><strong>Tip:</strong> Task words such as discuss tell you what to do. They aren’t search terms.</p></div>
+
+========== 4. AND and OR ==========
+
+<h3 style="border-bottom:4px solid #ffe000; padding-bottom:6px">AND and OR</h3><p>To search a database effectively you need to combine your keywords using AND and OR.</p><h4>What to do</h4><ol><li>Read what OR and AND are used for. Select <strong>Show an example</strong> for each.</li><li>Answer the two questions.</li></ol><p><a href="https://info-skills-lab.github.io/library-activities/medicine-research.html?part=3" target="_blank" rel="noopener">Open the AND and OR activity in a new window</a></p>
+
+========== 5. Entering your search ==========
+
+<h3 style="border-bottom:4px solid #ffe000; padding-bottom:6px">Entering your search</h3><p>Databases let you enter one concept per row, with synonyms joined by OR. The rows are then joined by AND.</p><h4>What to do</h4><ol><li>Look at how the search is entered on the right.</li><li>Read the three search tips.</li><li>Answer the question.</li></ol><p><a href="https://info-skills-lab.github.io/library-activities/medicine-research.html?part=4" target="_blank" rel="noopener">Open the entering your search activity in a new window</a></p>
+
+========== 6. Challenge activity ==========
+
+<h3 style="border-bottom:4px solid #ffe000; padding-bottom:6px">Challenge activity</h3><p>Test your understanding of AND before you search a real database.</p><h4>What to do</h4><ol><li>Read the search strategy.</li><li>Open each article record to see what it covers.</li><li>Select the article that will <strong>not</strong> be retrieved.</li></ol><p><a href="https://info-skills-lab.github.io/library-activities/medicine-research.html?part=5" target="_blank" rel="noopener">Open the challenge activity in a new window</a></p>
+
+========== 7. Database search ==========
+
+<h3 style="border-bottom:4px solid #ffe000; padding-bottom:6px">Database search</h3><p>Scopus and Web of Science are two of the most widely used multidisciplinary databases in academic research. Let’s try building a search in Scopus.</p><h4>What to do</h4><ol><li>Follow the steps on the right to run the search in Scopus.</li><li>Record how many results you get, then limit to 2022–2026.</li><li>Try the same search in Web of Science.</li><li>Select <strong>Save to Research log</strong>.</li></ol><p><a href="https://info-skills-lab.github.io/library-activities/medicine-research.html?part=6" target="_blank" rel="noopener">Open the database search activity in a new window</a></p><div style="background:#d9edf7; border:1px solid #bce8f1; border-radius:4px; color:#1f4e66; margin:10px 0 0 0; padding:10px 14px"><p style="margin:0"><strong>Tip:</strong> Different databases index different journals, so your result counts will differ.</p></div>
+
+========== 8. Searching PubMed ==========
+
+<h3 style="border-bottom:4px solid #ffe000; padding-bottom:6px">Searching PubMed</h3><p>PubMed indexes biomedical and health literature. Its records are tagged with MeSH (Medical Subject Headings), a controlled vocabulary that brings together the different words authors use for the same idea.</p><h4>What to do</h4><ol><li>At yellow number <strong>1</strong>, look up echinacea, then common cold. Add each MeSH heading to your search.</li><li>At <strong>2</strong>, choose the MeSH headings and keywords for each concept.</li><li>At <strong>3</strong>, limit to therapy studies.</li><li>Select <strong>Search PubMed</strong> to run your search for real.</li></ol><p><a href="https://info-skills-lab.github.io/library-activities/medicine-research.html?part=7" target="_blank" rel="noopener">Open the PubMed activity in a new window</a></p><div style="background:#d9edf7; border:1px solid #bce8f1; border-radius:4px; color:#1f4e66; margin:10px 0 0 0; padding:10px 14px"><p style="margin:0"><strong>Tip:</strong> Search MeSH and keywords together. The newest articles may not have MeSH headings yet.</p></div><div style="background:#f5f5f5; border:1px solid #e3e3e3; border-radius:4px; margin:10px 0 0 0; padding:10px 14px; font-size:0.9em"><p style="margin:0"><strong>Sources:</strong> National Library of Medicine, MeSH records for Echinacea and Common Cold; University of North Carolina Health Sciences Library, PubMed filters guide.</p></div>
+
+========== 9. Search health check ==========
+
+<h3 style="border-bottom:4px solid #ffe000; padding-bottom:6px">Search health check</h3><p>Searching databases can be a process of trial and error. Your first search may give you too many results, so you will need to refine it to make it more relevant for your topic.</p><h4>What to do</h4><ol><li>Review the Search health check on the right. Open the text version if you need it.</li><li>Answer the two questions.</li></ol><p><a href="https://info-skills-lab.github.io/library-activities/medicine-research.html?part=8" target="_blank" rel="noopener">Open the search health check activity in a new window</a></p>
+
+========== 10. Evaluating sources ==========
+
+<h3 style="border-bottom:4px solid #ffe000; padding-bottom:6px">Evaluating sources</h3><p>For a therapy question, the type of study matters. The NHMRC evidence hierarchy ranks study designs for intervention questions, from systematic reviews down to case series.</p><h4>What to do</h4><ol><li>Read the hierarchy on the right.</li><li>Answer the three questions.</li></ol><p><a href="https://info-skills-lab.github.io/library-activities/medicine-research.html?part=9" target="_blank" rel="noopener">Open the evaluating sources activity in a new window</a></p><div style="background:#f5f5f5; border:1px solid #e3e3e3; border-radius:4px; margin:10px 0 0 0; padding:10px 14px; font-size:0.9em"><p style="margin:0"><strong>Source:</strong> NHMRC Evidence Hierarchy, intervention questions, as reproduced by Cancer Australia, Appendix 1.</p></div>
+
+========== 11. AI and searching ==========
+
+<h3 style="border-bottom:4px solid #ffe000; padding-bottom:6px">AI and searching</h3><p>AI tools can help you brainstorm terms, but they don’t replace a database search you can record and repeat.</p><h4>What to do</h4><ol><li>Answer the three questions on the right.</li><li>Read the tip about using AI for synonyms.</li></ol><p><a href="https://info-skills-lab.github.io/library-activities/medicine-research.html?part=10" target="_blank" rel="noopener">Open the AI and searching activity in a new window</a></p>

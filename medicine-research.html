@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Medicine HDR Essentials | UNSW Library</title>
+<script>(function(){var p=parseInt(new URLSearchParams(location.search).get('part'),10);if(p>0)document.documentElement.classList.add('single');window.__part=p>0?p:0})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--ink:#000;--muted:#555;--line:#e2e2e2;--panel:#f5f5f3;--yellow:#ffe000;--soft:#fff6b8;--good:#1d7a3a;--bad:#b3261e;--focus:#1a5fd1;--card:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161616;--ink:#f3f3f3;--muted:#b5b5b5;--line:#343434;--panel:#202020;--soft:#3b3510;--good:#6fd08f;--bad:#ff8a80;--focus:#8ab4ff;--card:#1d1d1d}}
+:root[data-theme="dark"]{--bg:#161616;--ink:#f3f3f3;--muted:#b5b5b5;--line:#343434;--panel:#202020;--soft:#3b3510;--good:#6fd08f;--bad:#ff8a80;--focus:#8ab4ff;--card:#1d1d1d}
+*,*::before,*::after{box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Lexend",system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:300;line-height:1.55;font-size:16px}
+strong,b{font-weight:500}
+a{color:inherit;text-decoration-color:var(--yellow);text-decoration-thickness:3px;text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button{font:inherit;color:inherit}
+/* overview mode */
+.top{background:#111;color:#fff;padding:20px 24px}
+.top h1{margin:0;font-size:26px;font-weight:700}.top p{margin:4px 0 0;color:#ddd;font-size:15px}
+.toc{display:flex;flex-wrap:wrap;gap:6px;padding:12px 24px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:20}
+.toc a{font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.toc a:hover{background:var(--yellow);color:#000}
+.slide{padding:22px 24px 34px;border-bottom:6px solid var(--panel)}
+.slide .in{max-width:1100px;margin:0 auto}
+.slide h2{font-size:24px;line-height:1.2;margin:0 0 4px;font-weight:700}
+.slide .lead{margin:0 0 14px;color:var(--muted);font-size:15px}
+.single .top,.single .toc{display:none}
+.single .slide{display:none;border:0;padding-top:0}
+.single .slide.show{display:block}
+.single .slide>.in>.sh{position:absolute;left:-9999px}
+.barpage{display:none}.single .barpage.show{display:block}
+.single #p21{position:fixed;top:0;left:0;right:0;z-index:100;padding:0;margin:0}
+/* progress bar */
+.gbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;background:#111;color:#fff;padding:7px 14px;font-size:14px;margin:0 -24px 16px}
+#p21 .gbar{margin:0}
+.gbar .gt{flex:0 1 220px;height:8px;background:#444;border-radius:999px;overflow:hidden}
+.gbar .gt span{display:block;height:100%;width:0;background:var(--yellow);transition:width .4s}
+.gbar .gc{white-space:nowrap;color:#eee}
+.gbar .gbtns{margin-left:auto;display:flex;gap:8px}
+.gbar .gbtn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;background:#fff;color:#000;border:0;border-radius:6px;padding:5px 10px;min-height:28px;cursor:pointer}
+.gbar .gbtn:hover{background:var(--yellow)}
+.gbar .gbtn svg{width:15px;height:15px}
+@media (max-width:560px){.gbar .gt{display:none}.gbar .gbtn .lbl{display:none}}
+/* common UI */
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--yellow);color:#000;border:2px solid var(--yellow);border-radius:8px;padding:8px 16px;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none;min-height:40px}
+.btn:hover{border-color:#000}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.small{padding:4px 10px;font-size:13px;min-height:30px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.linkbtn{background:none;border:0;padding:0;font-size:14px;font-weight:400;cursor:pointer;text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:3px;text-underline-offset:3px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.box{border:2px solid var(--ink);border-radius:12px;padding:14px 16px;margin:0 0 14px;background:var(--card)}
+.boxh{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 8px}
+.tip{background:var(--soft);border-left:5px solid var(--yellow);border-radius:6px;padding:9px 13px;margin:12px 0;font-size:14.5px}
+.tip p{margin:0}
+.ok{color:var(--good);font-weight:500}.no{color:var(--bad);font-weight:500}
+.fb{font-size:14.5px;margin:8px 0 0;min-height:1em}
+.small{font-size:13.5px;color:var(--muted)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 0}
+.opt{border:2px solid var(--ink);background:var(--card);border-radius:8px;padding:6px 12px;font-size:14.5px;cursor:pointer;text-align:left}
+.opt:hover{background:var(--soft)}
+.opt.right{background:#111;color:var(--yellow);border-color:#111;font-weight:500}
+.opt.wrong{border-color:var(--bad);color:var(--bad);text-decoration:line-through}
+.opt[disabled]{cursor:default}
+.chip{border:2px solid var(--ink);background:var(--card);border-radius:999px;padding:4px 12px;font-size:14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:#111;color:var(--yellow);border-color:#111;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.searchline{display:flex;gap:8px;align-items:flex-start;border:2px solid var(--ink);border-radius:10px;padding:9px 12px;margin:12px 0 0;background:var(--panel)}
+.searchline .l{font-weight:500;white-space:nowrap;font-size:14px}
+.searchline code{flex:1;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;word-break:break-word;min-height:1.4em}
+input[type=text],select,textarea{font:inherit;font-size:15px;padding:7px 10px;border:2px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%}
+input[type=text]:focus,select:focus,textarea:focus{border-color:var(--ink)}
+label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+/* tabs */
+.tabs{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}
+.tab{border:2px solid var(--ink);background:var(--card);border-radius:999px;padding:5px 14px;font-weight:700;font-size:14px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--yellow);color:#000;border-color:#000}
+.tab.done::before{content:"✓ "}
+.tabp[hidden]{display:none}
+/* guide numbers and pop-overs */
+.popwrap{position:relative;display:inline-block;vertical-align:middle}
+.gnum{width:28px;height:28px;border-radius:50%;background:var(--yellow);color:#000;border:2px solid #111;font-weight:700;font-size:14px;display:inline-grid;place-items:center;padding:0;cursor:pointer;flex:none}
+.gnum.seen{background:#111;color:var(--yellow)}
+.pop{position:absolute;z-index:60;top:calc(100% + 8px);left:0;width:min(330px,80vw);background:#fff;color:#111;border:2px solid #111;border-radius:12px;box-shadow:5px 5px 0 var(--yellow);padding:12px 38px 12px 14px;font-size:14px;line-height:1.5;font-weight:400}
+.pop.right{left:auto;right:0}
+.pop[hidden]{display:none}.pop{display:block;text-align:left;text-transform:none;letter-spacing:normal;font-weight:400;font-size:14px;color:#111}.pop .pp{display:block;margin:0 0 6px}.pop .pp:last-child{margin:0}.pop .ph{font-weight:700;margin:0 0 4px}
+.pop p{margin:0 0 6px}.pop p:last-child{margin:0}
+.pclose{position:absolute;top:4px;right:6px;border:0;background:none;font-size:22px;line-height:1;cursor:pointer;color:#111;padding:2px 6px}
+/* flip cards (p4) */
+.flips{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.flip{border:2px solid var(--ink);border-radius:12px;padding:12px 14px;background:var(--card);display:flex;flex-direction:column;gap:8px;min-height:150px}
+.flip .ft{font-weight:500;font-size:15.5px}
+.flip .fk{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.flip.answered{background:var(--panel)}
+.flip .fa{font-size:14px}
+.flip .fbtn{display:flex;gap:8px;margin-top:auto}
+
+.src{font-size:12px!important;color:var(--muted);margin:8px 0 0!important;font-style:italic}
+.pop .src{color:#555}
+.pop.up{top:auto;bottom:calc(100% + 8px)}
+/* flip cards */
+.flip{perspective:1000px;padding:0;border:0;background:none;min-height:215px}
+.flip .fin{position:relative;width:100%;height:215px;transition:transform .5s;transform-style:preserve-3d}
+.flip.flipped .fin{transform:rotateY(180deg)}
+.flip .ff,.flip .fb2{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:auto;border:2px solid var(--ink);border-radius:12px;padding:12px 14px;background:var(--card);display:flex;flex-direction:column;gap:6px}
+.flip .fb2{transform:rotateY(180deg);background:var(--panel)}
+@media (prefers-reduced-motion:reduce){.flip .fin{transition:none}}
+/* scenario (p5) */
+.scn{max-width:760px}
+.scn .step{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.scn .q{font-size:17px;font-weight:500;margin:4px 0 6px}
+.scn .opts{flex-direction:column}
+.scn .opt{width:100%}
+.trailmini{display:flex;gap:6px;margin:0 0 12px}
+.trailmini span{width:30px;height:6px;border-radius:3px;background:var(--line)}
+.trailmini span.on{background:var(--yellow)}.trailmini span.done{background:#111}
+/* document mock (judgment, Act) */
+.doc{border:2px solid var(--ink);border-radius:12px;background:#fdfcf8;color:#111;font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.5;padding:16px 18px}
+.doc .dh{text-align:center;font-weight:700;letter-spacing:.04em}
+.doc table{width:100%;border-collapse:collapse;margin:8px 0}
+.doc td{vertical-align:top;padding:5px 6px;border-top:1px solid #ddd}
+.doc td:first-child{width:150px;font-weight:700}
+.doc .hs{display:inline}
+.doc .gnum{font-family:"Lexend",system-ui,sans-serif;margin-left:6px;width:24px;height:24px;font-size:12px}
+.doc .pop{font-family:"Lexend",system-ui,sans-serif}
+.doc .ln{height:8px;background:#e6e3da;border-radius:4px;margin:7px 0}
+.doc .para{display:flex;gap:10px}.doc .para .pnum{font-weight:700;min-width:26px}
+.doc .sect{font-weight:700;margin:12px 0 2px}
+.doc .pg{border:1px solid #ddd;border-radius:6px;padding:10px 12px;margin:0 0 10px;background:#fff}
+.doc .pgl{font-family:"Lexend",system-ui,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#595959;margin:0 0 4px}
+.meter{font-weight:500;font-size:14px;margin:10px 0 0}
+.hl{background:#fff3a0}
+/* trail (p8) */
+.trailwrap{display:grid;grid-template-columns:300px 1fr;gap:18px}
+@media (max-width:820px){.trailwrap{grid-template-columns:1fr}}
+.trail{list-style:none;margin:0;padding:0}
+.trail li{display:grid;grid-template-columns:34px 1fr;gap:8px;margin:0 0 8px}
+.trail .dot{width:32px;height:32px;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center;font-weight:700;background:var(--card)}
+.trail li.on .dot{background:var(--yellow);color:#000}
+.trail li.done .dot{background:#111;color:var(--yellow);border-color:#111}
+.trail .tq{border:2px solid var(--line);border-radius:10px;padding:6px 10px;font-size:14px}
+.trail li.on .tq{border-color:var(--ink);background:var(--soft)}
+.trail .tq b{display:block;font-size:14.5px}
+.trail .tq .ans{display:block;margin-top:3px;font-size:13px;color:var(--muted)}
+.etable{width:100%;border-collapse:collapse;font-size:13.5px;font-family:Arial,Helvetica,sans-serif;background:#fff;color:#111}
+.etable th{text-align:left;border-bottom:2px solid #111;padding:5px 6px;font-weight:700}
+.etable td{border-bottom:1px solid #ddd;padding:5px 6px;vertical-align:top}
+.etable tr.hl td{background:#fff3a0}
+.etwrap{border:2px solid var(--ink);border-radius:10px;padding:10px 12px;background:#fff;color:#111;overflow-x:auto}
+.etwrap .et{font-weight:700;margin:0 0 6px;font-family:Arial,Helvetica,sans-serif}
+/* evaluation cards (p11, p12) */
+.wcs{border:1px solid var(--line);border-radius:8px;margin:0 0 6px;padding:6px 10px}.wcs.on{border-color:var(--ink)}.wch{margin:0;font-weight:500;display:flex;gap:8px;align-items:center}.wcn{width:22px;height:22px;border-radius:4px;background:var(--panel);display:grid;place-items:center;font-size:12px;font-weight:700}.wcs.on .wcn{background:#111;color:#fff}.wcs.done .wcn{background:var(--good);color:#fff}.wcb{margin-top:8px}
+.ecard{border:2px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 12px;background:var(--card)}
+.ecard.on{border-color:var(--ink)}
+.ecard .type{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;background:var(--panel);border-radius:4px;padding:2px 7px}
+.ecard .et{font-weight:500;font-size:16px;margin:5px 0 2px}
+.ecard .em{font-size:13.5px;color:var(--muted)}
+.ecard .ed{font-size:14.5px;margin:6px 0 0}
+.ecard .eq{font-weight:500;font-size:14.5px;margin:10px 0 0}
+/* results list (sims) */
+.res{margin:10px 0 0}
+.res .r{border-top:1px solid var(--line);padding:8px 0}
+.res .r b{display:block;font-size:15px}
+.res .r span{font-size:13px;color:var(--muted)}
+.simhead{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 10px}
+.simhead .t{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+/* builder (p14) */
+.bblay{display:grid;grid-template-columns:1fr 260px;gap:16px}.bblay>aside{order:2}
+@media (max-width:820px){.bblay{grid-template-columns:1fr}}
+.bank h3{font-size:15px;margin:0 0 6px}
+.bank .grp{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:10px 0 5px}
+.brow{display:grid;grid-template-columns:70px 1fr;gap:8px;align-items:start;margin:0 0 8px}
+.brow .op:empty{border-color:transparent}.brow .op{font-weight:700;padding:8px 0;text-align:center;border:2px solid var(--line);border-radius:8px;font-size:14px}
+.brow .field{border:2px solid var(--line);border-radius:8px;min-height:44px;padding:6px 8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;cursor:pointer;background:var(--bg);position:relative}
+.brow.sel .field{border-color:#111;box-shadow:0 0 0 3px var(--yellow)}
+.brow .field .ph{color:var(--muted);font-size:14px}
+.term{display:inline-flex;align-items:center;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:2px 4px 2px 10px;font-size:14px}
+.term button{border:0;background:none;cursor:pointer;font-size:16px;line-height:1;padding:0 4px}
+.term .or{font-weight:700;font-size:12px;color:var(--muted);margin:0 2px}
+.filt{display:flex;gap:16px;flex-wrap:wrap;font-size:14.5px;margin:10px 0 0}
+.filt label{display:flex;gap:6px;align-items:center}
+/* prompt builder (p15) */
+.pbuild{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:860px){.pbuild{grid-template-columns:1fr}}
+.ps{display:grid;grid-template-columns:30px 1fr;gap:10px;margin:0 0 12px}
+.ps .pn{width:28px;height:28px;border-radius:50%;background:var(--yellow);color:#000;border:2px solid #111;display:grid;place-items:center;font-weight:700;font-size:14px}
+.ps.done .pn{background:#111;color:var(--yellow)}
+.ps .chips{margin-top:6px}
+.ps .chip{font-size:13px;padding:3px 10px}
+.pprev{border:2px solid var(--ink);border-radius:12px;padding:12px 14px;background:var(--panel);font-size:15px;white-space:pre-wrap;min-height:160px}
+.pprev .hl2{background:#fff3a0;color:#111;border-radius:3px;padding:0 2px}
+.pmeter{display:flex;align-items:center;gap:10px;margin:10px 0 0;font-weight:500;font-size:14px}
+.pmeter .pb{flex:1;height:8px;background:var(--line);border-radius:999px;overflow:hidden}
+.pmeter .pb span{display:block;height:100%;width:0;background:var(--yellow);transition:width .3s}
+.prule{margin:12px 0 0;font-size:14px;border-left:5px solid var(--bad);padding:4px 0 4px 10px}
+/* research log modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto}
+.modal[hidden]{display:none}
+.mbox{background:var(--bg);color:var(--ink);border:2px solid var(--ink);border-radius:14px;max-width:640px;width:100%;padding:18px 20px;position:relative}
+.mbox h2{margin:0 0 6px;font-size:21px}
+.logl{list-style:none;padding:0;margin:10px 0}
+.logl li{border-top:1px solid var(--line);padding:8px 0}
+.logl li b{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.logl li span{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;word-break:break-word;white-space:pre-wrap}
+/* research question page */
+.rq{border-left:8px solid var(--yellow);background:var(--soft);border-radius:8px;padding:14px 18px;margin:0 0 16px}
+.rq .k{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.rq .q{font-size:19px;font-weight:500;margin:4px 0 0;line-height:1.4}
+.scenario p{margin:0 0 18px;max-width:72ch;line-height:1.75}
+.mark{background:#fff3a0;color:#111;border-radius:3px;padding:0 3px;font-weight:500}
+.stops{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin:8px 0 0}
+.stops div{border:2px solid var(--line);border-radius:10px;padding:8px 10px;font-size:14px}
+.stops div b{display:block}
+/* completion code */
+.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:34px;font-weight:700;letter-spacing:.12em;background:#111;color:var(--yellow);border-radius:12px;padding:14px 20px;display:inline-block;margin:6px 0}
+.checklist{list-style:none;padding:0;margin:8px 0;columns:2;column-gap:20px}
+@media (max-width:600px){.checklist{columns:1}}
+.checklist li{padding:3px 0;font-size:14.5px;break-inside:avoid}
+.checklist li.d::before{content:"✓ ";color:var(--good);font-weight:700}
+.checklist li:not(.d)::before{content:"○ ";color:var(--muted)}
+.refs p{margin:0 0 8px;padding-left:24px;text-indent:-24px;font-size:14px}.refs a{word-break:break-all;font-size:13px}
+#emy .btn.on,#spmo .btn.on{background:var(--yellow);color:#000}
+.brow{position:relative}.rsel{position:absolute;left:-9999px;top:0}.rsel:focus{left:auto;right:6px;top:-12px;z-index:3;background:var(--yellow);color:#000;border:2px solid #111;border-radius:6px;font:600 12px Lexend,system-ui,sans-serif;padding:2px 8px}
+.emrows tbody tr{cursor:pointer}.emrows tbody tr:hover{background:#fff8c4}.emrows tr.rok{background:#eef8f0;outline:2.5px solid #1a7f37}.emrows tr.rno td{color:#9a2b2b;text-decoration:line-through}.rowbtn{all:unset;cursor:pointer;font:inherit;color:inherit}.rowbtn:focus-visible{outline:3px solid #111;outline-offset:2px;border-radius:3px}
+/* P10 layout: fields in rows on the left, search box on the right */
+.gslay{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:16px;align-items:start}
+.gslay .grid2{grid-template-columns:minmax(0,1fr)}
+.gslay .gsside{display:flex;flex-direction:column;gap:12px;min-width:0}
+.gslay .gsside .tip{margin:0}
+.gslay .searchline{flex-wrap:wrap;margin-top:0}.gslay .searchline code{flex:1 1 100%;order:2;overflow-wrap:anywhere}.gslay .searchline .l{flex:1 1 auto}
+@media (max-width:760px){.gslay{grid-template-columns:minmax(0,1fr)}}
+/* P5 sort the steps */
+.sortl{list-style:none;margin:0;padding:0;display:grid;gap:8px;max-width:640px}
+.sortl li{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;border:2px solid var(--ink);border-radius:10px;padding:10px 12px;background:var(--card)}
+.sortl .n{width:30px;height:30px;border-radius:50%;background:var(--yellow);color:#000;border:2px solid #000;display:grid;place-items:center;font-weight:700}
+.sortl .mv{display:flex;gap:6px}
+.sortl .mv button{font:inherit;font-weight:700;width:34px;height:34px;border:1.5px solid var(--ink);border-radius:6px;background:var(--card);color:var(--ink);cursor:pointer}
+.sortl .mv button:disabled{opacity:.35;cursor:default}
+.sortl li.sok{border-color:var(--good);box-shadow:inset 6px 0 0 var(--good)}
+.sortl li.sno{border-color:var(--bad);box-shadow:inset 6px 0 0 var(--bad)}
+.sortl .mk{font-weight:700;margin-left:6px}.sortl li.sok .mk{color:var(--good)}.sortl li.sno .mk{color:var(--bad)}
+.sortfb{margin:12px 0 0}
+/* p9 clipping */
+.clip{border:2px solid var(--ink);border-radius:12px;padding:14px 16px;margin:0 0 14px;background:var(--card);box-shadow:6px 6px 0 var(--yellow);display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center}
+.clip .ic{font-size:30px}
+.clip .k{margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.clip .qt{display:block;margin:0;font-family:Georgia,serif;font-size:17px}
+.clip .qt b{background:var(--soft);font-weight:700}
+
+/* ===== Medicine additions ===== */
+.lay2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:820px){.lay2{grid-template-columns:minmax(0,1fr)}}
+.rq{font-size:19px;line-height:1.5;font-weight:400;margin:0}
+.video{position:relative;width:100%;aspect-ratio:16/9;border:2px solid var(--ink);border-radius:12px;overflow:hidden;background:#111}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.tagbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 10px}
+.tagbar .t{font-size:14px}
+.tagq{font-size:17px;line-height:2.1;margin:0}
+.tw{font:inherit;border:0;background:none;color:inherit;padding:1px 3px;border-radius:5px;cursor:pointer;text-decoration:underline dotted;text-underline-offset:4px}
+.tw:hover{background:var(--soft)}
+.tw[data-tag="task"]{background:#cfe2ff;color:#000;outline:2px solid #1a4f8b;text-decoration:none}
+.tw[data-tag="con"]{background:#d7f7e4;color:#000;outline:2px solid #1d7a3a;text-decoration:none}
+.tw[data-tag="lim"]{background:#ffe9b0;color:#000;outline:2px solid #8a5a00;text-decoration:none}
+.tagbtn{font:inherit;font-size:14px;border:2px solid var(--ink);border-radius:999px;padding:3px 12px;background:var(--card);cursor:pointer}
+.tagbtn[aria-pressed="true"]{font-weight:700;box-shadow:0 0 0 3px var(--yellow)}
+.tagbtn .sw{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;border:1.5px solid #000}
+.synrow{display:grid;grid-template-columns:170px minmax(0,1fr);gap:10px;align-items:start;border-top:1px solid var(--line);padding:10px 0}
+.synrow:first-of-type{border-top:0}
+@media (max-width:560px){.synrow{grid-template-columns:minmax(0,1fr)}}
+.synrow .fb{margin-top:6px}
+.op{display:inline-block;font-weight:700;background:var(--yellow);color:#000;border:2px solid #000;border-radius:6px;padding:0 7px;line-height:1.4}
+.exbtn{margin-top:10px}
+.ex{border-top:1px dashed var(--line);margin-top:10px;padding-top:10px;font-size:15px}
+.ex code,.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;background:var(--panel);border-radius:4px;padding:1px 5px}
+.ex ol{margin:6px 0;padding-left:22px}
+/* search builder diagram (p4) */
+.sdiag{border:2px solid var(--ink);border-radius:12px;padding:14px 16px;background:var(--card)}
+.sdiag .srow{border:2px solid var(--ink);border-radius:10px;padding:8px 12px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;background:var(--panel)}
+.sdiag .and{margin:8px 0 8px 18px}
+.sdiag .lim{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px;font-size:14px}
+.sdiag .lim span{border:2px solid var(--ink);border-radius:8px;padding:4px 10px}
+.sdiag .stepl{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:12px 0 6px}
+.sdiag .stepl:first-child{margin-top:0}
+.tips{display:grid;gap:10px}
+.tipc{border:2px solid var(--ink);border-radius:12px;padding:12px 14px;background:var(--card)}
+.tipc h3{margin:0 0 4px;font-size:16px;font-weight:700}
+.tipc p{margin:0;font-size:14.5px}
+/* challenge (p5) */
+.art{border:2px solid var(--ink);border-radius:12px;padding:12px 14px;background:var(--card);display:flex;flex-direction:column;gap:8px}
+.art .an{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.art .at{font-weight:500;font-size:15.5px;margin:0}
+.arts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+@media (max-width:820px){.arts{grid-template-columns:minmax(0,1fr)}}
+.art.picked-ok{border-color:var(--good);box-shadow:inset 6px 0 0 var(--good)}
+.art.picked-no{border-color:var(--bad);box-shadow:inset 6px 0 0 var(--bad)}
+.shot{display:block;width:100%;height:auto;border:2px solid var(--ink);border-radius:10px;background:#fff}
+.counts{display:grid;gap:10px}
+.counts input{max-width:220px}
+/* PubMed simulator (p7) */
+.pm{border:2px solid var(--ink);border-radius:12px;padding:14px 16px;background:var(--card);margin:0 0 14px}
+.pmhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 10px}
+.pmhead .t{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.meshcard{border:2px solid var(--ink);border-radius:10px;padding:10px 12px;margin-top:10px;background:var(--panel)}
+.meshcard h4{margin:0 0 4px;font-size:16px}
+.meshcard p{margin:0 0 6px;font-size:14px}
+.meshcard .et{font-size:13.5px;color:var(--muted)}
+.crow{border-top:1px solid var(--line);padding:10px 0}
+.crow:first-of-type{border-top:0}
+.crow .ch{font-weight:700;font-size:14.5px;margin:0 0 6px}
+.ticks{display:flex;flex-wrap:wrap;gap:8px 16px;border:0;margin:0;padding:0}
+.ticks label{display:inline-flex;gap:6px;align-items:center;font-size:14.5px}
+.ticks input{width:18px;height:18px;accent-color:#111}
+.ticks label.off{color:var(--muted)}
+.qcol{font-family:ui-monospace,Menlo,Consolas,monospace}
+/* evaluating (p9) */
+.ladder{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.ladder li{display:grid;grid-template-columns:70px minmax(0,1fr);gap:10px;align-items:center;border:2px solid var(--ink);border-radius:10px;padding:7px 12px;background:var(--card);font-size:14.5px}
+.ladder li b{font-weight:700}
+.ladder li:first-child{background:var(--yellow);color:#000;border-color:#000}
+.qstack{display:grid;gap:12px}
+.qstack .box{margin:0}
+.done-note{font-weight:500;margin:12px 0 0}
+details.tv{margin-top:10px;font-size:14.5px}
+details.tv summary{cursor:pointer;font-weight:500}
+details.tv ul{margin:6px 0 0;padding-left:20px}
+</style>
+</head>
+<body>
+
+<header class="top"><h1>Medicine HDR Essentials</h1><p>Medical research using the Library collection · UNSW Library. Each section below is one right panel in the LibWizard tutorial (use ?part=N).</p></header>
+<nav class="toc" aria-label="Parts"><a href="?part=1">1 Research question</a><a href="?part=2">2 Breaking down the question</a><a href="?part=3">3 AND and OR</a><a href="?part=4">4 Entering your search</a><a href="?part=5">5 Challenge</a><a href="?part=6">6 Database search</a><a href="?part=7">7 PubMed</a><a href="?part=8">8 Search health check</a><a href="?part=9">9 Evaluating sources</a><a href="?part=10">10 AI and searching</a></nav>
+<main>
+<section class="slide" id="p1" aria-labelledby="h1"><div class="in"><div class="sh"><h2 id="h1">Your research question</h2></div>
+<p class="lead">This question is used throughout the tutorial.</p>
+<div class="box"><p class="boxh">Research question</p><p class="rq">‘Taking Echinacea supplements can reduce the severity of the common cold. Discuss with reference to therapy studies.’</p></div>
+<div class="box"><p class="boxh">Activity</p><div id="q1"></div></div>
+<div class="tip"><p>Select <b>Research log</b> at any time to see the searches you build.</p></div>
+</div></section>
+
+<section class="slide" id="p2" aria-labelledby="h2"><div class="in"><div class="sh"><h2 id="h2">Breaking down the question</h2></div>
+<p class="lead">Watch the video, then find the key concepts in the question and choose synonyms for each.</p>
+<div class="lay2">
+ <div><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/NU9rw8zdWXE" title="Breaking down your research question (video)" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+ <p class="small" style="margin:6px 0 0">Video not playing? <a href="https://youtu.be/NU9rw8zdWXE" target="_blank" rel="noopener">Watch it on YouTube</a>.</p></div>
+ <div>
+  <div class="tabs" role="tablist" aria-label="Activities"><button class="tab" role="tab" type="button" id="t2a" aria-controls="tp2a" aria-selected="true">1 Find the concepts</button><button class="tab" role="tab" type="button" id="t2b" aria-controls="tp2b" aria-selected="false">2 Choose synonyms</button></div>
+  <div class="tabp" id="tp2a" role="tabpanel" aria-labelledby="t2a"><div class="box" id="tagbox"></div></div>
+  <div class="tabp" id="tp2b" role="tabpanel" aria-labelledby="t2b" hidden><div class="box" id="synbox"></div></div>
+ </div>
+</div>
+</div></section>
+
+<section class="slide" id="p3" aria-labelledby="h3"><div class="in"><div class="sh"><h2 id="h3">Combine your keywords with AND and OR</h2></div>
+<p class="lead">Searching a database is easy, but different to using Google. To search a database effectively you need to combine your keywords using AND and OR.</p>
+<div class="tip" style="margin-top:0"><p>From here, the examples use a second topic: low carb diets, cardiovascular disease and risk factors.</p></div>
+<div class="grid2">
+ <div class="box"><p class="boxh">What is <span class="op">OR</span> used for?</p><p style="margin:0">OR is used to combine similar keywords together. Use it to capture the different ways a concept is described in an article.</p>
+  <button class="btn ghost small exbtn" type="button" aria-expanded="false" aria-controls="exor">Show an example</button>
+  <div class="ex" id="exor" hidden><p style="margin:0">Use <code>"cardiovascular disease" OR "heart disease"</code> to find articles that contain the word cardiovascular disease as well as articles that contain the word heart disease.</p></div></div>
+ <div class="box"><p class="boxh">What is <span class="op">AND</span> used for?</p><p style="margin:0">Once you have your synonyms grouped together, the final step in building your search is to combine the concepts using AND.</p>
+  <button class="btn ghost small exbtn" type="button" aria-expanded="false" aria-controls="exand">Show an example</button>
+  <div class="ex" id="exand" hidden><p style="margin:0">In our example we have three concepts:</p><ol><li><code>"cardiovascular disease*" OR "heart disease*"</code><br><span class="op">AND</span></li><li><code>"low carb* diet*" OR "carbohydrate restricted diet*"</code><br><span class="op">AND</span></li><li><code>"risk factor*"</code></li></ol><p style="margin:0">Your final search results will now include articles relevant to your topic as each article will include all three key concepts.</p></div></div>
+</div>
+<p class="boxh" style="margin-top:4px">Activity · Select the correct answer for the following</p>
+<div class="grid2"><div class="box"><div id="q3a"></div></div><div class="box"><div id="q3b"></div></div></div>
+<p class="meter" id="m3" aria-live="polite"></p>
+</div></section>
+
+<section class="slide" id="p4" aria-labelledby="h4"><div class="in"><div class="sh"><h2 id="h4">Entering your search</h2></div>
+<p class="lead">The diagram shows how to enter your search terms into a database, one concept per row.</p>
+<div class="lay2">
+ <div class="sdiag" role="group" aria-label="How to enter a search in a database">
+  <p class="stepl">1 · Combine synonyms with OR in each row</p>
+  <div class="srow">"cardiovascular disease*" OR "heart disease*"</div>
+  <div class="and"><span class="op">AND</span></div>
+  <div class="srow">"low carb* diet*" OR "carbohydrate restricted diet*"</div>
+  <div class="and"><span class="op">AND</span></div>
+  <div class="srow">"risk factor*"</div>
+  <p class="stepl">2 · Add limits, then search</p>
+  <div class="lim"><span>Date range · last 5 years</span><span class="op" style="padding:3px 12px">Search</span></div>
+ </div>
+ <div class="tips">
+  <div class="tipc"><h3>Asterisk *</h3><p>( * ) is used to capture different word endings, e.g. <span class="mono">low carb* diet*</span> will capture low carb diet, low carb diets, low carbohydrate diet as well as low carbohydrate diets.</p></div>
+  <div class="tipc"><h3>"Quotation marks"</h3><p>(" ") are used when searching a phrase, e.g. <span class="mono">"risk factor"</span> will capture these two words next to each other.</p></div>
+  <div class="tipc"><h3>Database limits</h3><p>Databases allow you to refine your search results, e.g. to date published, peer reviewed, publication type etc.</p></div>
+ </div>
+</div>
+<div class="box" style="margin-top:14px"><p class="boxh">Activity</p><div id="q4"></div></div>
+</div></section>
+
+<section class="slide" id="p5" aria-labelledby="h5"><div class="in"><div class="sh"><h2 id="h5">Challenge activity</h2></div>
+<p class="lead">Look at the search strategy and the articles below. Select the article that will NOT be retrieved in the search results.</p>
+<div class="searchline" style="margin-top:0"><span class="l">Search strategy</span><code>("cardiovascular disease*" OR "heart disease*") AND ("low carb* diet*" OR "carbohydrate restricted diet*") AND "risk factor*"</code></div>
+<div class="arts" id="arts"></div>
+<p class="fb" id="f5" aria-live="polite"></p>
+</div></section>
+
+<section class="slide" id="p6" aria-labelledby="h6"><div class="in"><div class="sh"><h2 id="h6">Database search</h2></div>
+<p class="lead"><a href="https://primoa.library.unsw.edu.au/permalink/61UNSW_INST/1m02euc/alma9942218590001731" target="_blank" rel="noopener">Scopus</a> and <a href="https://primoa.library.unsw.edu.au/permalink/61UNSW_INST/1m02euc/alma9941028380001731" target="_blank" rel="noopener">Web of Science</a> are two of the most widely used multidisciplinary databases in academic research. Let's try building a search in Scopus.</p>
+<div class="lay2">
+ <div><img class="shot" src="img/medicine-scopus-search.png" alt="Scopus document search with three rows joined by AND. Each row searches Article title, Abstract, Keywords. Row 1: &quot;cardiovascular disease*&quot; OR &quot;heart disease*&quot;. Row 2: &quot;low carb* diet*&quot; OR &quot;carbohydrate restricted diet*&quot;. Row 3: &quot;risk factor*&quot;." width="1587" height="970">
+  <p class="small" style="margin:6px 0 0">How the search looks in Scopus. Use <b>+ Add search field</b> to add extra rows.</p></div>
+ <div class="box"><p class="boxh">Activity</p><ol style="margin:0 0 10px;padding-left:22px">
+  <li>Open the <a href="https://subjectguides.library.unsw.edu.au/medicine-health/core-databases" target="_blank" rel="noopener">Medicine &amp; health Subject Guide</a> and select the <b>Interdisciplinary</b> tab.</li>
+  <li>Select the link for <b>Scopus</b>. Under <b>View It</b>, select the <b>Scopus - Elsevier</b> link. The database opens in a new window.</li>
+  <li>Enter the search shown and select <b>Search</b>.</li>
+  <li>Use the <b>Refine search</b> filter on the left of the results page to limit your results to the years 2022–2026.</li>
+  <li>Try the same search in <a href="https://primoa.library.unsw.edu.au/permalink/61UNSW_INST/1m02euc/alma9941028380001731" target="_blank" rel="noopener">Web of Science</a>. Change <b>All Fields</b> to <b>Topic</b> for each row and add the publication year limit, 2022–2026.</li></ol>
+  <div class="counts">
+   <div><label class="f" for="c6a">How many results do you get in Scopus?</label><input type="text" id="c6a" inputmode="numeric" autocomplete="off"></div>
+   <div><label class="f" for="c6b">How many after limiting to 2022–2026?</label><input type="text" id="c6b" inputmode="numeric" autocomplete="off"></div>
+   <div><label class="f" for="c6c">How many in Web of Science (Topic, 2022–2026)?</label><input type="text" id="c6c" inputmode="numeric" autocomplete="off"></div>
+  </div>
+  <div class="row" style="margin-top:12px"><button class="btn" type="button" id="s6">Save to Research log</button><button class="btn ghost small" type="button" id="cp6">Copy the search</button></div>
+  <p class="fb" id="f6" aria-live="polite"></p></div>
+</div>
+</div></section>
+
+<section class="slide" id="p7" aria-labelledby="h7"><div class="in"><div class="sh"><h2 id="h7">Searching PubMed</h2></div>
+<p class="lead">A practice version of PubMed. Build a search for the Echinacea question with MeSH headings and keywords. Follow the yellow numbers.</p>
+<div id="pmsim"></div>
+</div></section>
+
+<section class="slide" id="p8" aria-labelledby="h8"><div class="in"><div class="sh"><h2 id="h8">Search health check</h2></div>
+<p class="lead">Searching databases can be a process of trial and error. Your first search may give you too many results, so you will need to refine it to make it more relevant for your topic.</p>
+<div class="lay2">
+ <div><img class="shot" src="https://d329ms1y997xa5.cloudfront.net/accounts/2799/images/Search_health_check.jpg" alt="Search health check infographic. Text version below.">
+  <p class="small" style="margin:6px 0 0"><a href="https://d329ms1y997xa5.cloudfront.net/accounts/2799/images/Search_health_check.jpg" target="_blank" rel="noopener">Open the infographic in a new window</a></p>
+  <details class="tv"><summary>Text version</summary>
+   <p style="margin:8px 0 0"><b>Too many results?</b></p><ul><li>Choose appropriate terms. Ensure your terms are not too broad or narrow.</li><li>Try phrase searching. A search in quotation marks will look for the terms side by side.</li><li>Refine to resource type. You can often refine your search to articles, eBooks, etc.</li><li>Use the right database. Check the UNSW Library Subject Guides for databases relevant to your topic.</li></ul>
+   <p style="margin:8px 0 0"><b>Not enough results?</b></p><ul><li>Avoid unnecessary terms. General terms like impact, characteristics or influence may not appear in the articles you need.</li><li>Check your spelling. Databases often search exactly what you type, including errors.</li><li>Try alternative terms. Check the titles, abstracts and subject terms of relevant articles for alternative search terms. Look at the references and citations as well.</li></ul></details></div>
+ <div class="qstack"><div class="box"><p class="boxh">Activity 1</p><div id="q8a"></div></div><div class="box"><p class="boxh">Activity 2</p><div id="q8b"></div></div><p class="meter" id="m8" aria-live="polite"></p></div>
+</div>
+</div></section>
+
+<section class="slide" id="p9" aria-labelledby="h9"><div class="in"><div class="sh"><h2 id="h9">Evaluating sources</h2></div>
+<p class="lead">For a therapy question, the type of study matters. The NHMRC evidence hierarchy ranks study designs for intervention questions.</p>
+<div class="lay2">
+ <div class="box"><p class="boxh">NHMRC evidence hierarchy · intervention</p>
+  <ol class="ladder"><li><b>Level I</b><span>A systematic review of level II studies</span></li><li><b>Level II</b><span>A randomised controlled trial</span></li><li><b>Level III-1</b><span>A pseudorandomised controlled trial</span></li><li><b>Level III-2</b><span>A comparative study with concurrent controls</span></li><li><b>Level III-3</b><span>A comparative study without concurrent controls</span></li><li><b>Level IV</b><span>Case series with either post-test or pre-test/post-test outcomes</span></li></ol>
+  <p class="src">Source: NHMRC Evidence Hierarchy, intervention questions, as reproduced by Cancer Australia (Appendix 1).</p></div>
+ <div class="qstack"><div class="box"><p class="boxh">Question 1</p><div id="q9a"></div></div><div class="box"><p class="boxh">Question 2</p><div id="q9b"></div></div><div class="box"><p class="boxh">Question 3</p><div id="q9c"></div></div><p class="meter" id="m9" aria-live="polite"></p></div>
+</div>
+</div></section>
+
+<section class="slide" id="p10" aria-labelledby="h10"><div class="in"><div class="sh"><h2 id="h10">AI and searching</h2></div>
+<p class="lead">AI tools can help you get started, but they don't replace a database search. Answer the three questions.</p>
+<div class="qstack" style="max-width:820px"><div class="box"><p class="boxh">Question 1</p><div id="q10a"></div></div><div class="box"><p class="boxh">Question 2</p><div id="q10b"></div></div><div class="box"><p class="boxh">Question 3</p><div id="q10c"></div></div><p class="meter" id="m10" aria-live="polite"></p></div>
+<div class="tip"><p><b>Tip:</b> Ask an AI tool to suggest synonyms for your concepts, then check them against MeSH in PubMed before you search.</p></div>
+</div></section>
+</main>
+<div class="modal" id="logm" hidden role="dialog" aria-modal="true" aria-labelledby="logh"><div class="mbox"><button class="pclose" type="button" id="logx" aria-label="Close">×</button><h2 id="logh">Your research log</h2><p class="small" style="margin:0">The searches you build in this tutorial are saved here, on this device only.</p><ul class="logl" id="logl"></ul><div class="row"><button class="btn" type="button" id="logdl">Download log</button><button class="btn ghost" type="button" id="logcp">Copy</button></div></div></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+async function copyText(txt,btn){let ok=false;try{await navigator.clipboard.writeText(txt);ok=true}catch(e){}
+ if(!ok){const t=document.createElement('textarea');t.value=txt;t.className='sr';document.body.appendChild(t);t.select();try{ok=document.execCommand('copy')}catch(e){}t.remove()}
+ if(btn){const o=btn.textContent;btn.textContent=ok?'Copied':'Select and copy manually';setTimeout(()=>btn.textContent=o,1800)}}
+const openWin=(u,n)=>{try{window.open(u,n||'_blank','noopener')}catch(e){}};
+
+
+
+const ACTS={1:'Your research question',2:'Breaking down the question',3:'AND and OR',4:'Entering your search',5:'Challenge activity',6:'Database search',7:'Searching PubMed',8:'Search health check',9:'Evaluating sources',10:'AI and searching'};
+const ACT_ORDER=[1,2,3,4,5,6,7,8,9,10];
+const RQ='Taking Echinacea supplements can reduce the severity of the common cold. Discuss with reference to therapy studies.';
+const G=(function(){
+ const KEY='med-hdr-v1';let st={done:{},log:{}};
+ function load(){try{const v=JSON.parse(localStorage.getItem(KEY)||'null');if(v)st={done:v.done||{},log:v.log||{}}}catch(e){}}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+ function merge(o){if(!o)return false;let ch=false;for(const k in o.done||{})if(o.done[k]&&!st.done[k]){st.done[k]=true;ch=true}for(const k in o.log||{})if(!st.log[k]||(o.log[k].t>st.log[k].t)){st.log[k]=o.log[k];ch=true}return ch}
+ const doneCount=()=>ACT_ORDER.filter(p=>st.done[p]).length;
+ const ls=[],kids=[];
+ function render(){const b=$('#gbar');if(b){b.querySelector('.gc').textContent=doneCount()+' of '+ACT_ORDER.length+' activities';b.querySelector('.gt span').style.width=(doneCount()/ACT_ORDER.length*100)+'%'}ls.forEach(f=>f())}
+ function share(){try{if(window.opener&&!window.opener.closed)window.opener.postMessage({t:'md-state',s:st},location.origin)}catch(e){}try{for(const w of kids)if(w&&!w.closed)w.postMessage({t:'md-state',s:st},location.origin)}catch(e){}}
+ function complete(p){p=String(p);if(st.done[p])return;st.done[p]=true;save();render();share()}
+ function log(key,label,val){if(!val)return;st.log[key]={l:label,v:val,t:Date.now()};save();share()}
+ window.addEventListener('message',e=>{if(e.origin!==location.origin||!e.data)return;if(e.data.t==='md-state'){if(merge(e.data.s)){save();render()}}else if(e.data.t==='md-req'){try{e.source.postMessage({t:'md-state',s:st},location.origin)}catch(x){}}});
+ window.addEventListener('storage',e=>{if(e.key===KEY){load();render()}});
+ load();
+ return{complete,log,render,doneCount,isDone:p=>!!st.done[p],state:()=>st,onChange:f=>ls.push(f),addKid:w=>kids.push(w),init(){try{if(window.opener&&!window.opener.closed)window.opener.postMessage({t:'md-req'},location.origin)}catch(e){}render()}};
+})();
+
+/* ---------- Pop-overs ---------- */
+function closePops(){document.querySelectorAll('.pop:not([hidden])').forEach(p=>{p.hidden=true;const b=document.querySelector(`[data-pop="${p.id}"]`);if(b)b.setAttribute('aria-expanded','false')})}
+function bindPops(scope){(scope||document).querySelectorAll('[data-pop]').forEach(b=>{if(b.dataset.bound)return;b.dataset.bound=1;b.addEventListener('click',e=>{e.stopPropagation();const p=document.getElementById(b.dataset.pop);const open=p.hidden;closePops();if(open){p.hidden=false;b.setAttribute('aria-expanded','true');b.classList.add('seen');placePop(p);const c=p.querySelector('.pclose');if(c)c.focus();b.dispatchEvent(new CustomEvent('popopen',{bubbles:true}))}})});
+ (scope||document).querySelectorAll('.pclose').forEach(c=>{if(c.dataset.bound)return;c.dataset.bound=1;c.addEventListener('click',e=>{e.stopPropagation();const p=c.closest('.pop');p.hidden=true;const b=document.querySelector(`[data-pop="${p.id}"]`);if(b){b.setAttribute('aria-expanded','false');b.focus()}})});
+ (scope||document).querySelectorAll('.pop').forEach(p=>{if(p.dataset.bound)return;p.dataset.bound=1;p.addEventListener('click',e=>e.stopPropagation())})}
+document.addEventListener('click',closePops);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePops();const m=$('#logm');if(!m.hidden)m.hidden=true}});
+let popN=0;
+function placePop(p){p.classList.remove('up');p.style.transform='';const r=p.getBoundingClientRect();const vh=window.innerHeight,vw=window.innerWidth;
+ if(r.bottom>vh-8&&r.top-r.height-60>0)p.classList.add('up');
+ const r2=p.getBoundingClientRect();let dx=0;if(r2.right>vw-8)dx=vw-8-r2.right;if(r2.left+dx<8)dx=8-r2.left;if(dx)p.style.transform=`translateX(${dx}px)`;
+ try{p.scrollIntoView({block:'nearest',inline:'nearest'})}catch(e){}}
+function gn(num,title,body,right){const id='pop'+(++popN);body=body.replace(/<p class="src">/g,'<span class="pp src">').replace(/<p>/g,'<span class="pp">').replace(/<\/p>/g,'</span>');return `<span class="popwrap"><button class="gnum" type="button" data-pop="${id}" aria-expanded="false" aria-label="${esc(num+'. '+title)}">${esc(num)}</button><span class="pop${right?' right':''}" id="${id}" hidden role="dialog" aria-label="${esc(title)}"><button class="pclose" type="button" aria-label="Close">×</button><span class="pp ph">${esc(num)}. ${esc(title)}</span>${body}</span></span>`}
+
+/* ---------- Tabs ---------- */
+function bindTabs(slide){const tabs=[...slide.querySelectorAll('.tab')];tabs.forEach(t=>t.addEventListener('click',()=>showTab(t)));
+ function showTab(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);document.getElementById(x.getAttribute('aria-controls')).hidden=!on})}
+ return showTab}
+
+/* ---------- Single-choice question helper ---------- */
+function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
+ host.innerHTML=`${cfg.q?`<p class="eq" style="margin:0">${cfg.q}</p>`:''}<div class="opts"></div><p class="fb" aria-live="polite"></p>`;
+ const box=host.querySelector('.opts'),fb=host.querySelector('.fb');let solved=false;
+ (cfg.shuffle===false?cfg.opts:shuffle(cfg.opts)).forEach(o=>{const b=document.createElement('button');b.type='button';b.className='opt';b.textContent=o.t;box.appendChild(b);
+  b.addEventListener('click',()=>{if(solved)return;if(o.ok){solved=true;b.classList.add('right');box.querySelectorAll('.opt').forEach(x=>x.disabled=true);fb.innerHTML=`<span class="ok">✓ ${o.fb||'Right.'}</span>`;onRight&&onRight()}else{b.classList.add('wrong');fb.innerHTML=`<span class="no">${o.fb||'Not quite. Try again.'}</span>`}})});
+ return{solved:()=>solved}}
+
+
+
+/* ================= P1 Research question ================= */
+(function(){if(!$('#q1'))return;
+ mcq($('#q1'),{q:'What does “with reference to therapy studies” ask you to find?',opts:[
+  {t:'Studies that test a treatment, such as randomised controlled trials',ok:1,fb:'Right. Therapy studies test whether a treatment works. You will limit your search to them later.'},
+  {t:'Any article that mentions Echinacea',fb:'Not quite. The question asks for a particular kind of study. Read the last part again.'},
+  {t:'Advertising and product information about supplements',fb:'Not quite. Product information is not research. Look for studies that test the treatment.'}]},()=>G.complete(1))})();
+
+/* ================= P2 Breaking down the question ================= */
+(function(){const tb=$('#tagbox');if(!tb)return;const showTab=bindTabs($('#p2'));let a1=false,a2=false;const fin=()=>{if(a1&&a2)G.complete(2)};
+ const TAGS={task:['Task word','#cfe2ff'],con:['Key concept','#d7f7e4'],lim:['Limiting word','#ffe9b0']};
+ const W=[['Taking',''],['Echinacea','con'],['supplements','*'],['can',''],['reduce','*'],['the',''],['severity','*'],['of',''],['the',''],['common cold','con'],['.',null],['Discuss','task'],['with',''],['reference',''],['to',''],['therapy studies','lim'],['.',null]];
+ let cur='con';const tag={};
+ tb.innerHTML=`<p class="boxh">Activity 1 · Find the concepts</p><div class="tagbar" role="group" aria-label="Choose a tag"><span class="t">Choose a tag, then select words:</span>${Object.entries(TAGS).map(([k,v])=>`<button class="tagbtn" type="button" data-tag="${k}" aria-pressed="${k===cur}"><span class="sw" style="background:${v[1]}" aria-hidden="true"></span>${v[0]}</button>`).join('')}</div>
+ <p class="tagq">${W.map((w,i)=>w[1]===null?esc(w[0]):`<button class="tw" type="button" data-i="${i}" aria-pressed="false">${esc(w[0])}</button>`).join(' ').replace(/ \./g,'.')}</p>
+ <div class="row" style="margin-top:10px"><button class="btn" type="button" id="tagchk">Check</button><button class="btn ghost small" type="button" id="tagclr">Clear</button></div><p class="fb" id="tagfb" aria-live="polite"></p>`;
+ tb.querySelectorAll('.tagbtn').forEach(b=>b.addEventListener('click',()=>{cur=b.dataset.tag;tb.querySelectorAll('.tagbtn').forEach(x=>x.setAttribute('aria-pressed',x===b))}));
+ tb.querySelectorAll('.tw').forEach(b=>b.addEventListener('click',()=>{const i=b.dataset.i;if(tag[i]===cur){delete tag[i];b.removeAttribute('data-tag');b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',W[i][0])}else{tag[i]=cur;b.dataset.tag=cur;b.setAttribute('aria-pressed','true');b.setAttribute('aria-label',W[i][0]+', '+TAGS[cur][0])}}));
+ $('#tagclr').addEventListener('click',()=>{for(const k in tag)delete tag[k];tb.querySelectorAll('.tw').forEach(b=>{b.removeAttribute('data-tag');b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',b.textContent)});$('#tagfb').textContent=''});
+ $('#tagchk').addEventListener('click',()=>{let miss=[],extra=[];W.forEach((w,i)=>{if(w[1]===null||w[1]==='*')return;if(w[1]===''){if(tag[i])extra.push(w[0]);return}if(tag[i]!==w[1])miss.push(w[0])});
+  const f=$('#tagfb');if(!miss.length&&!extra.length){a1=true;$('#t2a').classList.add('done');f.innerHTML='<span class="ok">✓ Right.</span> The key concepts are <b>Echinacea</b> and <b>common cold</b>. <b>Discuss</b> is the task word, and <b>therapy studies</b> limits the kind of study you need. Words like reduce and severity describe the outcome. You can add them later if you get too many results. <button class="btn small" type="button" id="toSyn">Go to Activity 2</button>';$('#toSyn').addEventListener('click',()=>showTab($('#t2b')));fin()}
+  else f.innerHTML=`<span class="no">Not quite.</span> ${miss.length?'Check: '+esc(miss.join(', '))+'. ':''}${extra.length?'These words don’t need a tag: '+esc(extra.join(', '))+'.':''}`});
+ const S=[{c:'Echinacea',base:'Echinacea',chips:[['Echinacea purpurea','g','A species of Echinacea. MeSH lists it as an entry term for Echinacea.'],['purple coneflower','g','A common name for Echinacea. MeSH lists it as an entry term.'],['herbal medicine','b','Broader than Echinacea. It would bring in many other herbs.'],['vitamin C','n','A different supplement, so not a synonym.']]},
+  {c:'Common cold',base:'"common cold"',chips:[['coryza','g','MeSH lists acute coryza as an entry term for Common Cold.'],['upper respiratory tract infection','b','Broader than the common cold. Useful if you find too few results.'],['influenza','n','Flu is a different illness, so not a synonym.'],['cold','n','On its own, cold also finds cold temperatures. Use the phrase "common cold".']]}];
+ const sel=S.map(()=>new Set());const sb=$('#synbox');
+ sb.innerHTML=`<p class="boxh">Activity 2 · Choose synonyms</p><p style="margin:0 0 6px">Select the synonyms you would add for each concept.</p>${S.map((r,k)=>`<div class="synrow"><b>${esc(r.c)}</b><div><div class="chips">${r.chips.map((c,j)=>`<button class="chip" type="button" data-k="${k}" data-j="${j}" aria-pressed="false">${esc(c[0])}</button>`).join('')}</div><p class="fb" id="sf${k}" aria-live="polite"></p></div></div>`).join('')}
+ <div class="searchline"><span class="l">Your search</span><code id="synq"></code><button class="btn small ghost" type="button" id="syncp">Copy</button></div><p class="fb" id="synfb" aria-live="polite"></p>`;
+ const qt=t=>/\s/.test(t)?'"'+t+'"':t;
+ const q=()=>S.map((r,k)=>{const a=[r.base,...[...sel[k]].map(j=>qt(r.chips[j][0]))];return a.length>1?'('+a.join(' OR ')+')':a[0]}).join(' AND ');
+ function draw(){$('#synq').textContent=q();const ok=S.every((r,k)=>[...sel[k]].some(j=>r.chips[j][1]==='g'));if(ok&&!a2){a2=true;$('#t2b').classList.add('done');G.log('concepts','Concepts and synonyms',q());$('#synfb').innerHTML='<span class="ok">✓ Saved to your Research log.</span> You’ll use these terms in PubMed later.';fin()}else if(a2)G.log('concepts','Concepts and synonyms',q())}
+ sb.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;const k=+c.dataset.k,j=+c.dataset.j,ch=S[k].chips[j];
+  if(ch[1]==='n'){c.setAttribute('aria-pressed','false');$('#sf'+k).innerHTML=`<span class="no">${esc(ch[0])}:</span> ${esc(ch[2])}`;return}
+  if(sel[k].has(j)){sel[k].delete(j);c.setAttribute('aria-pressed','false');$('#sf'+k).textContent=''}else{sel[k].add(j);c.setAttribute('aria-pressed','true');$('#sf'+k).innerHTML=`<span class="${ch[1]==='g'?'ok':'no'}">${esc(ch[0])}:</span> ${esc(ch[2])}`}draw()});
+ $('#syncp').addEventListener('click',e=>copyText(q(),e.currentTarget));draw()})();
+
+/* ================= P3 AND and OR ================= */
+(function(){if(!$('#q3a'))return;
+ document.querySelectorAll('#p3 .exbtn').forEach(b=>b.addEventListener('click',()=>{const p=document.getElementById(b.getAttribute('aria-controls'));const open=p.hidden;p.hidden=!open;b.setAttribute('aria-expanded',open);b.textContent=open?'Hide the example':'Show an example'}));
+ let a=false,b=false;const m=()=>{$('#m3').innerHTML=a&&b?'<span class="ok">✓ Both answered.</span>':(a+b)+' of 2 answered';if(a&&b)G.complete(3)};
+ mcq($('#q3a'),{q:'"cardiovascular disease*" AND "low carb* diet*" will retrieve articles that include:',shuffle:false,opts:[{t:'Both of these search terms',ok:1,fb:'Right. AND finds articles that include both terms.'},{t:'At least one of these search terms',fb:'Not quite. That is what OR does.'}]},()=>{a=true;m()});
+ mcq($('#q3b'),{q:'"low carb* diet*" OR "carbohydrate restricted diet*" will retrieve articles that include:',shuffle:false,opts:[{t:'Both of these search terms',fb:'Not quite. That is what AND does.'},{t:'At least one of these search terms',ok:1,fb:'Right. OR finds articles that include either term, or both.'}]},()=>{b=true;m()});m()})();
+
+/* ================= P4 Entering your search ================= */
+(function(){if(!$('#q4'))return;
+ mcq($('#q4'),{q:'Which search term will find low carb diet, low carb diets and low carbohydrate diets?',opts:[{t:'low carb* diet*',ok:1,fb:'Right. Each asterisk captures the different word endings.'},{t:'"low carb diet"',fb:'Not quite. Quotation marks find that exact phrase only.'},{t:'low AND carb AND diet',fb:'Not quite. This finds the three words anywhere in the record, and misses carbohydrate and diets.'}]},()=>G.complete(4))})();
+
+/* ================= P5 Challenge ================= */
+(function(){const host=$('#arts');if(!host)return;
+ const A=[{t:'Can low-carbohydrate diets be recommended for reducing cardiovascular risk?',u:'https://libapps-au.s3-ap-southeast-2.amazonaws.com/accounts/2799/images/Apr_2023_Article_1.jpg'},
+  {t:'The effects of low-carbohydrate diets on cardiovascular risk factors: A meta-analysis.',u:'https://d329ms1y997xa5.cloudfront.net/accounts/2799/images/Nov_2024_Article_2.jpg'},
+  {t:'Risk factors for cardiovascular diseases. Bibliographic review.',u:'https://libapps-au.s3-ap-southeast-2.amazonaws.com/accounts/2799/images/Apr_2023_Article_3.jpg',ok:1}];
+ host.innerHTML=A.map((a,i)=>`<div class="art" id="art${i}"><span class="an">Article ${i+1}</span><p class="at">${esc(a.t)}</p><a href="${a.u}" target="_blank" rel="noopener">View the article record<span class="sr"> for article ${i+1}</span></a><button class="btn ghost small" type="button" data-i="${i}" style="align-self:flex-start;margin-top:auto">This one won’t be retrieved</button></div>`).join('');
+ host.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{const i=+b.dataset.i,a=A[i];if(a.ok){$('#art'+i).classList.add('picked-ok');host.querySelectorAll('button').forEach(x=>x.disabled=true);$('#f5').innerHTML='<span class="ok">✓ Right.</span> Article 3 doesn’t mention a low carb diet, so AND leaves it out. Every result must include all three concepts.';G.complete(5)}else{$('#art'+i).classList.add('picked-no');b.disabled=true;$('#f5').innerHTML='<span class="no">Not quite.</span> This article covers all three concepts. Look for the one that is missing a concept.'}}))})();
+
+/* ================= P6 Database search ================= */
+(function(){if(!$('#s6'))return;const SQ='("cardiovascular disease*" OR "heart disease*") AND ("low carb* diet*" OR "carbohydrate restricted diet*") AND "risk factor*"';
+ $('#cp6').addEventListener('click',e=>copyText(SQ,e.currentTarget));
+ $('#s6').addEventListener('click',()=>{const a=$('#c6a').value.trim(),b=$('#c6b').value.trim(),c=$('#c6c').value.trim();if(!a){$('#f6').innerHTML='<span class="no">Enter your Scopus result count first.</span>';$('#c6a').focus();return}
+  G.log('scopus','Scopus and Web of Science search',SQ+'\nScopus: '+a+(b?' · 2022–2026: '+b:'')+(c?'\nWeb of Science (Topic, 2022–2026): '+c:''));$('#f6').innerHTML='<span class="ok">✓ Saved to your Research log.</span> Different databases cover different journals, so the numbers will differ.';G.complete(6)})})();
+
+/* ================= P7 PubMed simulator ================= */
+(function(){const host=$('#pmsim');if(!host)return;
+ const MESH={echinacea:{h:'Echinacea',sn:'A genus of perennial herbs used topically and internally.',et:'Echinacea purpurea, Echinacea angustifolia, Echinacea pallida, Purple Coneflower',c:0},
+  cold:{h:'Common Cold',sn:'A catarrhal disorder of the upper respiratory tract, which may be viral or a mixed infection. It generally involves a runny nose, nasal congestion, and sneezing.',et:'Cold, Common; Colds, Common; Coryza, Acute; Catarrh',c:1}};
+ const find=t=>{t=t.toLowerCase();if(/echinac|coneflower/.test(t))return MESH.echinacea;if(/cold|coryza|catarrh/.test(t))return MESH.cold;return null};
+ const C=[{n:'Concept 1 · Echinacea',mesh:'"Echinacea"[mh]',kw:[['echinacea[tiab]',1],['"purple coneflower"[tiab]',0]]},{n:'Concept 2 · Common cold',mesh:'"Common Cold"[mh]',kw:[['"common cold"[tiab]',1],['coryza[tiab]',0]]}];
+ const meshOn=[false,false],meshUse=[false,false];
+ const F=[['"Randomized Controlled Trial"[pt]','Randomized Controlled Trial'],['"Systematic Review"[pt]','Systematic Review'],['"Meta-Analysis"[pt]','Meta-Analysis']];
+ host.innerHTML=`<div class="pm"><div class="pmhead"><span class="t">PubMed · practice search</span><span class="small">Practice version. Results open in the real PubMed.</span></div>
+ <label class="f" for="pmq">Look up a term in MeSH ${gn(1,'Find the MeSH heading','<p>MeSH (Medical Subject Headings) is the controlled vocabulary used to index PubMed articles. One heading covers the different words authors use for the same idea.</p><p>Try echinacea, then common cold.</p>')}</label>
+ <div class="row"><input type="text" id="pmq" style="max-width:340px" placeholder="e.g. echinacea" autocomplete="off"><button class="btn" type="button" id="pmgo">Look up</button></div>
+ <div id="pmcard" aria-live="polite"></div></div>
+ <div class="pm"><p class="boxh">Build your search ${gn(2,'Combine MeSH and keywords','<p><b>[mh]</b> searches the MeSH heading. It also searches the more specific headings listed under it.</p><p><b>[tiab]</b> finds your words in titles and abstracts. Use it too, as the newest articles may not have MeSH headings yet.</p><p>Terms in the same concept join with OR. Concepts join with AND.</p>')}</p>
+ ${C.map((c,k)=>`<div class="crow"><p class="ch">${esc(c.n)}</p><fieldset class="ticks"><legend class="sr">${esc(c.n)}</legend><label class="off" id="ml${k}"><input type="checkbox" id="mh${k}" disabled> <span class="qcol">${esc(c.mesh)}</span> <span class="small">(look it up first)</span></label>${c.kw.map((w,j)=>`<label><input type="checkbox" data-k="${k}" data-j="${j}" ${w[1]?'checked':''}> <span class="qcol">${esc(w[0])}</span></label>`).join('')}</fieldset></div>`).join('')}
+ <div class="crow"><p class="ch">Limit to therapy studies ${gn(3,'Article type filters','<p>Your question asks for therapy studies. In PubMed, the Article type filters limit results to clinical research, such as randomised controlled trials and systematic reviews.</p><p>In the search box they appear as the field tag <b>[pt]</b>, publication type.</p>',true)}</p><fieldset class="ticks"><legend class="sr">Article type</legend>${F.map((f,i)=>`<label><input type="checkbox" data-f="${i}" ${i<2?'checked':''}> ${esc(f[1])}</label>`).join('')}</fieldset></div>
+ <div class="searchline"><span class="l">Your search</span><code id="pmout"></code><button class="btn small ghost" type="button" id="pmcp">Copy</button></div>
+ <div class="row" style="margin-top:12px"><button class="btn" type="button" id="pmrun">Search PubMed</button>${gn(4,'Try it for real','<p>Opens your search in PubMed in a new window. To see UNSW full-text links, open PubMed from the Medicine &amp; health Subject Guide.</p>',false)}</div>
+ <p class="fb" id="pmfb" aria-live="polite"></p></div>`;
+ bindPops(host);
+ const kwOn=C.map(c=>c.kw.map(w=>!!w[1]));const fOn=F.map((f,i)=>i<2);
+ const q=()=>{const parts=C.map((c,k)=>{const a=[];if(meshUse[k])a.push(c.mesh);c.kw.forEach((w,j)=>{if(kwOn[k][j])a.push(w[0])});return a.length>1?'('+a.join(' OR ')+')':a[0]||''}).filter(Boolean);const f=F.filter((x,i)=>fOn[i]).map(x=>x[0]);if(f.length)parts.push(f.length>1?'('+f.join(' OR ')+')':f[0]);return parts.join(' AND ')};
+ const draw=()=>{$('#pmout').textContent=q()||'Tick some terms above'};
+ function look(){const t=$('#pmq').value.trim();const m=find(t);const card=$('#pmcard');if(!t){card.innerHTML='<p class="fb"><span class="no">Type a term first.</span></p>';return}
+  if(!m){card.innerHTML='<p class="fb"><span class="no">No MeSH heading in this practice tool.</span> Try echinacea or common cold.</p>';return}
+  card.innerHTML=`<div class="meshcard"><h4>MeSH heading · ${esc(m.h)}</h4><p>${esc(m.sn)}</p><p class="et">Entry terms include ${esc(m.et)}.</p><button class="btn small" type="button" id="pmadd">Add “${esc(m.h)}”[mh] to concept ${m.c+1}</button></div>`;
+  $('#pmadd').addEventListener('click',()=>{meshOn[m.c]=true;meshUse[m.c]=true;const cb=$('#mh'+m.c);cb.disabled=false;cb.checked=true;$('#ml'+m.c).classList.remove('off');$('#ml'+m.c).querySelector('.small').textContent='';draw();$('#pmadd').textContent='Added';$('#pmadd').disabled=true;cb.focus()})}
+ $('#pmgo').addEventListener('click',look);$('#pmq').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();look()}});
+ host.addEventListener('change',e=>{const t=e.target;if(t.id&&/^mh\d$/.test(t.id))meshUse[+t.id.slice(2)]=t.checked;else if(t.dataset.f!==undefined)fOn[+t.dataset.f]=t.checked;else if(t.dataset.k!==undefined)kwOn[+t.dataset.k][+t.dataset.j]=t.checked;draw()});
+ function done(){const fb=$('#pmfb');if(!(meshUse[0]&&meshUse[1])){fb.innerHTML='<span class="no">Add both MeSH headings first.</span> Look up echinacea and common cold.';return false}
+  if(!fOn.some(Boolean)){fb.innerHTML='<span class="no">Add an article type limit.</span> Your question asks for therapy studies.';return false}
+  G.log('pubmed','PubMed search',q());fb.innerHTML='<span class="ok">✓ Saved to your Research log.</span> MeSH, keywords and a therapy limit, all in one search.';G.complete(7);return true}
+ $('#pmrun').addEventListener('click',()=>{if(done())openWin('https://pubmed.ncbi.nlm.nih.gov/?term='+encodeURIComponent(q()))});
+ $('#pmcp').addEventListener('click',e=>{copyText(q(),e.currentTarget);done()});draw()})();
+
+/* ================= P8 Search health check ================= */
+(function(){if(!$('#q8a'))return;let a=false,b=false;const m=()=>{$('#m8').innerHTML=a&&b?'<span class="ok">✓ Both answered.</span>':(a+b)+' of 2 answered';if(a&&b)G.complete(8)};
+ mcq($('#q8a'),{q:'A search for "heart disease" in quotation marks will find:',shuffle:false,opts:[{t:'results that include the terms [heart] and [disease] separately',fb:'Not quite. Quotation marks keep the words together.'},{t:'results that include [heart disease] as a phrase',ok:1,fb:'Right. Quotation marks search the words side by side, as a phrase.'}]},()=>{a=true;m()});
+ mcq($('#q8b'),{q:'Why would the first search find better results than the second?<br><span class="mono">"cardiovascular disease*" AND "low carb* diet*" AND "risk factor*"</span><br><span class="mono">cardiovascular disease* AND "low carb* diet*" AND "risk factor*"</span>',shuffle:false,opts:[{t:'Searching as a phrase ["cardiovascular disease*"] results in relevant articles',fb:'True, but there’s more. Check the other answers.'},{t:'Searching as separate terms [cardiovascular] and [disease*] will return irrelevant results e.g. diseased',fb:'True, but there’s more. Check the other answers.'},{t:'All of the above',ok:1,fb:'Right. The phrase keeps the concept together. Separate words can match anywhere in a record.'}]},()=>{b=true;m()});m()})();
+
+/* ================= P9 Evaluating sources ================= */
+(function(){if(!$('#q9a'))return;const d=[0,0,0];const m=()=>{const n=d.filter(Boolean).length;$('#m9').innerHTML=n===3?'<span class="ok">✓ All three answered.</span>':n+' of 3 answered';if(n===3)G.complete(9)};
+ mcq($('#q9a'),{q:'For the Echinacea question, which study design is highest in the NHMRC hierarchy?',opts:[{t:'A systematic review of randomised controlled trials',ok:1,fb:'Right. Level I is a systematic review of level II studies, which are randomised controlled trials.'},{t:'A single randomised controlled trial',fb:'Not quite. One trial is Level II. A review of several trials sits above it.'},{t:'A case series',fb:'Not quite. Case series are Level IV, the lowest level for intervention questions.'}]},()=>{d[0]=1;m()});
+ mcq($('#q9b'),{q:'You find a systematic review on Echinacea and the common cold published 10 years ago. What should you do?',opts:[{t:'Check whether it has been updated or a newer review exists',ok:1,fb:'Right. New trials may have been published since. Look for an update and note the date.'},{t:'Use it as the final word on the topic',fb:'Not quite. Evidence changes over time. Check for something newer.'},{t:'Ignore it because it is old',fb:'Not quite. It may still be useful. Check what has been published since.'}]},()=>{d[1]=1;m()});
+ mcq($('#q9c'),{q:'A supplement company’s website says Echinacea shortens colds. How should you treat it?',opts:[{t:'Check its evidence against peer-reviewed studies',ok:1,fb:'Right. The company has an interest in selling the product. Go to the research.'},{t:'Cite it as evidence of effectiveness',fb:'Not quite. Marketing is not research evidence.'},{t:'Trust it if the website looks professional',fb:'Not quite. A professional look tells you nothing about the evidence.'}]},()=>{d[2]=1;m()});m()})();
+
+/* ================= P10 AI and searching ================= */
+(function(){if(!$('#q10a'))return;const d=[0,0,0];const m=()=>{const n=d.filter(Boolean).length;$('#m10').innerHTML=n===3?'<span class="ok">✓ All three answered.</span>':n+' of 3 answered';if(n===3)G.complete(10)};
+ mcq($('#q10a'),{q:'An AI tool gives you five references on Echinacea and the common cold. What should you do?',opts:[{t:'Check each one exists by searching for it in PubMed or Library Search',ok:1,fb:'Right. AI tools can produce references that look real but don’t exist.'},{t:'Copy them straight into your reference list',fb:'Not quite. Always check that each reference exists and says what the AI claims.'},{t:'Use only the ones with a DOI',fb:'Not quite. A DOI can be made up too. Check each one.'}]},()=>{d[0]=1;m()});
+ mcq($('#q10b'),{q:'For a thesis literature review, can an AI chat replace your database searches?',opts:[{t:'No. Use database searches you can record and repeat',ok:1,fb:'Right. Your searches need to be transparent and repeatable, so others can follow them.'},{t:'Yes, if it gives you enough articles',fb:'Not quite. You can’t see or repeat how an AI chat found its results.'},{t:'Yes, if you ask it to be thorough',fb:'Not quite. Asking doesn’t make the search transparent or repeatable.'}]},()=>{d[1]=1;m()});
+ mcq($('#q10c'),{q:'What should you never enter into a public AI tool?',opts:[{t:'Identifiable patient or participant information',ok:1,fb:'Right. Protect privacy and follow your ethics approval and UNSW policies.'},{t:'Your research topic',fb:'Not quite. A general topic is fine. The concern is private or identifiable data.'},{t:'A list of keywords',fb:'Not quite. Keywords are fine. The concern is private or identifiable data.'}]},()=>{d[2]=1;m()});m()})();
+
+
+/* ================= Research log ================= */
+function logText(){const st=G.state();const items=Object.values(st.log).sort((a,b)=>a.t-b.t);
+ return 'Medicine HDR Essentials research log\n\nResearch question\n'+RQ+'\n\n'+items.map(i=>i.l+'\n'+i.v).join('\n\n')}
+function openLog(){const st=G.state();const items=Object.values(st.log).sort((a,b)=>a.t-b.t);
+ $('#logl').innerHTML=`<li><b>Research question</b><span>${esc(RQ)}</span></li>`+(items.length?items.map(i=>`<li><b>${esc(i.l)}</b><span>${esc(i.v)}</span></li>`).join(''):'<li><span class="small" style="font-family:inherit">Your searches will appear here as you build them.</span></li>');
+ $('#logm').hidden=false;$('#logx').focus()}
+$('#logx').addEventListener('click',()=>$('#logm').hidden=true);
+$('#logm').addEventListener('click',e=>{if(e.target.id==='logm')$('#logm').hidden=true});
+$('#logcp').addEventListener('click',e=>copyText(logText(),e.currentTarget));
+$('#logdl').addEventListener('click',()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([logText()],{type:'text/plain'}));a.download='medicine-hdr-research-log.txt';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)});
+
+/* ===== Screen reader tidy-ups ===== */
+(function(){function tidy(){
+ document.querySelectorAll('.simhd,.boxh,.simhead .t,.simhead > div > b').forEach(e=>{if(!e.hasAttribute('role')){e.setAttribute('role','heading');e.setAttribute('aria-level','3')}});
+ document.querySelectorAll('label[for]').forEach(l=>{const el=document.getElementById(l.htmlFor);if(!el||el.hasAttribute('aria-label')||!l.querySelector('.popwrap'))return;const t=[...l.childNodes].filter(n=>!(n.nodeType===1&&n.classList.contains('popwrap'))).map(n=>n.textContent).join('').replace(/\s+/g,' ').trim();if(t)el.setAttribute('aria-label',t)});
+}
+tidy();new MutationObserver(()=>{clearTimeout(window.__tdy);window.__tdy=setTimeout(tidy,50)}).observe(document.body,{childList:true,subtree:true})})();
+/* ================= Boot ================= */
+(function(){const p=window.__part;
+ if(p){const s=document.getElementById('p'+p);if(s){s.classList.add('show');
+  const framed=window.self!==window.top;const bar=document.createElement('div');bar.className='gbar';bar.id='gbar';
+  const ext='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
+  bar.innerHTML='<span class="gt" aria-hidden="true"><span></span></span><span class="gc"></span><span class="gbtns"><button class="gbtn" type="button" id="logb" aria-label="Research log"><span aria-hidden="true">📓</span><span class="lbl">Research log</span></button>'+((framed||p===21)?'<button class="gbtn" type="button" id="ntab" aria-label="Open in new window">'+ext+'<span class="lbl">Open in new window</span></button>':'<button class="gbtn" type="button" id="bktut" aria-label="Back to tutorial"><span aria-hidden="true">←</span><span class="lbl">Back to tutorial</span></button>')+'</span>';
+  s.querySelector('.in').prepend(bar);
+  $('#logb').addEventListener('click',openLog);
+  const bk=$('#bktut');if(bk)bk.addEventListener('click',()=>{try{if(window.opener&&!window.opener.closed)window.opener.focus()}catch(e){}window.close();setTimeout(()=>{if(!window.closed){bk.querySelector('.lbl').textContent='Close this tab to return';bk.setAttribute('aria-live','polite')}},300)});
+  const nb=$('#ntab');if(nb)nb.addEventListener('click',()=>{let u=location.href;if(p===21){u='https://www.library.unsw.edu.au/';try{const q=new URL(new URLSearchParams(location.search).get('site')||'');if(q.protocol==='https:'&&/(^|\.)library\.unsw\.edu\.au$/.test(q.hostname))u=q.href}catch(e){}}const w=window.open(u,'lr'+p,'popup=yes,width=1280,height=860');if(w)G.addKid(w)})}}
+ bindPops();G.init()})();
+
+</script>
+</body>
+</html>
