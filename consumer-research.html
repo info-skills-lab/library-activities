@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MARK2051 research skills | UNSW Library</title>
+<script>(function(){var p=parseInt(new URLSearchParams(location.search).get('part'),10);if(p>0)document.documentElement.classList.add('single');window.__part=p>0?p:0})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--ink:#000;--muted:#555;--line:#e2e2e2;--panel:#f5f5f3;--yellow:#ffe000;--soft:#fff6b8;--good:#1d7a3a;--bad:#b3261e;--focus:#1a5fd1;--card:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161616;--ink:#f3f3f3;--muted:#b5b5b5;--line:#343434;--panel:#202020;--soft:#3b3510;--good:#6fd08f;--bad:#ff8a80;--focus:#8ab4ff;--card:#1d1d1d}}
+:root[data-theme="dark"]{--bg:#161616;--ink:#f3f3f3;--muted:#b5b5b5;--line:#343434;--panel:#202020;--soft:#3b3510;--good:#6fd08f;--bad:#ff8a80;--focus:#8ab4ff;--card:#1d1d1d}
+*,*::before,*::after{box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Lexend",system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:300;line-height:1.55;font-size:16px}
+strong,b{font-weight:500}
+a{color:inherit;text-decoration-color:var(--yellow);text-decoration-thickness:3px;text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button{font:inherit;color:inherit}
+/* overview mode */
+.top{background:#111;color:#fff;padding:20px 24px}
+.top h1{margin:0;font-size:26px;font-weight:700}.top p{margin:4px 0 0;color:#ddd;font-size:15px}
+.toc{display:flex;flex-wrap:wrap;gap:6px;padding:12px 24px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:20}
+.toc a{font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.toc a:hover{background:var(--yellow);color:#000}
+.slide{padding:22px 24px 34px;border-bottom:6px solid var(--panel)}
+.slide .in{max-width:1100px;margin:0 auto}
+.slide h2{font-size:24px;line-height:1.2;margin:0 0 4px;font-weight:700}
+.slide .lead{margin:0 0 14px;color:var(--muted);font-size:15px}
+.single .top,.single .toc{display:none}
+.single .slide{display:none;border:0;padding-top:0}
+.single .slide.show{display:block}
+.single .slide>.in>.sh{position:absolute;left:-9999px}
+.barpage{display:none}.single .barpage.show{display:block}
+.single #p21{position:fixed;top:0;left:0;right:0;z-index:100;padding:0;margin:0}
+/* progress bar */
+.gbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;background:#111;color:#fff;padding:7px 14px;font-size:14px;margin:0 -24px 16px}
+#p21 .gbar{margin:0}
+.gbar .gt{flex:0 1 220px;height:8px;background:#444;border-radius:999px;overflow:hidden}
+.gbar .gt span{display:block;height:100%;width:0;background:var(--yellow);transition:width .4s}
+.gbar .gc{white-space:nowrap;color:#eee}
+.gbar .gbtns{margin-left:auto;display:flex;gap:8px}
+.gbar .gbtn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;background:#fff;color:#000;border:0;border-radius:6px;padding:5px 10px;min-height:28px;cursor:pointer}
+.gbar .gbtn:hover{background:var(--yellow)}
+.gbar .gbtn svg{width:15px;height:15px}
+@media (max-width:560px){.gbar .gt{display:none}.gbar .gbtn .lbl{display:none}}
+/* common UI */
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--yellow);color:#000;border:2px solid var(--yellow);border-radius:8px;padding:8px 16px;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none;min-height:40px}
+.btn:hover{border-color:#000}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.small{padding:4px 10px;font-size:13px;min-height:30px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.linkbtn{background:none;border:0;padding:0;font-size:14px;font-weight:400;cursor:pointer;text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:3px;text-underline-offset:3px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.box{border:2px solid var(--ink);border-radius:12px;padding:14px 16px;margin:0 0 14px;background:var(--card)}
+.boxh{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 8px}
+.tip{background:var(--soft);border-left:5px solid var(--yellow);border-radius:6px;padding:9px 13px;margin:12px 0;font-size:14.5px}
+.tip p{margin:0}
+.ok{color:var(--good);font-weight:500}.no{color:var(--bad);font-weight:500}
+.fb{font-size:14.5px;margin:8px 0 0;min-height:1em}
+.small{font-size:13.5px;color:var(--muted)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 0}
+.opt{border:2px solid var(--ink);background:var(--card);border-radius:8px;padding:6px 12px;font-size:14.5px;cursor:pointer;text-align:left}
+.opt:hover{background:var(--soft)}
+.opt.right{background:#111;color:var(--yellow);border-color:#111;font-weight:500}
+.opt.wrong{border-color:var(--bad);color:var(--bad);text-decoration:line-through}
+.opt[disabled]{cursor:default}
+.chip{border:2px solid var(--ink);background:var(--card);border-radius:999px;padding:4px 12px;font-size:14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:#111;color:var(--yellow);border-color:#111;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.searchline{display:flex;gap:8px;align-items:flex-start;border:2px solid var(--ink);border-radius:10px;padding:9px 12px;margin:12px 0 0;background:var(--panel)}
+.searchline .l{font-weight:500;white-space:nowrap;font-size:14px}
+.searchline code{flex:1;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;word-break:break-word;min-height:1.4em}
+input[type=text],select,textarea{font:inherit;font-size:15px;padding:7px 10px;border:2px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%}
+input[type=text]:focus,select:focus,textarea:focus{border-color:var(--ink)}
+label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+/* tabs */
+.tabs{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}
+.tab{border:2px solid var(--ink);background:var(--card);border-radius:999px;padding:5px 14px;font-weight:700;font-size:14px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--yellow);color:#000;border-color:#000}
+.tab.done::before{content:"✓ "}
+.tabp[hidden]{display:none}
+/* guide numbers and pop-overs */
+.popwrap{position:relative;display:inline-block;vertical-align:middle}
+.gnum{width:28px;height:28px;border-radius:50%;background:var(--yellow);color:#000;border:2px solid #111;font-weight:700;font-size:14px;display:inline-grid;place-items:center;padding:0;cursor:pointer;flex:none}
+.gnum.seen{background:#111;color:var(--yellow)}
+.pop{position:absolute;z-index:60;top:calc(100% + 8px);left:0;width:min(330px,80vw);background:#fff;color:#111;border:2px solid #111;border-radius:12px;box-shadow:5px 5px 0 var(--yellow);padding:12px 38px 12px 14px;font-size:14px;line-height:1.5;font-weight:400}
+.pop.right{left:auto;right:0}
+.pop[hidden]{display:none}.pop{display:block;text-align:left;text-transform:none;letter-spacing:normal;font-weight:400;font-size:14px;color:#111}.pop .pp{display:block;margin:0 0 6px}.pop .pp:last-child{margin:0}.pop .ph{font-weight:700;margin:0 0 4px}
+.pop p{margin:0 0 6px}.pop p:last-child{margin:0}
+.pclose{position:absolute;top:4px;right:6px;border:0;background:none;font-size:22px;line-height:1;cursor:pointer;color:#111;padding:2px 6px}
+/* flip cards (p4) */
+.flips{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.flip{border:2px solid var(--ink);border-radius:12px;padding:12px 14px;background:var(--card);display:flex;flex-direction:column;gap:8px;min-height:150px}
+.flip .ft{font-weight:500;font-size:15.5px}
+.flip .fk{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.flip.answered{background:var(--panel)}
+.flip .fa{font-size:14px}
+.flip .fbtn{display:flex;gap:8px;margin-top:auto}
+
+.src{font-size:12px!important;color:var(--muted);margin:8px 0 0!important;font-style:italic}
+.pop .src{color:#555}
+.pop.up{top:auto;bottom:calc(100% + 8px)}
+/* flip cards */
+.flip{perspective:1000px;padding:0;border:0;background:none;min-height:215px}
+.flip .fin{position:relative;width:100%;height:215px;transition:transform .5s;transform-style:preserve-3d}
+.flip.flipped .fin{transform:rotateY(180deg)}
+.flip .ff,.flip .fb2{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:auto;border:2px solid var(--ink);border-radius:12px;padding:12px 14px;background:var(--card);display:flex;flex-direction:column;gap:6px}
+.flip .fb2{transform:rotateY(180deg);background:var(--panel)}
+@media (prefers-reduced-motion:reduce){.flip .fin{transition:none}}
+/* scenario (p5) */
+.scn{max-width:760px}
+.scn .step{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.scn .q{font-size:17px;font-weight:500;margin:4px 0 6px}
+.scn .opts{flex-direction:column}
+.scn .opt{width:100%}
+.trailmini{display:flex;gap:6px;margin:0 0 12px}
+.trailmini span{width:30px;height:6px;border-radius:3px;background:var(--line)}
+.trailmini span.on{background:var(--yellow)}.trailmini span.done{background:#111}
+/* document mock (judgment, Act) */
+.doc{border:2px solid var(--ink);border-radius:12px;background:#fdfcf8;color:#111;font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.5;padding:16px 18px}
+.doc .dh{text-align:center;font-weight:700;letter-spacing:.04em}
+.doc table{width:100%;border-collapse:collapse;margin:8px 0}
+.doc td{vertical-align:top;padding:5px 6px;border-top:1px solid #ddd}
+.doc td:first-child{width:150px;font-weight:700}
+.doc .hs{display:inline}
+.doc .gnum{font-family:"Lexend",system-ui,sans-serif;margin-left:6px;width:24px;height:24px;font-size:12px}
+.doc .pop{font-family:"Lexend",system-ui,sans-serif}
+.doc .ln{height:8px;background:#e6e3da;border-radius:4px;margin:7px 0}
+.doc .para{display:flex;gap:10px}.doc .para .pnum{font-weight:700;min-width:26px}
+.doc .sect{font-weight:700;margin:12px 0 2px}
+.doc .pg{border:1px solid #ddd;border-radius:6px;padding:10px 12px;margin:0 0 10px;background:#fff}
+.doc .pgl{font-family:"Lexend",system-ui,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#595959;margin:0 0 4px}
+.meter{font-weight:500;font-size:14px;margin:10px 0 0}
+.hl{background:#fff3a0}
+/* trail (p8) */
+.trailwrap{display:grid;grid-template-columns:300px 1fr;gap:18px}
+@media (max-width:820px){.trailwrap{grid-template-columns:1fr}}
+.trail{list-style:none;margin:0;padding:0}
+.trail li{display:grid;grid-template-columns:34px 1fr;gap:8px;margin:0 0 8px}
+.trail .dot{width:32px;height:32px;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center;font-weight:700;background:var(--card)}
+.trail li.on .dot{background:var(--yellow);color:#000}
+.trail li.done .dot{background:#111;color:var(--yellow);border-color:#111}
+.trail .tq{border:2px solid var(--line);border-radius:10px;padding:6px 10px;font-size:14px}
+.trail li.on .tq{border-color:var(--ink);background:var(--soft)}
+.trail .tq b{display:block;font-size:14.5px}
+.trail .tq .ans{display:block;margin-top:3px;font-size:13px;color:var(--muted)}
+.etable{width:100%;border-collapse:collapse;font-size:13.5px;font-family:Arial,Helvetica,sans-serif;background:#fff;color:#111}
+.etable th{text-align:left;border-bottom:2px solid #111;padding:5px 6px;font-weight:700}
+.etable td{border-bottom:1px solid #ddd;padding:5px 6px;vertical-align:top}
+.etable tr.hl td{background:#fff3a0}
+.etwrap{border:2px solid var(--ink);border-radius:10px;padding:10px 12px;background:#fff;color:#111;overflow-x:auto}
+.etwrap .et{font-weight:700;margin:0 0 6px;font-family:Arial,Helvetica,sans-serif}
+/* evaluation cards (p11, p12) */
+.wcs{border:1px solid var(--line);border-radius:8px;margin:0 0 6px;padding:6px 10px}.wcs.on{border-color:var(--ink)}.wch{margin:0;font-weight:500;display:flex;gap:8px;align-items:center}.wcn{width:22px;height:22px;border-radius:4px;background:var(--panel);display:grid;place-items:center;font-size:12px;font-weight:700}.wcs.on .wcn{background:#111;color:#fff}.wcs.done .wcn{background:var(--good);color:#fff}.wcb{margin-top:8px}
+.ecard{border:2px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 12px;background:var(--card)}
+.ecard.on{border-color:var(--ink)}
+.ecard .type{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;background:var(--panel);border-radius:4px;padding:2px 7px}
+.ecard .et{font-weight:500;font-size:16px;margin:5px 0 2px}
+.ecard .em{font-size:13.5px;color:var(--muted)}
+.ecard .ed{font-size:14.5px;margin:6px 0 0}
+.ecard .eq{font-weight:500;font-size:14.5px;margin:10px 0 0}
+/* results list (sims) */
+.res{margin:10px 0 0}
+.res .r{border-top:1px solid var(--line);padding:8px 0}
+.res .r b{display:block;font-size:15px}
+.res .r span{font-size:13px;color:var(--muted)}
+.simhead{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 10px}
+.simhead .t{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+/* builder (p14) */
+.bblay{display:grid;grid-template-columns:1fr 260px;gap:16px}.bblay>aside{order:2}
+@media (max-width:820px){.bblay{grid-template-columns:1fr}}
+.bank h3{font-size:15px;margin:0 0 6px}
+.bank .grp{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:10px 0 5px}
+.brow{display:grid;grid-template-columns:70px 1fr;gap:8px;align-items:start;margin:0 0 8px}
+.brow .op:empty{border-color:transparent}.brow .op{font-weight:700;padding:8px 0;text-align:center;border:2px solid var(--line);border-radius:8px;font-size:14px}
+.brow .field{border:2px solid var(--line);border-radius:8px;min-height:44px;padding:6px 8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;cursor:pointer;background:var(--bg);position:relative}
+.brow.sel .field{border-color:#111;box-shadow:0 0 0 3px var(--yellow)}
+.brow .field .ph{color:var(--muted);font-size:14px}
+.term{display:inline-flex;align-items:center;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:2px 4px 2px 10px;font-size:14px}
+.term button{border:0;background:none;cursor:pointer;font-size:16px;line-height:1;padding:0 4px}
+.term .or{font-weight:700;font-size:12px;color:var(--muted);margin:0 2px}
+.filt{display:flex;gap:16px;flex-wrap:wrap;font-size:14.5px;margin:10px 0 0}
+.filt label{display:flex;gap:6px;align-items:center}
+/* prompt builder (p15) */
+.pbuild{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:860px){.pbuild{grid-template-columns:1fr}}
+.ps{display:grid;grid-template-columns:30px 1fr;gap:10px;margin:0 0 12px}
+.ps .pn{width:28px;height:28px;border-radius:50%;background:var(--yellow);color:#000;border:2px solid #111;display:grid;place-items:center;font-weight:700;font-size:14px}
+.ps.done .pn{background:#111;color:var(--yellow)}
+.ps .chips{margin-top:6px}
+.ps .chip{font-size:13px;padding:3px 10px}
+.pprev{border:2px solid var(--ink);border-radius:12px;padding:12px 14px;background:var(--panel);font-size:15px;white-space:pre-wrap;min-height:160px}
+.pprev .hl2{background:#fff3a0;color:#111;border-radius:3px;padding:0 2px}
+.pmeter{display:flex;align-items:center;gap:10px;margin:10px 0 0;font-weight:500;font-size:14px}
+.pmeter .pb{flex:1;height:8px;background:var(--line);border-radius:999px;overflow:hidden}
+.pmeter .pb span{display:block;height:100%;width:0;background:var(--yellow);transition:width .3s}
+.prule{margin:12px 0 0;font-size:14px;border-left:5px solid var(--bad);padding:4px 0 4px 10px}
+/* research log modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto}
+.modal[hidden]{display:none}
+.mbox{background:var(--bg);color:var(--ink);border:2px solid var(--ink);border-radius:14px;max-width:640px;width:100%;padding:18px 20px;position:relative}
+.mbox h2{margin:0 0 6px;font-size:21px}
+.logl{list-style:none;padding:0;margin:10px 0}
+.logl li{border-top:1px solid var(--line);padding:8px 0}
+.logl li b{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.logl li span{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;word-break:break-word;white-space:pre-wrap}
+/* research question page */
+.rq{border-left:8px solid var(--yellow);background:var(--soft);border-radius:8px;padding:14px 18px;margin:0 0 16px}
+.rq .k{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.rq .q{font-size:19px;font-weight:500;margin:4px 0 0;line-height:1.4}
+.scenario p{margin:0 0 18px;max-width:72ch;line-height:1.75}
+.mark{background:#fff3a0;color:#111;border-radius:3px;padding:0 3px;font-weight:500}
+.stops{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin:8px 0 0}
+.stops div{border:2px solid var(--line);border-radius:10px;padding:8px 10px;font-size:14px}
+.stops div b{display:block}
+/* completion code */
+.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:34px;font-weight:700;letter-spacing:.12em;background:#111;color:var(--yellow);border-radius:12px;padding:14px 20px;display:inline-block;margin:6px 0}
+.checklist{list-style:none;padding:0;margin:8px 0;columns:2;column-gap:20px}
+@media (max-width:600px){.checklist{columns:1}}
+.checklist li{padding:3px 0;font-size:14.5px;break-inside:avoid}
+.checklist li.d::before{content:"✓ ";color:var(--good);font-weight:700}
+.checklist li:not(.d)::before{content:"○ ";color:var(--muted)}
+.refs p{margin:0 0 8px;padding-left:24px;text-indent:-24px;font-size:14px}.refs a{word-break:break-all;font-size:13px}
+#emy .btn.on,#spmo .btn.on{background:var(--yellow);color:#000}
+.brow{position:relative}.rsel{position:absolute;left:-9999px;top:0}.rsel:focus{left:auto;right:6px;top:-12px;z-index:3;background:var(--yellow);color:#000;border:2px solid #111;border-radius:6px;font:600 12px Lexend,system-ui,sans-serif;padding:2px 8px}
+.emrows tbody tr{cursor:pointer}.emrows tbody tr:hover{background:#fff8c4}.emrows tr.rok{background:#eef8f0;outline:2.5px solid #1a7f37}.emrows tr.rno td{color:#9a2b2b;text-decoration:line-through}.rowbtn{all:unset;cursor:pointer;font:inherit;color:inherit}.rowbtn:focus-visible{outline:3px solid #111;outline-offset:2px;border-radius:3px}
+/* P10 layout: fields in rows on the left, search box on the right */
+.gslay{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:16px;align-items:start}
+.gslay .grid2{grid-template-columns:minmax(0,1fr)}
+.gslay .gsside{display:flex;flex-direction:column;gap:12px;min-width:0}
+.gslay .gsside .tip{margin:0}
+.gslay .searchline{flex-wrap:wrap;margin-top:0}.gslay .searchline code{flex:1 1 100%;order:2;overflow-wrap:anywhere}.gslay .searchline .l{flex:1 1 auto}
+@media (max-width:760px){.gslay{grid-template-columns:minmax(0,1fr)}}
+/* P5 sort the steps */
+.sortl{list-style:none;margin:0;padding:0;display:grid;gap:8px;max-width:640px}
+.sortl li{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;border:2px solid var(--ink);border-radius:10px;padding:10px 12px;background:var(--card)}
+.sortl .n{width:30px;height:30px;border-radius:50%;background:var(--yellow);color:#000;border:2px solid #000;display:grid;place-items:center;font-weight:700}
+.sortl .mv{display:flex;gap:6px}
+.sortl .mv button{font:inherit;font-weight:700;width:34px;height:34px;border:1.5px solid var(--ink);border-radius:6px;background:var(--card);color:var(--ink);cursor:pointer}
+.sortl .mv button:disabled{opacity:.35;cursor:default}
+.sortl li.sok{border-color:var(--good);box-shadow:inset 6px 0 0 var(--good)}
+.sortl li.sno{border-color:var(--bad);box-shadow:inset 6px 0 0 var(--bad)}
+.sortl .mk{font-weight:700;margin-left:6px}.sortl li.sok .mk{color:var(--good)}.sortl li.sno .mk{color:var(--bad)}
+.sortfb{margin:12px 0 0}
+/* p9 clipping */
+.clip{border:2px solid var(--ink);border-radius:12px;padding:14px 16px;margin:0 0 14px;background:var(--card);box-shadow:6px 6px 0 var(--yellow);display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center}
+.clip .ic{font-size:30px}
+.clip .k{margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.clip .qt{display:block;margin:0;font-family:Georgia,serif;font-size:17px}
+.clip .qt b{background:var(--soft);font-weight:700}
+
+/* ===== MARK2051 additions ===== */
+[hidden]{display:none!important}
+.lay2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:820px){.lay2{grid-template-columns:minmax(0,1fr)}}
+.gbar .gp,.gbar .gb2{white-space:nowrap;color:#eee;display:inline-flex;align-items:center;gap:6px}
+.coin{width:16px;height:16px;image-rendering:pixelated;vertical-align:-2px}
+@media (max-width:700px){.gbar .gb2{display:none}}
+.pxh{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;letter-spacing:.04em}
+.toast{position:fixed;right:18px;bottom:18px;z-index:60;background:#fff;color:#111;border:3px solid #111;border-radius:0;box-shadow:6px 6px 0 #111,6px 6px 0 3px var(--yellow);padding:12px 16px;display:flex;gap:12px;align-items:center;max-width:340px;transform:translateY(20px);opacity:0;transition:all .3s}
+.toast.on{transform:none;opacity:1}
+.toast .tb{width:52px;height:60px;image-rendering:pixelated;flex:none}
+.toast .tk{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#555}
+.toast .tt{display:block;font-size:17px}
+.toast .ts{font-size:14px;color:#333;display:inline-flex;align-items:center;gap:5px}
+.q1{font-size:17px;margin:0 0 4px}.q1 b{font-weight:700}
+.how{font-size:14.5px;color:var(--muted);margin:0 0 6px}
+/* lock */
+.lockwrap{display:flex;flex-direction:column;align-items:center;margin-top:4px}
+.shackle{width:56%;height:90px;border:24px solid #cfcfcf;border-bottom:0;border-radius:140px 140px 0 0;position:relative;top:10px;border-color:#dcdcdc #b9b9b9 #b9b9b9 #e9e9e9;transition:transform .5s}
+.lockwrap.open .shackle{transform:translateY(-22px) translateX(14%)}
+.lbody{width:100%;background:linear-gradient(180deg,#2a2a2a,#111 60%,#000);border-radius:26px;padding:24px 20px 16px;box-shadow:0 8px 0 var(--yellow),0 8px 0 2px #111;position:relative;color:#fff}
+.brand{position:absolute;top:8px;left:50%;transform:translateX(-50%);color:var(--yellow);font-weight:700;font-size:12px;letter-spacing:.2em;white-space:nowrap}
+.wheels{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:12px;margin-top:10px}
+.w{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.spin{width:38px;height:28px;border-radius:8px;border:2px solid #000;background:var(--yellow);color:#000;font-weight:700;font-size:14px;cursor:pointer}
+.spin:hover{background:#fff}
+.cyl{width:100%;height:132px;border-radius:12px;overflow:hidden;position:relative;border:3px solid #000;background:linear-gradient(180deg,#6b6b6b 0%,#cfcfcf 18%,#f7f7f7 42%,#fff 50%,#f7f7f7 58%,#cfcfcf 82%,#6b6b6b 100%)}
+.cyl::before,.cyl::after{content:"";position:absolute;top:0;bottom:0;width:7px;background:repeating-linear-gradient(180deg,#8a8a8a 0 3px,#d0d0d0 3px 6px);z-index:1}
+.cyl::before{left:0}.cyl::after{right:0}
+.cyl .t{position:absolute;left:10px;right:10px;text-align:center;font-size:13px;color:#444;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cyl .t1{top:10px;transform:scaleY(.7)}.cyl .t3{bottom:10px;transform:scaleY(.7)}
+.win{position:absolute;left:9px;right:9px;top:50%;transform:translateY(-50%);min-height:44px;border:3px solid var(--yellow);border-radius:8px;background:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;color:#000;text-align:center;padding:2px 6px;box-shadow:0 0 0 2px #000;line-height:1.2;word-break:break-word;z-index:2}
+.lab{color:#fff;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;text-align:center}
+.tap{border:2px solid var(--yellow);color:var(--yellow);background:transparent;border-radius:999px;padding:2px 14px;font-weight:700;font-size:13px;cursor:pointer}
+.tap[aria-pressed="true"]{background:var(--yellow);color:#000}
+.tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;min-height:24px}
+.tagx{background:#fff;color:#000;border:0;border-radius:999px;padding:1px 8px;font-size:12.5px;font-weight:500;cursor:pointer}
+.tagx:hover{background:var(--yellow)}
+.own{display:flex;gap:4px;width:100%}.own input{min-width:0;flex:1;font-size:13px;padding:4px 6px}
+.own button{border:2px solid var(--yellow);background:var(--yellow);color:#000;border-radius:6px;font-weight:700;font-size:12px;padding:0 8px;cursor:pointer}
+.wadd{width:100%;height:132px;margin-top:34px;border:3px dashed var(--yellow);border-radius:12px;background:transparent;color:var(--yellow);font-weight:700;font-size:15px;cursor:pointer}
+.wadd:hover{background:rgba(255,224,0,.12)}
+.wrm{background:none;border:0;color:#bbb;font-size:12px;text-decoration:underline;cursor:pointer}
+.addf{border:2px solid var(--ink);border-radius:12px;padding:12px 14px;margin-top:16px;background:var(--panel);display:grid;gap:8px;max-width:560px}
+.addf label{font-size:14px;font-weight:500}
+.lockst{text-align:center;font-weight:500;margin:14px 0 0;min-height:1.5em}
+.out{margin-top:10px;display:flex;gap:10px;align-items:center;border:2px solid var(--ink);border-radius:12px;padding:10px 14px;background:var(--panel);flex-wrap:wrap}
+.out .l{font-weight:700;font-size:14px;white-space:nowrap}
+.out code{flex:1;min-width:200px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;word-break:break-word}
+.out .btn:not(.ghost){color:#000}
+.opk{background:var(--yellow);color:#000;border-radius:4px;padding:0 4px;font-weight:700}
+/* mock database panels */
+.mock{border:2px solid var(--ink);border-radius:12px;background:var(--card);overflow:hidden}
+.mockh{background:#111;color:#fff;padding:8px 14px;display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:14px}
+.mockh b{color:var(--yellow)}
+.mockb{padding:12px 14px}
+.flist{border:0;margin:0 0 10px;padding:0}
+.flist legend{font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;padding:0}
+.flist label{display:flex;gap:8px;align-items:center;font-size:14.5px;padding:3px 0}
+.flist input{width:18px;height:18px;accent-color:#111}
+.task{border-left:6px solid var(--yellow);background:var(--panel);border-radius:8px;padding:10px 14px;margin:0 0 12px;font-size:15.5px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.steps li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:start}
+.steps .n{width:28px;height:28px;border-radius:50%;background:var(--yellow);color:#000;border:2px solid #000;display:grid;place-items:center;font-weight:700;font-size:14px}
+.cnt{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.cnt input{width:140px}
+.locked{opacity:.45;pointer-events:none}
+/* chart */
+.chart{display:grid;gap:8px;margin:6px 0 4px}
+.bar{display:grid;grid-template-columns:120px minmax(0,1fr) 44px;gap:8px;align-items:center;font-size:14px}
+.bar .tr{height:22px;background:var(--panel);border:2px solid var(--ink);border-radius:0}
+.bar .tr i{display:block;height:100%;background:repeating-linear-gradient(90deg,#3d8bff 0 8px,#2f6fd6 8px 10px)}
+.bar b{font-weight:700;text-align:right}
+.prac{display:inline-block;font-size:12px;font-weight:700;background:#111;color:var(--yellow);border-radius:4px;padding:1px 8px;letter-spacing:.04em;text-transform:uppercase}
+/* sorter cards */
+.scards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.sc{border:2px solid var(--ink);border-radius:12px;padding:10px 12px;background:var(--card);display:flex;flex-direction:column;gap:8px}
+.sc .st{font-size:15px;font-weight:400}
+.sc .sb{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+.sc.done{background:var(--panel)}
+.sc .sf{font-size:14px}
+.pick{border:2px solid var(--ink);background:var(--card);border-radius:8px;padding:4px 10px;font-size:14px;cursor:pointer}
+.pick:hover{background:var(--soft)}
+.pick.right{background:#111;color:var(--yellow);border-color:#111;font-weight:500}
+.pick.wrong{text-decoration:line-through;color:var(--bad);border-color:var(--bad)}
+.pick[disabled]{cursor:default}
+/* google builder */
+.gbld{display:grid;gap:10px}
+.gq{display:flex;gap:8px;flex-wrap:wrap}.gq input{flex:1;min-width:220px}
+/* company profile */
+.prof{display:grid;grid-template-columns:200px minmax(0,1fr);min-height:260px}
+@media (max-width:640px){.prof{grid-template-columns:minmax(0,1fr)}}
+.pnav{background:var(--panel);border-right:2px solid var(--ink);padding:8px;display:grid;gap:6px;align-content:start}
+.pnav button{text-align:left;border:2px solid var(--ink);background:var(--card);border-radius:8px;padding:6px 10px;font-size:14px;cursor:pointer}
+.pnav button:hover{background:var(--soft)}
+.pnav button.right{background:#111;color:var(--yellow);border-color:#111}
+.pnav button.wrong{border-color:var(--bad);color:var(--bad)}
+.pmain{padding:12px 14px}
+.ph{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.ph .lg{width:42px;height:42px;display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.ph .lg i{display:block;background:#bbb}
+.ph b{font-size:18px}
+.ln{height:10px;border-radius:5px;background:var(--line);margin:8px 0}
+.qnow{font-size:16px;font-weight:500;margin:0 0 6px}
+/* help */
+.hcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.hc{border:2px solid var(--ink);border-radius:14px;padding:16px 18px;background:var(--card);display:flex;flex-direction:column;gap:8px;box-shadow:5px 5px 0 var(--yellow)}
+.hc .ic{font-size:30px;line-height:1}
+.hc h3{margin:0;font-size:18px}
+.hc p{margin:0;font-size:15px}
+.hc a.go{align-self:flex-start;margin-top:auto;background:#111;color:#fff;border-radius:999px;padding:8px 18px;text-decoration:none;font-weight:500;font-size:15px}
+.hc a.go:hover{background:var(--yellow);color:#000}
+/* quiz */
+.qz{border:2px solid var(--ink);border-radius:12px;padding:14px 16px;background:var(--card);max-width:760px}
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.pips{display:flex;gap:4px}.pips i{width:14px;height:14px;border:2px solid var(--ink);display:block}
+.pips i.on{background:var(--yellow)}.pips i.ok{background:var(--good)}
+.qz .opts{display:grid;gap:8px}.qz .opt{width:100%}
+/* badge wall */
+.bh2{background-color:#ffe000;background-image:linear-gradient(100deg,#ffe000 50%,rgba(255,224,0,0) 82%),repeating-linear-gradient(-6deg,rgba(255,255,255,0) 0,rgba(255,255,255,0) 11px,#fff 11px,#fff 14px);border-radius:8px;padding:20px 24px;color:#000;margin-bottom:12px}
+.bh2 .kick{margin:0 0 4px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.bh2 .big{margin:0 0 6px;font-size:clamp(26px,4vw,40px);font-weight:700;line-height:1.05}
+.bh2 .sub{margin:0;font-size:16px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.bcard{border:2px solid var(--ink);border-radius:12px;padding:10px;text-align:center;background:var(--card)}
+.bcard img{display:block;width:100%;max-width:117px;height:auto;margin:0 auto 6px;image-rendering:pixelated}
+.bcard.off img{filter:grayscale(1) brightness(.8);opacity:.6}
+.bcard b{display:block;font-size:14px}.bcard span{font-size:12px;color:var(--muted)}
+
+.qstack{display:grid;gap:12px}.qstack .box{margin:0}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;background:var(--panel);border-radius:4px;padding:1px 5px}
+.wallfoot{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="top"><h1>MARK2051 Consumer Behaviour · Library research skills</h1><p>Each section below is one right panel in the LibWizard tutorial (use ?part=N).</p></header>
+<nav class="toc" aria-label="Parts"><a href="?part=1">1 Breaking down the question</a><a href="?part=2">2 Business Source Premier</a><a href="?part=3">3 Scopus</a><a href="?part=4">4 Passport GMID</a><a href="?part=5">5 Grey literature</a><a href="?part=6">6 MarketLine</a><a href="?part=7">7 Evaluating sources</a><a href="?part=8">8 Using AI responsibly</a><a href="?part=9">9 Help</a><a href="?part=10">10 Quiz</a><a href="?part=11">11 Your badges</a></nav>
+<main>
+
+<section class="slide" id="p1" aria-labelledby="h1"><div class="in"><div class="sh"><h2 id="h1">Breaking down the question</h2></div>
+<p class="q1"><b>How can Microsoft build trust in Copilot among your consumers?</b></p>
+<p class="how">Spin each wheel <span aria-hidden="true">▲▼</span> and select <b>Add</b> to pick your words. Add as many as you like.</p>
+<div id="lock"></div>
+</div></section>
+
+<section class="slide" id="p2" aria-labelledby="h2"><div class="in"><div class="sh"><h2 id="h2">Business Source Premier</h2></div>
+<div class="lay2">
+ <div class="mock"><div class="mockh"><span><b>Business Source Premier</b> · practice filters</span><span class="prac">Practice</span></div><div class="mockb">
+  <p class="task">Set the filters to find <b>peer-reviewed research from the last five years</b>.</p>
+  <fieldset class="flist"><legend>Limit to</legend><label><input type="checkbox" id="bf1"> Peer reviewed</label><label><input type="checkbox" id="bf2"> Full text</label></fieldset>
+  <fieldset class="flist"><legend>Publication date</legend><label><input type="radio" name="bd" value="any" checked> Any time</label><label><input type="radio" name="bd" value="5"> 2022 to 2026</label><label><input type="radio" name="bd" value="1"> 2026 only</label></fieldset>
+  <fieldset class="flist"><legend>Source type</legend><label><input type="checkbox" class="bst" value="aj"> Academic journals</label><label><input type="checkbox" class="bst" value="news"> News</label><label><input type="checkbox" class="bst" value="mag"> Magazines</label><label><input type="checkbox" class="bst" value="rep"> Reports</label></fieldset>
+  <button class="btn" type="button" id="bchk">Check my filters</button><p class="fb" id="bfb" aria-live="polite"></p>
+ </div></div>
+ <div class="box" id="breal"><p class="boxh">Now try it for real</p><ol class="steps">
+  <li><span class="n">1</span><div>Copy your search from the lock.<div class="out" style="margin-top:6px"><code id="bq"></code><button class="btn small ghost" type="button" id="bcp">Copy</button></div></div></li>
+  <li><span class="n">2</span><div><button class="btn small" type="button" id="bgo">Open Business Source Premier</button></div></li>
+  <li><span class="n">3</span><div>Set the same filters on the left of the results page.</div></li>
+  <li><span class="n">4</span><div><label class="f" for="bn">How many results did you get?</label><div class="cnt"><input type="text" id="bn" inputmode="numeric" autocomplete="off"><button class="btn small ghost" type="button" id="bsv">Save to log</button></div><p class="fb" id="bsfb" aria-live="polite"></p></div></li>
+ </ol></div>
+</div>
+</div></section>
+
+<section class="slide" id="p3" aria-labelledby="h3"><div class="in"><div class="sh"><h2 id="h3">Scopus</h2></div>
+<div class="lay2">
+ <div class="mock"><div class="mockh"><span><b>Scopus</b> · practice filters</span><span class="prac">Practice</span></div><div class="mockb">
+  <p class="task">You want to know <b>why</b> consumers trust or distrust AI. Pick the <b>two</b> subject areas that fit best.</p>
+  <fieldset class="flist"><legend>Subject area</legend>
+   <label><input type="checkbox" class="sa" value="cs"> Computer Science</label>
+   <label><input type="checkbox" class="sa" value="bus"> Business, Management and Accounting</label>
+   <label><input type="checkbox" class="sa" value="eng"> Engineering</label>
+   <label><input type="checkbox" class="sa" value="psy"> Psychology</label>
+   <label><input type="checkbox" class="sa" value="med"> Medicine</label></fieldset>
+  <button class="btn" type="button" id="schk">Check</button><p class="fb" id="sfb" aria-live="polite"></p>
+ </div></div>
+ <div class="box"><p class="boxh">Now try it for real</p><ol class="steps">
+  <li><span class="n">1</span><div>Copy your search.<div class="out" style="margin-top:6px"><code id="sq"></code><button class="btn small ghost" type="button" id="scp">Copy</button></div></div></li>
+  <li><span class="n">2</span><div><button class="btn small" type="button" id="sgo">Open Scopus</button> </div></li>
+  <li><span class="n">3</span><div>Under <b>Subject area</b>, tick Psychology and Business, Management and Accounting.</div></li>
+  <li><span class="n">4</span><div><label class="f" for="sn">How many results now?</label><div class="cnt"><input type="text" id="sn" inputmode="numeric" autocomplete="off"><button class="btn small ghost" type="button" id="ssv">Save to log</button></div><p class="fb" id="ssfb" aria-live="polite"></p></div></li>
+ </ol></div>
+</div>
+</div></section>
+
+<section class="slide" id="p4" aria-labelledby="h4"><div class="in"><div class="sh"><h2 id="h4">Passport GMID</h2></div>
+<div class="lay2">
+ <div class="mock"><div class="mockh"><span><b>Consumer survey</b> · I trust AI tools to give accurate information</span><span class="prac">Practice data</span></div><div class="mockb">
+  <div class="chart" role="img" aria-label="Practice bar chart. Percentage who agree, by generation. Generation Z 58 per cent, Millennials 51 per cent, Generation X 38 per cent, Baby Boomers 24 per cent.">
+   <div class="bar"><span>Generation Z</span><span class="tr"><i style="width:58%"></i></span><b>58%</b></div>
+   <div class="bar"><span>Millennials</span><span class="tr"><i style="width:51%"></i></span><b>51%</b></div>
+   <div class="bar"><span>Generation X</span><span class="tr"><i style="width:38%"></i></span><b>38%</b></div>
+   <div class="bar"><span>Baby Boomers</span><span class="tr"><i style="width:24%"></i></span><b>24%</b></div>
+  </div>
+  <p class="small" style="margin:6px 0 0">Made-up numbers for practice. Passport has the real survey data.</p>
+ </div></div>
+ <div class="qstack"><div class="box" id="q4a"></div><div class="box" id="q4b"></div><p class="small" id="m4" aria-live="polite"></p></div>
+</div>
+<div class="tip" style="margin-top:14px"><span aria-hidden="true">💡</span><p>In Passport, look for the <b>Voice of the Consumer</b> surveys. You can compare results by country, age and other segments. <button class="linkbtn" type="button" id="pgo">Open Passport GMID</button></p></div>
+</div></section>
+
+<section class="slide" id="p5" aria-labelledby="h5"><div class="in"><div class="sh"><h2 id="h5">Grey literature</h2></div>
+<p class="lead">Is it grey literature? Pick one for each.</p>
+<div class="scards" id="gl"></div><p class="small" id="m5" aria-live="polite"></p>
+<div class="box" style="margin-top:14px"><p class="boxh">Find grey literature with Google</p>
+ <div class="gbld"><div class="gq"><label class="sr" for="gk">Your keywords</label><input type="text" id="gk" value="consumer trust artificial intelligence survey" autocomplete="off"></div>
+ <div class="chips" role="group" aria-label="Add to your Google search">
+  <button class="chip" type="button" aria-pressed="false" data-g="site:gov.au">site:gov.au</button>
+  <button class="chip" type="button" aria-pressed="false" data-g="site:edu.au">site:edu.au</button>
+  <button class="chip" type="button" aria-pressed="false" data-g="site:org">site:org</button>
+  <button class="chip" type="button" aria-pressed="false" data-g="filetype:pdf">filetype:pdf</button> 
+ </div>
+ <div class="out"><span class="l">Google search</span><code id="gout"></code><button class="btn small" type="button" id="ggo">Search Google</button></div></div>
+</div>
+</div></section>
+
+<section class="slide" id="p6" aria-labelledby="h6"><div class="in"><div class="sh"><h2 id="h6">MarketLine</h2></div>
+<p class="qnow" id="mq" aria-live="polite"></p><p class="small" id="mqn" style="margin:0 0 8px"></p>
+<div class="mock"><div class="mockh"><span><b>MarketLine</b> · company profile</span><span class="prac">Practice layout</span></div>
+ <div class="prof"><nav class="pnav" aria-label="Profile sections" id="mnav"></nav>
+  <div class="pmain"><div class="ph"><span class="lg" aria-hidden="true"><i style="background:#f25022"></i><i style="background:#7fba00"></i><i style="background:#00a4ef"></i><i style="background:#ffb900"></i></span><b>Microsoft Corporation</b></div>
+   <p class="fb" id="mfb" aria-live="polite"></p><div aria-hidden="true"><div class="ln" style="width:92%"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:86%"></div><div class="ln" style="width:60%"></div></div></div>
+ </div></div>
+<p style="margin-top:12px"><button class="btn small ghost" type="button" id="mgo">Open MarketLine</button></p>
+</div></section>
+
+<section class="slide" id="p7" aria-labelledby="h7"><div class="in"><div class="sh"><h2 id="h7">Evaluating sources</h2></div>
+<p class="lead">Each source has one problem. Which check does it fail?</p>
+<div class="scards" id="ev"></div><p class="small" id="m7" aria-live="polite"></p>
+</div></section>
+
+<section class="slide" id="p8" aria-labelledby="h8"><div class="in"><div class="sh"><h2 id="h8">Using AI responsibly</h2></div>
+<p class="lead">Do or don’t? Pick one for each.</p>
+<div class="scards" id="ai"></div><p class="small" id="m8" aria-live="polite"></p>
+<div class="tip" style="margin-top:14px"><span aria-hidden="true">💡</span><p>Rules on AI differ between courses. Check your course outline, and read <a href="https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai" target="_blank" rel="noopener">Using AI in university<span class="sr"> (opens in a new window)</span></a>.</p></div>
+</div></section>
+
+<section class="slide" id="p9" aria-labelledby="h9"><div class="in"><div class="sh"><h2 id="h9">We’re here to help</h2></div>
+<div class="hcards">
+ <div class="hc"><span class="ic" aria-hidden="true">💬</span><h3>Chat with us</h3><p>Stuck on a search? Ask the Library using Chat on the Library website.</p><a class="go" href="https://www.library.unsw.edu.au/" target="_blank" rel="noopener">Go to the Library website<span class="sr"> (opens in a new window)</span></a></div>
+ <div class="hc"><span class="ic" aria-hidden="true">🧭</span><h3>Business subject guide</h3><p>Find the best databases for business and marketing research in one place.</p><a class="go" href="https://subjectguides.library.unsw.edu.au/business" target="_blank" rel="noopener">Open the guide<span class="sr"> (opens in a new window)</span></a></div>
+</div>
+</div></section>
+
+<section class="slide" id="p10" aria-labelledby="h10"><div class="in"><div class="sh"><h2 id="h10">Quiz</h2></div>
+<div class="qz" id="quiz"></div>
+</div></section>
+
+<section class="slide" id="p11" aria-labelledby="h11"><div class="in"><div class="sh"><h2 id="h11">Your badges</h2></div>
+<div id="wall"></div>
+</div></section>
+</main>
+<div class="modal" id="logm" hidden role="dialog" aria-modal="true" aria-labelledby="logh"><div class="mbox"><button class="pclose" type="button" id="logx" aria-label="Close">×</button><h2 id="logh">Your research log</h2><p class="small" style="margin:0">The searches you build in this tutorial are saved here, on this device only.</p><ul class="logl" id="logl"></ul><div class="row"><button class="btn" type="button" id="logdl">Download log</button><button class="btn ghost" type="button" id="logcp">Copy</button></div></div></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+async function copyText(txt,btn){let ok=false;try{await navigator.clipboard.writeText(txt);ok=true}catch(e){}
+ if(!ok){const t=document.createElement('textarea');t.value=txt;t.className='sr';document.body.appendChild(t);t.select();try{ok=document.execCommand('copy')}catch(e){}t.remove()}
+ if(btn){const o=btn.textContent;btn.textContent=ok?'Copied':'Select and copy manually';setTimeout(()=>btn.textContent=o,1800)}}
+const openWin=(u,n)=>{try{window.open(u,n||'_blank','noopener')}catch(e){}};
+
+
+
+const BADGEIMG={"b1": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAADmElEQVR42u2bvW4TQRDH96wVBbJkDtLQYPd5gNBQRKkQj5G3CKJC4S38GIgqokgTHoA+oUmDbEWKKGhCEY/ZrHdmZ/brfHc7kiX7Pvbjt/Ofndv1NS9ezVW1R9NdN2C9bI7ge3v68GOUMAwIH4xjnULRXUNoTx8+2TDWy6YTIE3JmLEBsQPBcd1npdTX0l5SBIbpDTYE8IZNx20gqiSUrDBISVx9VOrnl8cfh2f/vxNQcgPJAsMbF8zOH56p9u35Ew+xgZSSTnIYVFywQTg6vFNeSekkg8GKCw4QL1+/2163ur3sFEo0DGlccEGwDYOCSCdZPImCgUkCiwsAATorqKdIPAmC4ZUEERds+3ZxoZRS6v3JiQhIDumIYHCyRywumN4AACgz4Zj354TCghEbF6AjHAgcILniiRcGOVVaIMy4YAdDKQgMiGTWkcYTEgaAkMQFFwgXDCxGuKDBtfYMFCIdCggKwwWCmy/4vMIE8ez5G6WUUn///CKhYEACoKBAtCB4svOF+7sbb6cAgg8KVvZ0Nt+JJ9AmE8pmOYDVx4lIwJu4gIG4v7vZNtbVKQyEC4otIxuqCRzaAu3hdj4chiENs2IbQgqjYJmQXfVC20KA8GEYj9jUCKU0XyKWejDEMikFogsLkslQLVom44ThkMnQTKeUCTWd+q6TBFG4n5p1RicTCdS0nrGVyTmdqX5fFAHRHl/X2SQndJ1LJjlGLrfnZd1rXf92A2kPFuQ57N72YKHa4+tsQCaqWoVRYVQYFcb+zSYwM0jPUed7ObWWykSrTCqM/Bmu7kMje+EZ5t5FjvUFn6WuL9ozprP5k4Xh0kBcg1IUBmznwd4JNKb0arkLArXVmFwm62Wzrcj+B850Nk82SlIQq9vLKBAiz8B2qKR/SUplK2LJL3R7UXO9oe/GAaRTFravxh3MbEkXtpIF5+DjO+66ppcPahgI8yEMfmPHqXtHk46XBtGbZ5MSIHoDg1pNHwUMu/MlgOjSHbI7Be6PHXcBySUZndO1pecwANxyO4PhGkWXJ1DXU+Vg0y8nnoQC06EgsJxAkkOE5BYcrwqV0iS3JPY9t8gaMzhyiMktJHLrfGp1ycWcSbgNpWKEqxys3uIwUuUEseXE5iI6dPRT5AQh5fhmjphcRMfKgZMTULlCTDmpcxH5KxYDNhaMPq9ySYz1WtaA+hv2WpYFZBAW9cLe2Kz+JaHCqDAqjAqjwqgwkto/IIOtkDCzIkMAAAAASUVORK5CYII=", "b2": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAADwUlEQVR42u2csW7bMBCGaUPwYBhwnRYIsth5gO6dMnTy4DfI0jfI2iHoVHTo2jfo0jfI4KmDp+59gMSLYaCwESDw4KmDTZei70geeSIllTdZCkVRn/77eSaTdF69nogchyhSD2A7vXwnP4/m61//JQwFwkw5lxRKkRrCaL7+pMPYTi+TAOnE9IwjiDMIQLvPQoiH2CqJAkNVgw5BquH44DoQERNKpTCMKfH9ixA/vh0Obu/+fTZAqRpIJTCsvqA+/O2dGH24LylEBxIrddhhmHxBBwE88Fl/MVOHDYaTLwAgLq5uTu02q0VSKMEwqL4AQdADg4KkDpufBMHAUgLzBQzCy/OTGAwnIBAClGCVeMGwpgTiCzqIl+en0rEOJHbqkGC4VI82X8BA1AGKEwxOXzBBsEHxSB2Sn1hhGKdKDYTNF3wDg2JTCdVPjDAkCE5f4ALimzomICgMCESoL+x3SxKAXn9cBRQUSEEwz0p8wRT73fIMiOxbhXJxdSM2q8VpTCqU43JABesZii+EpAT0xqkK0msTORYJBVIJHwwlNaryBWpgKjmkx4IMxB2G8hUbGhDFDzjb9vpjEIpPdKlpEgqCOzjv7ZUmWMw/vo0OY/r1N1tf3dA0qUNwqSMoTdoWXc40aXoUqdLElOspvMer6BLze7abb39el0vn948NUYZDmnA5O+cMkSxNKPLmShNOcEl34VOnRdjU2vJIpoxUM0ZWRoaRYWQYGUaGAYdtTTXq1Nrrj8V+t0xWRteuzpBvJ+YSIJciWGAMhpOzlXHuATbKM0JXpDliMJywjAOEof4KMxSb1aK0I841GA4IcmymPRPs+Qqk4czQ0eEb53wtNqtFaUNJDizGphLl1xW0mMk2+p5raeMZ23VvY0Cb0IVNAW0MbCO68Lmo4YrgmVq3fx7LsN5cn87Lz/oxdI16Th5D1+vX6veknK+kzsAeGoMH/RwC4HI/W7+ufdb+uwmkgtqX47rEbW/VtT2mFuh6rF/K/aKnCbU95BNYe6xf6vhq/RU+JOdrkSaYPG2O7/LmbLMR10xChmGTuGt7/Tx27Ho9l6qC6wzXWsDl7WHtKTVIlDrDJGmXOd9mcqb2VKX6mmht10BTGGlBGRw2h7uc961VfPrxrTW8DRSTvasfUORLfVBq/8nTBDNBrvLc1n+wgbq8LYo01TfoU0rb7ktVSBFqaNRawlRjuNQq1BqEzTPavNpFgtHGVS5bnP0lkm11vEXxYFwd14C0OqA/zerkf0DUgHI8w8gwMowMI8PIMJoZfwFP6c07PTPE7wAAAABJRU5ErkJggg==", "b3": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAAELElEQVR42u2bsW7bMBCGGUPwYARI7WbJYmfOC3jSExToC+QJbGTN0qBTES9dC/cJ+gIF+gSe/AKZYy9eAhsGDA+eOkRUaZpHHskjKbk6wIhsXSjep7uflChdfPg4YI29W5a6A5u7pyHf7r48z1P25SJVZggQPgk//0kJJUsNofvy/FXYV/5NASRqZhQgTiAo/L6lyJIoMMRskCHwbCgCl4FELZ2gMLQl8eM3Y9MivvHw37YGSmggQWAYdUEMfjxk3YfPRxkiA4lVOuQwdLogg1AEfNJezNIhg4HSBQWI3k1e+q1Xs6RQvGHY6oIKgmwQFKB0yPTECwZUEpAuQBB22wW7vBoogVhA8c4SJxjGkgB0QQax2y6OvstAYpeOFQzM7NGkCxCIKkBBwaDUBR0EExSH0rHSEyMM7VApgTDpgqtBUExZYqsnWhgchK8uHPZL8BjtTr/c1vmpALuUjg4ICEMFwlYXxLRmjLHN91/v//N4r89GjR8BFBBIZiGeVrrAzzIPTBWsHLDsq/Jbr2as3ekflU7vJmfr1azskwiluB2AirFlVbyFLkAgdtvFkTaoQEBgTL7yflmDejd52R9s8O4whNIQDyxDOOyX2tr3mu0WQPgxZPhi31yA4GFM1boDQcBkhQ8QUXBVUMLf9hsPGXvQD5ehIEACe9gvj0YkH3MqE9l0Ylkn8y4TG5t9+UnqL2pIXBg8O5BqLwfFAxO3QwCMoxmaMjFZPhk5BZhPRlFhkJWJaVapg1M/zTCUSQqzOQHRRhM+tFF3Dmvxh9Yp3Y1oGx0wlRQVCPsyIQBALYiUU/9WzHTmIDACGnMUcZuOe5jNCCJnUazRp8UqaPlkVH6gLOFiTakZZJnR7vTZYb9k3cd70muUmHOSIJkReogNkRXkmsE7xzMEc+2CAafyoQYRLDPanf5JZ01BQ/vl31Vt12I0kZcBoIBFvQk9sarEaAIFxH837T+reQYmsJiBk2eGaoG4zuZdJlUAcnk1IOmHU5nw5Ty+dsI7QnG73vdE6JYayTNjc/dUHkheS6U6Qy4g1quZFwirzIBWqGQgsWytuXR3XV60fiTBlXoKExaiUY8kZIbG5mJZcCiu5GOa8FA++mGVFoLunDdm3aG3V+X3zdtr+cH6yT4OWWK8bxl8BqoKuHt9e/RXG8T1bfnxBZIcBg/CFHjoQCt1bYKFdvYwMOVQBSCVuweKBVf7q1aVqNpoSWhQWcyzDI0iWL/KZ4Zc4zwAVe2r9kH+pnYg/+SZIXZETH1VB+XSgPxN7ej8z0ZAUxpJZkAih/k9RPvJy0SVptj0dh1usbPb6GWSasJEedwsRMdMI4RPOUBDMUWGZBQAbOYIvv6mdqLDqNPdrqAw6nCXy9XQby+K76rVzOhe2FMAqZWRv8r5v1gzHW9gNDAaGA2MBkYDg9T+Aufm9RciZmELAAAAAElFTkSuQmCC", "b4": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAADgklEQVR42u2cvW7bMBDHZYPoUBhwnAQIslR+gcyeAqNTUPg5OsRP0KVTFj9BO/Q5gqJTUXjK7BdwuhgFChsBgg6dOsRUqTOP5ImfknmLLVGWyJ/v/rwjnfROzsoi24ux2B24+rCe8PerxfghZl96sTxDgDATTt/HhMJiQ1gtxh+Ftuo1BpCgnrEHcQBBct1dDC8JAkP0BgiBe8N+4BBI0NDxCkMVEp+/rotPP17ez6dF9V4FxTcQLzB0uiAOfj4titt345qHQCChQsc5DJUuQBCSAR/cL2ToOINhogsyEKeX19V1280yKhRrGFRdkEGAhkFBQseZnljBwEIC0wUMwvPTYzEYllIgBCjWXtIIhi4kMF2AIJ6fHmvHEEjo0CHBMMkedbqAgUgBihEMl7qggqCD0iB0SHqihaGaKiEInS40NQyKzkuoeqKEwUFQ84UIxZ9x6KiAoDBkIFS6kIIZQkGBMOqDMF3grrv7vQ42+NH5/z5sN8uqTyKU/XKA0f36lIdzXTBJnELb6eV11Z+m3sooIHho6PKF2FA4EFnYOIEhlti+QHC3h6YLPd4HWX7ibdlvPi2K24Vfj9h9rwMZvQ2nQf0mYdJV69uGSZfMKkxC6kJSMFyGydXD+3piNPnSLs+IHSbQo3x4Ejnpimm7m4tid3ORZ5NWh4lMKFMQSWeziU0VmVJ160Qzum4ZRoaRYWQYGUaKUys2napqEdX6xejbr3bCwBIsVeLVtC1ZGFiJ7stevX6THgzeqb9/frYOghMYg2F5sA7qo5OtmU1sV6Rd2GBYOukHA4XVxORDfPeM71HwjoTeP6H+dEE2TnGrkYELZqaV6GoxLrabZW1DKSQUys8VgM3geDiQ3slZie62H4OJm9FMtQbRdYNJIaNkjh3ziHgZqJiMiW38vCzDlLX5TOq81iYQwOh8XL3C8+LAZe3Yca5a2+gZroquUKvqUWBg+uHq+hwmqXtGqFkgeRjY4OF52+OgMLB8AcsLqOepeQe8Fpt6Vc+z8gxsnpfdHMsXsOupeYcMANU7WyOgMbXFSjOoAhlaUKnPYyG/xdDfeuvDhJpUiWJpW7cwG3dTVaamM5NshjC5BxRyGQhq/1hTV9PdmJIfUNqa5i+NPeOYVruUMI5hlQuz6i+RTFfHO2j3tdVxITwmx0ZC3Dfp5X9AlNczMowMI8PIMDKMDMOT/QMC2lbxuD6DTAAAAABJRU5ErkJggg==", "b5": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAAEQ0lEQVR42u2bv2vbQBTHX4zoUAJuUmHIEgVi8OSOMWnx0rGBDh1NM3ToXMjeqXuhc4cMKfkP2n/AFOOungwOVFkMxTgEQoZMHeoTp/P91rs7ydWDEEuRL3cfvx/fd7K2njxNoLZ/FoWeQDK87JHXaX8wDjmXrVCeQUE4oU5/DwklCg0h7Q8+Un/LfocA4tUzViDWIHCu+xTCS7zAoL2BhUC8YbVwFojX0HEKQxYSX6Y/4fOfFAAAzlpJ9loGxTUQJzBUeYFe/FkrgQ+dFzkPYYH4Ch10GLK8wILgLHhtPJ+hgwZDJy/wQOzu9bPrlvNhUCiFYZjmBR4E1kRQBKGDlk8KwRCFhCgviCDc3aaw3Uy4QAygFPYSKxiqkBDlBRbE3W2aO2aB+A4dIxiqKsF+Yqb26PF+UChaMHTzApnUzeK3EYSd+GANCA+KRegY5RMlDFmpZBMkyQu2MMa/RtA7Os4BkUFReYlpPpHCICBM9UIRGACgBcQ2dGRAhDB4IFR6gUyuKAwRECQoQiCRQfI01gum1js6zh0/3F+vASEViIZCPggyJxqKSWJvmEyW5AVsEKaexCvLu3v9bD62VS0yAUFCQ6UXiH399kM57vu3r4RA6CojA8J6CQHCCxsUGHSLrQOCXqhr40GxMeMw0QVRRbMKEx9GQuTh/lqoVIPBsAGhkzN4YaXKFbwq4xVGVk0sFmcjy2XJL+0PnABplCVMRCDS/iD7Yf/OCyEvMHzlC7JQAmC6mMHN82cwXcxyUFwAcRomqpzB5ggaxHQxW7t+uphBJ25nGgJj28BbNcHQGa3Xb7hAXFjpwkTkFSwUtrp4DxPf1t1/mVeV3Xcwmpw7+3+NMsPYbiZwNbmAq8kFAIBTEKWEkQwvs5wwmpzDYfdU+R4svVFaz6CT5GH3NPOKTtzOVZ2N8wzSvrMaohO3YTkfwnI+hE7czoEI2pv4ALITH+Q0hKrqYDdtTmCoGi2d8iqCQYcGdm9S2tKqygfBu1ZfWV0kqFztY1RCdPkAUBnR5dsKwSi6AbtRMMoCZLuZoMzDKmeQ23nkHgWZiO/dctNbjeieQQsi+isCmJ+QDQiiVG1BGHmGqO6zQHzZUrKHYduzGH8lwWVv4Eq46X4lIVIMNqbDgkDB7hZdbQVQILS+rBJp0B2vBj6RdZxsXyK6kSy6nn2PaBzV+LJ1eFGg7ILIsWhyvOvp98nGIedpKEUbw1qBuvIMnnvbnDcdv5QweG6uGyZFxi9to8ZLjpjmenz0Fp79BGWVQ7VY3rWuPSTCAMA7tgkREQCT46AwRCXR5rxuaKj0SinCBMPDbBMxRvgE0RmuE2FpdIaLUomlV4LIcexSKQuTjZHjGIvA1B+Ry4ViubGqcmB5iDOdgaUbdPVKsJxRpd0upzCqsMtla9pPL9LPqlXM8B7Y4wCplKE/yvm/WL3tV8OoYdQwahg1jBoGqv0FM7T43ROlDd8AAAAASUVORK5CYII=", "b6": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAADcElEQVR42u2bsW7bMBCGmcDoUBhQnXbJUgudu3nolClT0afp0iXoVHTJ0qcpOmXK1MFb50LukiWwIcDo0KlDQoE58UgeeTrRFg8IYCsERX26/78TBZ+8eLlUJR5iNvYCqnXzTn9uV/XPScIwIHwwjo0KZTY2hHZVf4YwqnUzCpATSc94BNGDYBn3RSn1XTpLRGCY2QAh6Gx4vHAIRElCGRSGSxLXvxv1dffw+Wqhus8uKEMDGQSGzxfMi79aKPXpTf0kQyAQKemww3D5AgRhueDefJLSYYMR4gs2EGfnF9247d3tqFCSYVB9wQYBBgYFkQ6bnyTBwCSB+QIGYd9u1LxaWoEQoCRnSRQMnyQwX4Ag9u3myXcIRFo6JBgh3aPPFzAQOUAJgsHpCy4IPigR0iH5iReGq1RCEKYvmAtPiWfPX6NQfFlC9RMnDA0ixhc4YXBKxwUEhWEDQfEFvdBvv5poEB/f1h0MRj9BgZwSzLPnC+2qVmfnF94qwRn7dtObX59fr8nX1bLsZ5i+EFIqzTtsBswW8/+hmQR7E1Oe7aomQSDDMKUhmQk+IFA6HZQIIMEyMR+xcwDhk05MnFJlkhsIzoiSCTV8PpBScTgjWSaTzIyumggv8N/fP6TmLHuZpJTWHzc3zrnfX14WmYzqGbZqMlnPGLuamHLwSafIRLqajBlDZUO0Z5TMYIghnlonLZOsDLTIhCkO5UGtVJMikwKjwMjKM2CPkVJSseDYy0iGMa+W6D4o1wIPSia2N1zSMa+WLOuIygz9Ok+/o9ALkd4tp75qZM+Mat10J4Ivl7nuUAyI7d1tEghSZsB3mPBOSMfWsVGMrZUFRizpnCIE0Ixzslwj9GZGV5PdfdP9+Y7bxsCxqfPYjotUk919oxav6t537DgcYwZ1nuzb8ZCF2i4y9kZgc6eCG/0R3rw4mA0UqBywRWHYFoot3gXGJrdsZDLEwjikKZIZ8M7ohWHHj/4RPiS9sWMmvJA5sPG+72IwbBngK62+8b7STfGPGDCsfQbX+NB5QuGKGii3mXL1DaPIJKTeUyHZ5hnaoFkMNETHIQ1VzHk5gQy2O35oZTW7dtwHkTJWtOmi9AHUPiO2jxDrM45ht4sFxiHvclEi6GdZR3S9cT/LAkCOIpJ+sDe1KG/hC4wCo8AoMAqMAoM1/gMBQbKLLCyp3wAAAABJRU5ErkJggg==", "b7": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAAEEklEQVR42u2bsXIaMRCGZeaGgvGME5PGDaRw6/oqV5R5Ab+AC/MOqfIOScEL5AVSpqKipk1h3NA4eJhhXKRKEXQj1ru6XWlPOsht47tDFtJ3/79adHD2bjg2XfyLIvcAbhb3pT1elrNFzrGc5VKGA+GTc/lHTihFbgjLcvbZea36mwNIUmXsQbyBgLT7kkMlSWC4aoAQrBr2E4dAklqnURg+S3z79d18/f3TGGPMdDipjn1QmgbSCIy6vOBOfjqcmIfruwOFQCCprKMOw5cXIAhkwm/6S2kdNRicvICBuLy6rdpt1vOsUKJhSPMCBgEGBYWwjlo+iYJBWYLKCxSE3XZlzi/GKBABlGiVBMGoswSVFyCI3XZ1cA6BpLaOCAaneqzLCxSINkBhwdDMCz4IdVACrCPKJ7UwfEslBFGXF7D48/pUHfcHIxGUOpVI84kXhgWhmRcgACogGC3r+ICQMDAQMXkBA+AqC7urGBgFKCSQQpA8xXkBA4ABtcdUHnD72SFQLq9uzWY9r9q7/ey3A/T3M9y8QFmCAoBNHvuQVveJ1va/eX06eH97bKFgKlGD4Q6akxeoT6VcEBww9n2hSmwbKZAetyE1aGqVkICYDidoH1x577Yr0ZIdDQMbdN0AuCAw0BYEF4hG9EJsIm0fCuLl+TEpkGib1LWX2gSCSBlRNtFWBwTx/sNHsn44epssy1lrQSS1iZ2srVPaBiKZTZblzLw8Px4kxLaBSGYTd5IuEAu3DSCS2MSdHATycH3XGhBim8QEBgQunxIQ1N5Hq2D4BgmBuBbigmiyAGtMGdSgIRAJiJOxCQVEAsICbsIijcGwg/VJ+mZx3xpFNK4MDpAQ2zWlimQ2iQWSAkTjMNzBhwBZlrNkIJIooz8YHViGC8VtlwKEMQm/4NYfjKrNXGwXm1JQKhBJYbgTw6DkhKBiE+yBjtQ6mCVygFBRxvnFOHhnWmvSoTdFBYZ9nGefUdjBaGzXx0LwPWpUt4lbObpfEbCD07pLUhCb9TwKhEgZ1JIIgaSKjedJfmiRV3DVcOzBAVRodtbW4N5MlToD7ljB7T14zd3csedUH75+YMBNo+RLK5wcdZ1q5wNgIVH9xE6+FZs7MaENQFUZUOIxg5X2o/W+qjlDaoc6sNz/P3mbYMnUl6xbZRNqFaDsw7GVqxBfe98KlC1nSF+jAFDnnPZZlRFTQ2jVIpStQkEVoSBiaghJP/AaR22hSbynlfSa6CdmZcq2tHKyfUgNQamJW7Jnh6E1QKrm8NkkVkm9JtWgsUxL+pa2V1FGSAmOTVRac3BqixiFFBp2qKsVpLWItB+uldRgnMJulwqMY97lkgTrZ1knNN+wn2UBICcRUT/Y+9+i1yHoYHQwOhgdjA5GB0Mz/gKIT5++CRGPygAAAABJRU5ErkJggg==", "b8": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAADv0lEQVR42u2bv27bMBDGGUHoUARInQYostQCOmboVHTKlKEw8gRZCr9Ip75I0KVPEBgZMnkyOnXoWMDxYhQoHAQwPHjqEJ96ofnvqCMpy7wlsqRQ1E/3fSRF6uDV677I8RRl6gpcD6YfYXs4qiYp63KQKjMQhEu0+yYllDI1hOGo+oKO1X9TAImaGRsQWxAU531NkSVRYOBskCFANmxuXAYSVTpBYZgk8ePbVPz6/rR9diXqbROU0ECCwLD5Ar75syshPnyunmWIDCSWdNhhmHxBBqG44a3yYkqHDYaLL6hAHJ+e1+ct5uOkUBrDoPqCCoIcOiga6bD5SSMYOknofEGXCTjgOD4Wy0+8YNgkofMFGwhVxsSUDgmGS+/R5gvyTT58elPv693+ES9evhWHR31n6XBCcYLB6QvLx3shhBDr1UwLA0KG4iEdkp9YYZiaShmEyhdkCBAAQw4MwwbFliVUPzHCABC+vqCCYAKiAqED4isdExAtDBUIqi+YQMhQTCCYoWiBlATzJPtCiICyMZTj03OxmI/rOmEom9cB/O8zsC+YJKHzA1t2kKAogECWDEeVMkvYYGBpmHwBbmp0dxcsOwYXF2K9momlQjpQNx8gheuJeIidEoSq/OXjPYs0C6pMYnlDivCSCTWlQ2QDtRWKIpMYILjLYmtNxMj/Yu9/Pze0n+8qr3NCRRFaJrsUQWXSWRiq1qRrUcaUiYv+Y3pElgmXTDj6Bp2QyT4AKUSOeJnh25tMkVE7nRmc45JkmdFWHylCPKnQg6pQ5ZchUne9mgUHwi2RYDKBivq8C40NIJpnhK58bk3aCkM1obPXY5M2ADk86rPUw8szYDoP5iigIrHfllOnGtkz43owrS8kLzjhekI+IBbzcSMQpMyQZ6hgW55z1a3I4Y7FarZ1TZclCqbwXpJguqDvk6GENLtuO95sSYIMZHMBJyiUmW+fgPK5F6uUDk9gglf7Yygq6bhCePj7//96J5V2n0+mULKB7BlQmAqKak2ECwh8s/C7d1JtHfOQjPcCt5J40S0oOEtiB/fSx9KzEhO5mTV9P2KTCYOHsCyKLRs+Ga2f2EKWSQMIJF8IOmqVpHOZoDfO9h1Kq0atkCGcEmrN+wwXieDf1FZkZ2Ho+hC2/oZvv6O1MHT9Ct3+VFnSKs/YS5k0kVUnYFD7FXsvk1RNatKmFT99l1amU62Jrl+hu8lURhoMRoy3XTsBI8VwniNYP//Grwh3bZDGDgMBiRKt/Ra+C5EnnjOMDCPDyDAyjAyDNf4BhlWt2oicmOMAAAAASUVORK5CYII=", "b9": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAADvElEQVR42u2cv2vbQBTHZSMyBIMrtxC8RJlKh+6djMnUIX9Jhm6FTpk6FbJ16F+SIVMJnrp3KJnsLqYQbAKhQ6cO1inn53e/372TZT0IkeWTdPfR+37vdBel9+JlmXWxiTx1BdZ3i3diu5iWPw4ShgThQtqXFEqeGkIxLa8gjPXdIgmQHqdnVCB2ICDlPmdZdsOdJSww5GyAEEQ2VA2HQDJOKFFhaCXx60OW/fm4+XBy/bytgRIbSBQYRl+QG39ynRVvvm5lCATCJR1yGDpfgCCQBu+cj1M6ZDCsfAEBMRpP6nKr5SwplGAYrr6AQYChgqKQDpmfBMFQSULlCyoIT4+LbDAsUSAOUIKzxAuGURIKX4Agnh63GwmBcEvHCYbN6NHkCyoQTYBiBYPSF3QQTFA8pOPkJ0YY2q4SgDD5gm+ooJiyxNVPtDAECEpfoALiKx0dECUMDISrL8hpTRW661hCUQLJHcxT6wuqhq+/n5GBKM7n6HVG40m2Ws7qOslQqukAq/P3nWpT+YLNwIk7RuNJXR/bxvtP7tTSKKP5AqWMiikuGxoY0iO2DsTR8Wm9/e/v7+3Cr79tft9fejcWO7+oA2ayLuEsk6ZmBEX03WXS3uiHyoQrivN5g2AgMkkZO37URJnASm7d0fvLIPM0GWpjZKLtRYgzQpyfEgS5TLiA7E1vgt2tUPODxx8dn5JnBcmgK3aGCBAxGh8mkwCD88kOju6UFQYEYttAuRxHVrjJhACIkIzLHecCwQpDbpiNj3BCSAIDyxJ58ofTLJN5xr4ES2boZIH5B1a+FV1rlxlI3H56633s+y8/O89obWZw3d1kMAbD0moeNFVXyS6T0BlpihgMS5J6eGWGWNUSaxSiItyz5a7rr16ZIa+8I9/VF4JLfVR3yAfEajmzBXEh/726HDsLz6qV9zaFagE6NxzUOhC6ddg85OA9zIi044z1w/OzR/HqrN4ntuXPsKz8GZ5j7wZdqkYrs7ACIMrAshicgxyOm0AeDAwOEGwwQtKbCwQbDOgFTQQR3UDlHkEGgvUccgbJEGBW7W1vAiuv2lbt48wKL5msH+b1j8oT4He25eWyNudwqQd5ZriOG3TlsYEWzAYoK9OgLamBhlTA11Rj9lx57Eq4Vg4zVi7IZDBg2pr225poaC/GJpPYzwrcEs5DiHN1fXD8EaseOQVx1fggdL+rnELHKUYYbZzt8oLRplkum0DfRNLNjrck0LeRTK9ltTJUr2X1un9AxDyf0cHoYHQwOhgdjA7G4cR/ZHC2LMGwpswAAAAASUVORK5CYII=", "coin": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAgElEQVR4nGNkQAICwvL/GdDAh7cPGWFsRmSF7w8+RFfLIGgvD9fAhKFQ5QSK4vcHH8JtZMJQeMcCw/QF6RANTHARJIWC9vIYGuDOYGBgwGoibsVEAKyKkUNl4zIkxR/ePmTE5UaYwoSZkOBDCecF6ZjhDFPIwIAUKTAN6IqRYxAArp03Zf9J6dMAAAAASUVORK5CYII="};
+const COIN=BADGEIMG.coin;
+const ACTS={1:['Breaking down the question','Lock Cracker','b1'],2:['Business Source Premier','Business Searcher','b2'],3:['Scopus','Mind Reader','b3'],4:['Passport GMID','Data Detective','b4'],5:['Grey literature','Report Hunter','b5'],6:['MarketLine','Company Analyst','b6'],7:['Evaluating sources','Source Checker','b7'],8:['Using AI responsibly','AI Ace','b8'],10:['Quiz','Quiz Champion','b9']};
+const ACT_ORDER=[1,2,3,4,5,6,7,8,10];
+const RQ='How can Microsoft build trust in Copilot among your consumers?';
+const DEFQ='(trust OR distrust) AND (Copilot OR "generative AI") AND (adopt* OR acceptance) AND "university students"';
+const G=(function(){
+ const KEY='mk-mark2051-v1';let st={done:{},bonus:{},log:{}};
+ function load(){try{const v=JSON.parse(localStorage.getItem(KEY)||'null');if(v)st={done:v.done||{},bonus:v.bonus||{},log:v.log||{}}}catch(e){}}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+ function merge(o){if(!o)return false;let ch=false;for(const k in o.done||{})if(o.done[k]&&!st.done[k]){st.done[k]=true;ch=true}for(const k in o.bonus||{})if(o.bonus[k]&&!st.bonus[k]){st.bonus[k]=true;ch=true}for(const k in o.log||{})if(!st.log[k]||o.log[k].t>st.log[k].t){st.log[k]=o.log[k];ch=true}return ch}
+ const points=()=>ACT_ORDER.reduce((s,p)=>s+(st.done[p]?10:0)+(st.bonus[p]?5:0),0);
+ const doneCount=()=>ACT_ORDER.filter(p=>st.done[p]).length;
+ const ls=[],kids=[];
+ function render(){const b=$('#gbar');if(b){b.querySelector('.gc').textContent=doneCount()+' of '+ACT_ORDER.length+' activities';b.querySelector('.gp').innerHTML=`<img class="coin" src="${COIN}" alt="">${points()} points`;b.querySelector('.gb2').textContent=doneCount()+(doneCount()===1?' badge':' badges');b.querySelector('.gt span').style.width=(doneCount()/ACT_ORDER.length*100)+'%'}ls.forEach(f=>f())}
+ function share(){const m={t:'mk-state',s:st};try{if(window.opener&&!window.opener.closed)window.opener.postMessage(m,location.origin)}catch(e){}try{for(const w of kids)if(w&&!w.closed)w.postMessage(m,location.origin)}catch(e){}}
+ function toast(part,pts,bonus){const a=ACTS[part];const t=document.createElement('div');t.className='toast';t.setAttribute('role','status');
+  t.innerHTML=`<img class="tb" src="${BADGEIMG[a[2]]}" alt=""><span><b class="tk">Badge earned</b><b class="tt">${esc(a[1])}</b><span class="ts"><img class="coin" src="${COIN}" alt="">+${pts} points${bonus?' · first-try bonus':''}</span></span>`;
+  document.body.appendChild(t);requestAnimationFrame(()=>t.classList.add('on'));setTimeout(()=>{t.classList.remove('on');setTimeout(()=>t.remove(),400)},4200)}
+ function complete(part,perfect){part=String(part);let pts=0;const first=!st.done[part];if(first){st.done[part]=true;pts+=10}let bon=false;if(first&&perfect&&!st.bonus[part]){st.bonus[part]=true;pts+=5;bon=true}if(!pts)return;save();render();share();toast(part,pts,bon)}
+ function log(key,label,val){if(!val)return;st.log[key]={l:label,v:val,t:Date.now()};save();share();ls.forEach(f=>f())}
+ window.addEventListener('message',e=>{if(e.origin!==location.origin||!e.data)return;if(e.data.t==='mk-state'){if(merge(e.data.s)){save();render()}}else if(e.data.t==='mk-req'){try{e.source.postMessage({t:'mk-state',s:st},location.origin)}catch(x){}}});
+ window.addEventListener('storage',e=>{if(e.key===KEY){load();render()}});
+ load();
+ return{complete,log,render,points,doneCount,isDone:p=>!!st.done[p],state:()=>st,onChange:f=>ls.push(f),addKid:w=>kids.push(w),init(){try{if(window.opener&&!window.opener.closed)window.opener.postMessage({t:'mk-req'},location.origin)}catch(e){}render()}};
+})();
+const myQ=()=>{const l=G.state().log.lock;return l?l.v:DEFQ};
+/* sorter cards helper: items [{t,a,fb}], choices [[key,label]] */
+function sorter(host,items,choices,onDone){let wrong=0,left=items.length;
+ host.innerHTML=items.map((it,i)=>`<div class="sc" id="${host.id}c${i}" role="group" aria-labelledby="${host.id}t${i}"><span class="st" id="${host.id}t${i}">${it.t}</span><div class="sb">${choices.map(c=>`<button class="pick" type="button" data-i="${i}" data-c="${c[0]}">${c[1]}</button>`).join('')}</div><p class="sf fb" aria-live="polite"></p></div>`).join('');
+ host.addEventListener('click',e=>{const b=e.target.closest('.pick');if(!b||b.disabled)return;const it=items[+b.dataset.i],card=b.closest('.sc'),f=card.querySelector('.sf');
+  if(b.dataset.c===it.a){b.classList.add('right');card.querySelectorAll('.pick').forEach(x=>x.disabled=true);card.classList.add('done');f.innerHTML=`<span class="ok">✓</span> ${it.fb}`;left--;onDone(left,wrong)}
+  else{wrong++;b.classList.add('wrong');b.disabled=true;f.innerHTML=`<span class="no">Not quite.</span> ${it.hint||'Try the other option.'}`}});
+ onDone(left,wrong)}
+
+/* ---------- Pop-overs ---------- */
+function closePops(){document.querySelectorAll('.pop:not([hidden])').forEach(p=>{p.hidden=true;const b=document.querySelector(`[data-pop="${p.id}"]`);if(b)b.setAttribute('aria-expanded','false')})}
+function bindPops(scope){(scope||document).querySelectorAll('[data-pop]').forEach(b=>{if(b.dataset.bound)return;b.dataset.bound=1;b.addEventListener('click',e=>{e.stopPropagation();const p=document.getElementById(b.dataset.pop);const open=p.hidden;closePops();if(open){p.hidden=false;b.setAttribute('aria-expanded','true');b.classList.add('seen');placePop(p);const c=p.querySelector('.pclose');if(c)c.focus();b.dispatchEvent(new CustomEvent('popopen',{bubbles:true}))}})});
+ (scope||document).querySelectorAll('.pclose').forEach(c=>{if(c.dataset.bound)return;c.dataset.bound=1;c.addEventListener('click',e=>{e.stopPropagation();const p=c.closest('.pop');p.hidden=true;const b=document.querySelector(`[data-pop="${p.id}"]`);if(b){b.setAttribute('aria-expanded','false');b.focus()}})});
+ (scope||document).querySelectorAll('.pop').forEach(p=>{if(p.dataset.bound)return;p.dataset.bound=1;p.addEventListener('click',e=>e.stopPropagation())})}
+document.addEventListener('click',closePops);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePops();const m=$('#logm');if(!m.hidden)m.hidden=true}});
+let popN=0;
+function placePop(p){p.classList.remove('up');p.style.transform='';const r=p.getBoundingClientRect();const vh=window.innerHeight,vw=window.innerWidth;
+ if(r.bottom>vh-8&&r.top-r.height-60>0)p.classList.add('up');
+ const r2=p.getBoundingClientRect();let dx=0;if(r2.right>vw-8)dx=vw-8-r2.right;if(r2.left+dx<8)dx=8-r2.left;if(dx)p.style.transform=`translateX(${dx}px)`;
+ try{p.scrollIntoView({block:'nearest',inline:'nearest'})}catch(e){}}
+function gn(num,title,body,right){const id='pop'+(++popN);body=body.replace(/<p class="src">/g,'<span class="pp src">').replace(/<p>/g,'<span class="pp">').replace(/<\/p>/g,'</span>');return `<span class="popwrap"><button class="gnum" type="button" data-pop="${id}" aria-expanded="false" aria-label="${esc(num+'. '+title)}">${esc(num)}</button><span class="pop${right?' right':''}" id="${id}" hidden role="dialog" aria-label="${esc(title)}"><button class="pclose" type="button" aria-label="Close">×</button><span class="pp ph">${esc(num)}. ${esc(title)}</span>${body}</span></span>`}
+
+/* ---------- Tabs ---------- */
+function bindTabs(slide){const tabs=[...slide.querySelectorAll('.tab')];tabs.forEach(t=>t.addEventListener('click',()=>showTab(t)));
+ function showTab(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);document.getElementById(x.getAttribute('aria-controls')).hidden=!on})}
+ return showTab}
+
+/* ---------- Single-choice question helper ---------- */
+function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
+ host.innerHTML=`${cfg.q?`<p class="eq" style="margin:0">${cfg.q}</p>`:''}<div class="opts"></div><p class="fb" aria-live="polite"></p>`;
+ const box=host.querySelector('.opts'),fb=host.querySelector('.fb');let solved=false;
+ (cfg.shuffle===false?cfg.opts:shuffle(cfg.opts)).forEach(o=>{const b=document.createElement('button');b.type='button';b.className='opt';b.textContent=o.t;box.appendChild(b);
+  b.addEventListener('click',()=>{if(solved)return;if(o.ok){solved=true;b.classList.add('right');box.querySelectorAll('.opt').forEach(x=>x.disabled=true);fb.innerHTML=`<span class="ok">✓ ${o.fb||'Right.'}</span>`;onRight&&onRight()}else{b.classList.add('wrong');fb.innerHTML=`<span class="no">${o.fb||'Not quite. Try again.'}</span>`}})});
+ return{solved:()=>solved}}
+
+
+
+(function(){const s=document.getElementById('sgo');if(s)s.insertAdjacentHTML('afterend',' '+gn(1,'Searching Scopus','<p>Paste your search into the box. Scopus searches article titles, abstracts and keywords.</p>'));
+ const g=document.querySelector('[data-g="filetype:pdf"]');if(g)g.insertAdjacentHTML('afterend',' '+gn(1,'Why these?','<p><b>site:gov.au</b> shows only Australian government websites. <b>site:edu.au</b> shows Australian universities. <b>site:org</b> shows organisations such as think tanks.</p><p><b>filetype:pdf</b> finds reports, which are often saved as PDFs.</p>',true))})();
+
+/* ================= P1 Search lock ================= */
+(function(){const host=$('#lock');if(!host)return;const OWN='✎ Your own word';
+ const W=[{n:'Trust',t:['trust','distrust','"perceived risk"','confidence','reliab*']},
+  {n:'AI tool',t:['Copilot','"generative AI"','chatbot*','"AI assistant*"','"artificial intelligence"']},
+  {n:'Adoption',t:['adopt*','acceptance','"intention to use"','usage','"continuance intention"']},
+  {n:'Your segment',t:['"university students"','"Gen Z"','"young adults"','"older adults"','parents','"small business*"']}];
+ W.forEach(w=>{w.i=0;w.p=[];w.t.push(OWN)});
+ let adding=false,opened=G.isDone(1),focusSel=null;
+ const q=()=>W.filter(w=>w.p.length).map(w=>w.p.length>1?'('+w.p.join(' OR ')+')':w.p[0]).join(' AND ');
+ const qh=()=>W.filter(w=>w.p.length).map(w=>esc(w.p.length>1?'('+w.p.join(' OR ')+')':w.p[0])).join(' <span class="opk">AND</span> ');
+ const at=(w,d)=>w.t[(w.i+d+w.t.length)%w.t.length];
+ function draw(){const full=W.every(w=>w.p.length);
+  host.innerHTML=`<div class="lockwrap ${full?'open':''}"><div class="shackle" aria-hidden="true"></div><div class="lbody"><span class="brand" aria-hidden="true">SEARCH LOCK</span><div class="wheels">
+  ${W.map((w,k)=>{const cur=at(w,0),on=w.p.includes(cur),own=cur===OWN;return `<div class="w" role="group" aria-label="${esc(w.n)} wheel">
+   <button class="spin" type="button" data-a="up" data-k="${k}" aria-label="Previous ${esc(w.n)} word">▲</button>
+   <div class="cyl"><span class="t t1" aria-hidden="true">${esc(at(w,-1))}</span><span class="win" id="win${k}" aria-live="polite">${esc(cur)}</span><span class="t t3" aria-hidden="true">${esc(at(w,1))}</span></div>
+   <button class="spin" type="button" data-a="down" data-k="${k}" aria-label="Next ${esc(w.n)} word">▼</button>
+   <span class="lab">${esc(w.n)}</span>
+   ${own?`<div class="own"><input type="text" id="own${k}" aria-label="Your own ${esc(w.n)} word" autocomplete="off"><button type="button" data-a="ownok" data-k="${k}">Add</button></div>`:`<button class="tap" type="button" data-a="add" data-k="${k}" aria-pressed="${on}" aria-label="${on?'Remove':'Add'} ${esc(cur)}">${on?'✓ Added':'+ Add'}</button>`}
+   <div class="tags">${w.p.map((x,j)=>`<button class="tagx" type="button" data-a="rm" data-k="${k}" data-j="${j}" aria-label="Remove ${esc(x)}">${esc(x)} <span aria-hidden="true">×</span></button>`).join('')}</div>
+   ${w.c?`<button class="wrm" type="button" data-a="wrm" data-k="${k}">Remove wheel</button>`:''}</div>`}).join('')}
+  ${W.filter(w=>w.c).length<2?`<div class="w"><button class="wadd" type="button" data-a="new" aria-expanded="${adding}">+ Add a wheel</button><span class="lab" style="color:#bbb">Your idea</span></div>`:''}
+  </div></div></div>
+  ${adding?`<div class="addf"><label for="nwn">Concept</label><input type="text" id="nwn" placeholder="e.g. Privacy" autocomplete="off"><label for="nwt">Words, separated by commas</label><input type="text" id="nwt" placeholder="e.g. privacy, &quot;personal data&quot;" autocomplete="off"><div class="row"><button class="btn small" type="button" data-a="mk">Add wheel</button><button class="btn small ghost" type="button" data-a="cancel">Cancel</button></div><p class="fb" id="nwfb" aria-live="polite"></p></div>`:''}
+  <p class="lockst" aria-live="polite">${full?'🔓 Unlocked! Your search is saved for the next slides.':'🔒 Pick a word on every wheel to open the lock.'}</p>
+  <div class="out"><span class="l">Your search</span><code>${qh()||'Your words will appear here.'}</code><button class="btn small" type="button" data-a="copy">Copy</button></div>`;
+  if(focusSel){const f=host.querySelector(focusSel);if(f)f.focus();focusSel=null}
+  if(full){G.log('lock','Your search',q());if(!opened){opened=true;G.complete(1,true)}}}
+ host.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,k=+b.dataset.k,w=W[k];
+  if(a==='up'||a==='down'){w.i=(w.i+(a==='up'?-1:1)+w.t.length)%w.t.length;focusSel=`[data-a="${a}"][data-k="${k}"]`}
+  else if(a==='add'){const c=at(w,0);const j=w.p.indexOf(c);if(j<0)w.p.push(c);else w.p.splice(j,1);focusSel=`[data-a="add"][data-k="${k}"]`}
+  else if(a==='ownok'){const v=$('#own'+k).value.trim();if(!v)return;const term=/\s/.test(v)&&!/^".*"$/.test(v)?'"'+v.replace(/"/g,'')+'"':v;if(!w.p.includes(term))w.p.push(term);focusSel=`#own${k}`}
+  else if(a==='rm'){w.p.splice(+b.dataset.j,1);focusSel=`[data-a="down"][data-k="${k}"]`}
+  else if(a==='wrm'){W.splice(k,1);focusSel='[data-a="new"]'}
+  else if(a==='new'){adding=!adding;focusSel=adding?'#nwn':'[data-a="new"]'}
+  else if(a==='cancel'){adding=false;focusSel='[data-a="new"]'}
+  else if(a==='mk'){const n=$('#nwn').value.trim();const ts=$('#nwt').value.split(',').map(s=>s.trim()).filter(Boolean);if(!n||!ts.length){$('#nwfb').innerHTML='<span class="no">Add a concept and at least one word.</span>';return}
+   const nw={n,t:ts.map(v=>/\s/.test(v)&&!/^".*"$/.test(v)?'"'+v.replace(/"/g,'')+'"':v).concat([OWN]),i:0,p:[],c:1};W.push(nw);adding=false;focusSel=`[data-a="add"][data-k="${W.length-1}"]`}
+  else if(a==='copy'){copyText(q()||'',b);return}
+  draw()});
+ host.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id&&e.target.id.startsWith('own')){e.preventDefault();host.querySelector(`[data-a="ownok"][data-k="${e.target.id.slice(3)}"]`).click()}});
+ draw()})();
+
+/* ================= P2 Business Source Premier ================= */
+(function(){if(!$('#bchk'))return;let tries=0;const EB='https://research.ebsco.com/c/cqb6z7/search/results?autocorrect=y&db=buh&expanders=concept&searchMode=enhanced&q=';
+ const sync=()=>{$('#bq').textContent=myQ()};G.onChange(sync);sync();
+ $('#bchk').addEventListener('click',()=>{tries++;const pr=$('#bf1').checked,d=document.querySelector('input[name="bd"]:checked').value,st=[...document.querySelectorAll('.bst:checked')].map(x=>x.value);const fb=$('#bfb');
+  if(!pr){fb.innerHTML='<span class="no">Not yet.</span> Which filter keeps only peer-reviewed articles?';return}
+  if(d!=='5'){fb.innerHTML='<span class="no">Nearly.</span> Check the publication date. You want the last five years.';return}
+  if(st.some(v=>v!=='aj')){fb.innerHTML='<span class="no">Nearly.</span> News, magazines and reports aren’t peer reviewed. Untick them.';return}
+  fb.innerHTML='<span class="ok">✓ Spot on.</span> Peer reviewed plus a date range gives you recent, quality research.';G.complete(2,tries===1)});
+ $('#bcp').addEventListener('click',e=>copyText(myQ(),e.currentTarget));
+ $('#bgo').addEventListener('click',()=>openWin(EB+encodeURIComponent(myQ())));
+ $('#bsv').addEventListener('click',()=>{const n=$('#bn').value.trim();if(!n){$('#bsfb').innerHTML='<span class="no">Enter your result count first.</span>';$('#bn').focus();return}G.log('bsp','Business Source Premier',myQ()+'\nPeer reviewed, 2022 to 2026 · '+n+' results');$('#bsfb').innerHTML='<span class="ok">✓ Saved to your Research log.</span>'})})();
+
+/* ================= P3 Scopus ================= */
+(function(){if(!$('#schk'))return;let tries=0;
+ const sync=()=>{$('#sq').textContent=myQ()};G.onChange(sync);sync();
+ $('#schk').addEventListener('click',()=>{tries++;const v=[...document.querySelectorAll('.sa:checked')].map(x=>x.value);const fb=$('#sfb');
+  if(v.length!==2){fb.innerHTML='<span class="no">Pick two.</span>';return}
+  if(v.includes('psy')&&v.includes('bus')){fb.innerHTML='<span class="ok">✓ Great pick.</span> Psychology explains consumer motives. Business covers marketing and adoption.';G.complete(3,tries===1);return}
+  if(!v.includes('psy')){fb.innerHTML='<span class="no">Not quite.</span> Which subject studies how people think and feel?';return}
+  fb.innerHTML='<span class="no">Nearly.</span> Pair Psychology with the subject that covers marketing.'});
+ $('#scp').addEventListener('click',e=>copyText(myQ(),e.currentTarget));
+ $('#sgo').addEventListener('click',()=>openWin('https://www.scopus.com/search/form.uri?display=basic'));
+ $('#ssv').addEventListener('click',()=>{const n=$('#sn').value.trim();if(!n){$('#ssfb').innerHTML='<span class="no">Enter your result count first.</span>';$('#sn').focus();return}G.log('scopus','Scopus',myQ()+'\nPsychology + Business, Management and Accounting · '+n+' results');$('#ssfb').innerHTML='<span class="ok">✓ Saved to your Research log.</span>'})})();
+
+/* ================= P4 Passport ================= */
+(function(){if(!$('#q4a'))return;let a=0,b=0,w=0;const m=()=>{$('#m4').innerHTML=a&&b?'<span class="ok">✓ Both answered.</span>':(a+b)+' of 2 answered';if(a&&b)G.complete(4,w===0)};
+ const wr=()=>w++;
+ mcq($('#q4a'),{q:'Which segment trusts AI tools the least?',shuffle:false,opts:[{t:'Generation Z',fb:'Not quite. Look for the shortest bar.'},{t:'Generation X',fb:'Not quite. Look for the shortest bar.'},{t:'Baby Boomers',ok:1,fb:'Right. 24% agree, the lowest of the four.'}]},()=>{a=1;m()});
+ mcq($('#q4b'),{q:'What does this chart <b>not</b> tell you?',opts:[{t:'Why each segment feels this way',ok:1,fb:'Right. Surveys show what people think. Scholarly research in Business Source Premier and Scopus helps explain why.'},{t:'Which segment trusts AI the most',fb:'Not quite. The chart does show this.'},{t:'How the segments compare',fb:'Not quite. The chart does show this.'}]},()=>{b=1;m()});
+ $('#q4a').addEventListener('click',e=>{if(e.target.classList.contains('wrong'))wr()});$('#q4b').addEventListener('click',e=>{if(e.target.classList.contains('wrong'))wr()});
+ $('#pgo').addEventListener('click',()=>openWin('https://www.portal.euromonitor.com/'));m()})();
+
+/* ================= P5 Grey literature ================= */
+(function(){const host=$('#gl');if(!host)return;
+ sorter(host,[{t:'A government report on AI use in Australia',a:'y',fb:'Government reports are classic grey literature.'},
+  {t:'A peer-reviewed journal article',a:'n',fb:'Journal articles are published by academic publishers.'},
+  {t:'A consulting firm’s consumer survey',a:'y',fb:'Consulting firms publish surveys and reports themselves.'},
+  {t:'A think tank discussion paper',a:'y',fb:'Think tanks and associations publish their own research.'},
+  {t:'A textbook from a commercial publisher',a:'n',fb:'Textbooks are commercially published.'},
+  {t:'A university research centre report',a:'y',fb:'Reports from research centres are grey literature.'}],[['y','Grey'],['n','Not grey']],
+  (left,wrong)=>{$('#m5').innerHTML=left?(6-left)+' of 6 sorted':'<span class="ok">✓ All sorted.</span>';if(!left)G.complete(5,wrong===0)});
+ const on=new Set();const gq=()=>[$('#gk').value.trim(),...on].filter(Boolean).join(' ');
+ const draw=()=>{$('#gout').textContent=gq()};
+ document.querySelectorAll('[data-g]').forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.g;const p=b.getAttribute('aria-pressed')==='true';if(p)on.delete(v);else{if(v.startsWith('site:'))document.querySelectorAll('[data-g^="site:"]').forEach(x=>{x.setAttribute('aria-pressed','false');on.delete(x.dataset.g)});on.add(v)}b.setAttribute('aria-pressed',String(!p));draw()}));
+ $('#gk').addEventListener('input',draw);
+ $('#ggo').addEventListener('click',()=>{G.log('grey','Google search for grey literature',gq());openWin('https://www.google.com/search?q='+encodeURIComponent(gq()))});draw()})();
+
+/* ================= P6 MarketLine ================= */
+(function(){const nav=$('#mnav');if(!nav)return;let i=0,wrong=0;
+ const S=['Key facts','Company overview','SWOT analysis','Key employees','History','News'];
+ const Q=[{q:'Where would you find Microsoft’s strengths and weaknesses?',a:'SWOT analysis',fb:'SWOT lists strengths, weaknesses, opportunities and threats.'},
+  {q:'What does Microsoft do, and what are its main products?',a:'Company overview',fb:'The overview describes the business and what it sells.'},
+  {q:'Where would you find recent announcements about Copilot?',a:'News',fb:'News keeps you up to date with what the company is doing.'}];
+ nav.innerHTML=S.map(s=>`<button type="button" data-s="${s}">${s}</button>`).join('');
+ const ask=()=>{if(i>=Q.length){$('#mq').innerHTML='<span class="ok">✓ All found.</span>';$('#mqn').textContent='';return}$('#mq').textContent=Q[i].q;$('#mqn').textContent='Question '+(i+1)+' of '+Q.length+'. Select a section.';nav.querySelectorAll('button').forEach(b=>{b.className='';b.disabled=false})};
+ nav.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||i>=Q.length)return;const c=Q[i];
+  if(b.dataset.s===c.a){b.className='right';nav.querySelectorAll('button').forEach(x=>x.disabled=true);$('#mfb').innerHTML=`<span class="ok">✓ ${esc(c.a)}.</span> ${c.fb}`;i++;setTimeout(()=>{ask();if(i>=Q.length)G.complete(6,wrong===0);else nav.querySelector('button').focus()},1400)}
+  else{wrong++;b.className='wrong';$('#mfb').innerHTML='<span class="no">Not this one.</span> Try another section.'}});
+ $('#mgo').addEventListener('click',()=>openWin('https://advantage.marketline.com/'));ask()})();
+
+/* ================= P7 Evaluating sources ================= */
+(function(){const host=$('#ev');if(!host)return;
+ sorter(host,[{t:'A 2016 survey on trust in chatbots',a:'cur',fb:'Copilot arrived in 2023 and views on AI change fast. Look for recent data.',hint:'Look at the date.'},
+  {t:'A Microsoft blog post saying users love Copilot',a:'bias',fb:'Microsoft wants to sell Copilot. Look for an independent source too.',hint:'Who wrote it, and why?'},
+  {t:'A forum post claiming most students distrust AI, with no source',a:'rel',fb:'There’s no way to know where the claim came from.',hint:'Can you trust where this came from?'},
+  {t:'A study on trust in online banking among retirees',a:'relv',fb:'Different technology and a different segment. Check how well it matches your question.',hint:'Does it match your question?'},
+  {t:'A news story quoting a figure that differs from the original report',a:'acc',fb:'Always check the figure against the original source.',hint:'Do the facts check out?'}],
+  [['relv','Relevant?'],['cur','Current?'],['rel','Reliable?'],['acc','Accurate?'],['bias','Biased?']],
+  (left,wrong)=>{$('#m7').innerHTML=left?(5-left)+' of 5 checked':'<span class="ok">✓ All checked.</span> Run these five checks on every source you use.';if(!left)G.complete(7,wrong===0)})})();
+
+/* ================= P8 Using AI responsibly ================= */
+(function(){const host=$('#ai');if(!host)return;
+ sorter(host,[{t:'Check your course outline to see how you can use AI in this assessment',a:'do',fb:'Rules differ between courses and assessments.'},
+  {t:'Paste AI-written text into your report as your own',a:'dont',fb:'That counts as misconduct. Your work must be your own.'},
+  {t:'Search for each reference an AI gives you to check it exists',a:'do',fb:'AI tools can make up references that look real.'},
+  {t:'Put your zID or a classmate’s name into a prompt',a:'dont',fb:'Keep personal details out of AI prompts.'},
+  {t:'Use Copilot signed in with your UNSW account',a:'do',fb:'Your UNSW account gives your data more protection.'},
+  {t:'Acknowledge your AI use when your course allows it',a:'do',fb:'Being open about how you used AI is part of academic integrity.'}],[['do','Do'],['dont','Don’t']],
+  (left,wrong)=>{$('#m8').innerHTML=left?(6-left)+' of 6 sorted':'<span class="ok">✓ All sorted.</span>';if(!left)G.complete(8,wrong===0)})})();
+
+/* ================= P10 Quiz ================= */
+(function(){const host=$('#quiz');if(!host)return;
+ const Q=[{q:'Which search finds articles that mention <b>both</b> trust and Copilot?',o:['trust AND Copilot','trust OR Copilot','trust NOT Copilot'],a:0,why:'AND means every result includes both words.'},
+  {q:'What does <span class="mono">adopt*</span> find?',o:['adopt, adoption, adopting and more','Only the word adopt','Words that mean the same as adopt'],a:0,why:'The asterisk finds different word endings.'},
+  {q:'Why put <span class="mono">"generative AI"</span> in quotation marks?',o:['To search the words together as a phrase','To make the words more important','To search for AI only'],a:0,why:'Quotation marks keep the words side by side.'},
+  {q:'You need peer-reviewed research on consumer trust. Where’s a great place to start?',o:['Business Source Premier','A social media search','Passport GMID'],a:0,why:'Business Source Premier lets you limit to peer-reviewed articles.'},
+  {q:'Which Scopus subject area helps most with consumer motives?',o:['Psychology','Engineering','Computer Science'],a:0,why:'Psychology studies how people think, feel and decide.'},
+  {q:'Where can you find survey data on how consumer segments feel about technology?',o:['Passport GMID','A textbook','A company’s own website'],a:0,why:'Passport has consumer surveys you can compare by segment.'},
+  {q:'You find a 2015 report on AI attitudes. Which check does it fail first?',o:['Currency','Relevance','Bias'],a:0,why:'Attitudes to AI have changed a lot. Look for recent data.'},
+  {q:'An AI tool gives you a reference. What should you do first?',o:['Search for it to check it exists','Add it to your reference list','Ask the AI if it’s real'],a:0,why:'AI tools can make up references, so always check.'}];
+ let i=0,score=0,miss=false;const res=[];
+ function show(){if(i>=Q.length){const perf=score===Q.length;host.innerHTML=`<div class="qtop"><span class="pxh">QUIZ COMPLETE</span><span class="pips" aria-hidden="true">${res.map(r=>`<i class="${r?'ok':'on'}"></i>`).join('')}</span></div><p class="q1" tabindex="-1" id="qzend"><b>You got ${score} of ${Q.length} right first time.</b></p><p>${perf?'Perfect score!':'Nice work. Every question is answered.'}</p><button class="btn ghost small" type="button" id="qzr">Try again</button>`;$('#qzend').focus();G.complete(10,perf);$('#qzr').addEventListener('click',()=>{i=0;score=0;res.length=0;show()});return}
+  const c=Q[i];miss=false;const order=shuffle(c.o.map((t,k)=>({t,k})));
+  host.innerHTML=`<div class="qtop"><span class="pxh">QUESTION ${i+1} OF ${Q.length}</span><span class="pips" aria-hidden="true">${Q.map((x,k)=>`<i class="${k<i?(res[k]?'ok':'on'):''}"></i>`).join('')}</span></div><p class="q1" tabindex="-1" id="qzq">${c.q}</p><div class="opts">${order.map(o=>`<button class="opt" type="button" data-k="${o.k}">${o.t}</button>`).join('')}</div><p class="fb" aria-live="polite" id="qzf"></p><div class="row" id="qzn" hidden><button class="btn" type="button">${i===Q.length-1?'See my score':'Next question'}</button></div>`;
+  host.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{if(+b.dataset.k===c.a){b.classList.add('right');host.querySelectorAll('.opt').forEach(x=>x.disabled=true);if(!miss)score++;res[i]=!miss;$('#qzf').innerHTML=`<span class="ok">✓ ${miss?'That’s it.':'Correct!'}</span> ${c.why}`;const n=$('#qzn');n.hidden=false;n.querySelector('button').onclick=()=>{i++;show()};n.querySelector('button').focus()}else{miss=true;b.classList.add('wrong');b.disabled=true;$('#qzf').innerHTML='<span class="no">Not quite.</span> Try again.'}}));
+  if(i>0)$('#qzq').focus()}
+ show()})();
+
+/* ================= P11 Badge wall ================= */
+(function(){const host=$('#wall');if(!host)return;
+ const rank=n=>n>=9?'Research Legend':n>=7?'Research Pro':n>=4?'Research Explorer':'Research Rookie';
+ function draw(){const st=G.state(),n=G.doneCount(),pts=G.points();
+  host.innerHTML=`<div class="bh2"><p class="kick">MARK2051 · Library research skills</p><p class="big">${rank(n)}</p><p class="sub"><img class="coin" src="${COIN}" alt="" style="width:20px;height:20px"> ${pts} points · ${n} of ${ACT_ORDER.length} badges</p></div>
+  <div class="bgrid">${ACT_ORDER.map(p=>`<div class="bcard ${st.done[p]?'':'off'}"><img src="${BADGEIMG[ACTS[p][2]]}" alt="" width="117" height="134"><b>${ACTS[p][1]}</b><span>${st.done[p]?'Earned':'Not yet'} · ${esc(ACTS[p][0])}</span></div>`).join('')}</div>
+  <div class="wallfoot"><button class="btn" type="button" id="dlb">Download your badge card</button><span class="small">Progress is saved in this browser only.</span></div>`;
+  $('#dlb').addEventListener('click',dl)}
+ function li(s){return new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.src=s})}
+ async function dl(){const st=G.state();const c=document.createElement('canvas');c.width=1200;c.height=630;const x=c.getContext('2d');x.imageSmoothingEnabled=false;
+  x.fillStyle='#ffe000';x.fillRect(0,0,1200,630);x.fillStyle='#111';x.fillRect(0,470,1200,160);
+  x.fillStyle='#000';x.font='bold 26px Arial';x.fillText('MARK2051 · LIBRARY RESEARCH SKILLS',60,80);x.font='bold 64px Arial';x.fillText(rank(G.doneCount()),60,150);
+  x.font='28px Arial';x.fillText(`${G.points()} points · ${G.doneCount()} of ${ACT_ORDER.length} badges`,60,200);
+  const ims=await Promise.all(ACT_ORDER.map(p=>li(BADGEIMG[ACTS[p][2]])));
+  ims.forEach((im,k)=>{const p=ACT_ORDER[k];x.globalAlpha=st.done[p]?1:.2;x.drawImage(im,60+k*122,250,117,134)});x.globalAlpha=1;
+  x.fillStyle='#fff';x.font='24px Arial';x.fillText('UNSW Library',60,560);
+  const a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='mark2051-badges.png';document.body.appendChild(a);a.click();a.remove()}
+ G.onChange(draw);draw()})();
+
+
+/* ================= Research log ================= */
+function logText(){const items=Object.values(G.state().log).sort((a,b)=>a.t-b.t);return 'MARK2051 research log\n\nQuestion\n'+RQ+'\n\n'+items.map(i=>i.l+'\n'+i.v).join('\n\n')}
+function openLog(){const items=Object.values(G.state().log).sort((a,b)=>a.t-b.t);
+ $('#logl').innerHTML=`<li><b>Question</b><span>${esc(RQ)}</span></li>`+(items.length?items.map(i=>`<li><b>${esc(i.l)}</b><span>${esc(i.v)}</span></li>`).join(''):'<li><span class="small" style="font-family:inherit">Your searches will appear here as you build them.</span></li>');
+ $('#logm').hidden=false;$('#logx').focus()}
+$('#logx').addEventListener('click',()=>$('#logm').hidden=true);
+$('#logm').addEventListener('click',e=>{if(e.target.id==='logm')$('#logm').hidden=true});
+$('#logcp').addEventListener('click',e=>copyText(logText(),e.currentTarget));
+$('#logdl').addEventListener('click',()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([logText()],{type:'text/plain'}));a.download='mark2051-research-log.txt';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)});
+
+/* ===== Screen reader tidy-ups ===== */
+(function(){function tidy(){
+ document.querySelectorAll('.simhd,.boxh,.simhead .t,.simhead > div > b').forEach(e=>{if(!e.hasAttribute('role')){e.setAttribute('role','heading');e.setAttribute('aria-level','3')}});
+ document.querySelectorAll('label[for]').forEach(l=>{const el=document.getElementById(l.htmlFor);if(!el||el.hasAttribute('aria-label')||!l.querySelector('.popwrap'))return;const t=[...l.childNodes].filter(n=>!(n.nodeType===1&&n.classList.contains('popwrap'))).map(n=>n.textContent).join('').replace(/\s+/g,' ').trim();if(t)el.setAttribute('aria-label',t)});
+}
+tidy();new MutationObserver(()=>{clearTimeout(window.__tdy);window.__tdy=setTimeout(tidy,50)}).observe(document.body,{childList:true,subtree:true})})();
+/* ================= Boot ================= */
+(function(){const p=window.__part;
+ if(p){const s=document.getElementById('p'+p);if(s){s.classList.add('show');
+  const framed=window.self!==window.top;const bar=document.createElement('div');bar.className='gbar';bar.id='gbar';
+  const ext='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
+  bar.innerHTML='<span class="gt" aria-hidden="true"><span></span></span><span class="gc"></span><span class="gp"></span><span class="gb2"></span><span class="gbtns"><button class="gbtn" type="button" id="logb" aria-label="Research log"><span aria-hidden="true">📓</span><span class="lbl">Research log</span></button>'+((framed||p===21)?'<button class="gbtn" type="button" id="ntab" aria-label="Open in new window">'+ext+'<span class="lbl">Open in new window</span></button>':'<button class="gbtn" type="button" id="bktut" aria-label="Back to tutorial"><span aria-hidden="true">←</span><span class="lbl">Back to tutorial</span></button>')+'</span>';
+  s.querySelector('.in').prepend(bar);
+  $('#logb').addEventListener('click',openLog);
+  const bk=$('#bktut');if(bk)bk.addEventListener('click',()=>{try{if(window.opener&&!window.opener.closed)window.opener.focus()}catch(e){}window.close();setTimeout(()=>{if(!window.closed){bk.querySelector('.lbl').textContent='Close this tab to return';bk.setAttribute('aria-live','polite')}},300)});
+  const nb=$('#ntab');if(nb)nb.addEventListener('click',()=>{let u=location.href;if(p===21){u='https://www.library.unsw.edu.au/';try{const q=new URL(new URLSearchParams(location.search).get('site')||'');if(q.protocol==='https:'&&/(^|\.)library\.unsw\.edu\.au$/.test(q.hostname))u=q.href}catch(e){}}const w=window.open(u,'lr'+p,'popup=yes,width=1280,height=860');if(w)G.addKid(w)})}}
+ bindPops();G.init()})();
+
+</script>
+</body>
+</html>
