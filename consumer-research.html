@@ -436,7 +436,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 <body>
 
 <header class="top"><h1>MARK2051 Consumer Behaviour · Library research skills</h1><p>Each section below is one right panel in the LibWizard tutorial (use ?part=N).</p></header>
-<nav class="toc" aria-label="Parts"><a href="?part=1">1 The challenge</a><a href="?part=2">2 Breaking down the question</a><a href="?part=3">3 Business Source Premier</a><a href="?part=4">4 Scopus</a><a href="?part=5">5 Passport GMID</a><a href="?part=6">6 Grey literature</a><a href="?part=7">7 MarketLine</a><a href="?part=8">8 Evaluating sources</a><a href="?part=9">9 Using AI responsibly</a><a href="?part=10">10 Check your learning</a><a href="?part=11">11 Your badges and help</a></nav>
+<nav class="toc" aria-label="Parts"><a href="?part=1">1 The challenge</a><a href="?part=2">2 Breaking down the question</a><a href="?part=3">3 Business Source Premier</a><a href="?part=4">4 Scopus</a><a href="?part=5">5 Passport GMID</a><a href="?part=6">6 Grey literature</a><a href="?part=7">7 MarketLine</a><a href="?part=8">8 Evaluating sources</a><a href="?part=9">9 Using AI responsibly</a><a href="?part=10">10 Check your learning</a><a href="?part=11">11 Your badges and help</a><a href="?part=12">12 Business research prompt</a></nav>
 <main>
 
 <section class="slide" id="p1" aria-labelledby="h1"><div class="in"><div class="sh"><h2 id="h1">The challenge</h2></div>
@@ -554,6 +554,10 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 <div class="finbox" role="note"><span class="fi" aria-hidden="true">📝</span><p><b>Almost done.</b> Add your name and zID in the left panel, then select <b>Finish</b> to submit and record your completion.</p></div>
 <div id="wall"></div>
 <div class="box" style="margin-top:14px"><p class="boxh">We’re here to help</p><p style="margin:0 0 8px">Stuck on a search? Ask the Library using Chat on the Library website, or explore the Business subject guide.</p><div class="row"><a class="btn" href="https://www.library.unsw.edu.au/" target="_blank" rel="noopener">Library website<span class="sr"> (opens in a new window)</span></a><a class="btn ghost" href="https://subjectguides.library.unsw.edu.au/business" target="_blank" rel="noopener">Business subject guide<span class="sr"> (opens in a new window)</span></a></div></div>
+</div></section>
+<section class="slide" id="p12" aria-labelledby="h12"><div class="in"><div class="sh"><h2 id="h12">Build a business research prompt</h2></div>
+<p class="lead">Fill in the five steps to build a prompt for company research. Each number turns into a tick when done.</p>
+<div id="pb"></div>
 </div></section>
 </main>
 <div class="modal" id="logm" hidden role="dialog" aria-modal="true" aria-labelledby="logh"><div class="mbox"><button class="pclose" type="button" id="logx" aria-label="Close">×</button><h2 id="logh">Your research log</h2><p class="small" style="margin:0">The searches you build in this tutorial are saved here, on this device only.</p><ul class="logl" id="logl"></ul><div class="row"><button class="btn" type="button" id="logdl">Download log</button><button class="btn ghost" type="button" id="logcp">Copy</button></div></div></div>
@@ -830,6 +834,30 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
   x.fillStyle='#fff';x.font='24px Arial';x.fillText('UNSW Library',60,560);
   const a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='mark2051-badges.png';document.body.appendChild(a);a.click();a.remove()}
  G.onChange(draw);draw()})();
+/* ================= P12 Business research prompt ================= */
+(function(){const host=$('#pb');if(!host)return;
+ const ST=[
+  {t:'Intent',h:'What you’re trying to do, and why.',c:['I’m an undergraduate marketing student researching consumer trust in Microsoft Copilot.','I want to find company and industry information on Microsoft’s AI products.']},
+  {t:'Context',h:'The background the AI needs, such as the company, market, segment and dates.',c:['Focus on Microsoft and its main competitors in AI assistants.','My consumer segment is Australian university students.','Only use information from 2024 to 2026.']},
+  {t:'Instruction',h:'The task, and the format you want back.',c:['Summarise Microsoft’s position in the AI assistant market in five points.','Suggest keywords I could search in Business Source Premier and MarketLine.']},
+  {t:'Sources',h:'Which sources to use and what to show for each.',c:['Use authoritative sources, such as company annual reports, government reports and peer-reviewed research.','Give the author, date and link for every source.','Point out when a source is promotional, such as a company press release.']},
+  {t:'Check',h:'Reduce the risk of invented or outdated answers.',c:['Don’t invent figures or references.','Tell me if you’re unsure, rather than guessing.','Flag anything that may be out of date.']}];
+ const val={};let focus=0;
+ host.innerHTML=`<div class="pbuild"><div>${ST.map((s,i)=>`<div class="ps" data-i="${i}"><span class="pn">${i+1}</span><div><label class="f" for="pi${i}">${esc(s.t)}</label><span class="small">${esc(s.h)}</span><textarea id="pi${i}" rows="2" style="margin-top:6px"></textarea><div class="chips">${s.c.map(c=>`<button class="chip" type="button" data-i="${i}" data-c="${esc(c)}">${esc(c.length>48?c.slice(0,46)+'…':c)}</button>`).join('')}</div></div></div>`).join('')}</div>
+ <div><p class="boxh">Your prompt</p><div class="pprev" id="pp" aria-live="polite"></div><div class="pmeter"><span id="pmt">0 of 5 steps</span><span class="pb"><span id="pmb"></span></span></div>
+ <div class="row" style="margin-top:10px"><button class="btn" type="button" id="pcp">Copy prompt</button></div>
+ <p class="prule"><b>Check everything.</b> AI can invent figures and references. Check them in Business Source Premier, MarketLine or Passport GMID before you use them.</p>
+ <div class="tip"><p style="margin:0 0 4px"><b>Tips</b></p><ul style="margin:0;padding-left:18px"><li>Use the formula Intent + Context + Instruction.</li><li>Put the instruction at the start or end. AI can overlook information in the middle of a long prompt.</li><li>Leave out anything that isn’t relevant to the task.</li><li>Refine your prompt and try again.</li></ul></div></div></div>`;
+ ST.forEach((s,i)=>{const ta=$('#pi'+i);ta.addEventListener('input',()=>{val[i]=ta.value.trim();draw()});ta.addEventListener('focus',()=>{focus=i;draw()})});
+ host.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;const i=+c.dataset.i,ta=$('#pi'+i);ta.value=(ta.value.trim()?ta.value.trim()+' ':'')+c.dataset.c;val[i]=ta.value.trim();focus=i;draw()});
+ function draw(){const n=ST.filter((_,i)=>val[i]).length;const miss=ST.findIndex((_,i)=>!val[i]);const hi=val[focus]?focus:miss;
+  $('#pp').innerHTML=ST.map((s,i)=>val[i]?`<span${i===hi?' class="hl2"':''}>${esc(val[i])}</span>`:'').filter(Boolean).join('\n\n')||'<span class="small">Fill in the steps to build your prompt.</span>';
+  host.querySelectorAll('.ps').forEach((p,i)=>{p.classList.toggle('done',!!val[i]);p.querySelector('.pn').textContent=val[i]?'✓':i+1});
+  $('#pmt').textContent=n+' of 5 steps';$('#pmb').style.width=(n/5*100)+'%'}
+ const prompt=()=>ST.map((_,i)=>val[i]).filter(Boolean).join('\n\n');
+ $('#pcp').addEventListener('click',e=>{copyText(prompt(),e.currentTarget);G.log('prompt','Business research prompt',prompt())});
+ draw()})();
+
 /* ================= P10 Check your learning ================= */
 (function(){const ul=$('#qlog');if(!ul)return;const d=()=>{const it=Object.values(G.state().log).sort((a,b)=>a.t-b.t);ul.innerHTML=it.length?it.map(i=>`<li><b>${esc(i.l)}</b><span>${esc(i.v)}</span></li>`).join(''):'<li><span class="small">Your searches will appear here.</span></li>'};G.onChange(d);d()})();
 
