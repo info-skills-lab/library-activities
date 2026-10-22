@@ -46,4 +46,4 @@ Right-panel codes are in mark2051-embed-codes.txt. Quiz questions are in mark205
 
 ========== 11. Your badges ==========
 
-<h3 style="border-bottom:4px solid #ffe000; padding-bottom:6px">Your badges</h3><p>Here are the badges you’ve earned. Download your badge card to keep.</p><p>If you get stuck, we’re here to help. Chat with us on the Library website, or bring your questions to the workshop.</p><p>Select <strong>Finish</strong> to complete the tutorial.</p>
+<h3 style="border-bottom:4px solid #ffe000; padding-bottom:6px">Your badges</h3><p>Here are the badges you’ve earned. Download your badge card to keep.</p><p>If you get stuck, we’re here to help. Chat with us on the Library website, or bring your questions to the workshop.</p><p><strong>Want to be in the running for a Library water bottle?</strong> Add your name and UNSW email below, then select <strong>Finish</strong>. This is optional. Your details are only used for the prize draw and will be removed from this tutorial afterwards.</p><p>[Add two LibWizard fields below this text, both not required: Name (Text) and UNSW email (Email).]</p>
