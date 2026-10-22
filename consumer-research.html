@@ -256,6 +256,8 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .clip .qt b{background:var(--soft);font-weight:700}
 
 /* ===== MARK2051 additions ===== */
+.chk{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:12px 0 0;font-size:14px}.chk>span{border:2px solid var(--ink);border-radius:999px;padding:1px 10px;font-weight:500}.chk>span:first-child{background:#111;color:var(--yellow);border-color:#111}
+.how,.slide .lead{color:var(--ink)}
 [hidden]{display:none!important}
 .lay2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start}
 @media (max-width:820px){.lay2{grid-template-columns:minmax(0,1fr)}}
@@ -377,7 +379,8 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .bh2 .kick{margin:0 0 4px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .bh2 .big{margin:0 0 6px;font-size:clamp(26px,4vw,40px);font-weight:700;line-height:1.05}
 .bh2 .sub{margin:0;font-size:16px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.bgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:560px){.bgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .bcard{border:2px solid var(--ink);border-radius:12px;padding:10px;text-align:center;background:var(--card)}
 .bcard img{display:block;width:100%;max-width:117px;height:auto;margin:0 auto 6px;image-rendering:pixelated}
 .bcard.off img{filter:grayscale(1) brightness(.8);opacity:.6}
@@ -391,16 +394,22 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 <body>
 
 <header class="top"><h1>MARK2051 Consumer Behaviour · Library research skills</h1><p>Each section below is one right panel in the LibWizard tutorial (use ?part=N).</p></header>
-<nav class="toc" aria-label="Parts"><a href="?part=1">1 Breaking down the question</a><a href="?part=2">2 Business Source Premier</a><a href="?part=3">3 Scopus</a><a href="?part=4">4 Passport GMID</a><a href="?part=5">5 Grey literature</a><a href="?part=6">6 MarketLine</a><a href="?part=7">7 Evaluating sources</a><a href="?part=8">8 Using AI responsibly</a><a href="?part=9">9 Help</a><a href="?part=10">10 Quiz</a><a href="?part=11">11 Your badges</a></nav>
+<nav class="toc" aria-label="Parts"><a href="?part=1">1 The challenge</a><a href="?part=2">2 Breaking down the question</a><a href="?part=3">3 Business Source Premier</a><a href="?part=4">4 Scopus</a><a href="?part=5">5 Passport GMID</a><a href="?part=6">6 Grey literature</a><a href="?part=7">7 MarketLine</a><a href="?part=8">8 Evaluating sources</a><a href="?part=9">9 Using AI responsibly</a><a href="?part=10">10 Check your learning</a><a href="?part=11">11 Your badges and help</a></nav>
 <main>
 
-<section class="slide" id="p1" aria-labelledby="h1"><div class="in"><div class="sh"><h2 id="h1">Breaking down the question</h2></div>
-<p class="q1"><b>How can Microsoft build trust in Copilot among your consumers?</b></p>
+<section class="slide" id="p1" aria-labelledby="h1"><div class="in"><div class="sh"><h2 id="h1">The challenge</h2></div>
+<div class="rq"><div class="k">Your question</div><p class="q">How can Microsoft build <span class="mark">trust</span> and encourage responsible <span class="mark">adoption</span> of <span class="mark">Microsoft Copilot</span> among <span class="mark">consumers</span>?</p></div>
+<p class="boxh" style="margin-top:14px">Where this question takes you</p>
+<div class="stops" role="list"><div role="listitem"><b>Keywords</b> Break down the question</div><div role="listitem"><b>Research</b> Business Source Premier and Scopus</div><div role="listitem"><b>Consumer data</b> Passport GMID</div><div role="listitem"><b>Reports and companies</b> Grey literature and MarketLine</div><div role="listitem"><b>Check it</b> Evaluate sources and use AI responsibly</div></div>
+</div></section>
+
+<section class="slide" id="p2" aria-labelledby="h2"><div class="in"><div class="sh"><h2 id="h2">Breaking down the question</h2></div>
+<p class="q1"><b>How can Microsoft build trust and encourage responsible adoption of Microsoft Copilot among consumers?</b></p>
 <p class="how">Spin each wheel <span aria-hidden="true">▲▼</span> and select <b>Add</b> to pick your words. Add as many as you like.</p>
 <div id="lock"></div>
 </div></section>
 
-<section class="slide" id="p2" aria-labelledby="h2"><div class="in"><div class="sh"><h2 id="h2">Business Source Premier</h2></div>
+<section class="slide" id="p3" aria-labelledby="h3"><div class="in"><div class="sh"><h2 id="h3">Business Source Premier</h2></div>
 <div class="lay2">
  <div class="mock"><div class="mockh"><span><b>Business Source Premier</b> · practice filters</span><span class="prac">Practice</span></div><div class="mockb">
   <p class="task">Set the filters to find <b>peer-reviewed research from the last five years</b>.</p>
@@ -418,7 +427,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 </div>
 </div></section>
 
-<section class="slide" id="p3" aria-labelledby="h3"><div class="in"><div class="sh"><h2 id="h3">Scopus</h2></div>
+<section class="slide" id="p4" aria-labelledby="h4"><div class="in"><div class="sh"><h2 id="h4">Scopus</h2></div>
 <div class="lay2">
  <div class="mock"><div class="mockh"><span><b>Scopus</b> · practice filters</span><span class="prac">Practice</span></div><div class="mockb">
   <p class="task">You want to know <b>why</b> consumers trust or distrust AI. Pick the <b>two</b> subject areas that fit best.</p>
@@ -439,7 +448,8 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 </div>
 </div></section>
 
-<section class="slide" id="p4" aria-labelledby="h4"><div class="in"><div class="sh"><h2 id="h4">Passport GMID</h2></div>
+<section class="slide" id="p5" aria-labelledby="h5"><div class="in"><div class="sh"><h2 id="h5">Passport GMID</h2></div>
+<p class="lead">Read the practice chart, then answer both questions.</p>
 <div class="lay2">
  <div class="mock"><div class="mockh"><span><b>Consumer survey</b> · I trust AI tools to give accurate information</span><span class="prac">Practice data</span></div><div class="mockb">
   <div class="chart" role="img" aria-label="Practice bar chart. Percentage who agree, by generation. Generation Z 58 per cent, Millennials 51 per cent, Generation X 38 per cent, Baby Boomers 24 per cent.">
@@ -452,12 +462,14 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
  </div></div>
  <div class="qstack"><div class="box" id="q4a"></div><div class="box" id="q4b"></div><p class="small" id="m4" aria-live="polite"></p></div>
 </div>
+<p class="chk"><span>Check it</span> <span><span aria-hidden="true">✓ </span>Relevant</span> <span><span aria-hidden="true">✓ </span>Current</span> <span><span aria-hidden="true">✓ </span>Reliable</span> <span><span aria-hidden="true">✓ </span>Accurate</span></p>
 <div class="tip" style="margin-top:14px"><span aria-hidden="true">💡</span><p>In Passport, look for the <b>Voice of the Consumer</b> surveys. You can compare results by country, age and other segments. <button class="linkbtn" type="button" id="pgo">Open Passport GMID</button></p></div>
 </div></section>
 
-<section class="slide" id="p5" aria-labelledby="h5"><div class="in"><div class="sh"><h2 id="h5">Grey literature</h2></div>
+<section class="slide" id="p6" aria-labelledby="h6"><div class="in"><div class="sh"><h2 id="h6">Grey literature</h2></div>
 <p class="lead">Is it grey literature? Pick one for each.</p>
 <div class="scards" id="gl"></div><p class="small" id="m5" aria-live="polite"></p>
+<p class="chk"><span>Check it</span> <span><span aria-hidden="true">✓ </span>Relevant</span> <span><span aria-hidden="true">✓ </span>Current</span> <span><span aria-hidden="true">✓ </span>Reliable</span> <span><span aria-hidden="true">✓ </span>Accurate</span></p>
 <div class="box" style="margin-top:14px"><p class="boxh">Find grey literature with Google</p>
  <div class="gbld"><div class="gq"><label class="sr" for="gk">Your keywords</label><input type="text" id="gk" value="consumer trust artificial intelligence survey" autocomplete="off"></div>
  <div class="chips" role="group" aria-label="Add to your Google search">
@@ -470,7 +482,8 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 </div>
 </div></section>
 
-<section class="slide" id="p6" aria-labelledby="h6"><div class="in"><div class="sh"><h2 id="h6">MarketLine</h2></div>
+<section class="slide" id="p7" aria-labelledby="h7"><div class="in"><div class="sh"><h2 id="h7">MarketLine</h2></div>
+<p class="lead">Read each question, then select the profile section with the answer.</p>
 <p class="qnow" id="mq" aria-live="polite"></p><p class="small" id="mqn" style="margin:0 0 8px"></p>
 <div class="mock"><div class="mockh"><span><b>MarketLine</b> · company profile</span><span class="prac">Practice layout</span></div>
  <div class="prof"><nav class="pnav" aria-label="Profile sections" id="mnav"></nav>
@@ -480,30 +493,27 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 <p style="margin-top:12px"><button class="btn small ghost" type="button" id="mgo">Open MarketLine</button></p>
 </div></section>
 
-<section class="slide" id="p7" aria-labelledby="h7"><div class="in"><div class="sh"><h2 id="h7">Evaluating sources</h2></div>
+<section class="slide" id="p8" aria-labelledby="h8"><div class="in"><div class="sh"><h2 id="h8">Evaluating sources</h2></div>
 <p class="lead">Each source has one problem. Which check does it fail?</p>
+<p class="chk"><span>Check it</span> <span><span aria-hidden="true">✓ </span>Relevant</span> <span><span aria-hidden="true">✓ </span>Current</span> <span><span aria-hidden="true">✓ </span>Reliable</span> <span><span aria-hidden="true">✓ </span>Accurate</span></p>
 <div class="scards" id="ev"></div><p class="small" id="m7" aria-live="polite"></p>
 </div></section>
 
-<section class="slide" id="p8" aria-labelledby="h8"><div class="in"><div class="sh"><h2 id="h8">Using AI responsibly</h2></div>
+<section class="slide" id="p9" aria-labelledby="h9"><div class="in"><div class="sh"><h2 id="h9">Using AI responsibly</h2></div>
 <p class="lead">Do or don’t? Pick one for each.</p>
 <div class="scards" id="ai"></div><p class="small" id="m8" aria-live="polite"></p>
 <div class="tip" style="margin-top:14px"><span aria-hidden="true">💡</span><p>Rules on AI differ between courses. Check your course outline, and read <a href="https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai" target="_blank" rel="noopener">Using AI in university<span class="sr"> (opens in a new window)</span></a>.</p></div>
 </div></section>
 
-<section class="slide" id="p9" aria-labelledby="h9"><div class="in"><div class="sh"><h2 id="h9">We’re here to help</h2></div>
-<div class="hcards">
- <div class="hc"><span class="ic" aria-hidden="true">💬</span><h3>Chat with us</h3><p>Stuck on a search? Ask the Library using Chat on the Library website.</p><a class="go" href="https://www.library.unsw.edu.au/" target="_blank" rel="noopener">Go to the Library website<span class="sr"> (opens in a new window)</span></a></div>
- <div class="hc"><span class="ic" aria-hidden="true">🧭</span><h3>Business subject guide</h3><p>Find the best databases for business and marketing research in one place.</p><a class="go" href="https://subjectguides.library.unsw.edu.au/business" target="_blank" rel="noopener">Open the guide<span class="sr"> (opens in a new window)</span></a></div>
-</div>
-</div></section>
-
-<section class="slide" id="p10" aria-labelledby="h10"><div class="in"><div class="sh"><h2 id="h10">Quiz</h2></div>
-<div class="qz" id="quiz"></div>
+<section class="slide" id="p10" aria-labelledby="h10"><div class="in"><div class="sh"><h2 id="h10">Check your learning</h2></div>
+<div class="rq"><div class="k">Your question</div><p class="q">How can Microsoft build trust and encourage responsible adoption of Microsoft Copilot among consumers?</p></div>
+<div class="grid2"><div class="box"><p class="boxh">Before you start</p><p style="margin:0">Answer the questions in the left panel. Use the question and your searches here if they help.</p></div>
+<div class="box"><p class="boxh">Your research log</p><ul class="logl" id="qlog" style="margin:0"></ul></div></div>
 </div></section>
 
 <section class="slide" id="p11" aria-labelledby="h11"><div class="in"><div class="sh"><h2 id="h11">Your badges</h2></div>
 <div id="wall"></div>
+<div class="box" style="margin-top:14px"><p class="boxh">We’re here to help</p><p style="margin:0 0 8px">Stuck on a search? Ask the Library using Chat on the Library website, or explore the Business subject guide.</p><div class="row"><a class="btn" href="https://www.library.unsw.edu.au/" target="_blank" rel="noopener">Library website<span class="sr"> (opens in a new window)</span></a><a class="btn ghost" href="https://subjectguides.library.unsw.edu.au/business" target="_blank" rel="noopener">Business subject guide<span class="sr"> (opens in a new window)</span></a></div></div>
 </div></section>
 </main>
 <div class="modal" id="logm" hidden role="dialog" aria-modal="true" aria-labelledby="logh"><div class="mbox"><button class="pclose" type="button" id="logx" aria-label="Close">×</button><h2 id="logh">Your research log</h2><p class="small" style="margin:0">The searches you build in this tutorial are saved here, on this device only.</p><ul class="logl" id="logl"></ul><div class="row"><button class="btn" type="button" id="logdl">Download log</button><button class="btn ghost" type="button" id="logcp">Copy</button></div></div></div>
@@ -521,9 +531,9 @@ const openWin=(u,n)=>{try{window.open(u,n||'_blank','noopener')}catch(e){}};
 
 const BADGEIMG={"b1": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAADmElEQVR42u2bvW4TQRDH96wVBbJkDtLQYPd5gNBQRKkQj5G3CKJC4S38GIgqokgTHoA+oUmDbEWKKGhCEY/ZrHdmZ/brfHc7kiX7Pvbjt/Ofndv1NS9ezVW1R9NdN2C9bI7ge3v68GOUMAwIH4xjnULRXUNoTx8+2TDWy6YTIE3JmLEBsQPBcd1npdTX0l5SBIbpDTYE8IZNx20gqiSUrDBISVx9VOrnl8cfh2f/vxNQcgPJAsMbF8zOH56p9u35Ew+xgZSSTnIYVFywQTg6vFNeSekkg8GKCw4QL1+/2163ur3sFEo0DGlccEGwDYOCSCdZPImCgUkCiwsAATorqKdIPAmC4ZUEERds+3ZxoZRS6v3JiQhIDumIYHCyRywumN4AACgz4Zj354TCghEbF6AjHAgcILniiRcGOVVaIMy4YAdDKQgMiGTWkcYTEgaAkMQFFwgXDCxGuKDBtfYMFCIdCggKwwWCmy/4vMIE8ez5G6WUUn///CKhYEACoKBAtCB4svOF+7sbb6cAgg8KVvZ0Nt+JJ9AmE8pmOYDVx4lIwJu4gIG4v7vZNtbVKQyEC4otIxuqCRzaAu3hdj4chiENs2IbQgqjYJmQXfVC20KA8GEYj9jUCKU0XyKWejDEMikFogsLkslQLVom44ThkMnQTKeUCTWd+q6TBFG4n5p1RicTCdS0nrGVyTmdqX5fFAHRHl/X2SQndJ1LJjlGLrfnZd1rXf92A2kPFuQ57N72YKHa4+tsQCaqWoVRYVQYFcb+zSYwM0jPUed7ObWWykSrTCqM/Bmu7kMje+EZ5t5FjvUFn6WuL9ozprP5k4Xh0kBcg1IUBmznwd4JNKb0arkLArXVmFwm62Wzrcj+B850Nk82SlIQq9vLKBAiz8B2qKR/SUplK2LJL3R7UXO9oe/GAaRTFravxh3MbEkXtpIF5+DjO+66ppcPahgI8yEMfmPHqXtHk46XBtGbZ5MSIHoDg1pNHwUMu/MlgOjSHbI7Be6PHXcBySUZndO1pecwANxyO4PhGkWXJ1DXU+Vg0y8nnoQC06EgsJxAkkOE5BYcrwqV0iS3JPY9t8gaMzhyiMktJHLrfGp1ycWcSbgNpWKEqxys3uIwUuUEseXE5iI6dPRT5AQh5fhmjphcRMfKgZMTULlCTDmpcxH5KxYDNhaMPq9ySYz1WtaA+hv2WpYFZBAW9cLe2Kz+JaHCqDAqjAqjwqgwkto/IIOtkDCzIkMAAAAASUVORK5CYII=", "b2": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAADwUlEQVR42u2csW7bMBCGaUPwYBhwnRYIsth5gO6dMnTy4DfI0jfI2iHoVHTo2jfo0jfI4KmDp+59gMSLYaCwESDw4KmDTZei70geeSIllTdZCkVRn/77eSaTdF69nogchyhSD2A7vXwnP4/m61//JQwFwkw5lxRKkRrCaL7+pMPYTi+TAOnE9IwjiDMIQLvPQoiH2CqJAkNVgw5BquH44DoQERNKpTCMKfH9ixA/vh0Obu/+fTZAqRpIJTCsvqA+/O2dGH24LylEBxIrddhhmHxBBwE88Fl/MVOHDYaTLwAgLq5uTu02q0VSKMEwqL4AQdADg4KkDpufBMHAUgLzBQzCy/OTGAwnIBAClGCVeMGwpgTiCzqIl+en0rEOJHbqkGC4VI82X8BA1AGKEwxOXzBBsEHxSB2Sn1hhGKdKDYTNF3wDg2JTCdVPjDAkCE5f4ALimzomICgMCESoL+x3SxKAXn9cBRQUSEEwz0p8wRT73fIMiOxbhXJxdSM2q8VpTCqU43JABesZii+EpAT0xqkK0msTORYJBVIJHwwlNaryBWpgKjmkx4IMxB2G8hUbGhDFDzjb9vpjEIpPdKlpEgqCOzjv7ZUmWMw/vo0OY/r1N1tf3dA0qUNwqSMoTdoWXc40aXoUqdLElOspvMer6BLze7abb39el0vn948NUYZDmnA5O+cMkSxNKPLmShNOcEl34VOnRdjU2vJIpoxUM0ZWRoaRYWQYGUaGAYdtTTXq1Nrrj8V+t0xWRteuzpBvJ+YSIJciWGAMhpOzlXHuATbKM0JXpDliMJywjAOEof4KMxSb1aK0I841GA4IcmymPRPs+Qqk4czQ0eEb53wtNqtFaUNJDizGphLl1xW0mMk2+p5raeMZ23VvY0Cb0IVNAW0MbCO68Lmo4YrgmVq3fx7LsN5cn87Lz/oxdI16Th5D1+vX6veknK+kzsAeGoMH/RwC4HI/W7+ufdb+uwmkgtqX47rEbW/VtT2mFuh6rF/K/aKnCbU95BNYe6xf6vhq/RU+JOdrkSaYPG2O7/LmbLMR10xChmGTuGt7/Tx27Ho9l6qC6wzXWsDl7WHtKTVIlDrDJGmXOd9mcqb2VKX6mmht10BTGGlBGRw2h7uc961VfPrxrTW8DRSTvasfUORLfVBq/8nTBDNBrvLc1n+wgbq8LYo01TfoU0rb7ktVSBFqaNRawlRjuNQq1BqEzTPavNpFgtHGVS5bnP0lkm11vEXxYFwd14C0OqA/zerkf0DUgHI8w8gwMowMI8PIMJoZfwFP6c07PTPE7wAAAABJRU5ErkJggg==", "b3": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAAELElEQVR42u2bsW7bMBCGGUPwYARI7WbJYmfOC3jSExToC+QJbGTN0qBTES9dC/cJ+gIF+gSe/AKZYy9eAhsGDA+eOkRUaZpHHskjKbk6wIhsXSjep7uflChdfPg4YI29W5a6A5u7pyHf7r48z1P25SJVZggQPgk//0kJJUsNofvy/FXYV/5NASRqZhQgTiAo/L6lyJIoMMRskCHwbCgCl4FELZ2gMLQl8eM3Y9MivvHw37YGSmggQWAYdUEMfjxk3YfPRxkiA4lVOuQwdLogg1AEfNJezNIhg4HSBQWI3k1e+q1Xs6RQvGHY6oIKgmwQFKB0yPTECwZUEpAuQBB22wW7vBoogVhA8c4SJxjGkgB0QQax2y6OvstAYpeOFQzM7NGkCxCIKkBBwaDUBR0EExSH0rHSEyMM7VApgTDpgqtBUExZYqsnWhgchK8uHPZL8BjtTr/c1vmpALuUjg4ICEMFwlYXxLRmjLHN91/v//N4r89GjR8BFBBIZiGeVrrAzzIPTBWsHLDsq/Jbr2as3ekflU7vJmfr1azskwiluB2AirFlVbyFLkAgdtvFkTaoQEBgTL7yflmDejd52R9s8O4whNIQDyxDOOyX2tr3mu0WQPgxZPhi31yA4GFM1boDQcBkhQ8QUXBVUMLf9hsPGXvQD5ehIEACe9gvj0YkH3MqE9l0Ylkn8y4TG5t9+UnqL2pIXBg8O5BqLwfFAxO3QwCMoxmaMjFZPhk5BZhPRlFhkJWJaVapg1M/zTCUSQqzOQHRRhM+tFF3Dmvxh9Yp3Y1oGx0wlRQVCPsyIQBALYiUU/9WzHTmIDACGnMUcZuOe5jNCCJnUazRp8UqaPlkVH6gLOFiTakZZJnR7vTZYb9k3cd70muUmHOSIJkReogNkRXkmsE7xzMEc+2CAafyoQYRLDPanf5JZ01BQ/vl31Vt12I0kZcBoIBFvQk9sarEaAIFxH837T+reQYmsJiBk2eGaoG4zuZdJlUAcnk1IOmHU5nw5Ty+dsI7QnG73vdE6JYayTNjc/dUHkheS6U6Qy4g1quZFwirzIBWqGQgsWytuXR3XV60fiTBlXoKExaiUY8kZIbG5mJZcCiu5GOa8FA++mGVFoLunDdm3aG3V+X3zdtr+cH6yT4OWWK8bxl8BqoKuHt9e/RXG8T1bfnxBZIcBg/CFHjoQCt1bYKFdvYwMOVQBSCVuweKBVf7q1aVqNpoSWhQWcyzDI0iWL/KZ4Zc4zwAVe2r9kH+pnYg/+SZIXZETH1VB+XSgPxN7ej8z0ZAUxpJZkAih/k9RPvJy0SVptj0dh1usbPb6GWSasJEedwsRMdMI4RPOUBDMUWGZBQAbOYIvv6mdqLDqNPdrqAw6nCXy9XQby+K76rVzOhe2FMAqZWRv8r5v1gzHW9gNDAaGA2MBkYDg9T+Aufm9RciZmELAAAAAElFTkSuQmCC", "b4": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAADgklEQVR42u2cvW7bMBDHZYPoUBhwnAQIslR+gcyeAqNTUPg5OsRP0KVTFj9BO/Q5gqJTUXjK7BdwuhgFChsBgg6dOsRUqTOP5ImfknmLLVGWyJ/v/rwjnfROzsoi24ux2B24+rCe8PerxfghZl96sTxDgDATTt/HhMJiQ1gtxh+Ftuo1BpCgnrEHcQBBct1dDC8JAkP0BgiBe8N+4BBI0NDxCkMVEp+/rotPP17ez6dF9V4FxTcQLzB0uiAOfj4titt345qHQCChQsc5DJUuQBCSAR/cL2ToOINhogsyEKeX19V1280yKhRrGFRdkEGAhkFBQseZnljBwEIC0wUMwvPTYzEYllIgBCjWXtIIhi4kMF2AIJ6fHmvHEEjo0CHBMMkedbqAgUgBihEMl7qggqCD0iB0SHqihaGaKiEInS40NQyKzkuoeqKEwUFQ84UIxZ9x6KiAoDBkIFS6kIIZQkGBMOqDMF3grrv7vQ42+NH5/z5sN8uqTyKU/XKA0f36lIdzXTBJnELb6eV11Z+m3sooIHho6PKF2FA4EFnYOIEhlti+QHC3h6YLPd4HWX7ibdlvPi2K24Vfj9h9rwMZvQ2nQf0mYdJV69uGSZfMKkxC6kJSMFyGydXD+3piNPnSLs+IHSbQo3x4Ejnpimm7m4tid3ORZ5NWh4lMKFMQSWeziU0VmVJ160Qzum4ZRoaRYWQYGUaKUys2napqEdX6xejbr3bCwBIsVeLVtC1ZGFiJ7stevX6THgzeqb9/frYOghMYg2F5sA7qo5OtmU1sV6Rd2GBYOukHA4XVxORDfPeM71HwjoTeP6H+dEE2TnGrkYELZqaV6GoxLrabZW1DKSQUys8VgM3geDiQ3slZie62H4OJm9FMtQbRdYNJIaNkjh3ziHgZqJiMiW38vCzDlLX5TOq81iYQwOh8XL3C8+LAZe3Yca5a2+gZroquUKvqUWBg+uHq+hwmqXtGqFkgeRjY4OF52+OgMLB8AcsLqOepeQe8Fpt6Vc+z8gxsnpfdHMsXsOupeYcMANU7WyOgMbXFSjOoAhlaUKnPYyG/xdDfeuvDhJpUiWJpW7cwG3dTVaamM5NshjC5BxRyGQhq/1hTV9PdmJIfUNqa5i+NPeOYVruUMI5hlQuz6i+RTFfHO2j3tdVxITwmx0ZC3Dfp5X9AlNczMowMI8PIMDKMDMOT/QMC2lbxuD6DTAAAAABJRU5ErkJggg==", "b5": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAAEQ0lEQVR42u2bv2vbQBTHX4zoUAJuUmHIEgVi8OSOMWnx0rGBDh1NM3ToXMjeqXuhc4cMKfkP2n/AFOOungwOVFkMxTgEQoZMHeoTp/P91rs7ydWDEEuRL3cfvx/fd7K2njxNoLZ/FoWeQDK87JHXaX8wDjmXrVCeQUE4oU5/DwklCg0h7Q8+Un/LfocA4tUzViDWIHCu+xTCS7zAoL2BhUC8YbVwFojX0HEKQxYSX6Y/4fOfFAAAzlpJ9loGxTUQJzBUeYFe/FkrgQ+dFzkPYYH4Ch10GLK8wILgLHhtPJ+hgwZDJy/wQOzu9bPrlvNhUCiFYZjmBR4E1kRQBKGDlk8KwRCFhCgviCDc3aaw3Uy4QAygFPYSKxiqkBDlBRbE3W2aO2aB+A4dIxiqKsF+Yqb26PF+UChaMHTzApnUzeK3EYSd+GANCA+KRegY5RMlDFmpZBMkyQu2MMa/RtA7Os4BkUFReYlpPpHCICBM9UIRGACgBcQ2dGRAhDB4IFR6gUyuKAwRECQoQiCRQfI01gum1js6zh0/3F+vASEViIZCPggyJxqKSWJvmEyW5AVsEKaexCvLu3v9bD62VS0yAUFCQ6UXiH399kM57vu3r4RA6CojA8J6CQHCCxsUGHSLrQOCXqhr40GxMeMw0QVRRbMKEx9GQuTh/lqoVIPBsAGhkzN4YaXKFbwq4xVGVk0sFmcjy2XJL+0PnABplCVMRCDS/iD7Yf/OCyEvMHzlC7JQAmC6mMHN82cwXcxyUFwAcRomqpzB5ggaxHQxW7t+uphBJ25nGgJj28BbNcHQGa3Xb7hAXFjpwkTkFSwUtrp4DxPf1t1/mVeV3Xcwmpw7+3+NMsPYbiZwNbmAq8kFAIBTEKWEkQwvs5wwmpzDYfdU+R4svVFaz6CT5GH3NPOKTtzOVZ2N8wzSvrMaohO3YTkfwnI+hE7czoEI2pv4ALITH+Q0hKrqYDdtTmCoGi2d8iqCQYcGdm9S2tKqygfBu1ZfWV0kqFztY1RCdPkAUBnR5dsKwSi6AbtRMMoCZLuZoMzDKmeQ23nkHgWZiO/dctNbjeieQQsi+isCmJ+QDQiiVG1BGHmGqO6zQHzZUrKHYduzGH8lwWVv4Eq46X4lIVIMNqbDgkDB7hZdbQVQILS+rBJp0B2vBj6RdZxsXyK6kSy6nn2PaBzV+LJ1eFGg7ILIsWhyvOvp98nGIedpKEUbw1qBuvIMnnvbnDcdv5QweG6uGyZFxi9to8ZLjpjmenz0Fp79BGWVQ7VY3rWuPSTCAMA7tgkREQCT46AwRCXR5rxuaKj0SinCBMPDbBMxRvgE0RmuE2FpdIaLUomlV4LIcexSKQuTjZHjGIvA1B+Ry4ViubGqcmB5iDOdgaUbdPVKsJxRpd0upzCqsMtla9pPL9LPqlXM8B7Y4wCplKE/yvm/WL3tV8OoYdQwahg1jBoGqv0FM7T43ROlDd8AAAAASUVORK5CYII=", "b6": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAADcElEQVR42u2bsW7bMBCGmcDoUBhQnXbJUgudu3nolClT0afp0iXoVHTJ0qcpOmXK1MFb50LukiWwIcDo0KlDQoE58UgeeTrRFg8IYCsERX26/78TBZ+8eLlUJR5iNvYCqnXzTn9uV/XPScIwIHwwjo0KZTY2hHZVf4YwqnUzCpATSc94BNGDYBn3RSn1XTpLRGCY2QAh6Gx4vHAIRElCGRSGSxLXvxv1dffw+Wqhus8uKEMDGQSGzxfMi79aKPXpTf0kQyAQKemww3D5AgRhueDefJLSYYMR4gs2EGfnF9247d3tqFCSYVB9wQYBBgYFkQ6bnyTBwCSB+QIGYd9u1LxaWoEQoCRnSRQMnyQwX4Ag9u3myXcIRFo6JBgh3aPPFzAQOUAJgsHpCy4IPigR0iH5iReGq1RCEKYvmAtPiWfPX6NQfFlC9RMnDA0ixhc4YXBKxwUEhWEDQfEFvdBvv5poEB/f1h0MRj9BgZwSzLPnC+2qVmfnF94qwRn7dtObX59fr8nX1bLsZ5i+EFIqzTtsBswW8/+hmQR7E1Oe7aomQSDDMKUhmQk+IFA6HZQIIMEyMR+xcwDhk05MnFJlkhsIzoiSCTV8PpBScTgjWSaTzIyumggv8N/fP6TmLHuZpJTWHzc3zrnfX14WmYzqGbZqMlnPGLuamHLwSafIRLqajBlDZUO0Z5TMYIghnlonLZOsDLTIhCkO5UGtVJMikwKjwMjKM2CPkVJSseDYy0iGMa+W6D4o1wIPSia2N1zSMa+WLOuIygz9Ok+/o9ALkd4tp75qZM+Mat10J4Ivl7nuUAyI7d1tEghSZsB3mPBOSMfWsVGMrZUFRizpnCIE0Ixzslwj9GZGV5PdfdP9+Y7bxsCxqfPYjotUk919oxav6t537DgcYwZ1nuzb8ZCF2i4y9kZgc6eCG/0R3rw4mA0UqBywRWHYFoot3gXGJrdsZDLEwjikKZIZ8M7ohWHHj/4RPiS9sWMmvJA5sPG+72IwbBngK62+8b7STfGPGDCsfQbX+NB5QuGKGii3mXL1DaPIJKTeUyHZ5hnaoFkMNETHIQ1VzHk5gQy2O35oZTW7dtwHkTJWtOmi9AHUPiO2jxDrM45ht4sFxiHvclEi6GdZR3S9cT/LAkCOIpJ+sDe1KG/hC4wCo8AoMAqMAoM1/gMBQbKLLCyp3wAAAABJRU5ErkJggg==", "b7": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAAEEklEQVR42u2bsXIaMRCGZeaGgvGME5PGDaRw6/oqV5R5Ab+AC/MOqfIOScEL5AVSpqKipk1h3NA4eJhhXKRKEXQj1ru6XWlPOsht47tDFtJ3/79adHD2bjg2XfyLIvcAbhb3pT1elrNFzrGc5VKGA+GTc/lHTihFbgjLcvbZea36mwNIUmXsQbyBgLT7kkMlSWC4aoAQrBr2E4dAklqnURg+S3z79d18/f3TGGPMdDipjn1QmgbSCIy6vOBOfjqcmIfruwOFQCCprKMOw5cXIAhkwm/6S2kdNRicvICBuLy6rdpt1vOsUKJhSPMCBgEGBYWwjlo+iYJBWYLKCxSE3XZlzi/GKBABlGiVBMGoswSVFyCI3XZ1cA6BpLaOCAaneqzLCxSINkBhwdDMCz4IdVACrCPKJ7UwfEslBFGXF7D48/pUHfcHIxGUOpVI84kXhgWhmRcgACogGC3r+ICQMDAQMXkBA+AqC7urGBgFKCSQQpA8xXkBA4ABtcdUHnD72SFQLq9uzWY9r9q7/ey3A/T3M9y8QFmCAoBNHvuQVveJ1va/eX06eH97bKFgKlGD4Q6akxeoT6VcEBww9n2hSmwbKZAetyE1aGqVkICYDidoH1x577Yr0ZIdDQMbdN0AuCAw0BYEF4hG9EJsIm0fCuLl+TEpkGib1LWX2gSCSBlRNtFWBwTx/sNHsn44epssy1lrQSS1iZ2srVPaBiKZTZblzLw8Px4kxLaBSGYTd5IuEAu3DSCS2MSdHATycH3XGhBim8QEBgQunxIQ1N5Hq2D4BgmBuBbigmiyAGtMGdSgIRAJiJOxCQVEAsICbsIijcGwg/VJ+mZx3xpFNK4MDpAQ2zWlimQ2iQWSAkTjMNzBhwBZlrNkIJIooz8YHViGC8VtlwKEMQm/4NYfjKrNXGwXm1JQKhBJYbgTw6DkhKBiE+yBjtQ6mCVygFBRxvnFOHhnWmvSoTdFBYZ9nGefUdjBaGzXx0LwPWpUt4lbObpfEbCD07pLUhCb9TwKhEgZ1JIIgaSKjedJfmiRV3DVcOzBAVRodtbW4N5MlToD7ljB7T14zd3csedUH75+YMBNo+RLK5wcdZ1q5wNgIVH9xE6+FZs7MaENQFUZUOIxg5X2o/W+qjlDaoc6sNz/P3mbYMnUl6xbZRNqFaDsw7GVqxBfe98KlC1nSF+jAFDnnPZZlRFTQ2jVIpStQkEVoSBiaghJP/AaR22hSbynlfSa6CdmZcq2tHKyfUgNQamJW7Jnh6E1QKrm8NkkVkm9JtWgsUxL+pa2V1FGSAmOTVRac3BqixiFFBp2qKsVpLWItB+uldRgnMJulwqMY97lkgTrZ1knNN+wn2UBICcRUT/Y+9+i1yHoYHQwOhgdjA5GB0Mz/gKIT5++CRGPygAAAABJRU5ErkJggg==", "b8": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAADv0lEQVR42u2bv27bMBDGGUHoUARInQYostQCOmboVHTKlKEw8gRZCr9Ip75I0KVPEBgZMnkyOnXoWMDxYhQoHAQwPHjqEJ96ofnvqCMpy7wlsqRQ1E/3fSRF6uDV677I8RRl6gpcD6YfYXs4qiYp63KQKjMQhEu0+yYllDI1hOGo+oKO1X9TAImaGRsQWxAU531NkSVRYOBskCFANmxuXAYSVTpBYZgk8ePbVPz6/rR9diXqbROU0ECCwLD5Ar75syshPnyunmWIDCSWdNhhmHxBBqG44a3yYkqHDYaLL6hAHJ+e1+ct5uOkUBrDoPqCCoIcOiga6bD5SSMYOknofEGXCTjgOD4Wy0+8YNgkofMFGwhVxsSUDgmGS+/R5gvyTT58elPv693+ES9evhWHR31n6XBCcYLB6QvLx3shhBDr1UwLA0KG4iEdkp9YYZiaShmEyhdkCBAAQw4MwwbFliVUPzHCABC+vqCCYAKiAqED4isdExAtDBUIqi+YQMhQTCCYoWiBlATzJPtCiICyMZTj03OxmI/rOmEom9cB/O8zsC+YJKHzA1t2kKAogECWDEeVMkvYYGBpmHwBbmp0dxcsOwYXF2K9momlQjpQNx8gheuJeIidEoSq/OXjPYs0C6pMYnlDivCSCTWlQ2QDtRWKIpMYILjLYmtNxMj/Yu9/Pze0n+8qr3NCRRFaJrsUQWXSWRiq1qRrUcaUiYv+Y3pElgmXTDj6Bp2QyT4AKUSOeJnh25tMkVE7nRmc45JkmdFWHylCPKnQg6pQ5ZchUne9mgUHwi2RYDKBivq8C40NIJpnhK58bk3aCkM1obPXY5M2ADk86rPUw8szYDoP5iigIrHfllOnGtkz43owrS8kLzjhekI+IBbzcSMQpMyQZ6hgW55z1a3I4Y7FarZ1TZclCqbwXpJguqDvk6GENLtuO95sSYIMZHMBJyiUmW+fgPK5F6uUDk9gglf7Yygq6bhCePj7//96J5V2n0+mULKB7BlQmAqKak2ECwh8s/C7d1JtHfOQjPcCt5J40S0oOEtiB/fSx9KzEhO5mTV9P2KTCYOHsCyKLRs+Ga2f2EKWSQMIJF8IOmqVpHOZoDfO9h1Kq0atkCGcEmrN+wwXieDf1FZkZ2Ho+hC2/oZvv6O1MHT9Ct3+VFnSKs/YS5k0kVUnYFD7FXsvk1RNatKmFT99l1amU62Jrl+hu8lURhoMRoy3XTsBI8VwniNYP//Grwh3bZDGDgMBiRKt/Ra+C5EnnjOMDCPDyDAyjAyDNf4BhlWt2oicmOMAAAAASUVORK5CYII=", "b9": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABNCAYAAAD9wNkDAAADvElEQVR42u2cv2vbQBTHZSMyBIMrtxC8RJlKh+6djMnUIX9Jhm6FTpk6FbJ16F+SIVMJnrp3KJnsLqYQbAKhQ6cO1inn53e/372TZT0IkeWTdPfR+37vdBel9+JlmXWxiTx1BdZ3i3diu5iWPw4ShgThQtqXFEqeGkIxLa8gjPXdIgmQHqdnVCB2ICDlPmdZdsOdJSww5GyAEEQ2VA2HQDJOKFFhaCXx60OW/fm4+XBy/bytgRIbSBQYRl+QG39ynRVvvm5lCATCJR1yGDpfgCCQBu+cj1M6ZDCsfAEBMRpP6nKr5SwplGAYrr6AQYChgqKQDpmfBMFQSULlCyoIT4+LbDAsUSAOUIKzxAuGURIKX4Agnh63GwmBcEvHCYbN6NHkCyoQTYBiBYPSF3QQTFA8pOPkJ0YY2q4SgDD5gm+ooJiyxNVPtDAECEpfoALiKx0dECUMDISrL8hpTRW661hCUQLJHcxT6wuqhq+/n5GBKM7n6HVG40m2Ws7qOslQqukAq/P3nWpT+YLNwIk7RuNJXR/bxvtP7tTSKKP5AqWMiikuGxoY0iO2DsTR8Wm9/e/v7+3Cr79tft9fejcWO7+oA2ayLuEsk6ZmBEX03WXS3uiHyoQrivN5g2AgMkkZO37URJnASm7d0fvLIPM0GWpjZKLtRYgzQpyfEgS5TLiA7E1vgt2tUPODxx8dn5JnBcmgK3aGCBAxGh8mkwCD88kOju6UFQYEYttAuRxHVrjJhACIkIzLHecCwQpDbpiNj3BCSAIDyxJ58ofTLJN5xr4ES2boZIH5B1a+FV1rlxlI3H56633s+y8/O89obWZw3d1kMAbD0moeNFVXyS6T0BlpihgMS5J6eGWGWNUSaxSiItyz5a7rr16ZIa+8I9/VF4JLfVR3yAfEajmzBXEh/726HDsLz6qV9zaFagE6NxzUOhC6ddg85OA9zIi044z1w/OzR/HqrN4ntuXPsKz8GZ5j7wZdqkYrs7ACIMrAshicgxyOm0AeDAwOEGwwQtKbCwQbDOgFTQQR3UDlHkEGgvUccgbJEGBW7W1vAiuv2lbt48wKL5msH+b1j8oT4He25eWyNudwqQd5ZriOG3TlsYEWzAYoK9OgLamBhlTA11Rj9lx57Eq4Vg4zVi7IZDBg2pr225poaC/GJpPYzwrcEs5DiHN1fXD8EaseOQVx1fggdL+rnELHKUYYbZzt8oLRplkum0DfRNLNjrck0LeRTK9ltTJUr2X1un9AxDyf0cHoYHQwOhgdjA7G4cR/ZHC2LMGwpswAAAAASUVORK5CYII=", "coin": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAgElEQVR4nGNkQAICwvL/GdDAh7cPGWFsRmSF7w8+RFfLIGgvD9fAhKFQ5QSK4vcHH8JtZMJQeMcCw/QF6RANTHARJIWC9vIYGuDOYGBgwGoibsVEAKyKkUNl4zIkxR/ePmTE5UaYwoSZkOBDCecF6ZjhDFPIwIAUKTAN6IqRYxAArp03Zf9J6dMAAAAASUVORK5CYII="};
 const COIN=BADGEIMG.coin;
-const ACTS={1:['Breaking down the question','Lock Cracker','b1'],2:['Business Source Premier','Business Searcher','b2'],3:['Scopus','Mind Reader','b3'],4:['Passport GMID','Data Detective','b4'],5:['Grey literature','Report Hunter','b5'],6:['MarketLine','Company Analyst','b6'],7:['Evaluating sources','Source Checker','b7'],8:['Using AI responsibly','AI Ace','b8'],10:['Quiz','Quiz Champion','b9']};
-const ACT_ORDER=[1,2,3,4,5,6,7,8,10];
-const RQ='How can Microsoft build trust in Copilot among your consumers?';
+const ACTS={2:['Breaking down the question','Lock Cracker','b1'],3:['Business Source Premier','Business Searcher','b2'],4:['Scopus','Mind Reader','b3'],5:['Passport GMID','Data Detective','b4'],6:['Grey literature','Report Hunter','b5'],7:['MarketLine','Company Analyst','b6'],8:['Evaluating sources','Source Checker','b7'],9:['Using AI responsibly','AI Ace','b8']};
+const ACT_ORDER=[2,3,4,5,6,7,8,9];
+const RQ='How can Microsoft build trust and encourage responsible adoption of Microsoft Copilot among consumers?';
 const DEFQ='(trust OR distrust) AND (Copilot OR "generative AI") AND (adopt* OR acceptance) AND "university students"';
 const G=(function(){
  const KEY='mk-mark2051-v1';let st={done:{},bonus:{},log:{}};
@@ -593,7 +603,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
   {n:'Adoption',t:['adopt*','acceptance','"intention to use"','usage','"continuance intention"']},
   {n:'Your segment',t:['"university students"','"Gen Z"','"young adults"','"older adults"','parents','"small business*"']}];
  W.forEach(w=>{w.i=0;w.p=[];w.t.push(OWN)});
- let adding=false,opened=G.isDone(1),focusSel=null;
+ let adding=false,opened=G.isDone(2),focusSel=null;
  const q=()=>W.filter(w=>w.p.length).map(w=>w.p.length>1?'('+w.p.join(' OR ')+')':w.p[0]).join(' AND ');
  const qh=()=>W.filter(w=>w.p.length).map(w=>esc(w.p.length>1?'('+w.p.join(' OR ')+')':w.p[0])).join(' <span class="opk">AND</span> ');
  const at=(w,d)=>w.t[(w.i+d+w.t.length)%w.t.length];
@@ -613,7 +623,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
   <p class="lockst" aria-live="polite">${full?'🔓 Unlocked! Your search is saved for the next slides.':'🔒 Pick a word on every wheel to open the lock.'}</p>
   <div class="out"><span class="l">Your search</span><code>${qh()||'Your words will appear here.'}</code><button class="btn small" type="button" data-a="copy">Copy</button></div>`;
   if(focusSel){const f=host.querySelector(focusSel);if(f)f.focus();focusSel=null}
-  if(full){G.log('lock','Your search',q());if(!opened){opened=true;G.complete(1,true)}}}
+  if(full){G.log('lock','Your search',q());if(!opened){opened=true;G.complete(2,true)}}}
  host.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,k=+b.dataset.k,w=W[k];
   if(a==='up'||a==='down'){w.i=(w.i+(a==='up'?-1:1)+w.t.length)%w.t.length;focusSel=`[data-a="${a}"][data-k="${k}"]`}
   else if(a==='add'){const c=at(w,0);const j=w.p.indexOf(c);if(j<0)w.p.push(c);else w.p.splice(j,1);focusSel=`[data-a="add"][data-k="${k}"]`}
@@ -636,7 +646,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
   if(!pr){fb.innerHTML='<span class="no">Not yet.</span> Which filter keeps only peer-reviewed articles?';return}
   if(d!=='5'){fb.innerHTML='<span class="no">Nearly.</span> Check the publication date. You want the last five years.';return}
   if(st.some(v=>v!=='aj')){fb.innerHTML='<span class="no">Nearly.</span> News, magazines and reports aren’t peer reviewed. Untick them.';return}
-  fb.innerHTML='<span class="ok">✓ Spot on.</span> Peer reviewed plus a date range gives you recent, quality research.';G.complete(2,tries===1)});
+  fb.innerHTML='<span class="ok">✓ Spot on.</span> Peer reviewed plus a date range gives you recent, quality research.';G.complete(3,tries===1)});
  $('#bcp').addEventListener('click',e=>copyText(myQ(),e.currentTarget));
  $('#bgo').addEventListener('click',()=>openWin(EB+encodeURIComponent(myQ())));
  $('#bsv').addEventListener('click',()=>{const n=$('#bn').value.trim();if(!n){$('#bsfb').innerHTML='<span class="no">Enter your result count first.</span>';$('#bn').focus();return}G.log('bsp','Business Source Premier',myQ()+'\nPeer reviewed, 2022 to 2026 · '+n+' results');$('#bsfb').innerHTML='<span class="ok">✓ Saved to your Research log.</span>'})})();
@@ -646,7 +656,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
  const sync=()=>{$('#sq').textContent=myQ()};G.onChange(sync);sync();
  $('#schk').addEventListener('click',()=>{tries++;const v=[...document.querySelectorAll('.sa:checked')].map(x=>x.value);const fb=$('#sfb');
   if(v.length!==2){fb.innerHTML='<span class="no">Pick two.</span>';return}
-  if(v.includes('psy')&&v.includes('bus')){fb.innerHTML='<span class="ok">✓ Great pick.</span> Psychology explains consumer motives. Business covers marketing and adoption.';G.complete(3,tries===1);return}
+  if(v.includes('psy')&&v.includes('bus')){fb.innerHTML='<span class="ok">✓ Great pick.</span> Psychology explains consumer motives. Business covers marketing and adoption.';G.complete(4,tries===1);return}
   if(!v.includes('psy')){fb.innerHTML='<span class="no">Not quite.</span> Which subject studies how people think and feel?';return}
   fb.innerHTML='<span class="no">Nearly.</span> Pair Psychology with the subject that covers marketing.'});
  $('#scp').addEventListener('click',e=>copyText(myQ(),e.currentTarget));
@@ -654,7 +664,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
  $('#ssv').addEventListener('click',()=>{const n=$('#sn').value.trim();if(!n){$('#ssfb').innerHTML='<span class="no">Enter your result count first.</span>';$('#sn').focus();return}G.log('scopus','Scopus',myQ()+'\nPsychology + Business, Management and Accounting · '+n+' results');$('#ssfb').innerHTML='<span class="ok">✓ Saved to your Research log.</span>'})})();
 
 /* ================= P4 Passport ================= */
-(function(){if(!$('#q4a'))return;let a=0,b=0,w=0;const m=()=>{$('#m4').innerHTML=a&&b?'<span class="ok">✓ Both answered.</span>':(a+b)+' of 2 answered';if(a&&b)G.complete(4,w===0)};
+(function(){if(!$('#q4a'))return;let a=0,b=0,w=0;const m=()=>{$('#m4').innerHTML=a&&b?'<span class="ok">✓ Both answered.</span>':(a+b)+' of 2 answered';if(a&&b)G.complete(5,w===0)};
  const wr=()=>w++;
  mcq($('#q4a'),{q:'Which segment trusts AI tools the least?',shuffle:false,opts:[{t:'Generation Z',fb:'Not quite. Look for the shortest bar.'},{t:'Generation X',fb:'Not quite. Look for the shortest bar.'},{t:'Baby Boomers',ok:1,fb:'Right. 24% agree, the lowest of the four.'}]},()=>{a=1;m()});
  mcq($('#q4b'),{q:'What does this chart <b>not</b> tell you?',opts:[{t:'Why each segment feels this way',ok:1,fb:'Right. Surveys show what people think. Scholarly research in Business Source Premier and Scopus helps explain why.'},{t:'Which segment trusts AI the most',fb:'Not quite. The chart does show this.'},{t:'How the segments compare',fb:'Not quite. The chart does show this.'}]},()=>{b=1;m()});
@@ -669,7 +679,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
   {t:'A think tank discussion paper',a:'y',fb:'Think tanks and associations publish their own research.'},
   {t:'A textbook from a commercial publisher',a:'n',fb:'Textbooks are commercially published.'},
   {t:'A university research centre report',a:'y',fb:'Reports from research centres are grey literature.'}],[['y','Grey'],['n','Not grey']],
-  (left,wrong)=>{$('#m5').innerHTML=left?(6-left)+' of 6 sorted':'<span class="ok">✓ All sorted.</span>';if(!left)G.complete(5,wrong===0)});
+  (left,wrong)=>{$('#m5').innerHTML=left?(6-left)+' of 6 sorted':'<span class="ok">✓ All sorted.</span>';if(!left)G.complete(6,wrong===0)});
  const on=new Set();const gq=()=>[$('#gk').value.trim(),...on].filter(Boolean).join(' ');
  const draw=()=>{$('#gout').textContent=gq()};
  document.querySelectorAll('[data-g]').forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.g;const p=b.getAttribute('aria-pressed')==='true';if(p)on.delete(v);else{if(v.startsWith('site:'))document.querySelectorAll('[data-g^="site:"]').forEach(x=>{x.setAttribute('aria-pressed','false');on.delete(x.dataset.g)});on.add(v)}b.setAttribute('aria-pressed',String(!p));draw()}));
@@ -685,19 +695,18 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
  nav.innerHTML=S.map(s=>`<button type="button" data-s="${s}">${s}</button>`).join('');
  const ask=()=>{if(i>=Q.length){$('#mq').innerHTML='<span class="ok">✓ All found.</span>';$('#mqn').textContent='';return}$('#mq').textContent=Q[i].q;$('#mqn').textContent='Question '+(i+1)+' of '+Q.length+'. Select a section.';nav.querySelectorAll('button').forEach(b=>{b.className='';b.disabled=false})};
  nav.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||i>=Q.length)return;const c=Q[i];
-  if(b.dataset.s===c.a){b.className='right';nav.querySelectorAll('button').forEach(x=>x.disabled=true);$('#mfb').innerHTML=`<span class="ok">✓ ${esc(c.a)}.</span> ${c.fb}`;i++;setTimeout(()=>{ask();if(i>=Q.length)G.complete(6,wrong===0);else nav.querySelector('button').focus()},1400)}
+  if(b.dataset.s===c.a){b.className='right';nav.querySelectorAll('button').forEach(x=>x.disabled=true);$('#mfb').innerHTML=`<span class="ok">✓ ${esc(c.a)}.</span> ${c.fb}`;i++;setTimeout(()=>{ask();if(i>=Q.length)G.complete(7,wrong===0);else nav.querySelector('button').focus()},1400)}
   else{wrong++;b.className='wrong';$('#mfb').innerHTML='<span class="no">Not this one.</span> Try another section.'}});
  $('#mgo').addEventListener('click',()=>openWin('https://advantage.marketline.com/'));ask()})();
 
 /* ================= P7 Evaluating sources ================= */
 (function(){const host=$('#ev');if(!host)return;
  sorter(host,[{t:'A 2016 survey on trust in chatbots',a:'cur',fb:'Copilot arrived in 2023 and views on AI change fast. Look for recent data.',hint:'Look at the date.'},
-  {t:'A Microsoft blog post saying users love Copilot',a:'bias',fb:'Microsoft wants to sell Copilot. Look for an independent source too.',hint:'Who wrote it, and why?'},
-  {t:'A forum post claiming most students distrust AI, with no source',a:'rel',fb:'There’s no way to know where the claim came from.',hint:'Can you trust where this came from?'},
+  {t:'A Microsoft blog post saying users love Copilot',a:'rel',fb:'Microsoft wants to sell Copilot, so the post may be biased. Look for an independent source too.',hint:'Who wrote it, and why?'},
   {t:'A study on trust in online banking among retirees',a:'relv',fb:'Different technology and a different segment. Check how well it matches your question.',hint:'Does it match your question?'},
   {t:'A news story quoting a figure that differs from the original report',a:'acc',fb:'Always check the figure against the original source.',hint:'Do the facts check out?'}],
-  [['relv','Relevant?'],['cur','Current?'],['rel','Reliable?'],['acc','Accurate?'],['bias','Biased?']],
-  (left,wrong)=>{$('#m7').innerHTML=left?(5-left)+' of 5 checked':'<span class="ok">✓ All checked.</span> Run these five checks on every source you use.';if(!left)G.complete(7,wrong===0)})})();
+  [['relv','Relevant?'],['cur','Current?'],['rel','Reliable?'],['acc','Accurate?']],
+  (left,wrong)=>{$('#m7').innerHTML=left?(4-left)+' of 4 checked':'<span class="ok">✓ All checked.</span> Run these four checks on every source you use.';if(!left)G.complete(8,wrong===0)})})();
 
 /* ================= P8 Using AI responsibly ================= */
 (function(){const host=$('#ai');if(!host)return;
@@ -706,33 +715,16 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
   {t:'Search for each reference an AI gives you to check it exists',a:'do',fb:'AI tools can make up references that look real.'},
   {t:'Put your zID or a classmate’s name into a prompt',a:'dont',fb:'Keep personal details out of AI prompts.'},
   {t:'Use Copilot signed in with your UNSW account',a:'do',fb:'Your UNSW account gives your data more protection.'},
-  {t:'Acknowledge your AI use when your course allows it',a:'do',fb:'Being open about how you used AI is part of academic integrity.'}],[['do','Do'],['dont','Don’t']],
-  (left,wrong)=>{$('#m8').innerHTML=left?(6-left)+' of 6 sorted':'<span class="ok">✓ All sorted.</span>';if(!left)G.complete(8,wrong===0)})})();
-
-/* ================= P10 Quiz ================= */
-(function(){const host=$('#quiz');if(!host)return;
- const Q=[{q:'Which search finds articles that mention <b>both</b> trust and Copilot?',o:['trust AND Copilot','trust OR Copilot','trust NOT Copilot'],a:0,why:'AND means every result includes both words.'},
-  {q:'What does <span class="mono">adopt*</span> find?',o:['adopt, adoption, adopting and more','Only the word adopt','Words that mean the same as adopt'],a:0,why:'The asterisk finds different word endings.'},
-  {q:'Why put <span class="mono">"generative AI"</span> in quotation marks?',o:['To search the words together as a phrase','To make the words more important','To search for AI only'],a:0,why:'Quotation marks keep the words side by side.'},
-  {q:'You need peer-reviewed research on consumer trust. Where’s a great place to start?',o:['Business Source Premier','A social media search','Passport GMID'],a:0,why:'Business Source Premier lets you limit to peer-reviewed articles.'},
-  {q:'Which Scopus subject area helps most with consumer motives?',o:['Psychology','Engineering','Computer Science'],a:0,why:'Psychology studies how people think, feel and decide.'},
-  {q:'Where can you find survey data on how consumer segments feel about technology?',o:['Passport GMID','A textbook','A company’s own website'],a:0,why:'Passport has consumer surveys you can compare by segment.'},
-  {q:'You find a 2015 report on AI attitudes. Which check does it fail first?',o:['Currency','Relevance','Bias'],a:0,why:'Attitudes to AI have changed a lot. Look for recent data.'},
-  {q:'An AI tool gives you a reference. What should you do first?',o:['Search for it to check it exists','Add it to your reference list','Ask the AI if it’s real'],a:0,why:'AI tools can make up references, so always check.'}];
- let i=0,score=0,miss=false;const res=[];
- function show(){if(i>=Q.length){const perf=score===Q.length;host.innerHTML=`<div class="qtop"><span class="pxh">QUIZ COMPLETE</span><span class="pips" aria-hidden="true">${res.map(r=>`<i class="${r?'ok':'on'}"></i>`).join('')}</span></div><p class="q1" tabindex="-1" id="qzend"><b>You got ${score} of ${Q.length} right first time.</b></p><p>${perf?'Perfect score!':'Nice work. Every question is answered.'}</p><button class="btn ghost small" type="button" id="qzr">Try again</button>`;$('#qzend').focus();G.complete(10,perf);$('#qzr').addEventListener('click',()=>{i=0;score=0;res.length=0;show()});return}
-  const c=Q[i];miss=false;const order=shuffle(c.o.map((t,k)=>({t,k})));
-  host.innerHTML=`<div class="qtop"><span class="pxh">QUESTION ${i+1} OF ${Q.length}</span><span class="pips" aria-hidden="true">${Q.map((x,k)=>`<i class="${k<i?(res[k]?'ok':'on'):''}"></i>`).join('')}</span></div><p class="q1" tabindex="-1" id="qzq">${c.q}</p><div class="opts">${order.map(o=>`<button class="opt" type="button" data-k="${o.k}">${o.t}</button>`).join('')}</div><p class="fb" aria-live="polite" id="qzf"></p><div class="row" id="qzn" hidden><button class="btn" type="button">${i===Q.length-1?'See my score':'Next question'}</button></div>`;
-  host.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{if(+b.dataset.k===c.a){b.classList.add('right');host.querySelectorAll('.opt').forEach(x=>x.disabled=true);if(!miss)score++;res[i]=!miss;$('#qzf').innerHTML=`<span class="ok">✓ ${miss?'That’s it.':'Correct!'}</span> ${c.why}`;const n=$('#qzn');n.hidden=false;n.querySelector('button').onclick=()=>{i++;show()};n.querySelector('button').focus()}else{miss=true;b.classList.add('wrong');b.disabled=true;$('#qzf').innerHTML='<span class="no">Not quite.</span> Try again.'}}));
-  if(i>0)$('#qzq').focus()}
- show()})();
+  {t:'Acknowledge your AI use when your course allows it',a:'do',fb:'Being open about how you used AI is part of academic integrity.'},
+  {t:'Reference every source you use, including survey data',a:'do',fb:'Referencing shows where your evidence came from.'}],[['do','Do'],['dont','Don’t']],
+  (left,wrong)=>{$('#m8').innerHTML=left?(7-left)+' of 7 sorted':'<span class="ok">✓ All sorted.</span>';if(!left)G.complete(9,wrong===0)})})();
 
 /* ================= P11 Badge wall ================= */
 (function(){const host=$('#wall');if(!host)return;
- const rank=n=>n>=9?'Research Legend':n>=7?'Research Pro':n>=4?'Research Explorer':'Research Rookie';
+ const rank=n=>n>=8?'Research Legend':n>=6?'Research Pro':n>=3?'Research Explorer':'Research Rookie';
  function draw(){const st=G.state(),n=G.doneCount(),pts=G.points();
   host.innerHTML=`<div class="bh2"><p class="kick">MARK2051 · Library research skills</p><p class="big">${rank(n)}</p><p class="sub"><img class="coin" src="${COIN}" alt="" style="width:20px;height:20px"> ${pts} points · ${n} of ${ACT_ORDER.length} badges</p></div>
-  <div class="bgrid">${ACT_ORDER.map(p=>`<div class="bcard ${st.done[p]?'':'off'}"><img src="${BADGEIMG[ACTS[p][2]]}" alt="" width="117" height="134"><b>${ACTS[p][1]}</b><span>${st.done[p]?'Earned':'Not yet'} · ${esc(ACTS[p][0])}</span></div>`).join('')}</div>
+  <div class="bgrid">${ACT_ORDER.map(p=>`<div class="bcard ${st.done[p]?'':'off'}"><img src="${BADGEIMG[ACTS[p][2]]}" alt="" width="117" height="134"><b>${ACTS[p][1]}</b><span>${st.done[p]?'Earned':'Not yet'}</span></div>`).join('')}</div>
   <div class="wallfoot"><button class="btn" type="button" id="dlb">Download your badge card</button><span class="small">Progress is saved in this browser only.</span></div>`;
   $('#dlb').addEventListener('click',dl)}
  function li(s){return new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.src=s})}
@@ -745,6 +737,8 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
   x.fillStyle='#fff';x.font='24px Arial';x.fillText('UNSW Library',60,560);
   const a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='mark2051-badges.png';document.body.appendChild(a);a.click();a.remove()}
  G.onChange(draw);draw()})();
+/* ================= P10 Check your learning ================= */
+(function(){const ul=$('#qlog');if(!ul)return;const d=()=>{const it=Object.values(G.state().log).sort((a,b)=>a.t-b.t);ul.innerHTML=it.length?it.map(i=>`<li><b>${esc(i.l)}</b><span>${esc(i.v)}</span></li>`).join(''):'<li><span class="small">Your searches will appear here.</span></li>'};G.onChange(d);d()})();
 
 
 /* ================= Research log ================= */

@@ -1,37 +1,40 @@
-MARK2051 · embed codes (right panels)
-=====================================
+MARK2051 embed codes (right panels)
+===================================
 
-Paste each code into the right panel (Source view). Slide 1 has no right panel activity.
+Before you start
+- Check that consumer-research.html shows on GitHub Pages first.
+- Paste each code into the slide’s right panel (Source view).
+- Every code uses height:100vh, the same as the legal research tutorial.
+
+1. Welcome
+<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=1" title="Welcome activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
 
 2. Breaking down the question
-<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=1" title="Breaking down the question activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=2" title="Breaking down the question activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
 
 3. Business Source Premier
-<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=2" title="Business Source Premier activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=3" title="Business Source Premier activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
 
 4. Scopus
-<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=3" title="Scopus activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=4" title="Scopus activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
 
 5. Passport GMID
-<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=4" title="Passport GMID activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=5" title="Passport GMID activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
 
 6. Grey literature
-<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=5" title="Grey literature activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=6" title="Grey literature activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
 
 7. MarketLine
-<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=6" title="MarketLine activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=7" title="MarketLine activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
 
 8. Evaluating sources
-<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=7" title="Evaluating sources activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=8" title="Evaluating sources activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
 
 9. Using AI responsibly
-<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=8" title="Using AI responsibly activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=9" title="Using AI responsibly activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
 
-10. We’re here to help
-<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=9" title="We’re here to help activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+10. Check your learning
+<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=10" title="Check your learning activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
 
-11. Quiz
-<iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=10" title="Quiz activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
-
-12. Your badges
+11. Your badges
 <iframe src="https://info-skills-lab.github.io/library-activities/consumer-research.html?part=11" title="Your badges activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>

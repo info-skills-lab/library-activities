@@ -1,0 +1,94 @@
+MARK2051 Check your learning: LibWizard quiz
+============================================
+
+How it's set up
+- Add these to slide 10 in LibWizard, in this order, with a Page Break between each.
+- Multiple choice questions: Radios. On Answer Properties, set the answer (✓), tick Display correct/wrong messages, and leave Require correct answer to continue unticked.
+- Confidence ratings: Rating field, Radio button type, Horizontal, not required, Answer set to Not Selected. Scale 1 Not at all confident, 5 Very confident.
+- Settings: answers table on, retake off.
+- The quiz end points students to Finish.
+- The source slide is noted after each question for your reference. Don't add the notes to LibWizard.
+
+
+PART A. BEFORE YOU START (rating scale, 1 to 5)
+-----------------------------------------------
+Prompt: How confident are you that you can do the following?
+
+A1. Turn a question into keywords and a database search.
+A2. Find peer-reviewed research and consumer data in Library databases.
+A3. Judge whether a source is relevant, current, reliable and accurate.
+A4. Use AI tools responsibly for your assessment.
+
+
+PART B. QUESTIONS
+-----------------
+
+1. Which search finds articles that mention both trust and Copilot?
+   a) trust AND Copilot ✓
+   b) trust OR Copilot
+   c) trust NOT Copilot
+   Correct: Right. AND means every result includes both words.
+   Wrong: Not quite. AND means every result includes both words.
+   [Slide 2]
+
+2. What does adopt* find?
+   a) adopt, adoption, adopting and more ✓
+   b) Only the word adopt
+   c) Words that mean the same as adopt
+   Correct: Right. The asterisk finds different word endings. This is called truncation.
+   Wrong: Not quite. The asterisk finds different word endings, such as adoption and adopting.
+   [Slide 2]
+
+3. You need peer-reviewed research on consumer trust in AI. Where's a great place to start?
+   a) Business Source Premier ✓
+   b) A social media search
+   c) A company's own website
+   Correct: Right. Business Source Premier lets you limit to peer-reviewed articles.
+   Wrong: Not quite. Business Source Premier is a scholarly database where you can limit to peer-reviewed articles.
+   [Slide 3]
+
+4. Which Scopus subject area helps most with understanding consumer motives?
+   a) Psychology ✓
+   b) Engineering
+   c) Computer Science
+   Correct: Right. Psychology studies how people think, feel and decide.
+   Wrong: Not quite. Psychology studies how people think, feel and decide.
+   [Slide 4]
+
+5. Where can you find survey data on how different consumer segments feel about technology?
+   a) Passport GMID ✓
+   b) A textbook
+   c) MarketLine company profiles
+   Correct: Right. Passport has consumer surveys you can compare by segment.
+   Wrong: Not quite. Passport GMID has consumer surveys you can compare by segment.
+   [Slide 5]
+
+6. Which of these is grey literature?
+   a) A government report on AI use in Australia ✓
+   b) A peer-reviewed journal article
+   c) A textbook from a commercial publisher
+   Correct: Right. Grey literature is published outside commercial and academic publishers.
+   Wrong: Not quite. Grey literature is published outside commercial and academic publishers, such as government reports.
+   [Slide 6]
+
+7. You find a 2015 report on attitudes to AI. Which check does it fail?
+   a) Current ✓
+   b) Relevant
+   c) Accurate
+   Correct: Right. Attitudes to AI have changed a lot. Look for recent data.
+   Wrong: Not quite. Check the date. Attitudes to AI have changed a lot since then.
+   [Slide 8]
+
+8. An AI tool gives you a reference. What should you do first?
+   a) Search for it in a Library database to check it exists ✓
+   b) Add it to your reference list
+   c) Ask the AI if it's real
+   Correct: Right. AI tools can make up references that look real.
+   Wrong: Not quite. AI tools can make up references, so always check each one yourself.
+   [Slide 9]
+
+
+PART C. AFTER THE QUIZ (rating scale, 1 to 5)
+---------------------------------------------
+Prompt: Now that you've finished, how confident are you that you can do the following?
+Repeat A1 to A4 with the same scale, so you can compare before and after.

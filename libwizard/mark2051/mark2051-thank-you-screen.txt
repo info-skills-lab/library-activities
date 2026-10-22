@@ -1,0 +1,25 @@
+MARK2051 Thank You Screen
+=========================
+
+Paste into Edit "Thank You Screen" (Source view).
+
+<div style="font-family:Arial,Helvetica,sans-serif; margin:0 auto; max-width:880px">
+<div style="background-color:#ffe000; background-image:linear-gradient(100deg, #ffe000 48%, rgba(255,224,0,0) 78%), repeating-linear-gradient(-6deg, rgba(255,255,255,0) 0px, rgba(255,255,255,0) 11px, #ffffff 11px, #ffffff 14px); border-radius:4px; box-sizing:border-box; padding:44px 40px">
+<p style="color:#000000; font-size:16px !important; letter-spacing:0.08em; margin:0 0 10px 0; text-transform:uppercase"><strong style="font-size:16px !important">MARK2051 &middot; Library tutorial</strong></p>
+<p style="color:#000000; font-size:56px !important; line-height:1.02 !important; margin:0 0 14px 0"><strong style="font-size:56px !important">You&rsquo;re all done! 🎉</strong></p>
+<p style="color:#000000; font-size:22px !important; line-height:1.4; margin:0; max-width:560px">Thanks for completing your Library pre-work. You&rsquo;re ready to find and evaluate sources for your Microsoft AI Challenge.</p>
+</div>
+<div style="display:flex; flex-wrap:wrap; gap:16px; margin-top:16px">
+<div style="background:#111111; border-radius:8px; box-sizing:border-box; color:#ffffff; flex:1 1 260px; padding:22px 24px">
+<p style="color:#ffe000; font-size:15px !important; letter-spacing:0.06em; margin:0 0 6px 0; text-transform:uppercase"><strong style="font-size:15px !important">📅 See you at the workshop</strong></p>
+<p style="color:#ffffff; font-size:26px !important; line-height:1.2; margin:0 0 8px 0"><strong style="font-size:26px !important">[Monday 26 October, 12pm]</strong></p>
+<p style="color:#dddddd; font-size:16px !important; margin:0">Bring any questions about your sources or searches.</p>
+</div>
+<div style="background:#ffffff; border-radius:8px; border:2px solid #111111; box-shadow:6px 6px 0 #ffe000; box-sizing:border-box; flex:1 1 260px; padding:22px 24px">
+<p style="color:#555555; font-size:15px !important; letter-spacing:0.06em; margin:0 0 8px 0; text-transform:uppercase"><strong style="font-size:15px !important">🤝 Need help sooner?</strong></p>
+<p style="color:#111111; font-size:17px !important; line-height:1.45; margin:0 0 14px 0">Chat with us on the Library website, or explore the Business subject guide.</p>
+<p style="margin:0 0 10px 0"><a href="https://subjectguides.library.unsw.edu.au/business" rel="noopener" style="display:inline-block; background:#ffe000 !important; color:#000000 !important; border:2px solid #000000; border-radius:999px; padding:10px 22px; font-size:16px !important; font-weight:bold !important; text-decoration:none !important" target="_blank"><strong style="color:#000000 !important">Business subject guide</strong></a></p>
+<p style="color:#333333; font-size:15px !important; margin:0">💬 Quick question? Use Library Chat on the <a href="https://www.library.unsw.edu.au/" rel="noopener" style="color:#000000 !important" target="_blank"><strong style="color:#000000 !important">Library website</strong></a>.</p>
+</div>
+</div>
+</div>
