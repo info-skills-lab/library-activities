@@ -511,19 +511,11 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 </div></section>
 
 <section class="slide" id="p6" aria-labelledby="h6"><div class="in"><div class="sh"><h2 id="h6">Grey literature</h2></div>
-<p class="lead">Is it grey literature? Pick one for each.</p>
-<div class="scards" id="gl"></div><p class="small" id="m5" aria-live="polite"></p>
-<p class="chk"><span>Check it</span> <span><span aria-hidden="true">✓ </span>Relevant</span> <span><span aria-hidden="true">✓ </span>Current</span> <span><span aria-hidden="true">✓ </span>Reliable</span> <span><span aria-hidden="true">✓ </span>Accurate</span></p>
-<div class="box" style="margin-top:14px"><p class="boxh">Find grey literature with Google</p>
- <div class="gbld"><div class="gq"><label class="sr" for="gk">Your keywords</label><input type="text" id="gk" value="consumer trust artificial intelligence survey" autocomplete="off"></div>
- <div class="chips" role="group" aria-label="Add to your Google search">
-  <button class="chip" type="button" aria-pressed="false" data-g="site:gov.au">site:gov.au</button>
-  <button class="chip" type="button" aria-pressed="false" data-g="site:edu.au">site:edu.au</button>
-  <button class="chip" type="button" aria-pressed="false" data-g="site:org">site:org</button>
-  <button class="chip" type="button" aria-pressed="false" data-g="filetype:pdf">filetype:pdf</button> 
- </div>
- <div class="out"><span class="l">Google search</span><code id="gout"></code><button class="btn small" type="button" id="ggo">Search Google</button></div></div>
-</div>
+<div class="tabs" role="tablist"><button class="tab" role="tab" type="button" id="glT1" aria-selected="true" aria-controls="glP1">1 Identify grey literature</button><button class="tab" role="tab" type="button" id="glT2" aria-selected="false" aria-controls="glP2">2 Find grey literature</button></div>
+<div class="tabp" id="glP1" role="tabpanel" aria-labelledby="glT1"><p class="lead">Is it grey literature? Pick one for each.</p>
+<div class="scards g3" id="gl"></div><p class="small" id="m5" aria-live="polite"></p></div>
+<div class="tabp" id="glP2" role="tabpanel" aria-labelledby="glT2" hidden><p class="lead">A practice version of Google Advanced Search. Follow the yellow numbers.</p>
+<div id="gs"></div><p class="chk"><span>Check it</span> <span><span aria-hidden="true">✓ </span>Relevant</span> <span><span aria-hidden="true">✓ </span>Current</span> <span><span aria-hidden="true">✓ </span>Reliable</span> <span><span aria-hidden="true">✓ </span>Accurate</span></p></div>
 </div></section>
 
 <section class="slide" id="p7" aria-labelledby="h7"><div class="in"><div class="sh"><h2 id="h7">MarketLine</h2></div>
@@ -642,7 +634,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
 
 
 (function(){
- const g=document.querySelector('[data-g="filetype:pdf"]');if(g)g.insertAdjacentHTML('afterend',' '+gn(1,'Why these?','<p><b>site:gov.au</b> shows only Australian government websites. <b>site:edu.au</b> shows Australian universities. <b>site:org</b> shows organisations such as think tanks.</p><p><b>filetype:pdf</b> finds reports, which are often saved as PDFs.</p>',true))})();
+})();
 
 /* ================= P1 Search lock ================= */
 (function(){const host=$('#lock');if(!host)return;const OWN='✎ Your own word';
@@ -739,19 +731,32 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
  $('#pgo').addEventListener('click',()=>{G.log('passport','Passport GMID route','Consumers > Lifestyles > Create consumer profiles > Voice of the Consumer: Lifestyles Survey 2026 > Technology > Online activities');openWin(PP)});m()})();
 
 /* ================= P5 Grey literature ================= */
-(function(){const host=$('#gl');if(!host)return;
+(function(){const host=$('#gl');if(!host)return;bindTabs($('#p6'));
  sorter(host,[{t:'A government report on AI use in Australia',a:'y',fb:'Government reports are classic grey literature.'},
   {t:'A peer-reviewed journal article',a:'n',fb:'Journal articles are published by academic publishers.'},
   {t:'A consulting firm’s consumer survey',a:'y',fb:'Consulting firms publish surveys and reports themselves.'},
   {t:'A think tank discussion paper',a:'y',fb:'Think tanks and associations publish their own research.'},
   {t:'A textbook from a commercial publisher',a:'n',fb:'Textbooks are commercially published.'},
   {t:'A university research centre report',a:'y',fb:'Reports from research centres are grey literature.'}],[['y','Grey'],['n','Not grey']],
-  (left,wrong)=>{$('#m5').innerHTML=left?(6-left)+' of 6 sorted':'<span class="ok">✓ All sorted.</span>';if(!left)G.complete(6,wrong===0)});
- const on=new Set();const gq=()=>[$('#gk').value.trim(),...on].filter(Boolean).join(' ');
- const draw=()=>{$('#gout').textContent=gq()};
- document.querySelectorAll('[data-g]').forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.g;const p=b.getAttribute('aria-pressed')==='true';if(p)on.delete(v);else{if(v.startsWith('site:'))document.querySelectorAll('[data-g^="site:"]').forEach(x=>{x.setAttribute('aria-pressed','false');on.delete(x.dataset.g)});on.add(v)}b.setAttribute('aria-pressed',String(!p));draw()}));
- $('#gk').addEventListener('input',draw);
- $('#ggo').addEventListener('click',()=>{G.log('grey','Google search for grey literature',gq());openWin('https://www.google.com/search?q='+encodeURIComponent(gq()))});draw()})();
+  (left,wrong)=>{$('#m5').innerHTML=left?(6-left)+' of 6 sorted':'<span class="ok">✓ All sorted.</span> Now try <b>2 Find grey literature</b>.';if(!left){$('#glT1').classList.add('done');G.complete(6,wrong===0)}});
+ const gs=$('#gs');
+ gs.innerHTML=`<div class="gslay"><div class="box"><div class="simhead"><span class="t">Google Advanced Search · practice version</span><span class="row"><button class="linkbtn" type="button" id="gex">Load example</button><button class="linkbtn" type="button" id="gclr">Clear</button></span></div>
+ <div class="grid2"><div><label class="f" for="gall">All these words ${gn(1,'Key concepts','<p>Type the main ideas from your question, such as consumers trust artificial intelligence.</p>')}</label><input type="text" id="gall" placeholder="e.g. consumers trust artificial intelligence"></div>
+ <div><label class="f" for="gphr">This exact phrase ${gn(2,'Exact phrase','<p>Keeps words together, for example generative AI or consumer attitudes.</p>',true)}</label><input type="text" id="gphr" placeholder="e.g. generative AI"></div>
+ <div><label class="f" for="gsite">Site or domain ${gn(3,'Limit by site or domain','<p>.gov.au finds Australian government sources. .org.au finds organisations such as industry bodies and think tanks. .edu.au finds Australian universities. You can also limit to one trusted website, such as apo.org.au.</p>')}</label><select id="gsite"><option value="">Any site</option><option value=".gov.au">.gov.au (government)</option><option value=".org.au">.org.au (organisations)</option><option value=".edu.au">.edu.au (universities)</option><option value="apo.org.au">apo.org.au (Analysis &amp; Policy Observatory)</option></select></div>
+ <div><label class="f" for="gft">File type ${gn(4,'Reports are often PDFs','<p>Reports, surveys and discussion papers are usually published as PDFs.</p>',true)}</label><select id="gft"><option value="">Any format</option><option value="pdf">PDF</option></select></div></div></div>
+ <div class="gsside"><div class="box"><div class="searchline"><span class="l">Your search</span><code id="gq"></code><button class="btn small ghost" type="button" id="gcp">Copy</button></div>
+ <div class="row" style="margin-top:12px"><button class="btn" type="button" id="ggo">Search Google <span aria-hidden="true">↗</span><span class="sr"> (opens in a new window)</span></button></div><p class="fb" id="gfb" aria-live="polite"></p></div>
+ <div class="tip"><p><b>Tip.</b> APO (Analysis &amp; Policy Observatory) collects Australian policy and research reports. Choose apo.org.au in the site list to search it through Google.</p></div></div></div>`;
+ bindPops(gs);
+ const q=()=>{const a=$('#gall').value.trim(),p=$('#gphr').value.trim().replace(/"/g,''),s=$('#gsite').value,f=$('#gft').value;return [a,p?`"${p}"`:'',s?'site:'+s:'',f?'filetype:'+f:''].filter(Boolean).join(' ')};
+ const draw=()=>$('#gq').textContent=q()||'Fill in the fields above';
+ gs.addEventListener('input',draw);gs.addEventListener('change',draw);
+ $('#gex').addEventListener('click',()=>{$('#gall').value='consumers trust artificial intelligence';$('#gphr').value='generative AI';$('#gsite').value='.gov.au';$('#gft').value='pdf';draw()});
+ $('#gclr').addEventListener('click',()=>{['#gall','#gphr'].forEach(x=>$(x).value='');$('#gsite').value='';$('#gft').value='';draw()});
+ function done(){if(!$('#gall').value.trim()){$('#gfb').innerHTML='<span class="no">Add some words first.</span>';return false}G.log('grey','Grey literature search (Google)',q());$('#gfb').innerHTML='<span class="ok">✓ Saved to your Research log.</span> Check what you find before you use it.';$('#glT2').classList.add('done');return true}
+ $('#ggo').addEventListener('click',()=>{if(done())openWin('https://www.google.com/search?q='+encodeURIComponent(q()))});
+ $('#gcp').addEventListener('click',e=>{copyText(q(),e.currentTarget);done()});draw()})();
 
 /* ================= P6 MarketLine ================= */
 (function(){const nav=$('#mnav');if(!nav)return;let i=0,wrong=0;
