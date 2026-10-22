@@ -72,7 +72,7 @@ PART B. QUESTIONS (12)
    [Discover · Slide 2]
 
 6. Your Business Source Premier search returns 4,000 results. What narrows it most effectively?
-   a) Add another concept with AND, and use filters ✓
+   a) Add another concept with AND, and use the peer-reviewed and date filters ✓
    b) Add more synonyms with OR
    c) Remove the quotation marks from your phrases
    d) Run the same search in Google
