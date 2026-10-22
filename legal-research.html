@@ -755,10 +755,12 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
  <p class="src">Adapted from Thomson Reuters, "Introduction to writing effective AI legal prompts" (11 September 2026).</p>
  <div class="row" style="margin-top:10px"><button class="btn ghost small" type="button" id="toNl">Next: Activity 2</button></div></div></div>`;
  ST.forEach((s,i)=>{const ta=$('#pi'+i);ta.addEventListener('input',()=>{val[i]=ta.value.trim();draw()});ta.addEventListener('focus',()=>{focus=i;draw()})});
- host.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;const i=+c.dataset.i,ta=$('#pi'+i);ta.value=(ta.value.trim()?ta.value.trim()+' ':'')+c.dataset.c;val[i]=ta.value.trim();focus=i;draw()});
+ host.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;const i=+c.dataset.i,ta=$('#pi'+i),t=c.dataset.c;let v=ta.value.trim();
+  if(v.includes(t)){v=v.replace(t,'').replace(/\s{2,}/g,' ').trim()}else{v=(v?v+' ':'')+t}
+  ta.value=v;val[i]=v;focus=i;draw()});
  function draw(){const n=ST.filter((_,i)=>val[i]).length;const miss=ST.findIndex((_,i)=>!val[i]);const hi=val[focus]?focus:miss;
   $('#pp').innerHTML=ST.map((s,i)=>val[i]?`<span${i===hi?' class="hl2"':''}>${esc(val[i])}</span>`:'').filter(Boolean).join('\n\n')||'<span class="small">Fill in the steps to build your prompt.</span>';
-  host.querySelectorAll('.ps').forEach((p,i)=>{p.classList.toggle('done',!!val[i]);p.querySelector('.pn').textContent=val[i]?'✓':i+1});
+  host.querySelectorAll('.ps').forEach((p,i)=>{p.classList.toggle('done',!!val[i]);p.querySelector('.pn').textContent=val[i]?'✓':i+1});host.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',String(($('#pi'+c.dataset.i).value||'').includes(c.dataset.c))));
   $('#pmt').textContent=n+' of 5 steps';$('#pmb').style.width=(n/5*100)+'%';if(n===5){a1=true;$('#t15a').classList.add('done');fin()}}
  const prompt=()=>ST.map((_,i)=>val[i]).filter(Boolean).join('\n\n');
  $('#pcp').addEventListener('click',e=>{copyText(prompt(),e.currentTarget);G.log('prompt','AI prompt',prompt())});
