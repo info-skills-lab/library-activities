@@ -31,8 +31,8 @@ PART B. QUESTIONS (12)
    b) how, build, encourage, among
    c) Microsoft, responsible, how
    d) consumers only
-   Correct: Right. These are the ideas you search for. Words like "how" and "build" guide your answer but aren't searched.
-   Wrong: Not quite. Key concepts are the main ideas you search for. Words like "how" and "build" aren't searched.
+   Correct: Correct. These are the ideas you search for. Words like "how" and "build" guide your answer but aren't searched.
+   Wrong: That’s incorrect. Key concepts are the main ideas you search for. Words like "how" and "build" aren't searched.
    [Identify · Slide 2]
 
 2. You need figures showing how often Gen Z consumers use generative AI. Which source fits best?
@@ -40,8 +40,8 @@ PART B. QUESTIONS (12)
    b) A peer-reviewed article on why people trust technology
    c) A Microsoft press release
    d) An opinion piece in a newspaper
-   Correct: Right. Survey data measures what consumers do, and Passport lets you compare segments.
-   Wrong: Not quite. For figures on what a segment does, look for survey data, such as in Passport GMID.
+   Correct: Correct. Survey data measures what consumers do, and Passport lets you compare segments.
+   Wrong: That’s incorrect. For figures on what a segment does, look for survey data, such as in Passport GMID.
    [Identify · Slide 5]
 
 3. You have three peer-reviewed articles explaining why consumers trust AI, but no data on your segment. What should you do next?
@@ -49,8 +49,8 @@ PART B. QUESTIONS (12)
    b) Stop, as you have enough sources
    c) Find more articles making the same point
    d) Ask an AI tool to estimate the figures
-   Correct: Right. Research explains why. Data shows what your segment does. You need both.
-   Wrong: Not quite. Research explains why, but you still need data on what your segment does.
+   Correct: Correct. Research explains why. Data shows what your segment does. You need both.
+   Wrong: That’s incorrect. Research explains why, but you still need data on what your segment does.
    [Identify · Slides 4 and 5]
 
 4. Which search will find the most results?
@@ -58,8 +58,8 @@ PART B. QUESTIONS (12)
    b) (trust OR confidence OR credibility) AND "generative AI" ✓
    c) trust AND confidence AND "generative AI"
    d) "trust in generative AI among consumers"
-   Correct: Right. OR adds synonyms and widens the search, and fewer AND concepts keep it broad.
-   Wrong: Not quite. OR widens a search. Each extra AND, or a long phrase in quotation marks, narrows it.
+   Correct: Correct. OR adds synonyms and widens the search, and fewer AND concepts keep it broad.
+   Wrong: That’s incorrect. OR widens a search. Each extra AND, or a long phrase in quotation marks, narrows it.
    [Discover · Slide 2]
 
 5. What does consumer* find?
@@ -67,8 +67,8 @@ PART B. QUESTIONS (12)
    b) Only consumer and consumers
    c) Synonyms such as customer and shopper
    d) The exact phrase consumer*
-   Correct: Right. Truncation finds every ending, so check your results for words you didn't want.
-   Wrong: Not quite. The asterisk finds every word ending, including some you may not want, like consumerism.
+   Correct: Correct. Truncation finds every ending, so check your results for words you didn't want.
+   Wrong: That’s incorrect. The asterisk finds every word ending, including some you may not want, like consumerism.
    [Discover · Slide 2]
 
 6. Your Business Source Premier search returns 4,000 results. What narrows it most effectively?
@@ -76,8 +76,8 @@ PART B. QUESTIONS (12)
    b) Add more synonyms with OR
    c) Remove the quotation marks from your phrases
    d) Run the same search in Google
-   Correct: Right. AND and filters, such as peer reviewed and publication date, both narrow your results to the most relevant.
-   Wrong: Not quite. OR and removing quotation marks both widen a search. Use AND and filters to narrow it.
+   Correct: Correct. AND and filters, such as peer reviewed and publication date, both narrow your results to the most relevant.
+   Wrong: That’s incorrect. OR and removing quotation marks both widen a search. Use AND and filters to narrow it.
    [Discover · Slide 3]
 
 7. When is a natural language search most useful?
@@ -86,7 +86,7 @@ PART B. QUESTIONS (12)
    c) When you want only peer-reviewed results
    d) When the database has no filters
    Correct: Correct. A natural language search is a good start, and you can find other relevant keywords from its results.
-   Wrong: Not quite. A natural language search suits getting started. A Boolean search is more precise and repeatable.
+   Wrong: That’s incorrect. A natural language search suits getting started. A Boolean search is more precise and repeatable.
    [Discover · Slide 3]
 
 8. You want to know when new articles on consumer trust in AI are published. What should you do?
@@ -94,8 +94,8 @@ PART B. QUESTIONS (12)
    b) Run the same Google search each week
    c) Ask an AI tool to tell you about new research
    d) Wait until your lecturer mentions new articles
-   Correct: Right. An alert emails you new results for your saved search.
-   Wrong: Not quite. Databases like Scopus can save your search and email you new results.
+   Correct: Correct. An alert emails you new results for your saved search.
+   Wrong: That’s incorrect. Databases like Scopus can save your search and email you new results.
    [Discover · Slide 4]
 
 9. A report on AI adoption is funded by an AI software company. Which part of the CRAAP test raises a concern?
@@ -103,8 +103,8 @@ PART B. QUESTIONS (12)
    b) Currency
    c) Relevance
    d) Authority
-   Correct: Right. The funder benefits from good news about AI, so check for bias.
-   Wrong: Not quite. Think about why the report was written, and who benefits.
+   Correct: Correct. The funder benefits from good news about AI, so check for bias.
+   Wrong: That’s incorrect. Think about why the report was written, and who benefits.
    [Evaluate · Slide 8]
 
 10. A peer-reviewed study looks at trust in AI among retirees in the United States. Your segment is Australian university students. Which part of the CRAAP test does it fail?
@@ -112,8 +112,8 @@ PART B. QUESTIONS (12)
    b) Authority
    c) Accuracy
    d) It passes every check, as it's peer reviewed
-   Correct: Right. Peer review doesn't make a source relevant to your question.
-   Wrong: Not quite. It's peer reviewed, but a different country and age group.
+   Correct: Correct. Peer review doesn't make a source relevant to your question.
+   Wrong: That’s incorrect. It's peer reviewed, but a different country and age group.
    [Evaluate · Slide 8]
 
 11. An AI tool tells you "80% of Australians trust AI" but gives no source. What should you do?
@@ -121,8 +121,8 @@ PART B. QUESTIONS (12)
    b) Use it, and cite the AI tool as the source
    c) Use it, as AI tools are usually accurate
    d) Ask the AI tool if the figure is correct
-   Correct: Right. AI can produce figures that are wrong or made up. Always trace them to a reliable source.
-   Wrong: Not quite. AI can make up figures, so check it against a reliable source first.
+   Correct: Correct. AI can produce figures that are wrong or made up. Always trace them to a reliable source.
+   Wrong: That’s incorrect. AI can make up figures, so check it against a reliable source first.
    [Evaluate · Slide 9]
 
 12. Your course allows AI. You rewrite a paragraph Copilot generated into your own words. What should you do?
@@ -130,8 +130,8 @@ PART B. QUESTIONS (12)
    b) Nothing, as you've rewritten it in your own words
    c) Cite the paragraph as your own work
    d) Delete your earlier drafts
-   Correct: Right. Rewritten AI content still needs acknowledging.
-   Wrong: Not quite. Rewriting AI content in your own words still requires proper attribution.
+   Correct: Correct. Rewritten AI content still needs acknowledging.
+   Wrong: That’s incorrect. Rewriting AI content in your own words still requires proper attribution.
    [Use responsibly · Slide 9]
 
 
