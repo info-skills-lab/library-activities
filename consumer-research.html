@@ -256,6 +256,12 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .clip .qt b{background:var(--soft);font-weight:700}
 
 /* ===== MARK2051 additions ===== */
+.qcard{border:3px solid #111;border-radius:12px;background:var(--soft);padding:10px 14px;margin:0 0 12px;box-shadow:5px 5px 0 #111}
+.qtop2{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}.qcard .pxh{font-size:12.5px}
+.qcard .qq{font-size:17px;font-weight:500;margin:0}.qcard .pips i{background:var(--card)}.qcard .pips i.on{background:var(--yellow)}.qcard .pips i.ok{background:var(--good)}
+.bico{font-size:28px;line-height:1}
+.here{border-left:6px solid var(--good);background:var(--panel);border-radius:8px;padding:9px 12px;font-size:14.5px;margin:0 0 8px}
+.miss{border-left:6px solid var(--bad);background:var(--panel);border-radius:8px;padding:9px 12px;font-size:14.5px;margin:0 0 8px}
 .route{border:2px solid var(--ink);border-radius:12px;padding:10px 14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;box-shadow:5px 5px 0 var(--yellow);margin:0 0 14px;background:var(--card)}
 .rk{font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
 .rpath{display:flex;flex-wrap:wrap;gap:4px;align-items:center;flex:1;font-size:13px}.rp{background:#111;color:var(--yellow);border-radius:999px;padding:1px 9px;font-weight:700}
@@ -497,14 +503,14 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 </div></section>
 
 <section class="slide" id="p7" aria-labelledby="h7"><div class="in"><div class="sh"><h2 id="h7">MarketLine</h2></div>
-<p class="lead">Read each question, then select the profile section with the answer.</p>
-<p class="qnow" id="mq" aria-live="polite"></p><p class="small" id="mqn" style="margin:0 0 8px"></p>
+<p class="lead">Read each research need, then select the profile section that meets it.</p>
+<div class="qcard" id="mqc"><div class="qtop2"><span class="pxh" id="mqn"></span><span class="pips" id="mpips" aria-hidden="true"></span></div><p class="qq" id="mq" tabindex="-1"></p></div>
 <div class="mock"><div class="mockh"><span><b>MarketLine</b> · company profile</span><span class="prac">Practice layout</span></div>
  <div class="prof"><nav class="pnav" aria-label="Profile sections" id="mnav"></nav>
-  <div class="pmain"><div class="ph"><span class="lg" aria-hidden="true"><i style="background:#f25022"></i><i style="background:#7fba00"></i><i style="background:#00a4ef"></i><i style="background:#ffb900"></i></span><b>Microsoft Corporation</b></div>
-   <p class="fb" id="mfb" aria-live="polite"></p><div aria-hidden="true"><div class="ln" style="width:92%"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:86%"></div><div class="ln" style="width:60%"></div></div></div>
+  <div class="pmain"><div class="ph"><span class="bico" aria-hidden="true">🏢</span><b>Microsoft Corporation</b></div>
+   <div id="mfb" aria-live="polite"></div><div class="row" id="mnext" hidden><button class="btn" type="button">Next question <span aria-hidden="true">▶</span></button></div></div>
  </div></div>
-<p style="margin-top:12px"><button class="btn small ghost" type="button" id="mgo">Open MarketLine</button></p>
+<p style="margin-top:12px"><button class="btn small ghost" type="button" id="mgo">Open MarketLine <span aria-hidden="true">↗</span><span class="sr"> (opens in a new window)</span></button></p>
 </div></section>
 
 <section class="slide" id="p8" aria-labelledby="h8"><div class="in"><div class="sh"><h2 id="h8">Evaluating sources</h2></div>
@@ -710,16 +716,22 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
 
 /* ================= P6 MarketLine ================= */
 (function(){const nav=$('#mnav');if(!nav)return;let i=0,wrong=0;
- const S=['Key facts','Company overview','SWOT analysis','Key employees','History','News'];
- const Q=[{q:'Where would you find Microsoft’s strengths and weaknesses?',a:'SWOT analysis',fb:'SWOT lists strengths, weaknesses, opportunities and threats.'},
-  {q:'What does Microsoft do, and what are its main products?',a:'Company overview',fb:'The overview describes the business and what it sells.'},
-  {q:'Where would you find recent announcements about Copilot?',a:'News',fb:'News keeps you up to date with what the company is doing.'}];
+ const S=['Overview','News','SWOT analysis','Financials','Peers','Related research'];
+ const WHY={'Overview':'The overview summarises the company with key facts, but not the risks or rivals in detail.','News':'News reports individual events as they happen.','SWOT analysis':'SWOT pulls together strengths, weaknesses, opportunities and threats.','Financials':'Financials show how the company is performing in numbers.','Peers':'Peers lists the company’s competitors.','Related research':'Related research links to wider market and industry reports.'};
+ const Q=[{q:'You want to know what could stop consumers trusting Copilot. Where would you start?',a:'SWOT analysis',here:'Strengths, weaknesses, opportunities and threats, written by MarketLine analysts. Weaknesses and threats point to risks, such as concerns about AI.'},
+  {q:'You want to compare Microsoft with its rivals in AI. Where would you look?',a:'Peers',here:'A list of the company’s competitors, so you can look up each one’s profile too.'},
+  {q:'You need Microsoft’s latest Copilot announcements. Where would you look?',a:'News',here:'Recent news about the company, so you can follow what it’s doing now.'},
+  {q:'You want background on the wider AI software market. Where would you look?',a:'Related research',here:'Links to industry and market reports that set the company in context.'}];
  nav.innerHTML=S.map(s=>`<button type="button" data-s="${s}">${s}</button>`).join('');
- const ask=()=>{if(i>=Q.length){$('#mq').innerHTML='<span class="ok">✓ All found.</span>';$('#mqn').textContent='';return}$('#mq').textContent=Q[i].q;$('#mqn').textContent='Question '+(i+1)+' of '+Q.length+'. Select a section.';nav.querySelectorAll('button').forEach(b=>{b.className='';b.disabled=false})};
- nav.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||i>=Q.length)return;const c=Q[i];
-  if(b.dataset.s===c.a){b.className='right';nav.querySelectorAll('button').forEach(x=>x.disabled=true);$('#mfb').innerHTML=`<span class="ok">✓ ${esc(c.a)}.</span> ${c.fb}`;i++;setTimeout(()=>{ask();if(i>=Q.length)G.complete(7,wrong===0);else nav.querySelector('button').focus()},1400)}
-  else{wrong++;b.className='wrong';$('#mfb').innerHTML='<span class="no">Not this one.</span> Try another section.'}});
- $('#mgo').addEventListener('click',()=>openWin('https://advantage.marketline.com/'));ask()})();
+ const nx=$('#mnext');
+ function ask(){if(i>=Q.length){$('#mqn').textContent='ALL DONE';$('#mq').innerHTML='<span class="ok">✓ All four found.</span> Now try a real profile in MarketLine.';$('#mpips').innerHTML=Q.map(()=>'<i class="ok"></i>').join('');nx.hidden=true;nav.querySelectorAll('button').forEach(b=>b.disabled=true);return}
+  $('#mqn').textContent='QUESTION '+(i+1)+' OF '+Q.length;$('#mq').textContent=Q[i].q;$('#mpips').innerHTML=Q.map((x,k)=>`<i class="${k<i?'ok':k===i?'on':''}"></i>`).join('');
+  $('#mfb').innerHTML='';nx.hidden=true;nav.querySelectorAll('button').forEach(b=>{b.className='';b.disabled=false})}
+ nav.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled||i>=Q.length)return;const c=Q[i];
+  if(b.dataset.s===c.a){b.className='right';nav.querySelectorAll('button').forEach(x=>x.disabled=true);$('#mfb').innerHTML=`<div class="here"><span class="ok">✓ ${esc(c.a)}.</span> ${c.here}</div>`;nx.hidden=false;nx.querySelector('button').textContent=i===Q.length-1?'Finish ▶':'Next question ▶';nx.querySelector('button').focus()}
+  else{wrong++;b.className='wrong';b.disabled=true;$('#mfb').innerHTML=`<div class="miss"><span class="no">${esc(b.dataset.s)}?</span> ${WHY[b.dataset.s]} Try another section.</div>`}});
+ nx.querySelector('button').addEventListener('click',()=>{i++;ask();if(i>=Q.length)G.complete(7,wrong===0);$('#mq').focus()});
+ $('#mgo').addEventListener('click',()=>openWin('https://wwwproxy1.library.unsw.edu.au/login?url=https://advantage.marketline.com/'));ask()})();
 
 /* ================= P7 Evaluating sources ================= */
 (function(){const host=$('#ev');if(!host)return;
