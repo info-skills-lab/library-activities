@@ -256,6 +256,14 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .clip .qt b{background:var(--soft);font-weight:700}
 
 /* ===== MARK2051 additions ===== */
+.route{border:2px solid var(--ink);border-radius:12px;padding:10px 14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;box-shadow:5px 5px 0 var(--yellow);margin:0 0 14px;background:var(--card)}
+.rk{font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+.rpath{display:flex;flex-wrap:wrap;gap:4px;align-items:center;flex:1;font-size:13px}.rp{background:#111;color:var(--yellow);border-radius:999px;padding:1px 9px;font-weight:700}
+.sdet{margin:10px 0 0;border:2px dashed var(--ink);border-radius:10px;padding:7px 12px;font-size:13.5px;background:var(--panel)}.sdh{margin:0 0 3px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.sdet dl{display:grid;grid-template-columns:auto 1fr;gap:1px 10px;margin:0}.sdet dt{font-weight:700}.sdet dd{margin:0}
+.stp{display:flex;gap:6px;align-items:center;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;margin:0}.sn{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--yellow);color:#000;border:2px solid #000;font-size:12px}
+#p5 .qstack{gap:8px}#p5 .qstack .box{padding:10px 14px}#p5 .qstack .fb{min-height:0}#p5 .route .btn{color:#000}
+.ctag{display:inline-block;background:#111;color:var(--yellow);font-size:11.5px;font-weight:700;border-radius:999px;padding:0 8px;margin-right:4px}
 .advb{display:grid;grid-template-columns:minmax(0,1fr) 220px}
 @media (max-width:700px){.advb{grid-template-columns:minmax(0,1fr)}.advf{border-left:0!important;border-top:2px solid var(--line)}}
 .adv{padding:14px}.advf{border-left:2px solid var(--line);padding:12px 14px;background:var(--panel)}
@@ -454,21 +462,22 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 </div></section>
 
 <section class="slide" id="p5" aria-labelledby="h5"><div class="in"><div class="sh"><h2 id="h5">Passport GMID</h2></div>
-<p class="lead">Read the practice chart, then answer both questions.</p>
+<p class="lead">Read the practice data, then answer the questions.</p>
+<div class="route"><span class="rk"><span aria-hidden="true">📍</span> Find it in Passport</span><span class="rpath"><span class="rp">Consumers</span> <span aria-hidden="true">›</span> <span class="rp">Lifestyles</span> <span aria-hidden="true">›</span> <span class="rp">Create consumer profiles</span> <span aria-hidden="true">›</span> <span class="rp">Lifestyles Survey 2026</span> <span aria-hidden="true">›</span> <span class="rp">Technology</span> <span aria-hidden="true">›</span> <span class="rp">Online activities</span></span><button class="btn small" type="button" id="pgo">Open Passport <span aria-hidden="true">↗</span><span class="sr"> (opens in a new window)</span></button></div>
 <div class="lay2">
- <div class="mock"><div class="mockh"><span><b>Consumer survey</b> · I trust AI tools to give accurate information</span><span class="prac">Practice data</span></div><div class="mockb">
-  <div class="chart" role="img" aria-label="Practice bar chart. Percentage who agree, by generation. Generation Z 58 per cent, Millennials 51 per cent, Generation X 38 per cent, Baby Boomers 24 per cent.">
+ <div class="mock"><div class="mockh"><span><b>Uses generative AI for daily activities</b> · by generation</span><span class="prac">Practice data</span></div><div class="mockb">
+  <div class="chart" role="img" aria-label="Practice bar chart. Percentage who use generative AI for daily activities, by generation. Generation Z 58 per cent, Millennials 51 per cent, Generation X 38 per cent, Baby Boomers 24 per cent.">
    <div class="bar"><span>Generation Z</span><span class="tr"><i style="width:58%"></i></span><b>58%</b></div>
    <div class="bar"><span>Millennials</span><span class="tr"><i style="width:51%"></i></span><b>51%</b></div>
    <div class="bar"><span>Generation X</span><span class="tr"><i style="width:38%"></i></span><b>38%</b></div>
    <div class="bar"><span>Baby Boomers</span><span class="tr"><i style="width:24%"></i></span><b>24%</b></div>
   </div>
-  <p class="small" style="margin:6px 0 0">Made-up numbers for practice. Passport has the real survey data.</p>
+  <div class="sdet"><p class="sdh">Survey details</p><dl><dt>Fielded</dt><dd>January to February 2022</dd><dt>Where</dt><dd>United States</dd><dt>Who</dt><dd>1,000 adults aged 18+</dd></dl></div>
+  <p class="small" style="margin:6px 0 0">Made-up survey for practice. Passport has the real data.</p>
  </div></div>
- <div class="qstack"><div class="box" id="q4a"></div><div class="box" id="q4b"></div><p class="small" id="m4" aria-live="polite"></p></div>
+ <div class="qstack"><p class="stp"><span class="sn" aria-hidden="true">1</span>Read the data</p><div class="box" id="q4a"></div><div class="box" id="q4b"></div>
+  <p class="stp"><span class="sn" aria-hidden="true">2</span>Judge the survey</p><div class="box" id="q4c"></div><div class="box" id="q4d"></div><p class="small" id="m4" aria-live="polite"></p></div>
 </div>
-<p class="chk"><span>Check it</span> <span><span aria-hidden="true">✓ </span>Relevant</span> <span><span aria-hidden="true">✓ </span>Current</span> <span><span aria-hidden="true">✓ </span>Reliable</span> <span><span aria-hidden="true">✓ </span>Accurate</span></p>
-<div class="tip" style="margin-top:14px"><span aria-hidden="true">💡</span><p>In Passport, look for the <b>Voice of the Consumer</b> surveys. You can compare results by country, age and other segments. <button class="linkbtn" type="button" id="pgo">Open Passport GMID</button></p></div>
 </div></section>
 
 <section class="slide" id="p6" aria-labelledby="h6"><div class="in"><div class="sh"><h2 id="h6">Grey literature</h2></div>
@@ -675,12 +684,14 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
  $('#sgo').addEventListener('click',()=>{const q=built();G.log('scopus','Scopus',q);openWin('https://www.scopus.com/results/results.uri?src=s&sot=a&s='+encodeURIComponent(q))})})();
 
 /* ================= P4 Passport ================= */
-(function(){if(!$('#q4a'))return;let a=0,b=0,w=0;const m=()=>{$('#m4').innerHTML=a&&b?'<span class="ok">✓ Both answered.</span>':(a+b)+' of 2 answered';if(a&&b)G.complete(5,w===0)};
- const wr=()=>w++;
- mcq($('#q4a'),{q:'Which segment trusts AI tools the least?',shuffle:false,opts:[{t:'Generation Z',fb:'Not quite. Look for the shortest bar.'},{t:'Generation X',fb:'Not quite. Look for the shortest bar.'},{t:'Baby Boomers',ok:1,fb:'Right. 24% agree, the lowest of the four.'}]},()=>{a=1;m()});
- mcq($('#q4b'),{q:'What does this chart <b>not</b> tell you?',opts:[{t:'Why each segment feels this way',ok:1,fb:'Right. Surveys show what people think. Scholarly research in Business Source Premier and Scopus helps explain why.'},{t:'Which segment trusts AI the most',fb:'Not quite. The chart does show this.'},{t:'How the segments compare',fb:'Not quite. The chart does show this.'}]},()=>{b=1;m()});
- $('#q4a').addEventListener('click',e=>{if(e.target.classList.contains('wrong'))wr()});$('#q4b').addEventListener('click',e=>{if(e.target.classList.contains('wrong'))wr()});
- $('#pgo').addEventListener('click',()=>openWin('https://www.portal.euromonitor.com/'));m()})();
+(function(){if(!$('#q4a'))return;const d=[0,0,0,0];let w=0;const m=()=>{const n=d.filter(Boolean).length;$('#m4').innerHTML=n===4?'<span class="ok">✓ All four answered.</span>':n+' of 4 answered';if(n===4)G.complete(5,w===0)};
+ const PP='https://wwwproxy1.library.unsw.edu.au/login?url=https://www.portal.euromonitor.com/magazine/homemain';
+ mcq($('#q4a'),{q:'Which generation uses generative AI the least?',shuffle:false,opts:[{t:'Generation Z',fb:'Not quite. Look for the shortest bar.'},{t:'Generation X',fb:'Not quite. Look for the shortest bar.'},{t:'Baby Boomers',ok:1,fb:'Right. 24%, the lowest of the four.'}]},()=>{d[0]=1;m()});
+ mcq($('#q4b'),{q:'What does this data <b>not</b> tell you?',opts:[{t:'Why each generation behaves this way',ok:1,fb:'Right. Data measures what consumers do. Research in Business Source Premier and Scopus helps explain why.'},{t:'Which generation uses AI most',fb:'Not quite. The chart does show this.'}]},()=>{d[1]=1;m()});
+ mcq($('#q4c'),{q:'<span class="ctag">Current?</span> Is a 2022 survey current enough for a topic like AI?',shuffle:false,opts:[{t:'Yes',fb:'Not quite. Use of AI tools has changed a lot since 2022. Look for recent data.'},{t:'No',ok:1,fb:'Right. Use of AI tools has changed a lot since 2022. Look for the latest survey.'}]},()=>{d[2]=1;m()});
+ mcq($('#q4d'),{q:'<span class="ctag">Relevant?</span> Does it match Australian university students?',shuffle:false,opts:[{t:'Yes',fb:'Not quite. Check where the survey was run, and who was asked.'},{t:'No, wrong country',fb:'Partly. Check who was asked too.'},{t:'No, wrong age group',fb:'Partly. Check where it was run too.'},{t:'Both',ok:1,fb:'Right. It surveyed US adults of all ages. Compare segments in Passport to match yours.'}]},()=>{d[3]=1;m()});
+ ['#q4a','#q4b','#q4c','#q4d'].forEach(id=>$(id).addEventListener('click',e=>{if(e.target.classList.contains('wrong'))w++}));
+ $('#pgo').addEventListener('click',()=>{G.log('passport','Passport GMID route','Consumers > Lifestyles > Create consumer profiles > Voice of the Consumer: Lifestyles Survey 2026 > Technology > Online activities');openWin(PP)});m()})();
 
 /* ================= P5 Grey literature ================= */
 (function(){const host=$('#gl');if(!host)return;
