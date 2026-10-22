@@ -7,7 +7,7 @@ Paste into Edit "Thank You Screen" (Source view).
 <div style="background-color:#ffe000; background-image:linear-gradient(100deg, #ffe000 48%, rgba(255,224,0,0) 78%), repeating-linear-gradient(-6deg, rgba(255,255,255,0) 0px, rgba(255,255,255,0) 11px, #ffffff 11px, #ffffff 14px); border-radius:4px; box-sizing:border-box; padding:44px 40px">
 <p style="color:#000000; font-size:16px !important; letter-spacing:0.08em; margin:0 0 10px 0; text-transform:uppercase"><strong style="font-size:16px !important">MARK2051 &middot; Library tutorial</strong></p>
 <p style="color:#000000; font-size:56px !important; line-height:1.02 !important; margin:0 0 14px 0"><strong style="font-size:56px !important">You&rsquo;re all done! 🎉</strong></p>
-<p style="color:#000000; font-size:22px !important; line-height:1.4; margin:0; max-width:560px">Thanks for completing your Library pre-work. You&rsquo;re ready to find and evaluate sources for your Microsoft AI Challenge.</p>
+<p style="color:#000000; font-size:22px !important; line-height:1.4; margin:0; max-width:560px">&#10003; Your completion has been recorded. You&rsquo;re ready to find and evaluate sources for your Microsoft AI Challenge.</p>
 </div>
 <div style="display:flex; flex-wrap:wrap; gap:16px; margin-top:16px">
 <div style="background:#111111; border-radius:8px; box-sizing:border-box; color:#ffffff; flex:1 1 260px; padding:22px 24px">
