@@ -16,7 +16,7 @@ Prompt: How confident are you that you can do the following?
 
 A1. Turn a question into keywords and a database search.
 A2. Find peer-reviewed research and consumer data in Library databases.
-A3. Judge whether a source is relevant, current, reliable and accurate.
+A3. Evaluate a source using the CRAAP test.
 A4. Use AI tools responsibly for your assessment.
 
 
@@ -71,10 +71,10 @@ PART B. QUESTIONS
    Wrong: Not quite. Grey literature is published outside commercial and academic publishers, such as government reports.
    [Slide 6]
 
-7. You find a 2015 report on attitudes to AI. Which check does it fail?
-   a) Current ✓
-   b) Relevant
-   c) Accurate
+7. You find a 2015 report on attitudes to AI. Which part of the CRAAP test does it fail?
+   a) Currency ✓
+   b) Relevance
+   c) Accuracy
    Correct: Right. Attitudes to AI have changed a lot. Look for recent data.
    Wrong: Not quite. Check the date. Attitudes to AI have changed a lot since then.
    [Slide 8]

@@ -256,6 +256,9 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .clip .qt b{background:var(--soft);font-weight:700}
 
 /* ===== MARK2051 additions ===== */
+.craap{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}.craap span{border:2px solid var(--ink);border-radius:999px;padding:2px 12px;font-size:14px;background:var(--card)}.craap b{background:var(--yellow);color:#000;border-radius:4px;padding:0 3px;margin-right:1px}
+.stype{display:block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+#ev{grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}#ev .pick{font-size:13px;padding:3px 9px}
 .qcard{border:3px solid #111;border-radius:12px;background:var(--soft);padding:10px 14px;margin:0 0 12px;box-shadow:5px 5px 0 #111}
 .qtop2{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}.qcard .pxh{font-size:12.5px}
 .qcard .qq{font-size:17px;font-weight:500;margin:0}.qcard .pips i{background:var(--card)}.qcard .pips i.on{background:var(--yellow)}.qcard .pips i.ok{background:var(--good)}
@@ -514,8 +517,8 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 </div></section>
 
 <section class="slide" id="p8" aria-labelledby="h8"><div class="in"><div class="sh"><h2 id="h8">Evaluating sources</h2></div>
-<p class="lead">Each source has one problem. Which check does it fail?</p>
-<p class="chk"><span>Check it</span> <span><span aria-hidden="true">✓ </span>Relevant</span> <span><span aria-hidden="true">✓ </span>Current</span> <span><span aria-hidden="true">✓ </span>Reliable</span> <span><span aria-hidden="true">✓ </span>Accurate</span></p>
+<p class="lead">Each source fails one part of the CRAAP test. Which one?</p>
+<div class="craap" aria-label="The CRAAP test"><span><b>C</b>urrency</span><span><b>R</b>elevance</span><span><b>A</b>uthority</span><span><b>A</b>ccuracy</span><span><b>P</b>urpose</span></div>
 <div class="scards" id="ev"></div><p class="small" id="m7" aria-live="polite"></p>
 </div></section>
 
@@ -735,12 +738,15 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
 
 /* ================= P7 Evaluating sources ================= */
 (function(){const host=$('#ev');if(!host)return;
- sorter(host,[{t:'A 2016 survey on trust in chatbots',a:'cur',fb:'Copilot arrived in 2023 and views on AI change fast. Look for recent data.',hint:'Look at the date.'},
-  {t:'A Microsoft blog post saying users love Copilot',a:'rel',fb:'Microsoft wants to sell Copilot, so the post may be biased. Look for an independent source too.',hint:'Who wrote it, and why?'},
-  {t:'A study on trust in online banking among retirees',a:'relv',fb:'Different technology and a different segment. Check how well it matches your question.',hint:'Does it match your question?'},
-  {t:'A news story quoting a figure that differs from the original report',a:'acc',fb:'Always check the figure against the original source.',hint:'Do the facts check out?'}],
-  [['relv','Relevant?'],['cur','Current?'],['rel','Reliable?'],['acc','Accurate?']],
-  (left,wrong)=>{$('#m7').innerHTML=left?(4-left)+' of 4 checked':'<span class="ok">✓ All checked.</span> Run these four checks on every source you use.';if(!left)G.complete(8,wrong===0)})})();
+ const T=(k,t)=>`<span class="stype">${k}</span>${t}`;
+ sorter(host,[{t:T('Survey data','A 2019 survey on consumer attitudes to voice assistants'),a:'cur',fb:'Microsoft launched Copilot in 2023, and attitudes to AI have changed fast. Look for the latest survey.',hint:'Look at the date.'},
+  {t:T('Company information','A Microsoft press release on how many people love using Copilot'),a:'pur',fb:'A press release is written to promote the company. Look for independent data too.',hint:'Why was it written?'},
+  {t:T('Quantitative data','A blog post claiming 70% of Australians distrust AI, with no author or organisation named'),a:'auth',fb:'With no named author or organisation, you can’t tell whether the source is an expert.',hint:'Who wrote it?'},
+  {t:T('News','A news story quoting a survey figure that differs from the original report'),a:'acc',fb:'Always check a figure against the original source before you use it.',hint:'Do the facts check out?'},
+  {t:T('Scholarly research','A peer-reviewed study on trust in AI among retirees in the United States, when your segment is Australian university students'),a:'relv',fb:'Peer reviewed, but a different country and age group. Check how closely it matches your question.',hint:'Does it match your question?'},
+  {t:T('Industry report','A report on AI adoption funded by an AI software company'),a:'pur',fb:'The funder benefits from good news about AI. Check for bias, and compare with independent sources.',hint:'Who paid for it, and why?'}],
+  [['cur','Currency'],['relv','Relevance'],['auth','Authority'],['acc','Accuracy'],['pur','Purpose']],
+  (left,wrong)=>{$('#m7').innerHTML=left?(6-left)+' of 6 checked':'<span class="ok">✓ All checked.</span> Run the CRAAP test on every source you use.';if(!left)G.complete(8,wrong===0)})})();
 
 /* ================= P8 Using AI responsibly ================= */
 (function(){const host=$('#ai');if(!host)return;
