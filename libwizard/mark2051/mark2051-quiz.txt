@@ -85,7 +85,7 @@ PART B. QUESTIONS (12)
    b) When you need a precise search you can repeat exactly
    c) When you want only peer-reviewed results
    d) When the database has no filters
-   Correct: Right. A question is a good start, and you can learn keywords from the search it builds.
+   Correct: Right. A natural language search is a good start, and you can find keywords from its results.
    Wrong: Not quite. A natural language search suits getting started. A Boolean search is more precise and repeatable.
    [Discover · Slide 3]
 
