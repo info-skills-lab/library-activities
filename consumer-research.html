@@ -274,12 +274,16 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .q1{font-size:17px;margin:0 0 4px}.q1 b{font-weight:700}
 .how{font-size:14.5px;color:var(--muted);margin:0 0 6px}
 /* lock */
-.lockwrap{display:flex;flex-direction:column;align-items:center;margin-top:4px}
-.shackle{width:56%;height:90px;border:24px solid #cfcfcf;border-bottom:0;border-radius:140px 140px 0 0;position:relative;top:10px;border-color:#dcdcdc #b9b9b9 #b9b9b9 #e9e9e9;transition:transform .5s}
-.lockwrap.open .shackle{transform:translateY(-22px) translateX(14%)}
-.lbody{width:100%;background:linear-gradient(180deg,#2a2a2a,#111 60%,#000);border-radius:26px;padding:24px 20px 16px;box-shadow:0 8px 0 var(--yellow),0 8px 0 2px #111;position:relative;color:#fff}
+.lockwrap{margin-top:4px}
+.lbody{width:100%;background:linear-gradient(180deg,#2a2a2a,#111 60%,#000);border-radius:20px;padding:16px 16px 14px;box-shadow:0 8px 0 var(--yellow),0 8px 0 2px #111;position:relative;color:#fff}
 .brand{position:absolute;top:8px;left:50%;transform:translateX(-50%);color:var(--yellow);font-weight:700;font-size:12px;letter-spacing:.2em;white-space:nowrap}
-.wheels{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:12px;margin-top:10px}
+.wheels{display:flex;gap:10px;align-items:flex-start}
+.wheels>.w{flex:1 1 0}
+.andcol{flex:none;display:flex;flex-direction:column;align-items:center;gap:6px}
+.andcol .spc{height:28px}.andcol .andmid{height:132px;display:grid;place-items:center}
+.andc{background:var(--yellow);color:#000;border:2px solid #000;border-radius:999px;padding:1px 10px;font-weight:700;font-size:13px;letter-spacing:.04em}
+.w .lab{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;min-height:20px}
+@media (max-width:620px){.wheels{flex-direction:column;align-items:stretch}.andcol .spc,.andcol .lab{display:none}.andcol .andmid{height:auto}}
 .w{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
 .spin{width:38px;height:28px;border-radius:8px;border:2px solid #000;background:var(--yellow);color:#000;font-weight:700;font-size:14px;cursor:pointer}
 .spin:hover{background:#fff}
@@ -405,7 +409,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 
 <section class="slide" id="p2" aria-labelledby="h2"><div class="in"><div class="sh"><h2 id="h2">Breaking down the question</h2></div>
 <p class="q1"><b>How can Microsoft build trust and encourage responsible adoption of Microsoft Copilot among consumers?</b></p>
-<p class="how">Spin each wheel <span aria-hidden="true">▲▼</span> and select <b>Add</b> to pick your words. Add as many as you like.</p>
+<p class="how">Spin each dial <span aria-hidden="true">▲▼</span> and select <b>Add</b> to choose your words. Add as many as you like.</p>
 <div id="lock"></div>
 </div></section>
 
@@ -534,7 +538,7 @@ const COIN=BADGEIMG.coin;
 const ACTS={2:['Breaking down the question','Lock Cracker','b1'],3:['Business Source Premier','Business Searcher','b2'],4:['Scopus','Mind Reader','b3'],5:['Passport GMID','Data Detective','b4'],6:['Grey literature','Report Hunter','b5'],7:['MarketLine','Company Analyst','b6'],8:['Evaluating sources','Source Checker','b7'],9:['Using AI responsibly','AI Ace','b8']};
 const ACT_ORDER=[2,3,4,5,6,7,8,9];
 const RQ='How can Microsoft build trust and encourage responsible adoption of Microsoft Copilot among consumers?';
-const DEFQ='(trust OR distrust) AND (Copilot OR "generative AI") AND (adopt* OR acceptance) AND "university students"';
+const DEFQ='(trust OR confidence) AND (Copilot OR "generative AI") AND consumer*';
 const G=(function(){
  const KEY='mk-mark2051-v1';let st={done:{},bonus:{},log:{}};
  function load(){try{const v=JSON.parse(localStorage.getItem(KEY)||'null');if(v)st={done:v.done||{},bonus:v.bonus||{},log:v.log||{}}}catch(e){}}
@@ -598,29 +602,28 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
 
 /* ================= P1 Search lock ================= */
 (function(){const host=$('#lock');if(!host)return;const OWN='✎ Your own word';
- const W=[{n:'Trust',t:['trust','distrust','"perceived risk"','confidence','reliab*']},
+ const W=[{n:'Trust',t:['trust','confidence','distrust','"perceived risk"','reliab*']},
   {n:'AI tool',t:['Copilot','"generative AI"','chatbot*','"AI assistant*"','"artificial intelligence"']},
-  {n:'Adoption',t:['adopt*','acceptance','"intention to use"','usage','"continuance intention"']},
-  {n:'Your segment',t:['"university students"','"Gen Z"','"young adults"','"older adults"','parents','"small business*"']}];
+  {n:'Consumers',t:['consumer*','"university students"','"Gen Z"','"young adults"','"older adults"','parents']}];
  W.forEach(w=>{w.i=0;w.p=[];w.t.push(OWN)});
  let adding=false,opened=G.isDone(2),focusSel=null;
  const q=()=>W.filter(w=>w.p.length).map(w=>w.p.length>1?'('+w.p.join(' OR ')+')':w.p[0]).join(' AND ');
  const qh=()=>W.filter(w=>w.p.length).map(w=>esc(w.p.length>1?'('+w.p.join(' OR ')+')':w.p[0])).join(' <span class="opk">AND</span> ');
  const at=(w,d)=>w.t[(w.i+d+w.t.length)%w.t.length];
  function draw(){const full=W.every(w=>w.p.length);
-  host.innerHTML=`<div class="lockwrap ${full?'open':''}"><div class="shackle" aria-hidden="true"></div><div class="lbody"><span class="brand" aria-hidden="true">SEARCH LOCK</span><div class="wheels">
-  ${W.map((w,k)=>{const cur=at(w,0),on=w.p.includes(cur),own=cur===OWN;return `<div class="w" role="group" aria-label="${esc(w.n)} wheel">
+  host.innerHTML=`<div class="lockwrap"><div class="lbody"><div class="wheels">
+  ${W.map((w,k)=>{const cur=at(w,0),on=w.p.includes(cur),own=cur===OWN;return `${k?'<div class="andcol" aria-hidden="true"><span class="lab">&nbsp;</span><span class="spc"></span><span class="andmid"><span class="andc">AND</span></span></div>':''}<div class="w" role="group" aria-label="${esc(w.n)} dial">
+   <span class="lab">${esc(w.n)}</span>
    <button class="spin" type="button" data-a="up" data-k="${k}" aria-label="Previous ${esc(w.n)} word">▲</button>
    <div class="cyl"><span class="t t1" aria-hidden="true">${esc(at(w,-1))}</span><span class="win" id="win${k}" aria-live="polite">${esc(cur)}</span><span class="t t3" aria-hidden="true">${esc(at(w,1))}</span></div>
    <button class="spin" type="button" data-a="down" data-k="${k}" aria-label="Next ${esc(w.n)} word">▼</button>
-   <span class="lab">${esc(w.n)}</span>
    ${own?`<div class="own"><input type="text" id="own${k}" aria-label="Your own ${esc(w.n)} word" autocomplete="off"><button type="button" data-a="ownok" data-k="${k}">Add</button></div>`:`<button class="tap" type="button" data-a="add" data-k="${k}" aria-pressed="${on}" aria-label="${on?'Remove':'Add'} ${esc(cur)}">${on?'✓ Added':'+ Add'}</button>`}
    <div class="tags">${w.p.map((x,j)=>`<button class="tagx" type="button" data-a="rm" data-k="${k}" data-j="${j}" aria-label="Remove ${esc(x)}">${esc(x)} <span aria-hidden="true">×</span></button>`).join('')}</div>
-   ${w.c?`<button class="wrm" type="button" data-a="wrm" data-k="${k}">Remove wheel</button>`:''}</div>`}).join('')}
-  ${W.filter(w=>w.c).length<2?`<div class="w"><button class="wadd" type="button" data-a="new" aria-expanded="${adding}">+ Add a wheel</button><span class="lab" style="color:#bbb">Your idea</span></div>`:''}
+   ${w.c?`<button class="wrm" type="button" data-a="wrm" data-k="${k}">Remove dial</button>`:''}</div>`}).join('')}
+  ${W.filter(w=>w.c).length<2?`<div class="w"><span class="lab" style="color:#bbb">Your idea</span><button class="wadd" type="button" data-a="new" aria-expanded="${adding}">+ Add a dial</button></div>`:''}
   </div></div></div>
-  ${adding?`<div class="addf"><label for="nwn">Concept</label><input type="text" id="nwn" placeholder="e.g. Privacy" autocomplete="off"><label for="nwt">Words, separated by commas</label><input type="text" id="nwt" placeholder="e.g. privacy, &quot;personal data&quot;" autocomplete="off"><div class="row"><button class="btn small" type="button" data-a="mk">Add wheel</button><button class="btn small ghost" type="button" data-a="cancel">Cancel</button></div><p class="fb" id="nwfb" aria-live="polite"></p></div>`:''}
-  <p class="lockst" aria-live="polite">${full?'🔓 Unlocked! Your search is saved for the next slides.':'🔒 Pick a word on every wheel to open the lock.'}</p>
+  ${adding?`<div class="addf"><label for="nwn">Concept</label><input type="text" id="nwn" placeholder="e.g. Privacy" autocomplete="off"><label for="nwt">Words, separated by commas</label><input type="text" id="nwt" placeholder="e.g. privacy, &quot;personal data&quot;" autocomplete="off"><div class="row"><button class="btn small" type="button" data-a="mk">Add dial</button><button class="btn small ghost" type="button" data-a="cancel">Cancel</button></div><p class="fb" id="nwfb" aria-live="polite"></p></div>`:''}
+  <p class="lockst" aria-live="polite">${full?'✓ Your search is ready and saved to your Research log.':'Add at least one word on every dial.'}</p>
   <div class="out"><span class="l">Your search</span><code>${qh()||'Your words will appear here.'}</code><button class="btn small" type="button" data-a="copy">Copy</button></div>`;
   if(focusSel){const f=host.querySelector(focusSel);if(f)f.focus();focusSel=null}
   if(full){G.log('lock','Your search',q());if(!opened){opened=true;G.complete(2,true)}}}
