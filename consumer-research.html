@@ -260,7 +260,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 @media (max-width:700px){.advb{grid-template-columns:minmax(0,1fr)}.advf{border-left:0!important;border-top:2px solid var(--line)}}
 .adv{padding:14px}.advf{border-left:2px solid var(--line);padding:12px 14px;background:var(--panel)}
 .advh{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 8px}
-.arow{display:grid;grid-template-columns:76px minmax(0,1fr) 130px;gap:8px;align-items:center;margin-bottom:8px}
+.arow{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:8px;align-items:center;margin-bottom:8px}
 .arow select,.arow input{font:inherit;font-size:14px;border:2px solid var(--ink);border-radius:8px;padding:6px 8px;background:var(--card);color:var(--ink);min-width:0}
 .arow .aterm{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px}
 .arow .aop{background:var(--yellow);color:#000;font-weight:700;border-color:#000}
@@ -331,7 +331,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .flist{border:0;margin:0 0 10px;padding:0}
 .flist legend{font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;padding:0}
 .flist label{display:flex;gap:8px;align-items:center;font-size:14.5px;padding:3px 0}
-.flist input{width:18px;height:18px;accent-color:#111}
+.flist input{width:18px;height:18px;flex:none;accent-color:#111}
 .task{border-left:6px solid var(--yellow);background:var(--panel);border-radius:8px;padding:10px 14px;margin:0 0 12px;font-size:15.5px}
 .steps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
 .steps li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:start}
@@ -438,24 +438,19 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 </div></section>
 
 <section class="slide" id="p4" aria-labelledby="h4"><div class="in"><div class="sh"><h2 id="h4">Scopus</h2></div>
-<div class="lay2">
- <div class="mock"><div class="mockh"><span><b>Scopus</b> · practice filters</span><span class="prac">Practice</span></div><div class="mockb">
-  <p class="task">You want to know <b>why</b> consumers trust or distrust AI. Pick the <b>two</b> subject areas that fit best.</p>
-  <fieldset class="flist"><legend>Subject area</legend>
-   <label><input type="checkbox" class="sa" value="cs"> Computer Science</label>
-   <label><input type="checkbox" class="sa" value="bus"> Business, Management and Accounting</label>
-   <label><input type="checkbox" class="sa" value="eng"> Engineering</label>
-   <label><input type="checkbox" class="sa" value="psy"> Psychology</label>
-   <label><input type="checkbox" class="sa" value="med"> Medicine</label></fieldset>
-  <button class="btn" type="button" id="schk">Check</button><p class="fb" id="sfb" aria-live="polite"></p>
+<p class="task">You want to know <b>why</b> consumers trust or distrust AI. Pick the <b>two</b> subject areas that fit best, then select <b>Search</b>.</p>
+<div class="mock"><div class="mockh"><span><b>Scopus</b> · advanced search</span><span class="prac">Practice</span></div>
+ <div class="advb"><div class="adv"><p class="advh">Your search from the last slide</p><div id="srows"></div>
+  <div class="row" style="margin-top:12px"><button class="btn" type="button" id="schk">Search</button></div>
+  <p class="fb" id="sfb" aria-live="polite"></p>
+  <div class="row" id="srun" hidden><button class="btn dark" type="button" id="sgo">Run it in Scopus <span aria-hidden="true">↗</span><span class="sr"> (opens in a new window)</span></button></div></div>
+ <div class="advf"><fieldset class="flist"><legend>Subject area</legend>
+   <label><input type="checkbox" class="sa" value="COMP"> Computer Science</label>
+   <label><input type="checkbox" class="sa" value="BUSI"> Business, Management and Accounting</label>
+   <label><input type="checkbox" class="sa" value="ENGI"> Engineering</label>
+   <label><input type="checkbox" class="sa" value="PSYC"> Psychology</label>
+   <label><input type="checkbox" class="sa" value="MEDI"> Medicine</label></fieldset></div>
  </div></div>
- <div class="box"><p class="boxh">Now try it for real</p><ol class="steps">
-  <li><span class="n">1</span><div>Copy your search.<div class="out" style="margin-top:6px"><code id="sq"></code><button class="btn small ghost" type="button" id="scp">Copy</button></div></div></li>
-  <li><span class="n">2</span><div><button class="btn small" type="button" id="sgo">Open Scopus</button> </div></li>
-  <li><span class="n">3</span><div>Under <b>Subject area</b>, tick Psychology and Business, Management and Accounting.</div></li>
-  <li><span class="n">4</span><div><label class="f" for="sn">How many results now?</label><div class="cnt"><input type="text" id="sn" inputmode="numeric" autocomplete="off"><button class="btn small ghost" type="button" id="ssv">Save to log</button></div><p class="fb" id="ssfb" aria-live="polite"></p></div></li>
- </ol></div>
-</div>
 </div></section>
 
 <section class="slide" id="p5" aria-labelledby="h5"><div class="in"><div class="sh"><h2 id="h5">Passport GMID</h2></div>
@@ -603,7 +598,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
 
 
 
-(function(){const s=document.getElementById('sgo');if(s)s.insertAdjacentHTML('afterend',' '+gn(1,'Searching Scopus','<p>Paste your search into the box. Scopus searches article titles, abstracts and keywords.</p>'));
+(function(){
  const g=document.querySelector('[data-g="filetype:pdf"]');if(g)g.insertAdjacentHTML('afterend',' '+gn(1,'Why these?','<p><b>site:gov.au</b> shows only Australian government websites. <b>site:edu.au</b> shows Australian universities. <b>site:org</b> shows organisations such as think tanks.</p><p><b>filetype:pdf</b> finds reports, which are often saved as PDFs.</p>',true))})();
 
 /* ================= P1 Search lock ================= */
@@ -667,15 +662,17 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
 
 /* ================= P3 Scopus ================= */
 (function(){if(!$('#schk'))return;let tries=0;
- const sync=()=>{$('#sq').textContent=myQ()};G.onChange(sync);sync();
- $('#schk').addEventListener('click',()=>{tries++;const v=[...document.querySelectorAll('.sa:checked')].map(x=>x.value);const fb=$('#sfb');
-  if(v.length!==2){fb.innerHTML='<span class="no">Pick two.</span>';return}
-  if(v.includes('psy')&&v.includes('bus')){fb.innerHTML='<span class="ok">✓ Great pick.</span> Psychology explains consumer motives. Business covers marketing and adoption.';G.complete(4,tries===1);return}
-  if(!v.includes('psy')){fb.innerHTML='<span class="no">Not quite.</span> Which subject studies how people think and feel?';return}
+ const FL=[['TITLE-ABS-KEY','Article title, Abstract, Keywords'],['TITLE','Article title'],['ABS','Abstract'],['KEY','Keywords']];
+ function rows(){const g=splitQ(myQ());$('#srows').innerHTML=g.map((t,i)=>`<div class="arow">${i?`<label class="sr" for="so${i}">Row ${i+1} operator</label><select id="so${i}" class="aop"><option value="AND">AND</option><option value="OR">OR</option><option value="AND NOT">AND NOT</option></select>`:'<span></span>'}<label class="sr" for="st${i}">Row ${i+1} search terms</label><input type="text" id="st${i}" class="aterm" value="${esc(t)}" autocomplete="off"><label class="sr" for="sf${i}">Row ${i+1} field</label><select id="sf${i}" class="afld">${FL.map(f=>`<option value="${f[0]}">${f[1]}</option>`).join('')}</select></div>`).join('')}
+ const subj=()=>[...document.querySelectorAll('.sa:checked')].map(x=>x.value);
+ const built=()=>{let q=[...document.querySelectorAll('#srows .arow')].map((r,i)=>{const t=r.querySelector('.aterm').value.trim();if(!t)return'';const term=r.querySelector('.afld').value+'('+t+')';return i?r.querySelector('.aop').value+' '+term:term}).filter(Boolean).join(' ').replace(/^(AND NOT|AND|OR) /,'');const sa=subj();if(sa.length)q='('+q+') AND ('+sa.map(x=>'SUBJAREA('+x+')').join(' OR ')+')';return q};
+ G.onChange(()=>{if(!document.activeElement||!document.activeElement.closest||!document.activeElement.closest('#srows'))rows()});rows();
+ $('#schk').addEventListener('click',()=>{tries++;const v=subj();const fb=$('#sfb');
+  if(v.length!==2){fb.innerHTML='<span class="no">Pick two subject areas.</span>';return}
+  if(v.includes('PSYC')&&v.includes('BUSI')){fb.innerHTML='<span class="ok">✓ Great pick.</span> Psychology explains consumer motives. Business covers marketing and adoption.';$('#srun').hidden=false;G.complete(4,tries===1);return}
+  if(!v.includes('PSYC')){fb.innerHTML='<span class="no">Not quite.</span> Which subject studies how people think and feel?';return}
   fb.innerHTML='<span class="no">Nearly.</span> Pair Psychology with the subject that covers marketing.'});
- $('#scp').addEventListener('click',e=>copyText(myQ(),e.currentTarget));
- $('#sgo').addEventListener('click',()=>openWin('https://www.scopus.com/search/form.uri?display=basic'));
- $('#ssv').addEventListener('click',()=>{const n=$('#sn').value.trim();if(!n){$('#ssfb').innerHTML='<span class="no">Enter your result count first.</span>';$('#sn').focus();return}G.log('scopus','Scopus',myQ()+'\nPsychology + Business, Management and Accounting · '+n+' results');$('#ssfb').innerHTML='<span class="ok">✓ Saved to your Research log.</span>'})})();
+ $('#sgo').addEventListener('click',()=>{const q=built();G.log('scopus','Scopus',q);openWin('https://www.scopus.com/results/results.uri?src=s&sot=a&s='+encodeURIComponent(q))})})();
 
 /* ================= P4 Passport ================= */
 (function(){if(!$('#q4a'))return;let a=0,b=0,w=0;const m=()=>{$('#m4').innerHTML=a&&b?'<span class="ok">✓ Both answered.</span>':(a+b)+' of 2 answered';if(a&&b)G.complete(5,w===0)};
