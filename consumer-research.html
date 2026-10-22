@@ -256,6 +256,15 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .clip .qt b{background:var(--soft);font-weight:700}
 
 /* ===== MARK2051 additions ===== */
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))!important}@media (max-width:760px){.g3{grid-template-columns:minmax(0,1fr)!important}}
+.ubub{margin:0 0 8px auto;max-width:85%;width:fit-content;background:#111;color:#fff;border-radius:12px 12px 2px 12px;padding:8px 12px;font-size:14.5px}
+.abub{margin:0;background:var(--panel);border-radius:12px 12px 12px 2px;padding:10px 12px;font-size:14.5px;line-height:1.9}
+.hl{color:#000;background:#fff6b8;box-decoration-break:clone;-webkit-box-decoration-break:clone;border-bottom:3px solid #111;border-radius:3px;padding:1px 3px;cursor:pointer;font-weight:500;text-align:left}
+.hl:hover{background:var(--yellow)}.hl.sel{background:var(--yellow);box-shadow:0 0 0 2px #111}.hl.dn{background:#d7f7e4;border-bottom-color:#1d7a3a}
+.hq{margin:0 0 8px;font-size:14.5px}#aiq .opts{display:grid;gap:6px}#aiq .opt{width:100%}
+.qrow{display:grid;grid-template-columns:80px minmax(0,1fr);gap:10px;align-items:start;padding:6px 0;border-top:1px solid var(--line)}.qrow:first-child{border-top:0}
+.ql{font-weight:700;font-size:13.5px;padding-top:5px}
+.nlq{flex:1;min-width:220px;font-size:14.5px}
 .craap{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}.craap span{border:2px solid var(--ink);border-radius:999px;padding:2px 12px;font-size:14px;background:var(--card)}.craap b{background:var(--yellow);color:#000;border-radius:4px;padding:0 3px;margin-right:1px}
 .stype{display:block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
 #ev{grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}#ev .pick{font-size:13px;padding:3px 9px}
@@ -442,6 +451,8 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 </div></section>
 
 <section class="slide" id="p3" aria-labelledby="h3"><div class="in"><div class="sh"><h2 id="h3">Business Source Premier</h2></div>
+<div class="tabs" role="tablist"><button class="tab" role="tab" type="button" id="bt1" aria-selected="true" aria-controls="bp1">1 Advanced search</button><button class="tab" role="tab" type="button" id="bt2" aria-selected="false" aria-controls="bp2">2 Ask a question</button></div>
+<div class="tabp" id="bp1" role="tabpanel" aria-labelledby="bt1">
 <p class="task">Your search is ready. Set the filters to find <b>peer-reviewed research from the last five years</b>, then select <b>Search</b>.</p>
 <div class="mock"><div class="mockh"><span><b>Business Source Premier</b> · advanced search</span><span class="prac">Practice</span></div>
  <div class="advb"><div class="adv"><p class="advh">Your search from the last slide</p><div id="brows"></div>
@@ -452,6 +463,15 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
   <fieldset class="flist"><legend>Publication date</legend><label><input type="radio" name="bd" value="any" checked> Any time</label><label><input type="radio" name="bd" value="5"> 2022 to 2026</label></fieldset>
   <fieldset class="flist"><legend>Source type</legend><label><input type="checkbox" class="bst" value="aj"> Academic journals</label><label><input type="checkbox" class="bst" value="news"> News</label><label><input type="checkbox" class="bst" value="rep"> Reports</label></fieldset></div>
  </div></div>
+</div>
+<div class="tabp" id="bp2" role="tabpanel" aria-labelledby="bt2" hidden>
+<p class="task">Business Source Premier can also search with a plain-English question. Build one, then select <b>Search</b>.</p>
+<div class="mock"><div class="mockh"><span><b>Question builder</b></span><span class="prac">Practice</span></div><div class="mockb">
+ <div class="qb" id="qbuild"></div>
+ <div class="out" style="margin-top:12px"><label class="l" for="nlq">Your question</label><input type="text" id="nlq" class="nlq" autocomplete="off"><button class="btn small" type="button" id="nlgo">Search <span aria-hidden="true">↗</span><span class="sr"> Business Source Premier (opens in a new window)</span></button></div>
+ <p class="small" style="margin:8px 0 0">On the results page, turn on <b>AI-assisted search</b> to see the search it builds from your question.</p>
+</div></div>
+</div>
 </div></section>
 
 <section class="slide" id="p4" aria-labelledby="h4"><div class="in"><div class="sh"><h2 id="h4">Scopus</h2></div>
@@ -523,9 +543,12 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 </div></section>
 
 <section class="slide" id="p9" aria-labelledby="h9"><div class="in"><div class="sh"><h2 id="h9">Using AI responsibly</h2></div>
-<p class="lead">Do or don’t? Pick one for each.</p>
-<div class="scards" id="ai"></div><p class="small" id="m8" aria-live="polite"></p>
-<div class="tip" style="margin-top:14px"><span aria-hidden="true">💡</span><p>Rules on AI differ between courses. Check your course outline, and read <a href="https://www.unsw.edu.au/student/managing-your-studies/academic-skills-support/toolkit/ai" target="_blank" rel="noopener">Using AI in university<span class="sr"> (opens in a new window)</span></a>.</p></div>
+<div class="tabs" role="tablist"><button class="tab" role="tab" type="button" id="ait1" aria-selected="true" aria-controls="aip1">1 AI at UNSW</button><button class="tab" role="tab" type="button" id="ait2" aria-selected="false" aria-controls="aip2">2 Check the output</button></div>
+<div class="tabp" id="aip1" role="tabpanel" aria-labelledby="ait1"><p class="lead">Do or don’t? Pick one for each.</p><div class="scards g3" id="ai"></div><p class="small" id="m8" aria-live="polite"></p></div>
+<div class="tabp" id="aip2" role="tabpanel" aria-labelledby="ait2" hidden><p class="lead">Select each highlighted part of the AI answer, then choose the check it needs.</p>
+<div class="lay2"><div class="mock"><div class="mockh"><span><b>AI tool</b> · answer</span><span class="prac">Practice</span></div>
+ <div class="mockb"><p class="ubub">What do Australian consumers think about AI assistants?</p><p class="abub">Australian consumers are increasingly positive about AI assistants. <span class="hl" role="button" tabindex="0" data-h="0">About 80% of Australians now trust AI tools</span>, according to recent research. <span class="hl" role="button" tabindex="0" data-h="1">Smith and Lee (2024), “AI trust down under”, Journal of Digital Consumers</span> found that convenience is the main driver. <span class="hl" role="button" tabindex="0" data-h="2">Young people all embrace AI without concern</span>. <span class="hl" role="button" tabindex="0" data-h="3">This is based on information up to 2023</span>.</p><p class="small" style="margin:6px 0 0">Practice AI answer, made up for this activity.</p></div></div>
+ <div><div class="box" id="aiq"><p style="margin:0">Select a highlighted part of the answer to start.</p></div><p class="small" id="m9" aria-live="polite">0 of 4 checked</p></div></div></div>
 </div></section>
 
 <section class="slide" id="p10" aria-labelledby="h10"><div class="in"><div class="sh"><h2 id="h10">Check your learning</h2></div>
@@ -676,7 +699,17 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
   if(d!=='5'){fb.innerHTML='<span class="no">Nearly.</span> Check the publication date. You want the last five years.';return}
   if(st.some(v=>v!=='aj')){fb.innerHTML='<span class="no">Nearly.</span> News and reports aren’t peer reviewed. Untick them.';return}
   fb.innerHTML='<span class="ok">✓ Spot on.</span> Peer reviewed plus a date range gives you recent, quality research.';$('#brun').hidden=false;G.complete(3,tries===1)});
- $('#bgo').addEventListener('click',()=>{const q=built();G.log('bsp','Business Source Premier',q+'\nPeer reviewed, 2022 to 2026');openWin(EB+encodeURIComponent(q))})})();
+ $('#bgo').addEventListener('click',()=>{const q=built();G.log('bsp','Business Source Premier',q+'\nPeer reviewed, 2022 to 2026');openWin('https://wwwproxy1.library.unsw.edu.au/login?url='+encodeURIComponent(EB+encodeURIComponent(q)))})})();
+
+/* ================= P2b Ask a question ================= */
+(function(){const host=$('#qbuild');if(!host)return;bindTabs($('#p3'));
+ const R=[['Start',['How do','Why do','What makes']],['Who',['university students','Gen Z consumers','older consumers','parents']],['Do what',['trust','use','feel about','avoid']],['What',['AI assistants like Copilot','generative AI tools','virtual assistants']]];
+ const pick=[0,0,0,0];
+ const sentence=()=>{let w=R.map((r,i)=>r[1][pick[i]]);if(w[0]==='What makes')return `What makes ${w[1]} ${w[2]==='feel about'?'feel positive about':w[2]} ${w[3]}?`;return `${w[0]} ${w[1]} ${w[2]} ${w[3]}?`};
+ function draw(){host.innerHTML=R.map((r,i)=>`<div class="qrow"><span class="ql">${r[0]}</span><div class="chips" role="group" aria-label="${r[0]}">${r[1].map((c,j)=>`<button class="chip" type="button" data-r="${i}" data-c="${j}" aria-pressed="${pick[i]===j}">${c}</button>`).join('')}</div></div>`).join('');$('#nlq').value=sentence()}
+ host.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;pick[+b.dataset.r]=+b.dataset.c;draw();host.querySelector(`[data-r="${b.dataset.r}"][data-c="${b.dataset.c}"]`).focus()});
+ $('#nlgo').addEventListener('click',()=>{const q=$('#nlq').value.trim();if(!q)return;G.log('bspq','Business Source Premier question',q);$('#bt2').classList.add('done');openWin('https://wwwproxy1.library.unsw.edu.au/login?url='+encodeURIComponent('https://research.ebsco.com/c/cqb6z7/search/results?autocorrect=y&db=buh&expanders=concept&searchMode=enhanced&q='+encodeURIComponent(q)))});
+ draw()})();
 
 /* ================= P3 Scopus ================= */
 (function(){if(!$('#schk'))return;let tries=0;
@@ -690,7 +723,7 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
   if(v.includes('PSYC')&&v.includes('BUSI')){fb.innerHTML='<span class="ok">✓ Great pick.</span> Psychology explains consumer motives. Business covers marketing and adoption.';$('#srun').hidden=false;G.complete(4,tries===1);return}
   if(!v.includes('PSYC')){fb.innerHTML='<span class="no">Not quite.</span> Which subject studies how people think and feel?';return}
   fb.innerHTML='<span class="no">Nearly.</span> Pair Psychology with the subject that covers marketing.'});
- $('#sgo').addEventListener('click',()=>{const q=built();G.log('scopus','Scopus',q);openWin('https://www.scopus.com/results/results.uri?src=s&sot=a&s='+encodeURIComponent(q))})})();
+ $('#sgo').addEventListener('click',()=>{const q=built();G.log('scopus','Scopus',q);openWin('https://wwwproxy1.library.unsw.edu.au/login?url='+encodeURIComponent('https://www.scopus.com/results/results.uri?src=s&sot=a&s='+encodeURIComponent(q)))})})();
 
 /* ================= P4 Passport ================= */
 (function(){if(!$('#q4a'))return;const d=[0,0,0,0];let w=0;const m=()=>{const n=d.filter(Boolean).length;$('#m4').innerHTML=n===4?'<span class="ok">✓ All four answered.</span>':n+' of 4 answered';if(n===4)G.complete(5,w===0)};
@@ -749,15 +782,27 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
   (left,wrong)=>{$('#m7').innerHTML=left?(6-left)+' of 6 checked':'<span class="ok">✓ All checked.</span> Run the CRAAP test on every source you use.';if(!left)G.complete(8,wrong===0)})})();
 
 /* ================= P8 Using AI responsibly ================= */
-(function(){const host=$('#ai');if(!host)return;
- sorter(host,[{t:'Check your course outline to see how you can use AI in this assessment',a:'do',fb:'Rules differ between courses and assessments.'},
-  {t:'Paste AI-written text into your report as your own',a:'dont',fb:'That counts as misconduct. Your work must be your own.'},
-  {t:'Search for each reference an AI gives you to check it exists',a:'do',fb:'AI tools can make up references that look real.'},
-  {t:'Put your zID or a classmate’s name into a prompt',a:'dont',fb:'Keep personal details out of AI prompts.'},
-  {t:'Use Copilot signed in with your UNSW account',a:'do',fb:'Your UNSW account gives your data more protection.'},
-  {t:'Acknowledge your AI use when your course allows it',a:'do',fb:'Being open about how you used AI is part of academic integrity.'},
-  {t:'Reference every source you use, including survey data',a:'do',fb:'Referencing shows where your evidence came from.'}],[['do','Do'],['dont','Don’t']],
-  (left,wrong)=>{$('#m8').innerHTML=left?(7-left)+' of 7 sorted':'<span class="ok">✓ All sorted.</span>';if(!left)G.complete(9,wrong===0)})})();
+(function(){const host=$('#ai');if(!host)return;const sl=$('#p9');const showTab=bindTabs(sl);let s1=false,w1=0,w2=0;const done=new Set();
+ const fin=()=>{if(s1&&done.size===4)G.complete(9,w1+w2===0)};
+ const T=(k,t)=>`<span class="stype">${k}</span>${t}`;
+ sorter(host,[{t:T('Course guidelines','Check your course outline before using AI in an assessment'),a:'do',fb:'Each course and assessment can have different rules on AI.'},
+  {t:T('Academic integrity','Paste AI-generated text into your work as your own'),a:'dont',fb:'Don’t claim AI-generated material as your own.'},
+  {t:T('Academic integrity','Acknowledge AI content you use, even after rewriting it in your own words'),a:'do',fb:'Quotes, paraphrases and summaries of AI content all need acknowledging.'},
+  {t:T('Personal information','Put your zID or a classmate’s email address into a prompt'),a:'dont',fb:'Keep your own and others’ personal information out of prompts.'},
+  {t:T('Accuracy','Check what AI tells you against reliable, credible sources'),a:'do',fb:'AI can produce invalid or made-up information, and may contain bias.'},
+  {t:T('Translation','Use AI to translate your writing into English without permission'),a:'dont',fb:'Check with your convenor whether AI translation is allowed in your course.'}],[['do','Do'],['dont','Don’t']],
+  (left,wrong)=>{w1=wrong;$('#m8').innerHTML=left?(6-left)+' of 6 sorted':'<span class="ok">✓ All sorted.</span> Now try <b>2 Check the output</b>.';if(!left&&!s1){s1=true;$('#ait1').classList.add('done');fin()}});
+ const C=[['acc','Is the output relevant and accurate?'],['src','Are the generated sources real or credible?'],['miss','Is anything important missing?'],['tool','Would another tool or source do better?']];
+ const H=[{a:'acc',fb:'A figure with no source could be wrong. Check it against trusted sources, such as Passport GMID.'},{a:'src',fb:'AI tools can invent citations that look real. Search for it in Library Search or Business Source Premier before you use it.'},{a:'miss',fb:'AI can oversimplify. Not every young person thinks the same, so research further for the full picture.'},{a:'tool',fb:'The tool has a knowledge cut-off. For recent developments, use a tool that searches live, or a Library database.'}];
+ const q=$('#aiq');
+ sl.querySelectorAll('.hl').forEach(b=>b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();b.click()}}));
+ sl.querySelectorAll('.hl').forEach(b=>b.addEventListener('click',()=>{const k=+b.dataset.h;sl.querySelectorAll('.hl').forEach(x=>x.classList.remove('sel'));if(!done.has(k))b.classList.add('sel');
+  if(done.has(k)){q.innerHTML=`<p style="margin:0"><span class="ok">✓ Checked.</span> ${H[k].fb}</p>`;return}
+  q.innerHTML=`<p class="hq">“${esc(b.textContent)}” Which check does it need?</p><div class="opts" role="group" aria-label="Checks">${C.map(c=>`<button class="opt" type="button" data-c="${c[0]}">${c[1]}</button>`).join('')}</div><p class="fb" aria-live="polite"></p>`;
+  q.querySelectorAll('.opt').forEach(o=>o.addEventListener('click',()=>{if(o.dataset.c===H[k].a){o.classList.add('right');q.querySelectorAll('.opt').forEach(x=>x.disabled=true);q.querySelector('.fb').innerHTML=`<span class="ok">✓ Right.</span> ${H[k].fb}`;done.add(k);b.classList.remove('sel');b.classList.add('dn');b.setAttribute('aria-label',b.textContent+', checked');
+    $('#m9').innerHTML=done.size===4?'<span class="ok">✓ All four checked.</span> Look beyond the tool, at the sources it cites and the ones it might be missing.':done.size+' of 4 checked';if(done.size===4)$('#ait2').classList.add('done');fin()}
+   else{w2++;o.classList.add('wrong');o.disabled=true;q.querySelector('.fb').innerHTML='<span class="no">Not quite.</span> Try another check.'}}));
+  q.querySelector('.opt').focus()}))})();
 
 /* ================= P11 Badge wall ================= */
 (function(){const host=$('#wall');if(!host)return;
