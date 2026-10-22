@@ -409,7 +409,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 
 <section class="slide" id="p2" aria-labelledby="h2"><div class="in"><div class="sh"><h2 id="h2">Breaking down the question</h2></div>
 <p class="q1"><b>How can Microsoft build trust and encourage responsible adoption of Microsoft Copilot among consumers?</b></p>
-<p class="how">Spin each dial <span aria-hidden="true">▲▼</span> and select <b>Add</b> to choose your words. Add as many as you like.</p>
+<p class="how">Spin each dial <span aria-hidden="true">▲▼</span> and select <b>Add</b> to choose your synonyms. Add as many synonyms as you like to broaden your search.</p>
 <div id="lock"></div>
 </div></section>
 
@@ -602,9 +602,9 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
 
 /* ================= P1 Search lock ================= */
 (function(){const host=$('#lock');if(!host)return;const OWN='✎ Your own word';
- const W=[{n:'Trust',t:['trust','confidence','distrust','"perceived risk"','reliab*']},
-  {n:'AI tool',t:['Copilot','"generative AI"','chatbot*','"AI assistant*"','"artificial intelligence"']},
-  {n:'Consumers',t:['consumer*','"university students"','"Gen Z"','"young adults"','"older adults"','parents']}];
+ const W=[{n:'Trust',t:['trust','confidence','credibility','distrust','"perceived risk"','reliab*']},
+  {n:'AI tool',t:['"Microsoft Copilot"','Copilot','"AI assistant"','"virtual assistant"','"generative AI"','chatbot*','"artificial intelligence"']},
+  {n:'Consumers',t:['consumer*','"consumer behavior"','"consumer behaviour"','"consumer attitude*"','"university students"','"Gen Z"','"young adults"','"older adults"','parents']}];
  W.forEach(w=>{w.i=0;w.p=[];w.t.push(OWN)});
  let adding=false,opened=G.isDone(2),focusSel=null;
  const q=()=>W.filter(w=>w.p.length).map(w=>w.p.length>1?'('+w.p.join(' OR ')+')':w.p[0]).join(' AND ');
