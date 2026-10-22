@@ -451,8 +451,8 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 </div></section>
 
 <section class="slide" id="p3" aria-labelledby="h3"><div class="in"><div class="sh"><h2 id="h3">Business Source Premier</h2></div>
-<div class="tabs" role="tablist"><button class="tab" role="tab" type="button" id="bt1" aria-selected="true" aria-controls="bp1">1 Advanced search</button><button class="tab" role="tab" type="button" id="bt2" aria-selected="false" aria-controls="bp2">2 Ask a question</button></div>
-<div class="tabp" id="bp1" role="tabpanel" aria-labelledby="bt1">
+<div class="tabs" role="tablist"><button class="tab" role="tab" type="button" id="bsT1" aria-selected="true" aria-controls="bp1">1 Advanced search</button><button class="tab" role="tab" type="button" id="bsT2" aria-selected="false" aria-controls="bp2">2 Ask a question</button></div>
+<div class="tabp" id="bp1" role="tabpanel" aria-labelledby="bsT1">
 <p class="task">Your search is ready. Set the filters to find <b>peer-reviewed research from the last five years</b>, then select <b>Search</b>.</p>
 <div class="mock"><div class="mockh"><span><b>Business Source Premier</b> · advanced search</span><span class="prac">Practice</span></div>
  <div class="advb"><div class="adv"><p class="advh">Your search from the last slide</p><div id="brows"></div>
@@ -464,7 +464,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
   <fieldset class="flist"><legend>Source type</legend><label><input type="checkbox" class="bst" value="aj"> Academic journals</label><label><input type="checkbox" class="bst" value="news"> News</label><label><input type="checkbox" class="bst" value="rep"> Reports</label></fieldset></div>
  </div></div>
 </div>
-<div class="tabp" id="bp2" role="tabpanel" aria-labelledby="bt2" hidden>
+<div class="tabp" id="bp2" role="tabpanel" aria-labelledby="bsT2" hidden>
 <p class="task">Business Source Premier can also search with a plain-English question. Build one, then select <b>Search</b>.</p>
 <div class="mock"><div class="mockh"><span><b>Question builder</b></span><span class="prac">Practice</span></div><div class="mockb">
  <div class="qb" id="qbuild"></div>
@@ -708,7 +708,7 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
  const sentence=()=>{let w=R.map((r,i)=>r[1][pick[i]]);if(w[0]==='What makes')return `What makes ${w[1]} ${w[2]==='feel about'?'feel positive about':w[2]} ${w[3]}?`;return `${w[0]} ${w[1]} ${w[2]} ${w[3]}?`};
  function draw(){host.innerHTML=R.map((r,i)=>`<div class="qrow"><span class="ql">${r[0]}</span><div class="chips" role="group" aria-label="${r[0]}">${r[1].map((c,j)=>`<button class="chip" type="button" data-r="${i}" data-c="${j}" aria-pressed="${pick[i]===j}">${c}</button>`).join('')}</div></div>`).join('');$('#nlq').value=sentence()}
  host.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;pick[+b.dataset.r]=+b.dataset.c;draw();host.querySelector(`[data-r="${b.dataset.r}"][data-c="${b.dataset.c}"]`).focus()});
- $('#nlgo').addEventListener('click',()=>{const q=$('#nlq').value.trim();if(!q)return;G.log('bspq','Business Source Premier question',q);$('#bt2').classList.add('done');openWin('https://wwwproxy1.library.unsw.edu.au/login?url='+encodeURIComponent('https://research.ebsco.com/c/cqb6z7/search/results?autocorrect=y&db=buh&expanders=concept&searchMode=enhanced&q='+encodeURIComponent(q)))});
+ $('#nlgo').addEventListener('click',()=>{const q=$('#nlq').value.trim();if(!q)return;G.log('bspq','Business Source Premier question',q);$("#bsT2").classList.add("done");openWin('https://wwwproxy1.library.unsw.edu.au/login?url='+encodeURIComponent('https://research.ebsco.com/c/cqb6z7/search/results?autocorrect=y&db=buh&expanders=concept&searchMode=enhanced&q='+encodeURIComponent(q)))});
  draw()})();
 
 /* ================= P3 Scopus ================= */
