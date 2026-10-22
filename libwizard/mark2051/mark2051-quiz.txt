@@ -80,13 +80,13 @@ PART B. QUESTIONS (12)
    Wrong: Not quite. OR and removing quotation marks both widen a search. Use AND and filters to narrow it.
    [Discover · Slide 3]
 
-7. When is a plain-English question search most useful?
+7. When is a natural language search most useful?
    a) When you're new to a topic and unsure of the keywords ✓
    b) When you need a precise search you can repeat exactly
    c) When you want only peer-reviewed results
    d) When the database has no filters
    Correct: Right. A question is a good start, and you can learn keywords from the search it builds.
-   Wrong: Not quite. A question search suits getting started. A Boolean search is more precise and repeatable.
+   Wrong: Not quite. A natural language search suits getting started. A Boolean search is more precise and repeatable.
    [Discover · Slide 3]
 
 8. You want to know when new articles on consumer trust in AI are published. What should you do?
