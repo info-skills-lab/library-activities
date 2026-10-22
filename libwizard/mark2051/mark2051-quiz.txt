@@ -121,7 +121,7 @@ PART B. QUESTIONS (12)
    b) Use it, and cite the AI tool as the source
    c) Use it, as AI tools are usually accurate
    d) Ask the AI tool if the figure is correct
-   Correct: Correct. AI can produce figures that are wrong or made up. Always trace them to a reliable source.
+   Correct: Correct. AI can produce figures that are incorrect. Always trace them to a reliable source.
    Wrong: That’s incorrect. AI can make up figures, so check it against a reliable source first.
    [Evaluate · Slide 9]
 
