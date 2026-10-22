@@ -646,7 +646,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
 (function(){const host=$('#lock');if(!host)return;const OWN='✎ Your own word';
  const W=[{n:'Trust',t:['trust','confidence','credibility','distrust','"perceived risk"','reliab*']},
   {n:'AI tool',t:['"Microsoft Copilot"','Copilot','"AI assistant"','"virtual assistant"','"generative AI"','chatbot*','"artificial intelligence"']},
-  {n:'Consumers',t:['consumer*','"consumer behavior"','"consumer behaviour"','"consumer attitude*"','"university students"','"Gen Z"','"young adults"','"older adults"','parents']}];
+  {n:'Consumers',t:['consumer*','"consumer behavior"','"consumer behaviour"','"consumer attitude*"','"university students"','"Gen Z"','millennial*','"young consumers"','"young adults"']}];
  W.forEach(w=>{w.i=0;w.p=[];w.t.push(OWN)});
  let adding=false,opened=G.isDone(2),focusSel=null;
  const q=()=>W.filter(w=>w.p.length).map(w=>w.p.length>1?'('+w.p.join(' OR ')+')':w.p[0]).join(' AND ');
@@ -686,6 +686,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
  draw()})();
 
 /* ================= P2 Business Source Premier ================= */
+const ebq=q=>'https://research.ebsco.com/c/cqb6z7/search/results?autocorrect=y&db=buh&expanders=concept&limiters=None&searchMode=enhanced&q='+encodeURIComponent(q).replace(/%20/g,'+');
 function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;i++){const c=q[i];if(c==='"')inq=!inq;if(!inq){if(c==='(')d++;if(c===')')d--}
   if(!inq&&d===0&&q.startsWith(' AND ',i)){out.push(cur);cur='';i+=4;continue}cur+=c}if(cur)out.push(cur);
  return out.map(x=>x.trim().replace(/^\((.*)\)$/,'$1'))}
@@ -699,16 +700,16 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
   if(d!=='5'){fb.innerHTML='<span class="no">Nearly.</span> Check the publication date. You want the last five years.';return}
   if(st.some(v=>v!=='aj')){fb.innerHTML='<span class="no">Nearly.</span> News and reports aren’t peer reviewed. Untick them.';return}
   fb.innerHTML='<span class="ok">✓ Spot on.</span> Peer reviewed plus a date range gives you recent, quality research.';$('#brun').hidden=false;G.complete(3,tries===1)});
- $('#bgo').addEventListener('click',()=>{const q=built();G.log('bsp','Business Source Premier',q+'\nPeer reviewed, 2022 to 2026');openWin('https://wwwproxy1.library.unsw.edu.au/login?url='+encodeURIComponent(EB+encodeURIComponent(q)))})})();
+ $('#bgo').addEventListener('click',()=>{const q=built();G.log('bsp','Business Source Premier',q+'\nPeer reviewed, 2022 to 2026');openWin(ebq(q))})})();
 
 /* ================= P2b Ask a question ================= */
 (function(){const host=$('#qbuild');if(!host)return;bindTabs($('#p3'));
- const R=[['Start',['How do','Why do','What makes']],['Who',['university students','Gen Z consumers','older consumers','parents']],['Do what',['trust','use','feel about','avoid']],['What',['AI assistants like Copilot','generative AI tools','virtual assistants']]];
- const pick=[0,0,0,0];
+ const R=[['Start',['How do','Why do','What makes']],['Who',['university students','Gen Z consumers','millennials','young consumers']],['Do what',['trust','use','adopt','feel about']],['What',['generative AI tools','AI assistants like Copilot','virtual assistants','chatbots']]];
+ const pick=[1,1,0,0];
  const sentence=()=>{let w=R.map((r,i)=>r[1][pick[i]]);if(w[0]==='What makes')return `What makes ${w[1]} ${w[2]==='feel about'?'feel positive about':w[2]} ${w[3]}?`;return `${w[0]} ${w[1]} ${w[2]} ${w[3]}?`};
  function draw(){host.innerHTML=R.map((r,i)=>`<div class="qrow"><span class="ql">${r[0]}</span><div class="chips" role="group" aria-label="${r[0]}">${r[1].map((c,j)=>`<button class="chip" type="button" data-r="${i}" data-c="${j}" aria-pressed="${pick[i]===j}">${c}</button>`).join('')}</div></div>`).join('');$('#nlq').value=sentence()}
  host.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;pick[+b.dataset.r]=+b.dataset.c;draw();host.querySelector(`[data-r="${b.dataset.r}"][data-c="${b.dataset.c}"]`).focus()});
- $('#nlgo').addEventListener('click',()=>{const q=$('#nlq').value.trim();if(!q)return;G.log('bspq','Business Source Premier question',q);$("#bsT2").classList.add("done");openWin('https://wwwproxy1.library.unsw.edu.au/login?url='+encodeURIComponent('https://research.ebsco.com/c/cqb6z7/search/results?autocorrect=y&db=buh&expanders=concept&searchMode=enhanced&q='+encodeURIComponent(q)))});
+ $('#nlgo').addEventListener('click',()=>{const q=$('#nlq').value.trim();if(!q)return;G.log('bspq','Business Source Premier question',q);$("#bsT2").classList.add("done");openWin(ebq(q))});
  draw()})();
 
 /* ================= P3 Scopus ================= */
@@ -723,7 +724,7 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
   if(v.includes('PSYC')&&v.includes('BUSI')){fb.innerHTML='<span class="ok">✓ Great pick.</span> Psychology explains consumer motives. Business covers marketing and adoption.';$('#srun').hidden=false;G.complete(4,tries===1);return}
   if(!v.includes('PSYC')){fb.innerHTML='<span class="no">Not quite.</span> Which subject studies how people think and feel?';return}
   fb.innerHTML='<span class="no">Nearly.</span> Pair Psychology with the subject that covers marketing.'});
- $('#sgo').addEventListener('click',()=>{const q=built();G.log('scopus','Scopus',q);openWin('https://wwwproxy1.library.unsw.edu.au/login?url='+encodeURIComponent('https://www.scopus.com/results/results.uri?src=s&sot=a&s='+encodeURIComponent(q)))})})();
+ $('#sgo').addEventListener('click',()=>{const q=built();G.log('scopus','Scopus',q);openWin('https://wwwproxy1.library.unsw.edu.au/login?url=https://www.scopus.com/results/results.uri?src=s&sot=a&s='+encodeURIComponent(q))})})();
 
 /* ================= P4 Passport ================= */
 (function(){if(!$('#q4a'))return;const d=[0,0,0,0];let w=0;const m=()=>{const n=d.filter(Boolean).length;$('#m4').innerHTML=n===4?'<span class="ok">✓ All four answered.</span>':n+' of 4 answered';if(n===4)G.complete(5,w===0)};
