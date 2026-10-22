@@ -256,6 +256,17 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .clip .qt b{background:var(--soft);font-weight:700}
 
 /* ===== MARK2051 additions ===== */
+.advb{display:grid;grid-template-columns:minmax(0,1fr) 220px}
+@media (max-width:700px){.advb{grid-template-columns:minmax(0,1fr)}.advf{border-left:0!important;border-top:2px solid var(--line)}}
+.adv{padding:14px}.advf{border-left:2px solid var(--line);padding:12px 14px;background:var(--panel)}
+.advh{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 8px}
+.arow{display:grid;grid-template-columns:76px minmax(0,1fr) 130px;gap:8px;align-items:center;margin-bottom:8px}
+.arow select,.arow input{font:inherit;font-size:14px;border:2px solid var(--ink);border-radius:8px;padding:6px 8px;background:var(--card);color:var(--ink);min-width:0}
+.arow .aterm{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px}
+.arow .aop{background:var(--yellow);color:#000;font-weight:700;border-color:#000}
+@media (max-width:520px){.arow{grid-template-columns:70px minmax(0,1fr)}.arow .afld{grid-column:2}}
+.btn.dark{background:#111;color:var(--yellow);border-color:#111}
+.nextup{display:flex;align-items:center;gap:10px;margin-top:10px;border:2px dashed var(--ink);border-radius:10px;padding:8px 12px;font-size:14.5px}.nextup .ar{font-size:20px}.nextup b{font-weight:700}
 .chk{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:12px 0 0;font-size:14px}.chk>span{border:2px solid var(--ink);border-radius:999px;padding:1px 10px;font-weight:500}.chk>span:first-child{background:#111;color:var(--yellow);border-color:#111}
 .how,.slide .lead{color:var(--ink)}
 [hidden]{display:none!important}
@@ -414,21 +425,16 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 </div></section>
 
 <section class="slide" id="p3" aria-labelledby="h3"><div class="in"><div class="sh"><h2 id="h3">Business Source Premier</h2></div>
-<div class="lay2">
- <div class="mock"><div class="mockh"><span><b>Business Source Premier</b> · practice filters</span><span class="prac">Practice</span></div><div class="mockb">
-  <p class="task">Set the filters to find <b>peer-reviewed research from the last five years</b>.</p>
-  <fieldset class="flist"><legend>Limit to</legend><label><input type="checkbox" id="bf1"> Peer reviewed</label><label><input type="checkbox" id="bf2"> Full text</label></fieldset>
-  <fieldset class="flist"><legend>Publication date</legend><label><input type="radio" name="bd" value="any" checked> Any time</label><label><input type="radio" name="bd" value="5"> 2022 to 2026</label><label><input type="radio" name="bd" value="1"> 2026 only</label></fieldset>
-  <fieldset class="flist"><legend>Source type</legend><label><input type="checkbox" class="bst" value="aj"> Academic journals</label><label><input type="checkbox" class="bst" value="news"> News</label><label><input type="checkbox" class="bst" value="mag"> Magazines</label><label><input type="checkbox" class="bst" value="rep"> Reports</label></fieldset>
-  <button class="btn" type="button" id="bchk">Check my filters</button><p class="fb" id="bfb" aria-live="polite"></p>
+<p class="task">Your search is ready. Set the filters to find <b>peer-reviewed research from the last five years</b>, then select <b>Search</b>.</p>
+<div class="mock"><div class="mockh"><span><b>Business Source Premier</b> · advanced search</span><span class="prac">Practice</span></div>
+ <div class="advb"><div class="adv"><p class="advh">Your search from the last slide</p><div id="brows"></div>
+  <div class="row" style="margin-top:12px"><button class="btn" type="button" id="bchk">Search</button></div>
+  <p class="fb" id="bfb" aria-live="polite"></p>
+  <div class="row" id="brun" hidden><button class="btn dark" type="button" id="bgo">Run it in Business Source Premier <span aria-hidden="true">↗</span><span class="sr"> (opens in a new window)</span></button></div></div>
+ <div class="advf"><fieldset class="flist"><legend>Limit to</legend><label><input type="checkbox" id="bf1"> Peer reviewed</label><label><input type="checkbox" id="bf2"> Full text</label></fieldset>
+  <fieldset class="flist"><legend>Publication date</legend><label><input type="radio" name="bd" value="any" checked> Any time</label><label><input type="radio" name="bd" value="5"> 2022 to 2026</label></fieldset>
+  <fieldset class="flist"><legend>Source type</legend><label><input type="checkbox" class="bst" value="aj"> Academic journals</label><label><input type="checkbox" class="bst" value="news"> News</label><label><input type="checkbox" class="bst" value="rep"> Reports</label></fieldset></div>
  </div></div>
- <div class="box" id="breal"><p class="boxh">Now try it for real</p><ol class="steps">
-  <li><span class="n">1</span><div>Copy your search from the lock.<div class="out" style="margin-top:6px"><code id="bq"></code><button class="btn small ghost" type="button" id="bcp">Copy</button></div></div></li>
-  <li><span class="n">2</span><div><button class="btn small" type="button" id="bgo">Open Business Source Premier</button></div></li>
-  <li><span class="n">3</span><div>Set the same filters on the left of the results page.</div></li>
-  <li><span class="n">4</span><div><label class="f" for="bn">How many results did you get?</label><div class="cnt"><input type="text" id="bn" inputmode="numeric" autocomplete="off"><button class="btn small ghost" type="button" id="bsv">Save to log</button></div><p class="fb" id="bsfb" aria-live="polite"></p></div></li>
- </ol></div>
-</div>
 </div></section>
 
 <section class="slide" id="p4" aria-labelledby="h4"><div class="in"><div class="sh"><h2 id="h4">Scopus</h2></div>
@@ -624,7 +630,8 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
   </div></div></div>
   ${adding?`<div class="addf"><label for="nwn">Concept</label><input type="text" id="nwn" placeholder="e.g. Privacy" autocomplete="off"><label for="nwt">Words, separated by commas</label><input type="text" id="nwt" placeholder="e.g. privacy, &quot;personal data&quot;" autocomplete="off"><div class="row"><button class="btn small" type="button" data-a="mk">Add dial</button><button class="btn small ghost" type="button" data-a="cancel">Cancel</button></div><p class="fb" id="nwfb" aria-live="polite"></p></div>`:''}
   <p class="lockst" aria-live="polite">${full?'✓ Your search is ready and saved to your Research log.':'Add at least one word on every dial.'}</p>
-  <div class="out"><span class="l">Your search</span><code>${qh()||'Your words will appear here.'}</code><button class="btn small" type="button" data-a="copy">Copy</button></div>`;
+  <div class="out"><span class="l">Your search</span><code>${qh()||'Your words will appear here.'}</code><button class="btn small" type="button" data-a="copy">Copy</button></div>
+  <div class="nextup"><span class="ar" aria-hidden="true">➜</span><span><b>Next up</b> You’ll run this search in Business Source Premier on the next slide. It’s saved to your <b>Research log</b> too.</span></div>`;
   if(focusSel){const f=host.querySelector(focusSel);if(f)f.focus();focusSel=null}
   if(full){G.log('lock','Your search',q());if(!opened){opened=true;G.complete(2,true)}}}
  host.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,k=+b.dataset.k,w=W[k];
@@ -643,16 +650,20 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
  draw()})();
 
 /* ================= P2 Business Source Premier ================= */
+function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;i++){const c=q[i];if(c==='"')inq=!inq;if(!inq){if(c==='(')d++;if(c===')')d--}
+  if(!inq&&d===0&&q.startsWith(' AND ',i)){out.push(cur);cur='';i+=4;continue}cur+=c}if(cur)out.push(cur);
+ return out.map(x=>x.trim().replace(/^\((.*)\)$/,'$1'))}
 (function(){if(!$('#bchk'))return;let tries=0;const EB='https://research.ebsco.com/c/cqb6z7/search/results?autocorrect=y&db=buh&expanders=concept&searchMode=enhanced&q=';
- const sync=()=>{$('#bq').textContent=myQ()};G.onChange(sync);sync();
+ const FL=[['','All text'],['TI','Title'],['AB','Abstract'],['SU','Subject terms']];
+ function rows(){const g=splitQ(myQ());$('#brows').innerHTML=g.map((t,i)=>`<div class="arow">${i?`<label class="sr" for="bo${i}">Row ${i+1} operator</label><select id="bo${i}" class="aop"><option>AND</option><option>OR</option><option>NOT</option></select>`:'<span></span>'}<label class="sr" for="bt${i}">Row ${i+1} search terms</label><input type="text" id="bt${i}" class="aterm" value="${esc(t)}" autocomplete="off"><label class="sr" for="bfd${i}">Row ${i+1} field</label><select id="bfd${i}" class="afld">${FL.map(f=>`<option value="${f[0]}">${f[1]}</option>`).join('')}</select></div>`).join('')}
+ const built=()=>[...document.querySelectorAll('#brows .arow')].map((r,i)=>{const t=r.querySelector('.aterm').value.trim();if(!t)return'';const f=r.querySelector('.afld').value;const term=(f?f+' ':'')+(/ OR /.test(t)?'('+t+')':t);return i?r.querySelector('.aop').value+' '+term:term}).filter(Boolean).join(' ').replace(/^(AND|OR|NOT) /,'');
+ G.onChange(()=>{if(!document.activeElement||!document.activeElement.closest||!document.activeElement.closest('#brows'))rows()});rows();
  $('#bchk').addEventListener('click',()=>{tries++;const pr=$('#bf1').checked,d=document.querySelector('input[name="bd"]:checked').value,st=[...document.querySelectorAll('.bst:checked')].map(x=>x.value);const fb=$('#bfb');
   if(!pr){fb.innerHTML='<span class="no">Not yet.</span> Which filter keeps only peer-reviewed articles?';return}
   if(d!=='5'){fb.innerHTML='<span class="no">Nearly.</span> Check the publication date. You want the last five years.';return}
-  if(st.some(v=>v!=='aj')){fb.innerHTML='<span class="no">Nearly.</span> News, magazines and reports aren’t peer reviewed. Untick them.';return}
-  fb.innerHTML='<span class="ok">✓ Spot on.</span> Peer reviewed plus a date range gives you recent, quality research.';G.complete(3,tries===1)});
- $('#bcp').addEventListener('click',e=>copyText(myQ(),e.currentTarget));
- $('#bgo').addEventListener('click',()=>openWin(EB+encodeURIComponent(myQ())));
- $('#bsv').addEventListener('click',()=>{const n=$('#bn').value.trim();if(!n){$('#bsfb').innerHTML='<span class="no">Enter your result count first.</span>';$('#bn').focus();return}G.log('bsp','Business Source Premier',myQ()+'\nPeer reviewed, 2022 to 2026 · '+n+' results');$('#bsfb').innerHTML='<span class="ok">✓ Saved to your Research log.</span>'})})();
+  if(st.some(v=>v!=='aj')){fb.innerHTML='<span class="no">Nearly.</span> News and reports aren’t peer reviewed. Untick them.';return}
+  fb.innerHTML='<span class="ok">✓ Spot on.</span> Peer reviewed plus a date range gives you recent, quality research.';$('#brun').hidden=false;G.complete(3,tries===1)});
+ $('#bgo').addEventListener('click',()=>{const q=built();G.log('bsp','Business Source Premier',q+'\nPeer reviewed, 2022 to 2026');openWin(EB+encodeURIComponent(q))})})();
 
 /* ================= P3 Scopus ================= */
 (function(){if(!$('#schk'))return;let tries=0;
