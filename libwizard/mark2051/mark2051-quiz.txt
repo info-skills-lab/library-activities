@@ -117,7 +117,7 @@ PART B. QUESTIONS (12)
    [Evaluate · Slide 8]
 
 11. An AI tool tells you "80% of Australians trust AI" but gives no source. What should you do?
-   a) Find the original source in Passport or a Library database before you use it ✓
+   a) Find the original source in a Library database or another trusted source before you use it ✓
    b) Use it, and cite the AI tool as the source
    c) Use it, as AI tools are usually accurate
    d) Ask the AI tool if the figure is correct
