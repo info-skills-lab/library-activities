@@ -1,4 +1,4 @@
-Medicine HDR Essentials · LibWizard left panels
+Medicine HDR Essentials, LibWizard left panels
 ===============================================
 
 Paste each slide’s code into its left panel (Source view), then select Save Changes.

@@ -335,7 +335,7 @@ details.tv ul{margin:6px 0 0;padding-left:20px}
 </head>
 <body>
 
-<header class="top"><h1>Medicine HDR Essentials</h1><p>Medical research using the Library collection · UNSW Library. Each section below is one right panel in the LibWizard tutorial (use ?part=N).</p></header>
+<header class="top"><h1>Medicine HDR Essentials</h1><p>Medical research using the Library collection - UNSW Library. Each section below is one right panel in the LibWizard tutorial (use ?part=N).</p></header>
 <nav class="toc" aria-label="Parts"><a href="?part=1">1 Research question</a><a href="?part=2">2 Breaking down the question</a><a href="?part=3">3 AND and OR</a><a href="?part=4">4 Entering your search</a><a href="?part=5">5 Challenge</a><a href="?part=6">6 Database search</a><a href="?part=7">7 PubMed</a><a href="?part=8">8 Search health check</a><a href="?part=9">9 Evaluating sources</a><a href="?part=10">10 AI and searching</a></nav>
 <main>
 <section class="slide" id="p1" aria-labelledby="h1"><div class="in"><div class="sh"><h2 id="h1">Your research question</h2></div>
@@ -369,7 +369,7 @@ details.tv ul{margin:6px 0 0;padding-left:20px}
   <button class="btn ghost small exbtn" type="button" aria-expanded="false" aria-controls="exand">Show an example</button>
   <div class="ex" id="exand" hidden><p style="margin:0">In our example we have three concepts:</p><ol><li><code>"cardiovascular disease*" OR "heart disease*"</code><br><span class="op">AND</span></li><li><code>"low carb* diet*" OR "carbohydrate restricted diet*"</code><br><span class="op">AND</span></li><li><code>"risk factor*"</code></li></ol><p style="margin:0">Your final search results will now include articles relevant to your topic as each article will include all three key concepts.</p></div></div>
 </div>
-<p class="boxh" style="margin-top:4px">Activity · Select the correct answer for the following</p>
+<p class="boxh" style="margin-top:4px">Activity - Select the correct answer for the following</p>
 <div class="grid2"><div class="box"><div id="q3a"></div></div><div class="box"><div id="q3b"></div></div></div>
 <p class="meter" id="m3" aria-live="polite"></p>
 </div></section>
@@ -378,14 +378,14 @@ details.tv ul{margin:6px 0 0;padding-left:20px}
 <p class="lead">The diagram shows how to enter your search terms into a database, one concept per row.</p>
 <div class="lay2">
  <div class="sdiag" role="group" aria-label="How to enter a search in a database">
-  <p class="stepl">1 · Combine synonyms with OR in each row</p>
+  <p class="stepl">1, Combine synonyms with OR in each row</p>
   <div class="srow">"cardiovascular disease*" OR "heart disease*"</div>
   <div class="and"><span class="op">AND</span></div>
   <div class="srow">"low carb* diet*" OR "carbohydrate restricted diet*"</div>
   <div class="and"><span class="op">AND</span></div>
   <div class="srow">"risk factor*"</div>
-  <p class="stepl">2 · Add limits, then search</p>
-  <div class="lim"><span>Date range · last 5 years</span><span class="op" style="padding:3px 12px">Search</span></div>
+  <p class="stepl">2, Add limits, then search</p>
+  <div class="lim"><span>Date range - last 5 years</span><span class="op" style="padding:3px 12px">Search</span></div>
  </div>
  <div class="tips">
   <div class="tipc"><h3>Asterisk *</h3><p>( * ) is used to capture different word endings, e.g. <span class="mono">low carb* diet*</span> will capture low carb diet, low carb diets, low carbohydrate diet as well as low carbohydrate diets.</p></div>
@@ -444,7 +444,7 @@ details.tv ul{margin:6px 0 0;padding-left:20px}
 <section class="slide" id="p9" aria-labelledby="h9"><div class="in"><div class="sh"><h2 id="h9">Evaluating sources</h2></div>
 <p class="lead">For a therapy question, the type of study matters. The NHMRC evidence hierarchy ranks study designs for intervention questions.</p>
 <div class="lay2">
- <div class="box"><p class="boxh">NHMRC evidence hierarchy · intervention</p>
+ <div class="box"><p class="boxh">NHMRC evidence hierarchy - intervention</p>
   <ol class="ladder"><li><b>Level I</b><span>A systematic review of level II studies</span></li><li><b>Level II</b><span>A randomised controlled trial</span></li><li><b>Level III-1</b><span>A pseudorandomised controlled trial</span></li><li><b>Level III-2</b><span>A comparative study with concurrent controls</span></li><li><b>Level III-3</b><span>A comparative study without concurrent controls</span></li><li><b>Level IV</b><span>Case series with either post-test or pre-test/post-test outcomes</span></li></ol>
   <p class="src">Source: NHMRC Evidence Hierarchy, intervention questions, as reproduced by Cancer Australia (Appendix 1).</p></div>
  <div class="qstack"><div class="box"><p class="boxh">Question 1</p><div id="q9a"></div></div><div class="box"><p class="boxh">Question 2</p><div id="q9b"></div></div><div class="box"><p class="boxh">Question 3</p><div id="q9c"></div></div><p class="meter" id="m9" aria-live="polite"></p></div>
@@ -531,7 +531,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
  const TAGS={task:['Task word','#cfe2ff'],con:['Key concept','#d7f7e4'],lim:['Limiting word','#ffe9b0']};
  const W=[['Taking',''],['Echinacea','con'],['supplements','*'],['can',''],['reduce','*'],['the',''],['severity','*'],['of',''],['the',''],['common cold','con'],['.',null],['Discuss','task'],['with',''],['reference',''],['to',''],['therapy studies','lim'],['.',null]];
  let cur='con';const tag={};
- tb.innerHTML=`<p class="boxh">Activity 1 · Find the concepts</p><div class="tagbar" role="group" aria-label="Choose a tag"><span class="t">Choose a tag, then select words:</span>${Object.entries(TAGS).map(([k,v])=>`<button class="tagbtn" type="button" data-tag="${k}" aria-pressed="${k===cur}"><span class="sw" style="background:${v[1]}" aria-hidden="true"></span>${v[0]}</button>`).join('')}</div>
+ tb.innerHTML=`<p class="boxh">Activity 1 - Find the concepts</p><div class="tagbar" role="group" aria-label="Choose a tag"><span class="t">Choose a tag, then select words:</span>${Object.entries(TAGS).map(([k,v])=>`<button class="tagbtn" type="button" data-tag="${k}" aria-pressed="${k===cur}"><span class="sw" style="background:${v[1]}" aria-hidden="true"></span>${v[0]}</button>`).join('')}</div>
  <p class="tagq">${W.map((w,i)=>w[1]===null?esc(w[0]):`<button class="tw" type="button" data-i="${i}" aria-pressed="false">${esc(w[0])}</button>`).join(' ').replace(/ \./g,'.')}</p>
  <div class="row" style="margin-top:10px"><button class="btn" type="button" id="tagchk">Check</button><button class="btn ghost small" type="button" id="tagclr">Clear</button></div><p class="fb" id="tagfb" aria-live="polite"></p>`;
  tb.querySelectorAll('.tagbtn').forEach(b=>b.addEventListener('click',()=>{cur=b.dataset.tag;tb.querySelectorAll('.tagbtn').forEach(x=>x.setAttribute('aria-pressed',x===b))}));
@@ -543,7 +543,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
  const S=[{c:'Echinacea',base:'Echinacea',chips:[['Echinacea purpurea','g','A species of Echinacea. MeSH lists it as an entry term for Echinacea.'],['purple coneflower','g','A common name for Echinacea. MeSH lists it as an entry term.'],['herbal medicine','b','Broader than Echinacea. It would bring in many other herbs.'],['vitamin C','n','A different supplement, so not a synonym.']]},
   {c:'Common cold',base:'"common cold"',chips:[['coryza','g','MeSH lists acute coryza as an entry term for Common Cold.'],['upper respiratory tract infection','b','Broader than the common cold. Useful if you find too few results.'],['influenza','n','Flu is a different illness, so not a synonym.'],['cold','n','On its own, cold also finds cold temperatures. Use the phrase "common cold".']]}];
  const sel=S.map(()=>new Set());const sb=$('#synbox');
- sb.innerHTML=`<p class="boxh">Activity 2 · Choose synonyms</p><p style="margin:0 0 6px">Select the synonyms you would add for each concept.</p>${S.map((r,k)=>`<div class="synrow"><b>${esc(r.c)}</b><div><div class="chips">${r.chips.map((c,j)=>`<button class="chip" type="button" data-k="${k}" data-j="${j}" aria-pressed="false">${esc(c[0])}</button>`).join('')}</div><p class="fb" id="sf${k}" aria-live="polite"></p></div></div>`).join('')}
+ sb.innerHTML=`<p class="boxh">Activity 2 - Choose synonyms</p><p style="margin:0 0 6px">Select the synonyms you would add for each concept.</p>${S.map((r,k)=>`<div class="synrow"><b>${esc(r.c)}</b><div><div class="chips">${r.chips.map((c,j)=>`<button class="chip" type="button" data-k="${k}" data-j="${j}" aria-pressed="false">${esc(c[0])}</button>`).join('')}</div><p class="fb" id="sf${k}" aria-live="polite"></p></div></div>`).join('')}
  <div class="searchline"><span class="l">Your search</span><code id="synq"></code><button class="btn small ghost" type="button" id="syncp">Copy</button></div><p class="fb" id="synfb" aria-live="polite"></p>`;
  const qt=t=>/\s/.test(t)?'"'+t+'"':t;
  const q=()=>S.map((r,k)=>{const a=[r.base,...[...sel[k]].map(j=>qt(r.chips[j][0]))];return a.length>1?'('+a.join(' OR ')+')':a[0]}).join(' AND ');
@@ -576,17 +576,17 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
 (function(){if(!$('#s6'))return;const SQ='("cardiovascular disease*" OR "heart disease*") AND ("low carb* diet*" OR "carbohydrate restricted diet*") AND "risk factor*"';
  $('#cp6').addEventListener('click',e=>copyText(SQ,e.currentTarget));
  $('#s6').addEventListener('click',()=>{const a=$('#c6a').value.trim(),b=$('#c6b').value.trim(),c=$('#c6c').value.trim();if(!a){$('#f6').innerHTML='<span class="no">Enter your Scopus result count first.</span>';$('#c6a').focus();return}
-  G.log('scopus','Scopus and Web of Science search',SQ+'\nScopus: '+a+(b?' · 2022–2026: '+b:'')+(c?'\nWeb of Science (Topic, 2022–2026): '+c:''));$('#f6').innerHTML='<span class="ok">✓ Saved to your Research log.</span> Different databases cover different journals, so the numbers will differ.';G.complete(6)})})();
+  G.log('scopus','Scopus and Web of Science search',SQ+'\nScopus: '+a+(b?', 2022–2026: '+b:'')+(c?'\nWeb of Science (Topic, 2022–2026): '+c:''));$('#f6').innerHTML='<span class="ok">✓ Saved to your Research log.</span> Different databases cover different journals, so the numbers will differ.';G.complete(6)})})();
 
 /* ================= P7 PubMed simulator ================= */
 (function(){const host=$('#pmsim');if(!host)return;
  const MESH={echinacea:{h:'Echinacea',sn:'A genus of perennial herbs used topically and internally.',et:'Echinacea purpurea, Echinacea angustifolia, Echinacea pallida, Purple Coneflower',c:0},
   cold:{h:'Common Cold',sn:'A catarrhal disorder of the upper respiratory tract, which may be viral or a mixed infection. It generally involves a runny nose, nasal congestion, and sneezing.',et:'Cold, Common; Colds, Common; Coryza, Acute; Catarrh',c:1}};
  const find=t=>{t=t.toLowerCase();if(/echinac|coneflower/.test(t))return MESH.echinacea;if(/cold|coryza|catarrh/.test(t))return MESH.cold;return null};
- const C=[{n:'Concept 1 · Echinacea',mesh:'"Echinacea"[mh]',kw:[['echinacea[tiab]',1],['"purple coneflower"[tiab]',0]]},{n:'Concept 2 · Common cold',mesh:'"Common Cold"[mh]',kw:[['"common cold"[tiab]',1],['coryza[tiab]',0]]}];
+ const C=[{n:'Concept 1 - Echinacea',mesh:'"Echinacea"[mh]',kw:[['echinacea[tiab]',1],['"purple coneflower"[tiab]',0]]},{n:'Concept 2 - Common cold',mesh:'"Common Cold"[mh]',kw:[['"common cold"[tiab]',1],['coryza[tiab]',0]]}];
  const meshOn=[false,false],meshUse=[false,false];
  const F=[['"Randomized Controlled Trial"[pt]','Randomized Controlled Trial'],['"Systematic Review"[pt]','Systematic Review'],['"Meta-Analysis"[pt]','Meta-Analysis']];
- host.innerHTML=`<div class="pm"><div class="pmhead"><span class="t">PubMed · practice search</span><span class="small">Practice version. Results open in the real PubMed.</span></div>
+ host.innerHTML=`<div class="pm"><div class="pmhead"><span class="t">PubMed - practice search</span><span class="small">Practice version. Results open in the real PubMed.</span></div>
  <label class="f" for="pmq">Look up a term in MeSH ${gn(1,'Find the MeSH heading','<p>MeSH (Medical Subject Headings) is the controlled vocabulary used to index PubMed articles. One heading covers the different words authors use for the same idea.</p><p>Try echinacea, then common cold.</p>')}</label>
  <div class="row"><input type="text" id="pmq" style="max-width:340px" placeholder="e.g. echinacea" autocomplete="off"><button class="btn" type="button" id="pmgo">Look up</button></div>
  <div id="pmcard" aria-live="polite"></div></div>
@@ -602,7 +602,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
  const draw=()=>{$('#pmout').textContent=q()||'Tick some terms above'};
  function look(){const t=$('#pmq').value.trim();const m=find(t);const card=$('#pmcard');if(!t){card.innerHTML='<p class="fb"><span class="no">Type a term first.</span></p>';return}
   if(!m){card.innerHTML='<p class="fb"><span class="no">No MeSH heading in this practice tool.</span> Try echinacea or common cold.</p>';return}
-  card.innerHTML=`<div class="meshcard"><h4>MeSH heading · ${esc(m.h)}</h4><p>${esc(m.sn)}</p><p class="et">Entry terms include ${esc(m.et)}.</p><button class="btn small" type="button" id="pmadd">Add “${esc(m.h)}”[mh] to concept ${m.c+1}</button></div>`;
+  card.innerHTML=`<div class="meshcard"><h4>MeSH heading - ${esc(m.h)}</h4><p>${esc(m.sn)}</p><p class="et">Entry terms include ${esc(m.et)}.</p><button class="btn small" type="button" id="pmadd">Add “${esc(m.h)}”[mh] to concept ${m.c+1}</button></div>`;
   $('#pmadd').addEventListener('click',()=>{meshOn[m.c]=true;meshUse[m.c]=true;const cb=$('#mh'+m.c);cb.disabled=false;cb.checked=true;$('#ml'+m.c).classList.remove('off');$('#ml'+m.c).querySelector('.small').textContent='';draw();$('#pmadd').textContent='Added';$('#pmadd').disabled=true;cb.focus()})}
  $('#pmgo').addEventListener('click',look);$('#pmq').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();look()}});
  host.addEventListener('change',e=>{const t=e.target;if(t.id&&/^mh\d$/.test(t.id))meshUse[+t.id.slice(2)]=t.checked;else if(t.dataset.f!==undefined)fOn[+t.dataset.f]=t.checked;else if(t.dataset.k!==undefined)kwOn[+t.dataset.k][+t.dataset.j]=t.checked;draw()});
