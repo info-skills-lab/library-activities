@@ -323,7 +323,18 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .how{font-size:14.5px;color:var(--muted);margin:0 0 6px}
 /* lock */
 .lockwrap{margin-top:4px}
-.lbody{width:100%;background:linear-gradient(180deg,#2a2a2a,#111 60%,#000);border-radius:20px;padding:16px 16px 14px;box-shadow:0 8px 0 var(--yellow),0 8px 0 2px #111;position:relative;color:#fff}
+.lbody{width:100%;background:linear-gradient(180deg,#2b2b2b,#0d0d0d);border-radius:22px;padding:14px 74px 16px 16px;position:relative;color:#fff}
+.lbody .win{color:#000}
+.marq{display:flex;gap:7px;justify-content:center;margin:0 0 10px}.marq i{width:9px;height:9px;border-radius:50%;background:var(--yellow);box-shadow:0 0 6px var(--yellow)}
+.lbody.rolling .marq i:nth-child(odd){opacity:.25}
+.lever{position:absolute;right:14px;top:34px;width:44px;height:206px;border:0;background:transparent;padding:0;cursor:pointer;color:var(--yellow)}
+.lever .rod{position:absolute;left:18px;top:26px;width:8px;height:132px;border-radius:4px;background:linear-gradient(90deg,#999,#eee,#999);transform-origin:50% 100%;transition:transform .25s}
+.lever .ball{position:absolute;left:6px;top:4px;width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff7a8,#FFDC00 45%,#b89a00);border:2px solid #000;transition:transform .25s}
+.lever .base{position:absolute;left:5px;top:150px;width:34px;height:24px;border-radius:8px;background:#666;border:2px solid #000}
+.lever .lt{position:absolute;left:-14px;right:-14px;top:180px;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-align:center;line-height:1.15}
+.lever.pulled .ball{transform:translateY(96px)}.lever.pulled .rod{transform:scaleY(.3)}
+.lever:hover .ball{box-shadow:0 0 0 3px #fff}
+@media (max-width:620px){.lbody{padding-right:16px}.lever{position:static;display:flex;align-items:center;gap:8px;width:auto;height:auto;margin:12px auto 0;border:2px solid var(--yellow);border-radius:999px;padding:4px 14px}.lever .rod,.lever .base{display:none}.lever .ball{position:static;width:20px;height:20px}.lever .lt{position:static;font-size:13px}.lever.pulled .ball{transform:none}}
 .brand{position:absolute;top:8px;left:50%;transform:translateX(-50%);color:var(--yellow);font-weight:700;font-size:12px;letter-spacing:.2em;white-space:nowrap}
 .wheels{display:flex;gap:10px;align-items:flex-start}
 .wheels>.w{flex:1 1 0}
@@ -445,7 +456,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 </head>
 <body>
 
-<header class="top"><h1>MARK2051 Consumer Behaviour · Library research skills</h1><p>Each section below is one right panel in the LibWizard tutorial (use ?part=N).</p></header>
+<header class="top"><h1>MARK2051 Consumer Behaviour - Library research skills</h1><p>Each section below is one right panel in the LibWizard tutorial (use ?part=N).</p></header>
 <nav class="toc" aria-label="Parts"><a href="?part=1">1 The challenge</a><a href="?part=2">2 Breaking down the question</a><a href="?part=3">3 Business Source Premier</a><a href="?part=4">4 Scopus</a><a href="?part=5">5 Passport GMID</a><a href="?part=6">6 Grey literature</a><a href="?part=7">7 MarketLine</a><a href="?part=8">8 Evaluating sources</a><a href="?part=9">9 Using AI responsibly</a><a href="?part=10">10 Check your learning</a><a href="?part=11">11 Your badges and help</a><a href="?part=12">12 Business research prompt</a></nav>
 <main>
 
@@ -465,7 +476,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 <div class="tabs" role="tablist"><button class="tab" role="tab" type="button" id="bsT1" aria-selected="true" aria-controls="bp1">1 Advanced search</button><button class="tab" role="tab" type="button" id="bsT2" aria-selected="false" aria-controls="bp2">2 Ask a question</button></div>
 <div class="tabp" id="bp1" role="tabpanel" aria-labelledby="bsT1">
 <p class="task">Your search is ready. Set the filters to find <b>peer-reviewed research from the last five years</b>, then select <b>Search</b>.</p>
-<div class="mock"><div class="mockh"><span><b>Business Source Premier</b> · advanced search</span><span class="prac">Practice</span></div>
+<div class="mock"><div class="mockh"><span><b>Business Source Premier</b> - advanced search</span><span class="prac">Practice</span></div>
  <div class="advb"><div class="adv"><p class="advh">Your search from the last slide</p><div id="brows"></div>
   <div class="row" style="margin-top:12px"><button class="btn" type="button" id="bchk">Search</button></div>
   <p class="fb" id="bfb" aria-live="polite"></p>
@@ -487,7 +498,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 
 <section class="slide" id="p4" aria-labelledby="h4"><div class="in"><div class="sh"><h2 id="h4">Scopus</h2></div>
 <p class="task">You want to know <b>why</b> consumers trust or distrust AI. Pick the <b>two</b> subject areas that fit best, then select <b>Search</b>.</p>
-<div class="mock"><div class="mockh"><span><b>Scopus</b> · advanced search</span><span class="prac">Practice</span></div>
+<div class="mock"><div class="mockh"><span><b>Scopus</b> - advanced search</span><span class="prac">Practice</span></div>
  <div class="advb"><div class="adv"><p class="advh">Your search from the last slide</p><div id="srows"></div>
   <div class="row" style="margin-top:12px"><button class="btn" type="button" id="schk">Search</button></div>
   <p class="fb" id="sfb" aria-live="polite"></p>
@@ -505,7 +516,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 <p class="lead">Read the practice data, then answer the questions.</p>
 <div class="route"><span class="rk"><span aria-hidden="true">📍</span> Find it in Passport</span><span class="rpath"><span class="rp">Consumers</span> <span aria-hidden="true">›</span> <span class="rp">Lifestyles</span> <span aria-hidden="true">›</span> <span class="rp">Create consumer profiles</span> <span aria-hidden="true">›</span> <span class="rp">Lifestyles Survey 2026</span> <span aria-hidden="true">›</span> <span class="rp">Technology</span> <span aria-hidden="true">›</span> <span class="rp">Online activities</span></span><button class="btn small" type="button" id="pgo">Open Passport <span aria-hidden="true">↗</span><span class="sr"> (opens in a new window)</span></button></div>
 <div class="lay2">
- <div class="mock"><div class="mockh"><span><b>Uses generative AI for daily activities</b> · by generation</span><span class="prac">Practice data</span></div><div class="mockb">
+ <div class="mock"><div class="mockh"><span><b>Uses generative AI for daily activities</b> - by generation</span><span class="prac">Practice data</span></div><div class="mockb">
   <div class="chart" role="img" aria-label="Practice bar chart. Percentage who use generative AI for daily activities, by generation. Generation Z 58 per cent, Millennials 51 per cent, Generation X 38 per cent, Baby Boomers 24 per cent.">
    <div class="bar"><span>Generation Z</span><span class="tr"><i style="width:58%"></i></span><b>58%</b></div>
    <div class="bar"><span>Millennials</span><span class="tr"><i style="width:51%"></i></span><b>51%</b></div>
@@ -531,7 +542,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 <section class="slide" id="p7" aria-labelledby="h7"><div class="in"><div class="sh"><h2 id="h7">MarketLine</h2></div>
 <p class="lead">Read each research need, then select the profile section that meets it.</p>
 <div class="qcard" id="mqc"><div class="qtop2"><span class="pxh" id="mqn"></span><span class="pips" id="mpips" aria-hidden="true"></span></div><p class="qq" id="mq" tabindex="-1"></p></div>
-<div class="mock"><div class="mockh"><span><b>MarketLine</b> · company profile</span><span class="prac">Practice layout</span></div>
+<div class="mock"><div class="mockh"><span><b>MarketLine</b> - company profile</span><span class="prac">Practice layout</span></div>
  <div class="prof"><nav class="pnav" aria-label="Profile sections" id="mnav"></nav>
   <div class="pmain"><div class="ph"><span class="bico" aria-hidden="true">🏢</span><b>Microsoft Corporation</b></div>
    <div id="mfb" aria-live="polite"></div><div class="row" id="mnext" hidden><button class="btn" type="button">Next question <span aria-hidden="true">▶</span></button></div></div>
@@ -606,7 +617,7 @@ const G=(function(){
  function render(){const b=$('#gbar');if(b){b.querySelector('.gc').textContent=doneCount()+' of '+ACT_ORDER.length+' activities';b.querySelector('.gp').innerHTML=`<img class="coin" src="${COIN}" alt="">${points()} points`;b.querySelector('.gb2').textContent=doneCount()+(doneCount()===1?' badge':' badges');b.querySelector('.gt span').style.width=(doneCount()/ACT_ORDER.length*100)+'%'}ls.forEach(f=>f())}
  function share(){const m={t:'mk-state',s:st};try{if(window.opener&&!window.opener.closed)window.opener.postMessage(m,location.origin)}catch(e){}try{for(const w of kids)if(w&&!w.closed)w.postMessage(m,location.origin)}catch(e){}}
  function toast(part,pts,bonus){const a=ACTS[part];const t=document.createElement('div');t.className='toast';t.setAttribute('role','status');
-  t.innerHTML=`<img class="tb" src="${BADGEIMG[a[2]]}" alt=""><span><b class="tk">Badge earned</b><b class="tt">${esc(a[1])}</b><span class="ts"><img class="coin" src="${COIN}" alt="">+${pts} points${bonus?' · first-try bonus':''}</span></span>`;
+  t.innerHTML=`<img class="tb" src="${BADGEIMG[a[2]]}" alt=""><span><b class="tk">Badge earned</b><b class="tt">${esc(a[1])}</b><span class="ts"><img class="coin" src="${COIN}" alt="">+${pts} points${bonus?', first-try bonus':''}</span></span>`;
   document.body.appendChild(t);requestAnimationFrame(()=>t.classList.add('on'));setTimeout(()=>{t.classList.remove('on');setTimeout(()=>t.remove(),400)},4200)}
  function complete(part,perfect){part=String(part);let pts=0;const first=!st.done[part];if(first){st.done[part]=true;pts+=10}let bon=false;if(first&&perfect&&!st.bonus[part]){st.bonus[part]=true;pts+=5;bon=true}if(!pts)return;save();render();share();toast(part,pts,bon)}
  function log(key,label,val){if(!val)return;st.log[key]={l:label,v:val,t:Date.now()};save();share();ls.forEach(f=>f())}
@@ -667,7 +678,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
  const qh=()=>W.filter(w=>w.p.length).map(w=>esc(w.p.length>1?'('+w.p.join(' OR ')+')':w.p[0])).join(' <span class="opk">AND</span> ');
  const at=(w,d)=>w.t[(w.i+d+w.t.length)%w.t.length];
  function draw(){const full=W.every(w=>w.p.length);
-  host.innerHTML=`<div class="lockwrap"><div class="lbody"><div class="wheels">
+  host.innerHTML=`<div class="lockwrap"><div class="lbody"><div class="marq" aria-hidden="true">${'<i></i>'.repeat(16)}</div><button class="lever" type="button" data-a="shuffle" aria-label="Pull the lever to shuffle all dials to random words"><span class="rod"></span><span class="ball"></span><span class="base"></span><span class="lt">PULL TO SHUFFLE</span></button><div class="wheels">
   ${W.map((w,k)=>{const cur=at(w,0),on=w.p.includes(cur),own=cur===OWN;return `${k?'<div class="andcol" aria-hidden="true"><span class="lab">&nbsp;</span><span class="spc"></span><span class="andmid"><span class="andc">AND</span></span></div>':''}<div class="w" role="group" aria-label="${esc(w.n)} dial">
    <span class="lab">${esc(w.n)}</span>
    <button class="spin" type="button" data-a="up" data-k="${k}" aria-label="Previous ${esc(w.n)} word">▲</button>
@@ -695,7 +706,16 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
   else if(a==='mk'){const n=$('#nwn').value.trim();const ts=$('#nwt').value.split(',').map(s=>s.trim()).filter(Boolean);if(!n||!ts.length){$('#nwfb').innerHTML='<span class="no">Add a concept and at least one word.</span>';return}
    const nw={n,t:ts.map(v=>/\s/.test(v)&&!/^".*"$/.test(v)?'"'+v.replace(/"/g,'')+'"':v).concat([OWN]),i:0,p:[],c:1};W.push(nw);adding=false;focusSel=`[data-a="add"][data-k="${W.length-1}"]`}
   else if(a==='copy'){copyText(q()||'',b);return}
+  else if(a==='shuffle'){shuffle();return}
   draw()});
+ let rolling=false;
+ function shuffle(){if(rolling)return;rolling=true;const lv=host.querySelector('.lever');if(lv)lv.classList.add('pulled');
+  const red=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const target=W.map(w=>{const n=w.t.length-1;let r=Math.floor(Math.random()*n);if(n>1&&r===w.i)r=(r+1)%n;return r});
+  let ticks=red?0:10;
+  const step=()=>{if(ticks>0){W.forEach(w=>{w.i=(w.i+1)%(w.t.length-1)});ticks--;draw();const b2=host.querySelector('.lbody');if(b2)b2.classList.add('rolling');const l2=host.querySelector('.lever');if(l2)l2.classList.add('pulled');setTimeout(step,70)}
+   else{W.forEach((w,k)=>w.i=target[k]);rolling=false;focusSel='[data-a="shuffle"]';draw();const st=host.querySelector('.lockst');if(st&&!W.every(w=>w.p.length))st.textContent='Shuffled! Select Add on any words you like.'}};
+  step()}
  host.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id&&e.target.id.startsWith('own')){e.preventDefault();host.querySelector(`[data-a="ownok"][data-k="${e.target.id.slice(3)}"]`).click()}});
  draw()})();
 
@@ -760,7 +780,7 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
   {t:'A university research centre report',a:'y',fb:'Reports from research centres are grey literature.'}],[['y','Grey'],['n','Not grey']],
   (left,wrong)=>{$('#m5').innerHTML=left?(6-left)+' of 6 sorted':'<span class="ok">✓ All sorted.</span> Now try <b>2 Find grey literature</b>.';if(!left){$('#glT1').classList.add('done');G.complete(6,wrong===0)}});
  const gs=$('#gs');
- gs.innerHTML=`<div class="gslay"><div class="box"><div class="simhead"><span class="t">Google Advanced Search · practice version</span><span class="row"><button class="linkbtn" type="button" id="gex">Load example</button><button class="linkbtn" type="button" id="gclr">Clear</button></span></div>
+ gs.innerHTML=`<div class="gslay"><div class="box"><div class="simhead"><span class="t">Google Advanced Search - practice version</span><span class="row"><button class="linkbtn" type="button" id="gex">Load example</button><button class="linkbtn" type="button" id="gclr">Clear</button></span></div>
  <div class="grid2"><div><label class="f" for="gall">All these words ${gn(1,'Key concepts','<p>Type the main ideas from your question, such as consumers trust artificial intelligence.</p>')}</label><input type="text" id="gall" placeholder="e.g. consumers trust artificial intelligence"></div>
  <div><label class="f" for="gphr">This exact phrase ${gn(2,'Exact phrase','<p>Keeps words together, for example generative AI or consumer attitudes.</p>',true)}</label><input type="text" id="gphr" placeholder="e.g. generative AI"></div>
  <div><label class="f" for="gsite">Site or domain ${gn(3,'Limit by site or domain','<p>.gov.au finds Australian government sources. .org.au finds organisations such as industry bodies and think tanks. .edu.au finds Australian universities. You can also limit to one trusted website, such as apo.org.au.</p>')}</label><select id="gsite"><option value="">Any site</option><option value=".gov.au">.gov.au (government)</option><option value=".org.au">.org.au (organisations)</option><option value=".edu.au">.edu.au (universities)</option><option value="apo.org.au">apo.org.au (Analysis &amp; Policy Observatory)</option></select></div>
@@ -836,15 +856,15 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
 (function(){const host=$('#wall');if(!host)return;
  const rank=n=>n>=8?'Research Legend':n>=6?'Research Pro':n>=3?'Research Explorer':'Research Rookie';
  function draw(){const st=G.state(),n=G.doneCount(),pts=G.points();
-  host.innerHTML=`<div class="bh2"><p class="kick">MARK2051 · Library research skills</p><p class="big">${rank(n)}</p><p class="sub"><img class="coin" src="${COIN}" alt="" style="width:20px;height:20px"> ${pts} points · ${n} of ${ACT_ORDER.length} badges</p></div>
+  host.innerHTML=`<div class="bh2"><p class="kick">MARK2051 - Library research skills</p><p class="big">${rank(n)}</p><p class="sub"><img class="coin" src="${COIN}" alt="" style="width:20px;height:20px"> ${pts} points, ${n} of ${ACT_ORDER.length} badges</p></div>
   <div class="bgrid">${ACT_ORDER.map(p=>`<div class="bcard ${st.done[p]?'':'off'}"><img src="${BADGEIMG[ACTS[p][2]]}" alt="" width="117" height="134"><b>${ACTS[p][1]}</b><span>${st.done[p]?'Earned':'Not yet'}</span></div>`).join('')}</div>
   <div class="wallfoot"><button class="btn" type="button" id="dlb">Download your badge card</button><span class="small">Progress is saved in this browser only.</span></div>`;
   $('#dlb').addEventListener('click',dl)}
  function li(s){return new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.src=s})}
  async function dl(){const st=G.state();const c=document.createElement('canvas');c.width=1200;c.height=630;const x=c.getContext('2d');x.imageSmoothingEnabled=false;
   x.fillStyle='#ffe000';x.fillRect(0,0,1200,630);x.fillStyle='#111';x.fillRect(0,470,1200,160);
-  x.fillStyle='#000';x.font='bold 26px Arial';x.fillText('MARK2051 · LIBRARY RESEARCH SKILLS',60,80);x.font='bold 64px Arial';x.fillText(rank(G.doneCount()),60,150);
-  x.font='28px Arial';x.fillText(`${G.points()} points · ${G.doneCount()} of ${ACT_ORDER.length} badges`,60,200);
+  x.fillStyle='#000';x.font='bold 26px Arial';x.fillText('MARK2051 - LIBRARY RESEARCH SKILLS',60,80);x.font='bold 64px Arial';x.fillText(rank(G.doneCount()),60,150);
+  x.font='28px Arial';x.fillText(`${G.points()} points, ${G.doneCount()} of ${ACT_ORDER.length} badges`,60,200);
   const ims=await Promise.all(ACT_ORDER.map(p=>li(BADGEIMG[ACTS[p][2]])));
   ims.forEach((im,k)=>{const p=ACT_ORDER[k];x.globalAlpha=st.done[p]?1:.2;x.drawImage(im,60+k*122,250,117,134)});x.globalAlpha=1;
   x.fillStyle='#fff';x.font='24px Arial';x.fillText('UNSW Library',60,560);
