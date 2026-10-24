@@ -671,7 +671,7 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
 
 /* ================= P1 Search lock ================= */
 (function(){const host=$('#lock');if(!host)return;const OWN='✎ Your own word';
- const W=[{n:'Trust',t:['trust','confidence','credibility','distrust','"perceived risk"','reliab*']},
+ const W=[{n:'Trust',t:['trust','confidence','credibility','distrust','"perceived risk"','reliab*','attitudes','perceptions','opinions','thoughts','feelings','beliefs','views','"attitudes towards"']},
   {n:'AI tool',t:['"Microsoft Copilot"','Copilot','"AI assistant"','"virtual assistant"','"generative AI"','chatbot*','"artificial intelligence"']},
   {n:'Consumers',t:['consumer*','"consumer behavior"','"consumer behaviour"','"consumer attitude*"','"university students"','"Gen Z"','millennial*','"young consumers"','"young adults"']}];
  W.forEach(w=>{w.i=0;w.p=[];w.t.push(OWN)});
