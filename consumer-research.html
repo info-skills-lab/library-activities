@@ -327,6 +327,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .lbody .win{color:#000}
 .marq{display:flex;gap:7px;justify-content:center;margin:0 0 10px}.marq i{width:9px;height:9px;border-radius:50%;background:var(--yellow);box-shadow:0 0 6px var(--yellow)}
 .lbody.rolling .marq i:nth-child(odd){opacity:.25}
+.lever[disabled]{cursor:default;opacity:.5}.lever[disabled] .ball{background:#888;box-shadow:none}
 .lever{position:absolute;right:14px;top:34px;width:44px;height:206px;border:0;background:transparent;padding:0;cursor:pointer;color:var(--yellow)}
 .lever .rod{position:absolute;left:18px;top:26px;width:8px;height:132px;border-radius:4px;background:linear-gradient(90deg,#999,#eee,#999);transform-origin:50% 100%;transition:transform .25s}
 .lever .ball{position:absolute;left:6px;top:4px;width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff7a8,#FFDC00 45%,#b89a00);border:2px solid #000;transition:transform .25s}
@@ -366,6 +367,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .addf{border:2px solid var(--ink);border-radius:12px;padding:12px 14px;margin-top:16px;background:var(--panel);display:grid;gap:8px;max-width:560px}
 .addf label{font-size:14px;font-weight:500}
 .lockst{text-align:center;font-weight:500;margin:14px 0 0;min-height:1.5em}
+.addall{display:flex;flex-direction:column;align-items:center;gap:6px;margin:14px 0 0}.addall .btn{font-size:16px;padding:10px 20px}
 .out{margin-top:10px;display:flex;gap:10px;align-items:center;border:2px solid var(--ink);border-radius:12px;padding:10px 14px;background:var(--panel);flex-wrap:wrap}
 .out .l{font-weight:700;font-size:14px;white-space:nowrap}
 .out code{flex:1;min-width:200px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;word-break:break-word}
@@ -673,12 +675,14 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
   {n:'AI tool',t:['"Microsoft Copilot"','Copilot','"AI assistant"','"virtual assistant"','"generative AI"','chatbot*','"artificial intelligence"']},
   {n:'Consumers',t:['consumer*','"consumer behavior"','"consumer behaviour"','"consumer attitude*"','"university students"','"Gen Z"','millennial*','"young consumers"','"young adults"']}];
  W.forEach(w=>{w.i=0;w.p=[];w.t.push(OWN)});
- let adding=false,opened=G.isDone(2),focusSel=null;
+ let adding=false,opened=G.isDone(2),focusSel=null,shuf=false,msg='';
  const q=()=>W.filter(w=>w.p.length).map(w=>w.p.length>1?'('+w.p.join(' OR ')+')':w.p[0]).join(' AND ');
  const qh=()=>W.filter(w=>w.p.length).map(w=>esc(w.p.length>1?'('+w.p.join(' OR ')+')':w.p[0])).join(' <span class="opk">AND</span> ');
  const at=(w,d)=>w.t[(w.i+d+w.t.length)%w.t.length];
+ const pool=w=>w.t.map((x,i)=>i).filter(i=>w.t[i]!==OWN&&!w.p.includes(w.t[i]));
+ const left=()=>W.some(w=>pool(w).length);
  function draw(){const full=W.every(w=>w.p.length);
-  host.innerHTML=`<div class="lockwrap"><div class="lbody"><div class="marq" aria-hidden="true">${'<i></i>'.repeat(16)}</div><button class="lever" type="button" data-a="shuffle" aria-label="Pull the lever to shuffle all dials to random words"><span class="rod"></span><span class="ball"></span><span class="base"></span><span class="lt">PULL TO SHUFFLE</span></button><div class="wheels">
+  host.innerHTML=`<div class="lockwrap"><div class="lbody"><div class="marq" aria-hidden="true">${'<i></i>'.repeat(16)}</div><button class="lever" type="button" data-a="shuffle" ${left()?'':'disabled'} aria-label="${left()?'Pull the lever to add a new word from every dial':'All words added'}"><span class="rod"></span><span class="ball"></span><span class="base"></span><span class="lt">${left()?'PULL TO SHUFFLE':'ALL WORDS ADDED'}</span></button><div class="wheels">
   ${W.map((w,k)=>{const cur=at(w,0),on=w.p.includes(cur),own=cur===OWN;return `${k?'<div class="andcol" aria-hidden="true"><span class="lab">&nbsp;</span><span class="spc"></span><span class="andmid"><span class="andc">AND</span></span></div>':''}<div class="w" role="group" aria-label="${esc(w.n)} dial">
    <span class="lab">${esc(w.n)}</span>
    <button class="spin" type="button" data-a="up" data-k="${k}" aria-label="Previous ${esc(w.n)} word">▲</button>
@@ -690,12 +694,12 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
   ${W.filter(w=>w.c).length<2?`<div class="w"><span class="lab" style="color:#bbb">Your idea</span><button class="wadd" type="button" data-a="new" aria-expanded="${adding}">+ Add a dial</button></div>`:''}
   </div></div></div>
   ${adding?`<div class="addf"><label for="nwn">Concept</label><input type="text" id="nwn" placeholder="e.g. Privacy" autocomplete="off"><label for="nwt">Words, separated by commas</label><input type="text" id="nwt" placeholder="e.g. privacy, &quot;personal data&quot;" autocomplete="off"><div class="row"><button class="btn small" type="button" data-a="mk">Add dial</button><button class="btn small ghost" type="button" data-a="cancel">Cancel</button></div><p class="fb" id="nwfb" aria-live="polite"></p></div>`:''}
-  <p class="lockst" aria-live="polite">${full?'✓ Your search is ready and saved to your Research log.':'Add at least one word on every dial.'}</p>
+  <p class="lockst" aria-live="polite">${msg?msg:full?'✓ Your search is ready and saved to your Research log.':'Add at least one word on every dial.'}</p>
   <div class="out"><span class="l">Your search</span><code>${qh()||'Your words will appear here.'}</code><button class="btn small" type="button" data-a="copy">Copy</button></div>
   <div class="nextup"><span class="ar" aria-hidden="true">➜</span><span><b>Next up</b> You’ll run this search in Business Source Premier on the next slide. It’s saved to your <b>Research log</b> too.</span></div>`;
   if(focusSel){const f=host.querySelector(focusSel);if(f)f.focus();focusSel=null}
   if(full){G.log('lock','Your search',q());if(!opened){opened=true;G.complete(2,true)}}}
- host.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,k=+b.dataset.k,w=W[k];
+ host.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,k=+b.dataset.k,w=W[k];msg='';
   if(a==='up'||a==='down'){w.i=(w.i+(a==='up'?-1:1)+w.t.length)%w.t.length;focusSel=`[data-a="${a}"][data-k="${k}"]`}
   else if(a==='add'){const c=at(w,0);const j=w.p.indexOf(c);if(j<0)w.p.push(c);else w.p.splice(j,1);focusSel=`[data-a="add"][data-k="${k}"]`}
   else if(a==='ownok'){const v=$('#own'+k).value.trim();if(!v)return;const term=/\s/.test(v)&&!/^".*"$/.test(v)?'"'+v.replace(/"/g,'')+'"':v;if(!w.p.includes(term))w.p.push(term);focusSel=`#own${k}`}
@@ -707,14 +711,16 @@ function mcq(host,cfg,onRight){ // cfg:{q,opts:[{t,ok,fb}]}
    const nw={n,t:ts.map(v=>/\s/.test(v)&&!/^".*"$/.test(v)?'"'+v.replace(/"/g,'')+'"':v).concat([OWN]),i:0,p:[],c:1};W.push(nw);adding=false;focusSel=`[data-a="add"][data-k="${W.length-1}"]`}
   else if(a==='copy'){copyText(q()||'',b);return}
   else if(a==='shuffle'){shuffle();return}
+  else if(a==='__unused'){let n=0;W.forEach(w=>{const c=at(w,0);if(c!==OWN&&!w.p.includes(c)){w.p.push(c);n++}});msg=`✓ Added ${n} word${n>1?'s':''}. Pull again for more, or spin a dial to choose your own.`;focusSel='[data-a="shuffle"]'}
   draw()});
  let rolling=false;
  function shuffle(){if(rolling)return;rolling=true;const lv=host.querySelector('.lever');if(lv)lv.classList.add('pulled');
   const red=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const target=W.map(w=>{const n=w.t.length-1;let r=Math.floor(Math.random()*n);if(n>1&&r===w.i)r=(r+1)%n;return r});
+  if(!left()){rolling=false;return}
+  const target=W.map(w=>{const pl=pool(w);return pl.length?pl[Math.floor(Math.random()*pl.length)]:w.i});
   let ticks=red?0:10;
   const step=()=>{if(ticks>0){W.forEach(w=>{w.i=(w.i+1)%(w.t.length-1)});ticks--;draw();const b2=host.querySelector('.lbody');if(b2)b2.classList.add('rolling');const l2=host.querySelector('.lever');if(l2)l2.classList.add('pulled');setTimeout(step,70)}
-   else{W.forEach((w,k)=>w.i=target[k]);rolling=false;focusSel='[data-a="shuffle"]';draw();const st=host.querySelector('.lockst');if(st&&!W.every(w=>w.p.length))st.textContent='Shuffled! Select Add on any words you like.'}};
+   else{let n=0;W.forEach((w,k)=>{w.i=target[k];const c=w.t[w.i];if(c!==OWN&&!w.p.includes(c)){w.p.push(c);n++}});rolling=false;shuf=true;msg=left()?`✓ Added ${n} word${n>1?'s':''}. Remove any that don’t fit your question.`:'✓ Every word is in your search. Remove any that don’t fit your segment.';focusSel=left()?'[data-a="shuffle"]':'[data-a="copy"]';draw()}};
   step()}
  host.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id&&e.target.id.startsWith('own')){e.preventDefault();host.querySelector(`[data-a="ownok"][data-k="${e.target.id.slice(3)}"]`).click()}});
  draw()})();
