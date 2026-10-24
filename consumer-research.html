@@ -454,6 +454,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .qstack{display:grid;gap:12px}.qstack .box{margin:0}
 .mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;background:var(--panel);border-radius:4px;padding:1px 5px}
 .wallfoot{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.bname{display:flex;flex-direction:column;gap:4px;margin-top:14px;max-width:420px}.bname label{font-weight:500;font-size:14.5px}.bname input{font:inherit;font-size:16px;border:2px solid var(--ink);border-radius:8px;padding:8px 10px;background:var(--card);color:var(--ink)}
 </style>
 </head>
 <body>
@@ -860,21 +861,44 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
 
 /* ================= P11 Badge wall ================= */
 (function(){const host=$('#wall');if(!host)return;
+const NKEY='mk-mark2051-name';
  const rank=n=>n>=8?'Research Legend':n>=6?'Research Pro':n>=3?'Research Explorer':'Research Rookie';
  function draw(){const st=G.state(),n=G.doneCount(),pts=G.points();
   host.innerHTML=`<div class="bh2"><p class="kick">MARK2051 - Library research skills</p><p class="big">${rank(n)}</p><p class="sub"><img class="coin" src="${COIN}" alt="" style="width:20px;height:20px"> ${pts} points, ${n} of ${ACT_ORDER.length} badges</p></div>
   <div class="bgrid">${ACT_ORDER.map(p=>`<div class="bcard ${st.done[p]?'':'off'}"><img src="${BADGEIMG[ACTS[p][2]]}" alt="" width="117" height="134"><b>${ACTS[p][1]}</b><span>${st.done[p]?'Earned':'Not yet'}</span></div>`).join('')}</div>
-  <div class="wallfoot"><button class="btn" type="button" id="dlb">Download your badge card</button><span class="small">Progress is saved in this browser only.</span></div>`;
-  $('#dlb').addEventListener('click',dl)}
+  <div class="bname"><label for="bnm">Your name (for your badge card only)</label><input type="text" id="bnm" maxlength="60" autocomplete="name"></div><div class="wallfoot"><button class="btn" type="button" id="dlb">Download your badge card</button><span class="small">Progress is saved in this browser only.</span></div>`;
+  $('#dlb').addEventListener('click',dl);const nm=$('#bnm');try{nm.value=localStorage.getItem(NKEY)||''}catch(e){}nm.addEventListener('input',()=>{try{localStorage.setItem(NKEY,nm.value)}catch(e){}})}
  function li(s){return new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.src=s})}
- async function dl(){const st=G.state();const c=document.createElement('canvas');c.width=1200;c.height=630;const x=c.getContext('2d');x.imageSmoothingEnabled=false;
-  x.fillStyle='#ffe000';x.fillRect(0,0,1200,630);x.fillStyle='#111';x.fillRect(0,470,1200,160);
-  x.fillStyle='#000';x.font='bold 26px Arial';x.fillText('MARK2051 - LIBRARY RESEARCH SKILLS',60,80);x.font='bold 64px Arial';x.fillText(rank(G.doneCount()),60,150);
-  x.font='28px Arial';x.fillText(`${G.points()} points, ${G.doneCount()} of ${ACT_ORDER.length} badges`,60,200);
-  const ims=await Promise.all(ACT_ORDER.map(p=>li(BADGEIMG[ACTS[p][2]])));
-  ims.forEach((im,k)=>{const p=ACT_ORDER[k];x.globalAlpha=st.done[p]?1:.2;x.drawImage(im,60+k*122,250,117,134)});x.globalAlpha=1;
-  x.fillStyle='#fff';x.font='24px Arial';x.fillText('UNSW Library',60,560);
-  const a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='mark2051-badges.png';document.body.appendChild(a);a.click();a.remove()}
+ async function dl(){const st=G.state(),n=G.doneCount(),tot=ACT_ORDER.length,pts=G.points();let name='';try{name=($('#bnm').value||'').trim()}catch(e){}
+  const W=1200,H=630,S=2,c=document.createElement('canvas');c.width=W*S;c.height=H*S;const x=c.getContext('2d');x.scale(S,S);
+  const F='system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","PingFang SC","Microsoft YaHei",sans-serif';
+  const sp=v=>{try{x.letterSpacing=v}catch(e){}};
+  const rr=(X,Y,w,h,r)=>{x.beginPath();x.moveTo(X+r,Y);x.arcTo(X+w,Y,X+w,Y+h,r);x.arcTo(X+w,Y+h,X,Y+h,r);x.arcTo(X,Y+h,X,Y,r);x.arcTo(X,Y,X+w,Y,r);x.closePath()};
+  x.fillStyle='#fff';x.fillRect(0,0,W,H);
+  x.strokeStyle='#111';x.lineWidth=3;rr(18,18,W-36,H-36,10);x.stroke();x.strokeStyle='#c9a227';x.lineWidth=1.5;rr(26,26,W-52,H-52,6);x.stroke();
+  x.save();x.beginPath();x.rect(0,0,120,H);x.clip();x.fillStyle='#ffe000';x.fillRect(0,0,120,H);x.strokeStyle='#111';x.lineWidth=8;for(let k=-H;k<W;k+=30){x.beginPath();x.moveTo(k,0);x.lineTo(k+H,H);x.stroke()}x.restore();
+  const L=180;let y=78;x.textBaseline='alphabetic';
+  x.fillStyle='#555';x.font='700 16px '+F;sp('4px');x.fillText('UNSW LIBRARY - MARK2051',L,y);sp('0px');
+  y+=58;x.fillStyle='#111';x.font='900 50px '+F;x.fillText('Research skills badge card',L,y);
+  if(name){y+=40;x.fillStyle='#444';x.font='19px '+F;x.fillText('Earned by',L,y);
+   let fs=46;x.font=`700 ${fs}px ${F}`;while(x.measureText(name).width>620&&fs>24){fs-=2;x.font=`700 ${fs}px ${F}`}
+   y+=52;x.fillStyle='#111';x.fillText(name,L,y);const nw=Math.max(x.measureText(name).width+40,240);x.fillStyle='#c9a227';x.fillRect(L,y+12,nw,2);y+=50}
+  else y+=56;
+  const msg=n>=tot?'for earning all eight Library research badges, as a ':n?`for earning ${n} of ${tot} Library research badges, as a `:'Complete the activities to earn your first badge, and become a ';
+  x.fillStyle='#333';x.font='19px '+F;x.fillText(msg,L,y);const mw=x.measureText(msg).width;x.font='700 19px '+F;x.fillText(rank(n),L+mw,y);const rw=x.measureText(rank(n)).width;x.font='19px '+F;x.fillText('.',L+mw+rw,y);
+  const ims=await Promise.all(ACT_ORDER.map(p=>li(BADGEIMG[ACTS[p][2]])));x.imageSmoothingEnabled=false;
+  const by=y+26;ims.forEach((im,k)=>{const p=ACT_ORDER[k],bx=L+k*98;x.globalAlpha=st.done[p]?1:.25;x.drawImage(im,bx+8,by,70,80);x.globalAlpha=st.done[p]?1:.45;
+   x.fillStyle='#111';x.font='700 11.5px '+F;x.textAlign='center';const words=ACTS[p][1].split(' ');let ln=[''];words.forEach(w=>{const tr=(ln[ln.length-1]+' '+w).trim();if(x.measureText(tr).width>84&&ln[ln.length-1])ln.push(w);else ln[ln.length-1]=tr});
+   ln.forEach((l,j)=>x.fillText(l,bx+43,by+98+j*14));x.textAlign='left'});x.globalAlpha=1;x.imageSmoothingEnabled=true;
+  const cx=1045,cy=145;
+  const tail=(X,col)=>{x.fillStyle=col;x.beginPath();x.moveTo(X,215);x.lineTo(X+30,215);x.lineTo(X+30,285);x.lineTo(X+15,271);x.lineTo(X,285);x.closePath();x.fill()};tail(1008,'#111');tail(1048,'#ffe000');
+  x.fillStyle='#c9a227';x.beginPath();x.arc(cx,cy,94,0,7);x.fill();x.fillStyle='#fff';x.beginPath();x.arc(cx,cy,91,0,7);x.fill();
+  const g=x.createRadialGradient(cx-30,cy-35,8,cx,cy,85);g.addColorStop(0,'#fff3a0');g.addColorStop(.45,'#ffd400');g.addColorStop(1,'#c9a227');x.fillStyle=g;x.beginPath();x.arc(cx,cy,85,0,7);x.fill();
+  x.fillStyle='#111';x.textAlign='center';x.font='900 54px '+F;x.fillText(`${n}/${tot}`,cx,cy+12);x.font='700 14px '+F;sp('2px');x.fillText('BADGES',cx,cy+38);sp('0px');
+  x.textAlign='right';x.fillStyle='#555';x.font='14px '+F;x.fillText(new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'}),1140,566);x.fillText(`${pts} points`,1140,586);x.textAlign='left';
+  const CG=['Congratulations','恭喜','Chúc mừng','Selamat','बधाई हो','축하합니다','おめでとう','¡Felicidades!','ยินดีด้วย','مبروك'];
+  x.fillStyle='#777';x.font='15px '+F;let gx=L,gy=560;if(n)CG.forEach(w=>{const ww=x.measureText(w).width;if(gx+ww>L+640){gx=L;gy+=26}x.fillText(w,gx,gy);gx+=ww+14});
+  const a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='mark2051-badge-card.png';document.body.appendChild(a);a.click();a.remove()}
  G.onChange(draw);draw()})();
 /* ================= P12 Business research prompt ================= */
 (function(){const host=$('#pb');if(!host)return;
