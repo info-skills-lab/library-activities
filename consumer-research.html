@@ -808,7 +808,7 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
   {q:'You want background on the wider AI software market. Where would you look?',a:'Related research',here:'Links to industry and market reports that set the company in context.'}];
  nav.innerHTML=S.map(s=>`<button type="button" data-s="${s}">${s}</button>`).join('');
  const nx=$('#mnext');
- function ask(){if(i>=Q.length){$('#mqn').textContent='ALL DONE';$('#mq').innerHTML='<span class="ok">✓ All four found.</span> Now try a real profile in MarketLine.';$('#mpips').innerHTML=Q.map(()=>'<i class="ok"></i>').join('');nx.hidden=true;nav.querySelectorAll('button').forEach(b=>b.disabled=true);return}
+ function ask(){if(i>=Q.length){$('#mqn').textContent='ALL DONE';$('#mq').innerHTML='<span class="ok">✓ All four found.</span> Now search a real profile in MarketLine.';$('#mpips').innerHTML=Q.map(()=>'<i class="ok"></i>').join('');nx.hidden=true;nav.querySelectorAll('button').forEach(b=>b.disabled=true);return}
   $('#mqn').textContent='QUESTION '+(i+1)+' OF '+Q.length;$('#mq').textContent=Q[i].q;$('#mpips').innerHTML=Q.map((x,k)=>`<i class="${k<i?'ok':k===i?'on':''}"></i>`).join('');
   $('#mfb').innerHTML='';nx.hidden=true;nav.querySelectorAll('button').forEach(b=>{b.className='';b.disabled=false})}
  nav.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled||i>=Q.length)return;const c=Q[i];
