@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search brick builder | UNSW Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--yellow:#FFDC00;--muted:#444;--line:#d9d9d9;--panel:#f5f5f3;--bad:#b3261e;--good:#1d7a3a}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:Lexend,system-ui,Arial,sans-serif;font-weight:300;color:var(--ink);background:#fff;display:flex;flex-direction:column;min-height:100vh}
+:focus-visible{outline:4px solid #1a5fd1;outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.bar{background:#000;color:#fff;display:flex;align-items:center;gap:12px;padding:8px 14px;font-size:14px;flex-wrap:wrap}
+.bar b{color:var(--yellow);font-weight:700}
+.bar .q{flex:1;min-width:220px;color:#eee}
+.stage{position:relative;flex:1 1 auto;min-height:360px;height:58vh;background:#d6e8f5;overflow:hidden;touch-action:none}
+.stage canvas{display:block;width:100%;height:100%;cursor:grab}
+.stage canvas.drag{cursor:grabbing}
+.tag{position:absolute;transform:translate(-100%,-50%);font-weight:700;font-size:13px;border-radius:999px;padding:2px 10px;white-space:nowrap;pointer-events:none;color:#fff;border:2px solid #111;background:#111}
+.help{position:absolute;right:12px;top:12px;background:#fff;border:2px solid #111;border-radius:10px;padding:6px 10px;font-size:13px;max-width:260px;box-shadow:3px 3px 0 var(--yellow)}
+.toast{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:#fff;border:3px solid #111;border-radius:12px;padding:8px 14px;font-size:15px;font-weight:500;max-width:90%;text-align:center;box-shadow:4px 4px 0 var(--yellow)}
+.toast:empty{display:none}
+.toast.no{border-color:var(--bad)}
+.under{padding:14px 16px 20px;display:flex;flex-direction:column;gap:12px}
+.out{border:3px solid #111;border-radius:14px;background:var(--panel);padding:10px 14px}
+.out .l{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.out code{display:block;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:15px;line-height:1.5;margin:4px 0 10px;word-break:break-word}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-size:15px;font-weight:700;border:2px solid #000;background:var(--yellow);color:#000;border-radius:10px;padding:7px 14px;cursor:pointer}
+.btn.g{background:#fff}
+.btn[disabled]{opacity:.45;cursor:default}
+details{border:2px solid #111;border-radius:12px;padding:8px 14px}
+summary{font-weight:700;cursor:pointer}
+.form{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;margin-top:10px}
+.form label{display:flex;flex-direction:column;font-size:13px;font-weight:500;gap:3px}
+.form input,.form select{font:inherit;font-size:15px;border:2px solid #111;border-radius:8px;padding:6px 8px;background:#fff;color:#111}
+.layers{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column-reverse;gap:8px}
+.layers li{border:2px solid #111;border-radius:10px;padding:6px 10px}
+.layers .nm{font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.sw{width:16px;height:16px;border-radius:4px;border:2px solid #111;display:inline-block}
+.chip{font:inherit;font-size:14px;border:2px solid #111;border-radius:999px;background:#fff;padding:2px 10px;margin:2px 4px 2px 0;cursor:pointer}
+.small{font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="bar"><b>Search brick builder</b><span class="q" id="rq"></span></div>
+<div class="stage" id="stage" aria-hidden="true">
+ <div class="help"><b>Select or drag a brick</b> to add it to its row. Drag empty space to turn the view, scroll to zoom.</div>
+ <div class="toast" id="toast"></div>
+</div>
+<p class="sr" id="live" aria-live="polite"></p>
+<div class="under">
+ <div class="out"><span class="l">Your search</span><code id="q"></code>
+  <div class="row"><button class="btn" type="button" id="run">Run in Business Source Premier ↗<span class="sr"> (opens in a new window)</span></button><button class="btn g" type="button" id="copy">Copy</button><button class="btn g" type="button" id="reset">Reset</button></div></div>
+ <details id="kb"><summary>Your build, text and keyboard version</summary>
+  <p class="small">The same build as the 3D view. Select a brick on the baseplate to add it to its row, or a brick in a row to take it off.</p>
+  <ul class="layers" id="layers"></ul>
+  <p style="font-weight:700;margin:12px 0 4px">Bricks on the baseplate</p><div id="loose"></div>
+ </details>
+ <details><summary>Add your own brick or layer</summary>
+  <div class="form"><label>Word or phrase<input type="text" id="nw" autocomplete="off" placeholder="e.g. reliability"></label><label>Row<select id="nr"></select></label><button class="btn" type="button" id="addw">Add brick</button></div>
+  <div class="form"><label>New concept<input type="text" id="nl" autocomplete="off" placeholder="e.g. Privacy"></label><button class="btn" type="button" id="addl">Add layer</button></div>
+  <p class="small">Tip: add an asterisk to search word endings, such as reliab*. Phrases are kept together with quotation marks automatically.</p>
+ </details>
+</div>
+<script src="vendor/three-r149.min.js"></script>
+<script>
+(function(){
+const TOPIC={q:'How can Microsoft build trust and encourage responsible adoption of Microsoft Copilot among consumers?',
+ layers:[{n:'Trust',c:'#c62f28',w:['trust','confidence','credibility','perceived risk','reliab*','attitudes']},
+  {n:'AI tool',c:'#1f6fc5',w:['generative AI','Copilot','AI assistant','chatbot*','virtual assistant']},
+  {n:'Consumers',c:'#1d7a3f',w:['consumer*','Gen Z','university students','millennial*','young adults']}],
+ extra:['Microsoft Excel','smartphone','stock price']};
+const PAL=['#8e44ad','#b35900','#0e7a66','#c2185b'];
+const KEY='brick-builder-v1';
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=t=>/\s/.test(t)?'"'+t+'"':t;
+$('#rq').textContent=TOPIC.q;
+// ---------- state ----------
+let S;
+function fresh(){let id=0;const L=TOPIC.layers.map((l,i)=>({n:l.n,c:l.c,own:false}));const B=[];
+ TOPIC.layers.forEach((l,i)=>l.w.forEach((t,j)=>B.push({id:id++,t,l:i,on:j===0})));TOPIC.extra.forEach(t=>B.push({id:id++,t,l:-1,on:false}));
+ B.forEach(b=>b.ord=b.on?0:null);for(let i=B.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[B[i],B[j]]=[B[j],B[i]]}return{L,B,next:id}}
+try{S=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){}
+if(!S||!S.L||!S.B)S=fresh();
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const rowBricks=i=>S.B.filter(b=>b.on&&b.l===i).sort((a,b)=>a.ord-b.ord);
+function query(){return S.L.map((l,i)=>{const w=rowBricks(i).map(b=>fmt(b.t));return w.length>1?'('+w.join(' OR ')+')':w[0]||''}).filter(Boolean).join(' AND ')}
+// ---------- 3D ----------
+const stage=$('#stage');
+const ren=new THREE.WebGLRenderer({antialias:true});ren.setPixelRatio(Math.min(window.devicePixelRatio||1,2));ren.shadowMap.enabled=true;ren.shadowMap.type=THREE.PCFSoftShadowMap;stage.prepend(ren.domElement);
+const sc=new THREE.Scene();sc.background=new THREE.Color('#d6e8f5');
+const cam=new THREE.PerspectiveCamera(34,1,1,600);
+const tgt=new THREE.Vector3(-2,1,-2);let az=0,el=0.62,rad=68;
+function place(){cam.position.set(tgt.x+rad*Math.cos(el)*Math.sin(az),tgt.y+rad*Math.sin(el),tgt.z+rad*Math.cos(el)*Math.cos(az));cam.lookAt(tgt)}
+sc.add(new THREE.HemisphereLight(0xffffff,0x8899aa,.8));const dl=new THREE.DirectionalLight(0xffffff,.8);dl.position.set(-30,70,45);dl.castShadow=true;dl.shadow.mapSize.set(2048,2048);Object.assign(dl.shadow.camera,{left:-60,right:60,top:60,bottom:-60,far:200});sc.add(dl);
+const U=1.6,BH=2.4,PX=40,PZ=24,Z0=-11,X0=-18,LIFT=5;
+const studGeo=new THREE.CylinderGeometry(.48,.48,.34,20);
+// baseplate
+const plateCol='#7cb342';
+const plate=new THREE.Mesh(new THREE.BoxGeometry(PX*U,.5,PZ*U),new THREE.MeshStandardMaterial({color:plateCol,roughness:.6}));plate.position.y=-.25;plate.receiveShadow=true;sc.add(plate);
+const ps=new THREE.InstancedMesh(studGeo,new THREE.MeshStandardMaterial({color:plateCol,roughness:.6}),PX*PZ);const m4=new THREE.Matrix4();let k=0;
+for(let i=0;i<PX;i++)for(let j=0;j<PZ;j++){m4.makeTranslation((i-(PX-1)/2)*U,.17,(j-(PZ-1)/2)*U);ps.setMatrixAt(k++,m4)}ps.receiveShadow=true;sc.add(ps);
+const nStuds=t=>Math.max(3,Math.min(9,Math.round((t.length+(/\s/.test(t)?2:0))*.42)+2));
+function tex(t,col,w){const c=document.createElement('canvas');c.width=Math.round(w*80);c.height=Math.round(BH*80);const x=c.getContext('2d');x.fillStyle=col;x.fillRect(0,0,c.width,c.height);
+ const s=fmt(t);let fs=Math.round(c.height*.42);x.font=`700 ${fs}px Lexend,Arial,sans-serif`;while(x.measureText(s).width>c.width*.88&&fs>12){fs-=2;x.font=`700 ${fs}px Lexend,Arial,sans-serif`}
+ x.fillStyle='#fff';x.textAlign='center';x.textBaseline='middle';x.shadowColor='rgba(0,0,0,.35)';x.shadowOffsetY=3;x.fillText(s,c.width/2,c.height/2+2);const T=new THREE.CanvasTexture(c);T.anisotropy=8;return T}
+const colOf=b=>b.l<0?'#6b7480':(S.L[b.l]||{}).c||'#6b7480';
+const meshes=new Map();
+function makeBrick(b){const n=nStuds(b.t),w=n*U-.1,d=2*U-.1,col=colOf(b);const g=new THREE.Group();
+ const base=new THREE.MeshStandardMaterial({color:col,roughness:.45});const front=new THREE.MeshStandardMaterial({map:tex(b.t,col,w),roughness:.45});
+ const body=new THREE.Mesh(new THREE.BoxGeometry(w,BH,d),[base,base,base,base,front,base]);body.position.y=BH/2;body.castShadow=true;body.receiveShadow=true;body.userData.id=b.id;g.add(body);
+ const star=/\*$/.test(b.t),dark=new THREE.MeshStandardMaterial({color:'#111',roughness:.4});
+ for(let i=0;i<n;i++)for(let j=0;j<2;j++){const s=new THREE.Mesh(studGeo,(star&&i===n-1&&j===0)?dark:base);s.position.set((i-(n-1)/2)*U,BH+.17,(j-.5)*U);s.castShadow=true;g.add(s)}
+ g.userData={id:b.id,w,body};sc.add(g);return g}
+function brickMesh(b){let g=meshes.get(b.id);if(!g){g=makeBrick(b);meshes.set(b.id,g)}return g}
+// ghost slots
+const ghosts=[];
+function ghostFor(i){while(ghosts.length<=i){const m=new THREE.Mesh(new THREE.BoxGeometry(1,BH,2*U-.1),new THREE.MeshStandardMaterial({transparent:true,opacity:.22,color:'#ffffff'}));const e=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(1,BH,2*U-.1)),new THREE.LineBasicMaterial({color:'#111'}));m.add(e);sc.add(m);ghosts.push(m)}return ghosts[i]}
+// layout
+const pos=new Map();
+function layout(instant){
+ S.L.forEach((l,i)=>{let x=X0;rowBricks(i).forEach(b=>{const g=brickMesh(b);const w=g.userData.w;pos.set(b.id,[x+w/2,i*BH,Z0,0]);x+=w+.1});
+  const gh=ghostFor(i);gh.material.color.set(l.c);gh.userData={row:i,x:x};gh.scale.x=6*U;gh.position.set(x+3*U,i*BH+BH/2,Z0);gh.visible=!!(!rowBricks(i).length||(drag&&drag.b.l===i));});
+ ghosts.forEach((g,i)=>{if(i>=S.L.length)g.visible=false});
+ const lo=S.B.filter(b=>!b.on);const taken=lo.filter(b=>b.px!=null);let cx=-28,cz=Z0+9;lo.forEach(b=>{const w=brickMesh(b).userData.w;if(b.px==null){if(cx+w>28){cx=-28;cz+=5.4}b.px=cx+w/2;b.pz=Math.min(cz,17);cx+=w+1.2}pos.set(b.id,[b.px,0,b.pz,0])});
+ meshes.forEach((g,id)=>{if(!S.B.some(b=>b.id===id)){sc.remove(g);meshes.delete(id)}});
+ if(instant||RM)meshes.forEach((g,id)=>{const p=pos.get(id);if(p&&(!drag||drag.b.id!==id)){g.position.set(p[0],p[1],p[2]);g.rotation.y=p[3]}});}
+const RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+// ---------- labels ----------
+const tags=[];
+function labels(){while(tags.length<S.L.length){const d=document.createElement('div');d.className='tag';stage.appendChild(d);tags.push(d)}
+ const W=stage.clientWidth,H=stage.clientHeight;tags.forEach((d,i)=>{const l=S.L[i];if(!l){d.style.display='none';return}d.style.display='';d.textContent=(i?'AND ':'')+l.n;d.style.background=l.c;
+  const v=new THREE.Vector3(X0-1,i*BH+BH/2,Z0+U).project(cam);d.style.left=Math.max(d.offsetWidth+4,(v.x+1)/2*W)+'px';d.style.top=((1-v.y)/2*H)+'px'})}
+// ---------- interaction ----------
+const ray=new THREE.Raycaster(),mp=new THREE.Vector2();let drag=null,orbit=null;
+function setMP(e){const r=ren.domElement.getBoundingClientRect();mp.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(mp,cam)}
+const hplane=new THREE.Plane(new THREE.Vector3(0,1,0),-LIFT);const hit=new THREE.Vector3();
+ren.domElement.addEventListener('pointerdown',e=>{setMP(e);const bodies=[...meshes.values()].map(g=>g.userData.body);const h=ray.intersectObjects(bodies)[0];
+ ren.domElement.setPointerCapture(e.pointerId);
+ if(h){const b=S.B.find(x=>x.id===h.object.userData.id);ray.ray.intersectPlane(hplane,hit);drag={b,from:b.on,ord:b.ord,sx:e.clientX,sy:e.clientY,moved:false};ren.domElement.classList.add('drag');if(b.on){b.on=false;b.ord=null}layout();}
+ else orbit={x:e.clientX,y:e.clientY,az,el}});
+ren.domElement.addEventListener('pointermove',e=>{if(drag){if(Math.hypot(e.clientX-drag.sx,e.clientY-drag.sy)>5)drag.moved=true;setMP(e);if(ray.ray.intersectPlane(hplane,hit)){const g=meshes.get(drag.b.id);g.position.set(hit.x,LIFT,hit.z);g.rotation.y=0}
+  S.L.forEach((l,i)=>{ghostFor(i).visible=!!(!rowBricks(i).length||drag.b.l===i)})}
+ else if(orbit){az=Math.max(-.9,Math.min(.9,orbit.az-(e.clientX-orbit.x)*.006));el=Math.max(.18,Math.min(1.25,orbit.el+(e.clientY-orbit.y)*.005));place()}});
+function drop(){const b=drag.b,x=hit.x,z=hit.z,d=drag;drag=null;ren.domElement.classList.remove('drag');
+ if(!d.moved){if(d.from){b.on=true;b.ord=d.ord;say(`Drag ${fmt(b.t)} off the tower to take it out of your search.`);commit()}else addTo(b);return}
+ const nearTower=z<Z0+5.5&&z>Z0-6;
+ if(nearTower){if(b.l<0){b.px=b.px??0;say(`${b.t} isn’t a word for any concept in this question, so it stays on the baseplate.`,true)}
+  else{addTo(b);return}}
+ else{b.px=Math.max(-30,Math.min(30,x));b.pz=Math.max(Z0+7,Math.min(17,z));if(d.from&&b.l>=0)say(`${fmt(b.t)} taken off the ${S.L[b.l].n} row.`)}
+ commit()}
+function addTo(b){if(b.l<0){say(`${b.t} isn’t a word for any concept in this question.`,true);commit();return}
+ b.on=true;b.ord=Math.max(0,...S.B.filter(x=>x.on&&x.l===b.l&&x!==b).map(x=>x.ord+1));b.px=null;
+ const n=rowBricks(b.l).length;say(n>1?`${fmt(b.t)} added to ${S.L[b.l].n} with OR. More words, more results.`:`${fmt(b.t)} starts the ${S.L[b.l].n} row. A new layer adds it with AND.`);commit()}
+function takeOff(b){b.on=false;b.ord=null;b.px=null;say(`${fmt(b.t)} taken off the ${S.L[b.l].n} row.`);commit()}
+ren.domElement.addEventListener('pointerup',e=>{if(drag)drop();orbit=null});
+ren.domElement.addEventListener('pointercancel',()=>{if(drag){drag.b.on=drag.from;commit()}drag=null;orbit=null});
+ren.domElement.addEventListener('wheel',e=>{e.preventDefault();rad=Math.max(45,Math.min(130,rad+e.deltaY*.06));place()},{passive:false});
+let tt;function say(m,no){const t=$('#toast');t.textContent=m;t.classList.toggle('no',!!no);$('#live').textContent=m;clearTimeout(tt);tt=setTimeout(()=>{t.textContent=''},4500)}
+// ---------- panels ----------
+function panels(){$('#q').textContent=query()||'Add bricks to build your search.';$('#run').disabled=$('#copy').disabled=!query();
+ $('#layers').innerHTML=S.L.map((l,i)=>`<li><div class="nm"><span class="sw" style="background:${l.c}" aria-hidden="true"></span>${i?'AND ':''}${esc(l.n)}${l.own?` <button class="chip" type="button" data-rl="${i}">Remove layer</button>`:''}</div>${rowBricks(i).map(b=>`<button class="chip" type="button" data-off="${b.id}" aria-label="Take ${esc(fmt(b.t))} off the ${esc(l.n)} row">${esc(fmt(b.t))} ×</button>`).join(' <span class="small">OR</span> ')||'<span class="small">No bricks yet.</span>'}</li>`).join('');
+ const lo=S.B.filter(b=>!b.on);$('#loose').innerHTML=lo.length?lo.map(b=>`<button class="chip" type="button" data-on="${b.id}">${esc(fmt(b.t))}</button>`).join(''):'<span class="small">All bricks are in use.</span>';
+ $('#nr').innerHTML=S.L.map((l,i)=>`<option value="${i}">${esc(l.n)}</option>`).join('')}
+$('#kb').addEventListener('click',e=>{const on=e.target.closest('[data-on]'),off=e.target.closest('[data-off]'),rl=e.target.closest('[data-rl]');
+ if(on){addTo(S.B.find(b=>b.id==on.dataset.on));const f=$('#loose button');(f||$('#kb summary')).focus()}
+ if(off){takeOff(S.B.find(b=>b.id==off.dataset.off));$('#kb summary').focus()}
+ if(rl){const i=+rl.dataset.rl;S.B=S.B.filter(b=>b.l!==i);S.B.forEach(b=>{if(b.l>i)b.l--});S.L.splice(i,1);say('Layer removed.');commit();$('#kb summary').focus()}});
+$('#addw').addEventListener('click',()=>{const v=$('#nw').value.replace(/["()]/g,'').replace(/\s+/g,' ').trim();if(!v)return;const l=+$('#nr').value;
+ if(S.B.some(b=>b.l===l&&b.t.toLowerCase()===v.toLowerCase())){say(`${v} is already on the ${S.L[l].n} row or baseplate.`,true);return}
+ const b={id:S.next++,t:v,l,on:false,ord:null};S.B.push(b);$('#nw').value='';addTo(b)});
+$('#addl').addEventListener('click',()=>{const v=$('#nl').value.trim();if(!v)return;if(S.L.length>=6){say('That’s plenty of layers. Each one narrows your search.',true);return}
+ S.L.push({n:v,c:PAL[(S.L.length-3)%PAL.length],own:true});$('#nl').value='';say(`${v} layer added. Add a brick to it with AND.`);commit();$('#nr').value=S.L.length-1;$('#nw').focus()});
+$('#nw').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('#addw').click()}});
+$('#nl').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('#addl').click()}});
+$('#run').addEventListener('click',()=>{const q=query();if(q)window.open('https://research.ebsco.com/c/cqb6z7/search/results?autocorrect=y&db=buh&expanders=concept&limiters=None&searchMode=enhanced&q='+encodeURIComponent(q).replace(/%20/g,'+'),'_blank','noopener')});
+$('#copy').addEventListener('click',async e=>{const b=e.currentTarget;let ok=false;try{await navigator.clipboard.writeText(query());ok=true}catch(x){}b.textContent=ok?'Copied':'Select the search to copy';setTimeout(()=>b.textContent='Copy',1800)});
+$('#reset').addEventListener('click',()=>{meshes.forEach(g=>sc.remove(g));meshes.clear();S=fresh();say('Build reset.');commit(true)});
+function commit(instant){save();layout(instant);panels()}
+// ---------- loop ----------
+function size(){const W=stage.clientWidth,H=stage.clientHeight;ren.setSize(W,H,false);cam.aspect=W/H;cam.updateProjectionMatrix();if(W<700){rad=Math.max(rad,110)}place()}
+window.addEventListener('resize',size);
+function tick(){if(!RM)meshes.forEach((g,id)=>{if(drag&&drag.b.id===id)return;const p=pos.get(id);if(!p)return;g.position.x+=(p[0]-g.position.x)*.25;g.position.y+=(p[1]-g.position.y)*.25;g.position.z+=(p[2]-g.position.z)*.25;g.rotation.y+=(p[3]-g.rotation.y)*.25});
+ ren.render(sc,cam);labels();requestAnimationFrame(tick)}
+size();commit(true);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{meshes.forEach(g=>sc.remove(g));meshes.clear();layout(true)});
+tick();
+})();
+</script>
+</body>
+</html>
