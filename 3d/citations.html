@@ -17,9 +17,9 @@
 </head>
 <body>
 <div class="bar"><b>Citation web</b><span class="proto">Prototype</span><span class="q">Follow the trail of open access research</span></div>
-<div class="stage" id="stage" aria-hidden="true"><div class="hint"><span class="dotk" style="background:#FFDC00"></span>Your article <span class="dotk" style="background:#1f6fc5;margin-left:6px"></span>Its references <span class="dotk" style="background:#1d7a3f;margin-left:6px"></span>Articles citing it<br>Bigger spheres are more cited. Select a sphere for details.</div></div>
+<div class="stage" id="stage" aria-hidden="true"><div class="hud" aria-hidden="true"><div class="r"><span class="dot" style="background:#FFDC00"></span>Your article</div><div class="r"><span class="dot" style="background:#1f6fc5"></span>References (older)</div><div class="r"><span class="dot" style="background:#1d7a3f"></span>Cited by (newer)</div></div><div class="hint">Bigger spheres are more cited. Select a sphere for details. Drag to turn the web.</div></div>
 <div class="under">
- <div class="card y"><span class="lbl">How to use it</span>Search for a topic and choose a starting article. Older articles it cites sit behind it. Newer articles that cite it sit in front. Select any article, then <b>Make this the centre</b> to follow the trail.</div>
+ <div class="card y"><span class="lbl">How to use it</span>Search for a topic and choose a starting article. Older articles it cites sit behind it. Newer articles that cite it sit in front. Select any article, then <b>Make this the centre</b> to follow the trail. <span class="mob">Swipe sideways on the picture to turn it.</span></div>
  <form class="row" id="sf" role="search"><label class="sr" for="sq">Search open access articles</label><input type="search" id="sq" value="consumer trust artificial intelligence" style="flex:1;min-width:220px"><button class="btn" type="submit">Find articles</button></form>
  <p id="st" aria-live="polite" class="small" style="margin:0"></p>
  <ul class="res" id="found"></ul>
@@ -39,7 +39,7 @@ const API='https://api.openalex.org/works';
 const SEL='select=id,display_name,publication_year,cited_by_count,doi,open_access,authorships,primary_location';
 const short=id=>String(id).split('/').pop();
 async function get(params){const r=await fetch(`${API}?${params}&${SEL}`);if(!r.ok)throw new Error(r.status);return (await r.json()).results||[]}
-const T=TD.scene($('#stage'),{target:[0,0,0],az:.5,el:.3,rad:58,lim:{az:[-3.2,3.2],el:[-1,1.2],rad:[25,110]}});
+const T=TD.scene($('#stage'),{target:[0,0,0],az:.5,el:.3,rad:58,lim:{az:[-3.2,3.2],el:[-1,1.2],rad:[25,110]}});T.hud('',$('#stage .hud'));
 const sc=T.sc;sc.background=new THREE.Color('#e6eef6');
 const group=new THREE.Group();sc.add(group);
 const geo=new THREE.SphereGeometry(1,28,20);

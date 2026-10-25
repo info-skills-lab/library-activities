@@ -17,6 +17,7 @@ window.TD = (function () {
     sc.add(dl);
     const tgt = new THREE.Vector3().fromArray(opts.target || [0, 0, 0]);
     const o = { az: opts.az || 0, el: opts.el || 0.4, rad: opts.rad || 60 };
+    const baseRad = o.rad;
     const lim = Object.assign({ az: [-1.2, 1.2], el: [0.05, 1.3], rad: [20, 160] }, opts.lim || {});
     function place() {
       cam.position.set(tgt.x + o.rad * Math.cos(o.el) * Math.sin(o.az), tgt.y + o.rad * Math.sin(o.el), tgt.z + o.rad * Math.cos(o.el) * Math.cos(o.az));
@@ -24,7 +25,10 @@ window.TD = (function () {
     }
     function size() {
       const W = host.clientWidth, H = host.clientHeight;
-      ren.setSize(W, H, false); cam.aspect = W / H; cam.updateProjectionMatrix(); place();
+      ren.setSize(W, H, false); cam.aspect = W / H; cam.updateProjectionMatrix();
+      // pull the camera back on narrow screens so the whole scene fits
+      const a = W / H; o.rad = a < 1.6 ? baseRad * Math.min(2.3, Math.pow(1.6 / a, opts.fit || 0.85)) : baseRad;
+      lim.rad[1] = Math.max(lim.rad[1], o.rad * 1.2); place();
     }
     window.addEventListener('resize', size);
     // orbit on empty-space drag, if allowed
@@ -38,13 +42,14 @@ window.TD = (function () {
       ray.setFromCamera(mp, cam);
       return ray.intersectObjects(api.pickables, true)[0];
     }
-    cv.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY, az: o.az, el: o.el, moved: false }; cv.setPointerCapture(e.pointerId); });
+    cv.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY, az: o.az, el: o.el, moved: false, touch: e.pointerType === 'touch' }; if (!drag.touch) cv.setPointerCapture(e.pointerId); });
+    cv.addEventListener('pointercancel', () => { drag = null; });
     cv.addEventListener('pointermove', e => {
       if (drag) {
         if (Math.hypot(e.clientX - drag.x, e.clientY - drag.y) > 5) drag.moved = true;
         if (drag.moved && api.orbit) {
           o.az = Math.max(lim.az[0], Math.min(lim.az[1], drag.az - (e.clientX - drag.x) * 0.006));
-          o.el = Math.max(lim.el[0], Math.min(lim.el[1], drag.el + (e.clientY - drag.y) * 0.005));
+          if (!drag.touch) o.el = Math.max(lim.el[0], Math.min(lim.el[1], drag.el + (e.clientY - drag.y) * 0.005));
           place();
         }
       } else {
@@ -56,6 +61,13 @@ window.TD = (function () {
       drag = null;
     });
     if (opts.zoom !== false) cv.addEventListener('wheel', e => { e.preventDefault(); o.rad = Math.max(lim.rad[0], Math.min(lim.rad[1], o.rad + e.deltaY * 0.05)); place(); }, { passive: false });
+    // fixed readout panel in the corner of the stage, so numbers never sit on moving parts
+    // on phones the panel sits under the picture instead of over it
+    api.hud = function (cls, el) {
+      const d = el || document.createElement('div'); d.className = 'hud ' + (cls || ''); d.setAttribute('aria-hidden', 'true');
+      if (window.matchMedia && matchMedia('(max-width:700px)').matches) { d.classList.add('out'); host.after(d); } else if (!el) host.appendChild(d);
+      return d;
+    };
     const labels = [];
     api.label = function (text, cls) {
       const d = document.createElement('div'); d.className = 'tdl ' + (cls || ''); d.textContent = text; host.appendChild(d);

@@ -8,9 +8,9 @@
 </head>
 <body>
 <div class="bar"><b>Search sieve</b><span class="proto">Prototype</span><span class="q">How can Microsoft build trust and encourage responsible adoption of Microsoft Copilot among consumers?</span></div>
-<div class="stage" id="stage" aria-hidden="true"><div class="hint">Each layer is a concept joined with AND. More words in a layer means bigger holes. Drag to turn the view.</div></div>
+<div class="stage" id="stage" aria-hidden="true"><div class="hint">More words in a layer means bigger holes. Drag to turn the view.</div></div>
 <div class="under">
- <div class="card y"><span class="lbl">How to use it</span>Choose words for each layer, then select <b>Drop results</b>. Watch how many results get through each layer and land in the tray.</div>
+ <div class="card y"><span class="lbl">How to use it</span>Choose words for each layer, then select <b>Drop results</b>. The results panel shows how many results get through each layer. <span class="mob">Swipe sideways on the picture to turn it.</span></div>
  <div class="grid3" id="layers"></div>
  <div class="row"><button class="btn" type="button" id="drop">Drop results</button><button class="btn g" type="button" id="addl">+ Add a layer</button><span class="small" aria-live="polite" id="live"></span></div>
  <div class="card p"><span class="lbl">Your search</span><code class="qs" id="q"></code>
@@ -44,17 +44,18 @@ function build(){discs.forEach(g=>sc.remove(g));discs=[];const A=active();
   for(let k=0;k<n;k++){const a=k*2.399,r=2.2+9*Math.sqrt((k+.5)/n);const h=new THREE.Mesh(new THREE.CylinderGeometry(hr,hr,.3,18),M('#111'));h.position.set(Math.cos(a)*r,.05,Math.sin(a)*r);g.add(h)}
   sc.add(g);discs.push(g);l.y=y});
  labels()}
-// labels
-let labs=[];
-function labels(){labs.forEach(T.removeLabel);labs=[];active().forEach((l,i)=>{const a=T.label((i?'AND ':'')+l.n+' ('+l.on.length+')','d');a.v.set(-15.5,l.y,0);a.d.style.background=l.c;labs.push(l.lab=a)});
- const s=T.label('','y');s.v.set(0,7+active().length*6.2+5,0);labs.push(s);topLab=s;const t=T.label('','y');t.v.set(0,2,9.5);labs.push(t);trayLab=t;topLab.d.textContent=START.toLocaleString('en-AU')+' results start here';trayLab.show=false}
-let topLab,trayLab;
+// fixed readout instead of floating tags
+const hud=T.hud();let counts=null;
+function labels(){const A=active();
+ hud.innerHTML=`<div class="t">Results (illustrative)</div><div class="r"><span class="dot" style="background:#FFDC00"></span>Start<b>${START.toLocaleString('en-AU')}</b></div>`+
+  A.map((l,i)=>`<div class="r"><span class="dot" style="background:${l.c}"></span>${i?'AND ':''}${esc(l.n)}<b>${counts&&counts[i+1]!=null?counts[i+1].toLocaleString('en-AU'):'-'}</b></div>`).join('')+
+  `<div class="r" style="border-top:1.5px solid #111;margin-top:3px;padding-top:3px">In your tray<b>${counts?counts[A.length].toLocaleString('en-AU'):'-'}</b></div>`}
 // balls
 const ballGeo=new THREE.SphereGeometry(.5,12,10),ballMat=M('#FFDC00',{emissive:'#3a3000'});
 let balls=[];
 function passRate(l){return Math.min(.82,.16+.14*l.on.length)}
 function drop(){balls.forEach(b=>sc.remove(b.m));balls=[];const A=active();
- const counts=[START];A.forEach(l=>counts.push(Math.round(counts[counts.length-1]*passRate(l))));
+ counts=[START];A.forEach(l=>counts.push(Math.round(counts[counts.length-1]*passRate(l))));
  // 120 visible balls stand for START results
  const V=120;const vis=counts.map(c=>Math.round(c/START*V));
  for(let k=0;k<V;k++){let stop=A.length;for(let i=0;i<A.length;i++){if(k>=vis[i+1]){stop=i;break}}
@@ -62,8 +63,8 @@ function drop(){balls.forEach(b=>sc.remove(b.m));balls=[];const A=active();
   const restY=stop<A.length?A[stop].y+.65:1.95;const rr=stop<A.length?Math.random()*11:Math.random()*4.5;
   const m=new THREE.Mesh(ballGeo,ballMat);m.castShadow=true;const b={m,x:Math.cos(ang)*r,z:Math.sin(ang)*r,tx:Math.cos(ang)*rr,tz:Math.sin(ang)*rr*(stop<A.length?1:.9),y:y0,ty:restY,v:0,d:Math.random()*40};
   m.position.set(b.x,y0,b.z);sc.add(m);balls.push(b)}
- A.forEach((l,i)=>{l.lab.d.textContent=(i?'AND ':'')+l.n+': '+counts[i+1].toLocaleString('en-AU')+' get through'});
- trayLab.d.textContent=counts[A.length].toLocaleString('en-AU')+' results in your tray';trayLab.show=true;
+ labels();
+ const st=document.getElementById('stage').getBoundingClientRect();if(st.top<0||st.bottom>innerHeight)document.getElementById('stage').scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});
  document.getElementById('live').textContent=counts.map(c=>c.toLocaleString('en-AU')).join(' → ')+' results (illustrative)';
  if(RM)balls.forEach(b=>{b.y=b.ty;b.m.position.set(b.tx,b.ty,b.tz)})}
 T.onTick(()=>{balls.forEach(b=>{if(b.d>0){b.d--;return}if(b.y>b.ty){b.v+=.035;b.y=Math.max(b.ty,b.y-b.v);const f=Math.min(1,.04+b.v*.02);b.x+=(b.tx-b.x)*f;b.z+=(b.tz-b.z)*f;b.m.position.set(b.x,b.y,b.z)}})});
@@ -74,9 +75,9 @@ function panels(){host.innerHTML=L.map((l,i)=>l.off?'':`<div class="card"><span 
  const s=q();document.getElementById('q').textContent=s;document.getElementById('run').href=bsp(s);document.getElementById('addl').hidden=!L[3].off}
 host.addEventListener('click',e=>{const c=e.target.closest('[data-w]'),r=e.target.closest('[data-rm]');
  if(c){const l=L[+c.dataset.l],j=+c.dataset.w,k=l.on.indexOf(j);if(k>=0){if(l.on.length===1){document.getElementById('live').textContent='Each layer needs at least one word.';return}l.on.splice(k,1)}else l.on.push(j);
-  panels();build();host.querySelector(`[data-l="${c.dataset.l}"][data-w="${j}"]`).focus();document.getElementById('live').textContent=`${l.n} now has ${l.on.length} word${l.on.length>1?'s':''}. Select Drop results to test it.`}
- if(r){L[+r.dataset.rm].off=true;panels();build();document.getElementById('addl').focus()}});
-document.getElementById('addl').addEventListener('click',()=>{L[3].off=false;panels();build();document.getElementById('live').textContent='Privacy layer added with AND. Drop results to see the effect.'});
+  counts=null;panels();build();host.querySelector(`[data-l="${c.dataset.l}"][data-w="${j}"]`).focus();document.getElementById('live').textContent=`${l.n} now has ${l.on.length} word${l.on.length>1?'s':''}. Select Drop results to test it.`}
+ if(r){L[+r.dataset.rm].off=true;counts=null;panels();build();document.getElementById('addl').focus()}});
+document.getElementById('addl').addEventListener('click',()=>{L[3].off=false;counts=null;panels();build();document.getElementById('live').textContent='Privacy layer added with AND. Drop results to see the effect.'});
 document.getElementById('drop').addEventListener('click',drop);
 panels();build();
 })();

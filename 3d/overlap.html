@@ -8,9 +8,9 @@
 </head>
 <body>
 <div class="bar"><b>Concept overlap</b><span class="proto">Prototype</span><span class="q">How can Microsoft build trust and encourage responsible adoption of Microsoft Copilot among consumers?</span></div>
-<div class="stage" id="stage" aria-hidden="true"><div class="hint">Each sphere is a concept. Each dot is a result. Drag to turn the view.</div></div>
+<div class="stage" id="stage" aria-hidden="true"><div class="hint">Each sphere is a concept. Each dot is a result. Yellow dots match. Drag to turn the view.</div></div>
 <div class="under">
- <div class="card y"><span class="lbl">How to use it</span>Add words to a concept and watch its sphere grow. With <b>AND</b>, only results inside every sphere match. Switch to <b>OR</b> to see what happens if you join the concepts with OR instead.</div>
+ <div class="card y"><span class="lbl">How to use it</span>Add words to a concept and watch its sphere grow. With <b>AND</b>, only results inside every sphere match. Switch to <b>OR</b> to see what happens if you join the concepts with OR instead. <span class="mob">Swipe sideways on the picture to turn it.</span></div>
  <div class="row" role="group" aria-label="Join concepts with"><span class="small" style="font-weight:700">Join concepts with</span><button class="chip" type="button" id="and" aria-pressed="true">AND</button><button class="chip" type="button" id="or" aria-pressed="false">OR</button></div>
  <div class="grid3" id="layers"></div>
  <div class="card p"><span class="lbl">Your search</span><code class="qs" id="q"></code><p id="count" aria-live="polite" style="margin:0 0 8px;font-weight:500"></p>
@@ -27,7 +27,7 @@ const C=[
  {n:'AI tool',c:'#1f6fc5',w:['"generative AI"','Copilot','"AI assistant"','chatbot*'],on:[0],p:[4.2,12,0]},
  {n:'Consumers',c:'#1d7a3f',w:['consumer*','"Gen Z"','"university students"','millennial*'],on:[0],p:[0,5.2,0]}];
 let mode='AND';
-const T=TD.scene(document.getElementById('stage'),{target:[0,9,0],az:.2,el:.25,rad:56,lim:{el:[-.3,1.1],rad:[30,100]}});
+const T=TD.scene(document.getElementById('stage'),{target:[0,9,0],az:.2,el:.25,rad:56,fit:.5,lim:{el:[-.3,1.1],rad:[30,100]}});
 const sc=T.sc;
 // dots, seeded so the picture is stable
 let s=11;const rnd=()=>{s=(s*16807)%2147483647;return(s-1)/2147483646};
@@ -36,18 +36,19 @@ const greyM=M('#9aa3ad'),hitM=M('#FFDC00',{emissive:'#4a3d00'});
 for(let i=0;i<N;i++){const v=new THREE.Vector3((rnd()-.5)*32,rnd()*22-1,(rnd()-.5)*14);const m=new THREE.Mesh(dotGeo,greyM);m.position.copy(v);sc.add(m);dots.push(m)}
 const sph=C.map(c=>{const m=new THREE.Mesh(new THREE.SphereGeometry(1,48,32),M(c.c,{transparent:true,opacity:.22,depthWrite:false}));m.position.fromArray(c.p);sc.add(m);
  const w=new THREE.Mesh(new THREE.SphereGeometry(1,24,16),new THREE.MeshBasicMaterial({color:c.c,wireframe:true,transparent:true,opacity:.18}));m.add(w);
- c.lab=T.label(c.n,'d');c.lab.d.style.background=c.c;return m});
+ return m});
+const hud=T.hud();
 const radius=c=>6.4+c.on.length*1.3;
-function update(){C.forEach((c,i)=>{const r=radius(c);sph[i].scale.setScalar(r);c.lab.v.set(c.p[0]*2.4,c.p[1]+(i===2?-r-1:r*.75),0)});
+function update(){C.forEach((c,i)=>{sph[i].scale.setScalar(radius(c))});
  let n=0;dots.forEach(d=>{const ins=C.map((c,i)=>d.position.distanceTo(sph[i].position)<radius(c));const hit=mode==='AND'?ins.every(Boolean):ins.some(Boolean);d.material=hit?hitM:greyM;d.scale.setScalar(hit?1.5:1);if(hit)n++});
  const q=C.map(c=>{const w=c.on.map(j=>c.w[j]);return w.length>1?'('+w.join(' OR ')+')':w[0]}).join(` ${mode} `);
+ hud.innerHTML=C.map(c=>`<div class="r"><span class="dot" style="background:${c.c}"></span>${esc(c.n)}<b>${c.on.length} word${c.on.length>1?'s':''}</b></div>`).join('')+`<div class="r" style="border-top:1.5px solid #111;margin-top:3px;padding-top:3px"><span class="dot" style="background:#FFDC00"></span>Match (${mode})<b>${n}</b></div>`;
  document.getElementById('q').textContent=q;document.getElementById('run').href=bsp(q);
  document.getElementById('count').textContent=mode==='AND'?`${n} of ${N} results are inside all three spheres.`:`${n} of ${N} results are inside at least one sphere. OR between concepts finds far more, and many won’t be relevant.`}
 function panels(){document.getElementById('layers').innerHTML=C.map((c,i)=>`<div class="card"><span class="lbl"><span class="sw" style="background:${c.c}"></span>${esc(c.n)}</span><div class="row">${c.w.map((w,j)=>`<button class="chip" type="button" data-c="${i}" data-w="${j}" aria-pressed="${c.on.includes(j)}">${esc(w)}</button>`).join('')}</div></div>`).join('')}
 document.getElementById('layers').addEventListener('click',e=>{const b=e.target.closest('[data-w]');if(!b)return;const c=C[+b.dataset.c],j=+b.dataset.w,k=c.on.indexOf(j);
  if(k>=0){if(c.on.length===1)return;c.on.splice(k,1)}else c.on.push(j);panels();update();document.querySelector(`[data-c="${b.dataset.c}"][data-w="${j}"]`).focus()});
 ['and','or'].forEach(id=>document.getElementById(id).addEventListener('click',()=>{mode=id.toUpperCase();document.getElementById('and').setAttribute('aria-pressed',mode==='AND');document.getElementById('or').setAttribute('aria-pressed',mode==='OR');update()}));
-const hl=T.label('Matching results glow yellow','y');hl.v.set(0,-3,8);
 panels();update();
 })();
 </script>
