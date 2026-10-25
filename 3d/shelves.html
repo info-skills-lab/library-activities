@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Database bookshelves | UNSW Library</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>.qcard{font-size:19px;font-weight:500}.pips{display:flex;gap:6px}.pips i{width:14px;height:14px;border-radius:50%;border:2px solid #111;background:#fff}.pips i.ok{background:#1d7a3f}.pips i.on{background:#FFDC00}</style>
+</head>
+<body>
+<div class="bar"><b>Database bookshelves</b><span class="proto">Prototype</span><span class="q">Which database answers each research need?</span></div>
+<div class="stage" id="stage" aria-hidden="true"><div class="hint">Select the shelf that best answers the question card. Drag to look around.</div></div>
+<div class="under">
+ <div class="card y"><div class="row" style="justify-content:space-between"><span class="lbl" id="qn">Question 1</span><span class="pips" id="pips" aria-hidden="true"></span></div><p class="qcard" id="qt" style="margin:4px 0 0"></p></div>
+ <div class="row" id="opts" role="group" aria-label="Choose a database"></div>
+ <p id="fb" aria-live="polite" style="margin:0;min-height:1.5em"></p>
+ <div class="row"><button class="btn" type="button" id="next" hidden>Next question</button></div>
+</div>
+<script src="../vendor/three-r149.min.js"></script>
+<script src="common.js"></script>
+<script>
+(function(){
+const {M,mesh,esc,textTex,RM}=TD;
+const D=[
+ {n:'Business Source Premier',c:'#1f6fc5',h:'Business Source Premier holds peer-reviewed business research, plus trade journals and company and industry reports.'},
+ {n:'Scopus',c:'#b35900',h:'Scopus covers peer-reviewed research across many subjects, including psychology, and tracks who cites each article.'},
+ {n:'Passport GMID',c:'#1d7a3f',h:'Passport GMID holds market sizes and consumer survey data by country, industry and generation.'},
+ {n:'MarketLine',c:'#8e44ad',h:'MarketLine holds company profiles, with SWOT analyses, financials, news and competitors.'},
+ {n:'Google Advanced Search',c:'#6b7480',h:'Google Advanced Search helps you find grey literature, such as government and think tank reports.'}];
+const Q=[
+ {t:'How many Gen Z consumers in Australia use generative AI?',a:2,w:'Consumer survey data on a specific segment is what Passport GMID is built for.'},
+ {t:'A SWOT analysis of Microsoft',a:3,w:'MarketLine company profiles include a SWOT analysis.'},
+ {t:'Peer-reviewed research on why consumers trust new technology',a:0,w:'Business Source Premier is the core database for peer-reviewed business research. Scopus would also work.'},
+ {t:'Psychology research on why people avoid using AI tools',a:1,w:'Scopus covers psychology as well as business, so it suits questions about motives and behaviour.'},
+ {t:'An Australian government report on how people use AI',a:4,w:'Government reports are grey literature. Try site:gov.au in Google Advanced Search.'},
+ {t:'Microsoft’s main competitors in AI assistants',a:3,w:'MarketLine profiles list a company’s competitors in the Peers section.'},
+ {t:'A highly cited study on technology acceptance, and the newer studies that cite it',a:1,w:'Scopus shows citation counts and lists the articles that cite each study.'}];
+const T=TD.scene(document.getElementById('stage'),{target:[0,10,0],az:0,el:.2,rad:80,lim:{az:[-.6,.6],el:[.02,.6],rad:[50,110]}});
+const sc=T.sc;
+mesh(sc,new THREE.BoxGeometry(100,.5,60),M('#d9b48f'),0,-.25,0);
+mesh(sc,new THREE.BoxGeometry(100,40,1),M('#eef3f7'),0,20,-12);
+const shelves=[];
+D.forEach((d,i)=>{const x=-36+i*18;const g=new THREE.Group();g.position.set(x,0,-6);sc.add(g);
+ const wood=M('#6d4c41');const part=(w,h,d,x,y,z,m)=>{const p=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m||wood);p.position.set(x,y,z);p.castShadow=p.receiveShadow=true;p.userData.i=i;g.add(p);return p};
+ part(14,22,.4,0,11,-2,M('#4e342e'));part(.7,22,4.4,-6.65,11,0);part(.7,22,4.4,6.65,11,0);part(14,.7,4.4,0,21.65,0);part(14,.7,4.4,0,.35,0);const frame=null;
+ const books=[];for(let r=0;r<4;r++){let bx=-5.7;while(bx<5.2){const w=.9+Math.random()*.6,h=3.2+Math.random()*1.2;const b=new THREE.Mesh(new THREE.BoxGeometry(w,h,3),M(new THREE.Color(d.c).offsetHSL(0,0,(Math.random()-.5)*.22)));b.position.set(bx+w/2,1.3+r*5+h/2,-.2);b.castShadow=true;b.userData.i=i;g.add(b);books.push(b);bx+=w+.08}
+  const sh=new THREE.Mesh(new THREE.BoxGeometry(12.6,.4,4),M('#6d4c41'));sh.position.set(0,1.1+r*5,.3);g.add(sh)}
+ const sign=new THREE.Mesh(new THREE.BoxGeometry(13,2.6,.3),new THREE.MeshBasicMaterial({map:textTex(d.n,d.c,'#fff',640,128)}));sign.position.set(0,23.6,1.2);sign.userData.i=i;g.add(sign);
+ const hero=books[Math.floor(books.length*.6)];shelves.push({g,books,hero,frame});T.pickables.push(g)});
+T.onPick=o=>{let p=o;while(p&&p.userData.i===undefined)p=p.parent;if(p)choose(p.userData.i)};
+let qi=0,done=new Set(),tries=0,pulled=null;
+T.onTick(()=>{shelves.forEach(s=>{const b=s.hero;const tz=(pulled===s)?3.2:-.2;b.position.z+=(tz-b.position.z)*(RM?1:.15)})});
+const $=s=>document.querySelector(s);
+function show(){const q=Q[qi];$('#qn').textContent=`Question ${qi+1} of ${Q.length}`;$('#qt').textContent=q.t;$('#fb').textContent='';$('#next').hidden=true;pulled=null;tries=0;
+ shelves.forEach(s=>s.hero.material.emissive&&s.hero.material.emissive.set('#000'));
+ $('#pips').innerHTML=Q.map((_,i)=>`<i class="${done.has(i)?'ok':i===qi?'on':''}"></i>`).join('');
+ $('#opts').innerHTML=D.map((d,i)=>`<button class="btn g" type="button" data-i="${i}"><span class="sw" style="background:${d.c}"></span>${esc(d.n)}</button>`).join('')}
+function choose(i){const q=Q[qi];if(!$('#next').hidden)return;const s=shelves[i];
+ if(i===q.a){pulled=s;s.hero.material=s.hero.material.clone();s.hero.material.emissive=new THREE.Color('#5a4a00');done.add(qi);
+  $('#fb').innerHTML=`<span class="ok">✓ ${esc(D[i].n)}.</span> ${esc(q.w)}`;$('#pips').innerHTML=Q.map((_,k)=>`<i class="${done.has(k)?'ok':k===qi?'on':''}"></i>`).join('');
+  $('#opts').querySelectorAll('button').forEach(b=>b.disabled=true);$('#next').hidden=false;$('#next').textContent=qi<Q.length-1?'Next question':'Start again';$('#next').focus()}
+ else{tries++;$('#fb').innerHTML=`<span class="no">Not this one.</span> ${esc(D[i].h)}`;const b=$('#opts').querySelector(`[data-i="${i}"]`);if(b)b.disabled=true}}
+$('#opts').addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(b)choose(+b.dataset.i)});
+$('#next').addEventListener('click',()=>{if(qi<Q.length-1)qi++;else{qi=0;done.clear()}show();$('#qt').setAttribute('tabindex','-1');$('#qt').focus()});
+show();
+})();
+</script>
+</body>
+</html>
