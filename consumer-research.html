@@ -270,8 +270,11 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .g3{grid-template-columns:repeat(3,minmax(0,1fr))!important}@media (max-width:760px){.g3{grid-template-columns:minmax(0,1fr)!important}}
 .ubub{margin:0 0 8px auto;max-width:85%;width:fit-content;background:#111;color:#fff;border-radius:12px 12px 2px 12px;padding:8px 12px;font-size:14.5px}
 .abub{margin:0;background:var(--panel);border-radius:12px 12px 12px 2px;padding:10px 12px;font-size:14.5px;line-height:1.9}
-.hl{color:#000;background:#fff6b8;box-decoration-break:clone;-webkit-box-decoration-break:clone;border-bottom:3px solid #111;border-radius:3px;padding:1px 3px;cursor:pointer;font-weight:500;text-align:left}
-.hl:hover{background:var(--yellow)}.hl.sel{background:var(--yellow);box-shadow:0 0 0 2px #111}.hl.dn{background:#d7f7e4;border-bottom-color:#1d7a3a}
+.hl{color:#000;background:var(--yellow);box-decoration-break:clone;-webkit-box-decoration-break:clone;border:2px solid #111;border-bottom-width:3px;border-radius:4px;padding:1px 5px;cursor:pointer;font-weight:500;text-align:left}
+.hl .nb{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#111;color:var(--yellow);font-size:13px;font-weight:700;margin-right:5px;vertical-align:1px}
+.hl:hover{background:#fff6b8}.hl.sel{box-shadow:0 0 0 3px #111}.hl.nx{outline:3px dashed #1a5fd1;outline-offset:3px}
+.hl.dn{background:#d7f7e4;border-color:#1d7a3a}.hl.dn .nb{background:#1d7a3a;color:#fff}
+.aistrip{display:inline-block;background:#111;color:#fff;border-radius:8px;padding:7px 12px;margin:0 0 12px;font-size:15px}
 .hq{margin:0 0 8px;font-size:14.5px}#aiq .opts{display:grid;gap:6px}#aiq .opt{width:100%}
 .qrow{display:grid;grid-template-columns:80px minmax(0,1fr);gap:10px;align-items:start;padding:6px 0;border-top:1px solid var(--line)}.qrow:first-child{border-top:0}
 .ql{font-weight:700;font-size:13.5px;padding-top:5px}
@@ -562,16 +565,16 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 <section class="slide" id="p9" aria-labelledby="h9"><div class="in"><div class="sh"><h2 id="h9">Using AI responsibly</h2></div>
 <div class="tabs" role="tablist"><button class="tab" role="tab" type="button" id="ait1" aria-selected="true" aria-controls="aip1">1 AI at UNSW</button><button class="tab" role="tab" type="button" id="ait2" aria-selected="false" aria-controls="aip2">2 Check the output</button></div>
 <div class="tabp" id="aip1" role="tabpanel" aria-labelledby="ait1"><p class="lead">Do or don’t? Pick one for each.</p><div class="scards g3" id="ai"></div><p class="small" id="m8" aria-live="polite"></p></div>
-<div class="tabp" id="aip2" role="tabpanel" aria-labelledby="ait2" hidden><p class="lead">Select each highlighted part of the AI answer, then choose the check it needs.</p>
+<div class="tabp" id="aip2" role="tabpanel" aria-labelledby="ait2" hidden><p class="aistrip"><span aria-hidden="true">👆 </span>4 parts of the AI answer need checking. Select number 1 to start, then choose the check each part needs.</p>
 <div class="lay2"><div class="chatui" aria-label="Practice AI chat">
  <div class="chath"><span class="cav" aria-hidden="true">✦</span><span><b>AI assistant</b><span class="cst">Practice chat</span></span><span class="prac">Practice</span></div>
  <div class="chatb">
   <div class="cmsg me"><p class="ubub">What do Australian consumers think about AI assistants?</p><span class="cav you" aria-hidden="true">You</span></div>
-  <div class="cmsg"><span class="cav" aria-hidden="true">✦</span><p class="abub">Australian consumers are increasingly positive about AI assistants. <span class="hl" role="button" tabindex="0" data-h="0">About 80% of Australians now trust AI tools</span>, according to recent research. <span class="hl" role="button" tabindex="0" data-h="1">Smith and Lee (2024), “AI trust down under”, Journal of Digital Consumers</span> found that convenience is the main driver. <span class="hl" role="button" tabindex="0" data-h="2">Young people all embrace AI without concern</span>. <span class="hl" role="button" tabindex="0" data-h="3">This is based on information up to 2023</span>.</p></div>
+  <div class="cmsg"><span class="cav" aria-hidden="true">✦</span><p class="abub">Australian consumers are increasingly positive about AI assistants. <span class="hl nx" role="button" tabindex="0" data-h="0" aria-label="Part 1. About 80% of Australians now trust AI tools"><span class="nb" aria-hidden="true">1</span><span class="tx">About 80% of Australians now trust AI tools</span></span>, according to recent research. <span class="hl" role="button" tabindex="0" data-h="1" aria-label="Part 2. Smith and Lee (2024), “AI trust down under”, Journal of Digital Consumers"><span class="nb" aria-hidden="true">2</span><span class="tx">Smith and Lee (2024), “AI trust down under”, Journal of Digital Consumers</span></span> found that convenience is the main driver. <span class="hl" role="button" tabindex="0" data-h="2" aria-label="Part 3. Young people all embrace AI without concern"><span class="nb" aria-hidden="true">3</span><span class="tx">Young people all embrace AI without concern</span></span>. <span class="hl" role="button" tabindex="0" data-h="3" aria-label="Part 4. This is based on information up to 2023"><span class="nb" aria-hidden="true">4</span><span class="tx">This is based on information up to 2023</span></span>.</p></div>
  </div>
  <div class="chatin" aria-hidden="true"><span>Message AI assistant…</span><span class="csend">➤</span></div>
  <p class="small" style="margin:6px 12px 10px">Practice AI answer, made up for this activity.</p></div>
- <div><div class="box" id="aiq"><p style="margin:0">Select a highlighted part of the answer to start.</p></div><p class="small" id="m9" aria-live="polite">0 of 4 checked</p></div></div></div>
+ <div><div class="box" id="aiq"><p style="margin:0"><b>← Start with part 1</b> in the AI answer.</p></div><p class="small" id="m9" aria-live="polite">0 of 4 checked</p></div></div></div>
 </div></section>
 
 <section class="slide" id="p10" aria-labelledby="h10"><div class="in"><div class="sh"><h2 id="h10">Check your learning</h2></div>
@@ -853,8 +856,8 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
  sl.querySelectorAll('.hl').forEach(b=>b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();b.click()}}));
  sl.querySelectorAll('.hl').forEach(b=>b.addEventListener('click',()=>{const k=+b.dataset.h;sl.querySelectorAll('.hl').forEach(x=>x.classList.remove('sel'));if(!done.has(k))b.classList.add('sel');
   if(done.has(k)){q.innerHTML=`<p style="margin:0"><span class="ok">✓ Checked.</span> ${H[k].fb}</p>`;return}
-  q.innerHTML=`<p class="hq">“${esc(b.textContent)}” Which check does it need?</p><div class="opts" role="group" aria-label="Checks">${C.map(c=>`<button class="opt" type="button" data-c="${c[0]}">${c[1]}</button>`).join('')}</div><p class="fb" aria-live="polite"></p>`;
-  q.querySelectorAll('.opt').forEach(o=>o.addEventListener('click',()=>{if(o.dataset.c===H[k].a){o.classList.add('right');q.querySelectorAll('.opt').forEach(x=>x.disabled=true);q.querySelector('.fb').innerHTML=`<span class="ok">✓ Right.</span> ${H[k].fb}`;done.add(k);b.classList.remove('sel');b.classList.add('dn');b.setAttribute('aria-label',b.textContent+', checked');
+  q.innerHTML=`<p class="hq">Part ${k+1}. “${esc(b.querySelector('.tx').textContent)}” Which check does it need?</p><div class="opts" role="group" aria-label="Checks">${C.map(c=>`<button class="opt" type="button" data-c="${c[0]}">${c[1]}</button>`).join('')}</div><p class="fb" aria-live="polite"></p>`;
+  q.querySelectorAll('.opt').forEach(o=>o.addEventListener('click',()=>{if(o.dataset.c===H[k].a){o.classList.add('right');q.querySelectorAll('.opt').forEach(x=>x.disabled=true);q.querySelector('.fb').innerHTML=`<span class="ok">✓ Right.</span> ${H[k].fb}`;done.add(k);b.classList.remove('sel');b.classList.add('dn');b.setAttribute('aria-label','Part '+(k+1)+'. '+b.querySelector('.tx').textContent+', checked');const nxt=[0,1,2,3].find(i=>!done.has(i));sl.querySelectorAll('.hl').forEach(x=>x.classList.toggle('nx',+x.dataset.h===nxt));if(nxt!==undefined)q.querySelector('.fb').innerHTML+=` <b>Now select part ${nxt+1}.</b>`;
     $('#m9').innerHTML=done.size===4?'<span class="ok">✓ All four checked.</span> Look beyond the tool, at the sources it cites and the ones it might be missing.':done.size+' of 4 checked';if(done.size===4)$('#ait2').classList.add('done');fin()}
    else{w2++;o.classList.add('wrong');o.disabled=true;q.querySelector('.fb').innerHTML='<span class="no">Not quite.</span> Try another check.'}}));
   q.querySelector('.opt').focus()}))})();
