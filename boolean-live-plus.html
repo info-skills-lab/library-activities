@@ -55,6 +55,7 @@ textarea{width:100%;font:inherit;font-size:26px;border:3px solid var(--ink);bord
 .sug{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:0}
 .sug button{font:inherit;font-size:20px;border:2px dashed var(--ink);border-radius:999px;background:#fff;color:var(--ink);padding:5px 14px;cursor:pointer}
 .sug button:hover{background:#fff6b8;border-style:solid}
+.srcn{font-size:13px;color:var(--muted);margin:-2px 0 6px}
 .credit{font-size:14px;color:var(--muted);margin:28px 0 0}
 @media (max-width:900px){main{padding:24px 90px 24px 20px}h1{font-size:36px}}
 </style>
@@ -64,7 +65,7 @@ textarea{width:100%;font:inherit;font-size:26px;border:3px solid var(--ink);bord
 <main>
 <ol class="prog" id="prog" aria-label="Steps"></ol>
 <div id="screen"></div>
-<p class="credit" id="credit">Suggestions come from a curated list of business research terms and from <a href="https://wordnet.princeton.edu/" target="_blank" rel="noopener">WordNet 3.0</a>, Copyright 2006 by Princeton University (<a href="data/WORDNET-LICENSE.txt" target="_blank" rel="noopener">licence</a>). Always check a suggestion fits your meaning.</p>
+<p class="credit" id="credit">Suggestions come from a curated list of business research terms; the <a href="https://zbw.eu/stw/" target="_blank" rel="noopener">STW Thesaurus for Economics</a> by ZBW, used under the <a href="https://opendatacommons.org/licenses/odbl/1-0/" target="_blank" rel="noopener">Open Database License</a>; keywords from business research indexed in <a href="https://openalex.org/" target="_blank" rel="noopener">OpenAlex</a> (CC0); and <a href="https://wordnet.princeton.edu/" target="_blank" rel="noopener">WordNet 3.0</a>, Copyright 2006 by Princeton University (<a href="data/WORDNET-LICENSE.txt" target="_blank" rel="noopener">licence</a>). Always check a suggestion fits your meaning.</p>
 </main>
 <script>
 const $=s=>document.querySelector(s);
@@ -84,16 +85,33 @@ function addWords(k,text){const d=D.dials[k];
   if(!d.w.some(x=>x.t.toLowerCase()===t.toLowerCase()))d.w.push({t,star:false})});save()}
 function prog(){const steps=[...D.dials.map((d,i)=>(i+1)+' '+d.n),'Run'];
  $('#prog').innerHTML=steps.map((s,i)=>`<li><button type="button" data-go="${i}" ${i===D.step?'aria-current="step"':''} class="${i<D.step?'done':''}">${i<D.step?'✓ ':''}${esc(s)}</button></li>`).join('')}
-let TH=null;fetch('data/thesaurus.json').then(r=>r.ok?r.json():null).then(j=>{if(j){TH=j;if(D.step<D.dials.length)related()}}).catch(()=>{});
+let TH=null,OA=null,ST=null,STI=null;
+const getJ=(u,f)=>fetch(u).then(r=>r.ok?r.json():null).then(j=>{if(j){f(j);if(D.step<D.dials.length)related()}}).catch(()=>{});
+const nrm=x=>x.toLowerCase().replace(/[*"?]/g,'').replace(/ \([^)]*\)$/,'').replace(/\s+/g,' ').trim();
+const HOM=new Set(['trust','good','return','interest','security','future','option','share','bond','stock','capital','right','saving','earning']);
+const clean=x=>{x=x.replace(/ \([^)]*\)$/,'');return /^[A-Z][a-z]/.test(x)?x[0].toLowerCase()+x.slice(1):x};
+getJ('data/thesaurus.json',j=>{TH=j});
+getJ('data/openalex-keywords.json',j=>{OA=j;OA.ix=new Map(j.k.map((k,i)=>[k,i]));0});
+getJ('data/stw.json',j=>{ST=j;STI=new Map();const add=(t,i)=>{const k=nrm(t);if(!STI.has(k))STI.set(k,[]);STI.get(k).push(i)};j.p.forEach((t,i)=>{add(t,i);j.a[i].forEach(a=>add(a,i))})});
 function curTok(ta){const v=ta.value.slice(0,ta.selectionStart);const m=v.match(/[^,;\n]*$/);return {start:ta.selectionStart-m[0].length,text:m[0].replace(/^\s+/,'')}}
-function suggest(prefix){if(!TH||prefix.length<2)return[];const p=prefix.toLowerCase();const out=[];for(const w of TH.v){if(w.startsWith(p)&&w!==p){out.push(w);if(out.length>=6)break}}return out}
-function synsFor(words){if(!TH)return{b:[],w:[]};const have=new Set(words.map(x=>x.toLowerCase()));const b=[],g=[];
- words.forEach(x=>{const k=x.toLowerCase();(TH.b[k]||[]).forEach(s=>{if(!have.has(s.toLowerCase())&&!b.includes(s))b.push(s)});(TH.w[k]||[]).forEach(s=>{if(!have.has(s.toLowerCase())&&!b.some(y=>y.toLowerCase()===s)&&!g.includes(s))g.push(s)})});return{b:b.slice(0,14),w:g.slice(0,10)}}
+let VOC=null,VOCn=-1;const vocab=()=>{const n=(TH?1:0)+(OA?2:0)+(ST?4:0);if(n!==VOCn){VOCn=n;VOC=[...new Set((TH?Object.keys(TH.b):[]).concat(OA?OA.k:[],ST?ST.p.map(nrm):[],TH?TH.v:[]))]}return VOC};
+function suggest(prefix){if(prefix.length<2)return[];const p=prefix.toLowerCase();const out=[];for(const w of vocab()){if(w.startsWith(p)&&w!==p&&!out.includes(w)){out.push(w);if(out.length>=6)break}}return out}
+function synsFor(words){const have=new Set(words.map(x=>nrm(x)));const seen=new Set(have);const take=(arr,x,n)=>{const k=nrm(x);if(!k||seen.has(k)||arr.length>=n)return;seen.add(k);arr.push(x)};const b=[],e=[],o=[],g=[];
+ const ks=words.map(x=>nrm(x)).filter(Boolean);
+ if(TH)ks.forEach(k=>(TH.b[k]||[]).forEach(s=>take(b,s,14)));
+ if(ST)ks.forEach(k=>{const hit=STI.get(k)||(HOM.has(k)||HOM.has(k.replace(/s$/,''))?null:(STI.get(k+'s')||(k.endsWith('s')?STI.get(k.slice(0,-1)):null)));
+  if(hit)hit.forEach(i=>{take(e,clean(ST.p[i]),12);ST.a[i].forEach(a=>take(e,clean(a),12));ST.r[i].forEach(j=>take(e,clean(ST.p[j]),12))})});
+ if(OA)ks.forEach(k=>{const i=OA.ix.has(k)?OA.ix.get(k):OA.ix.get(k+'s');if(i!=null)OA.r[i].forEach(j=>take(o,OA.k[j],12));
+  const re=new RegExp('(^|[ -])'+k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'s?($|[ -])');for(const t of OA.k){if(o.length>=12)break;if(re.test(t))take(o,t,12)}});
+ if(TH)ks.forEach(k=>(TH.w[k]||[]).forEach(s=>take(g,s,10)));
+ return{b,e,o,w:g}}
 function related(){const box=document.getElementById('rel');if(!box)return;const d=D.dials[D.step];if(!d)return;
- if(!TH){box.innerHTML='';return}
+ if(!TH&&!OA&&!ST){box.innerHTML='';return}
  if(!d.w.length){box.innerHTML='<h2>Related words</h2><p class="hint" style="margin:0">Add a word and related words will appear here.</p>';return}
  const s=synsFor(d.w.map(x=>x.t));const li=a=>a.map(x=>`<li><button type="button" data-add="${esc(x)}" aria-label="Add ${esc(x)}">+ ${esc(x)}</button></li>`).join('');
- box.innerHTML='<h2>Related words</h2><p class="hint" style="margin:0 0 4px">Select a word to add it.</p>'+(s.b.length?'<p class="src">Business terms</p><ul class="sug">'+li(s.b)+'</ul>':'')+(s.w.length?'<p class="src">General thesaurus</p><ul class="sug">'+li(s.w)+'</ul>':'')+(!s.b.length&&!s.w.length?'<p class="hint" style="margin:0">No suggestions for these words. Try a different word.</p>':'')}
+ const grp=(t,n,a)=>a.length?`<p class="src">${t}</p>${n?`<p class="srcn">${n}</p>`:''}<ul class="sug">${li(a)}</ul>`:'';
+ const any=s.b.length||s.e.length||s.o.length||s.w.length;
+ box.innerHTML='<h2>Related words</h2><p class="hint" style="margin:0 0 4px">Select a word to add it.</p>'+grp('Business terms','',s.b)+grp('Economics and business terms','From the STW Thesaurus for Economics',s.e)+grp('Words researchers use','Keywords that appear together in business research. Related, not always the same meaning.',s.o)+grp('General thesaurus','',s.w)+(!any?'<p class="hint" style="margin:0">No suggestions for these words. Try a different word.</p>':'')}
 function render(focusSel){prog();const k=D.step,sc=$('#screen');
  if(k<D.dials.length){const d=D.dials[k];
   sc.innerHTML=`<span class="step">Concept ${k+1} of ${D.dials.length}</span>
