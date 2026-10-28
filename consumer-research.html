@@ -542,7 +542,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 <div class="tabs" role="tablist"><button class="tab" role="tab" type="button" id="glT1" aria-selected="true" aria-controls="glP1">1 Identify grey literature</button><button class="tab" role="tab" type="button" id="glT2" aria-selected="false" aria-controls="glP2">2 Find grey literature</button></div>
 <div class="tabp" id="glP1" role="tabpanel" aria-labelledby="glT1"><p class="lead">Is it grey literature? Read each card, then select <strong>Grey</strong> or <strong>Not grey</strong>.</p>
 <div class="scards g3" id="gl"></div><p class="small" id="m5" aria-live="polite"></p></div>
-<div class="tabp" id="glP2" role="tabpanel" aria-labelledby="glT2" hidden><p class="lead">A practice version of Google Advanced Search. Follow the yellow numbers.</p>
+<div class="tabp" id="glP2" role="tabpanel" aria-labelledby="glT2" hidden><p class="lead">Practice a Google Advanced Search and follow the numbered instructions.</p>
 <div id="gs"></div><p class="chk"><span>Check it</span> <span><span aria-hidden="true">✓ </span>Relevant</span> <span><span aria-hidden="true">✓ </span>Current</span> <span><span aria-hidden="true">✓ </span>Reliable</span> <span><span aria-hidden="true">✓ </span>Accurate</span></p></div>
 </div></section>
 
@@ -796,7 +796,7 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
   {t:'A university research centre report',a:'y',fb:'Reports from research centres are grey literature.'}],[['y','Grey'],['n','Not grey']],
   (left,wrong)=>{$('#m5').innerHTML=left?(6-left)+' of 6 sorted':'<span class="ok">✓ All sorted.</span> Now try <b>2 Find grey literature</b>.';if(!left){$('#glT1').classList.add('done');G.complete(6,wrong===0)}});
  const gs=$('#gs');
- gs.innerHTML=`<div class="gslay"><div class="box"><div class="simhead"><span class="t">Google Advanced Search - practice version</span><span class="row"><button class="linkbtn" type="button" id="gex">Load example</button><button class="linkbtn" type="button" id="gclr">Clear</button></span></div>
+ gs.innerHTML=`<div class="gslay"><div class="box"><div class="simhead"><span class="t">Google Advanced practice search</span><span class="row"><button class="linkbtn" type="button" id="gex">Load example</button><button class="linkbtn" type="button" id="gclr">Clear</button></span></div>
  <div class="grid2"><div><label class="f" for="gall">All these words ${gn(1,'Key concepts','<p>Type the main ideas from your question, such as consumers trust artificial intelligence.</p>')}</label><input type="text" id="gall" placeholder="e.g. consumers trust artificial intelligence"></div>
  <div><label class="f" for="gphr">This exact phrase ${gn(2,'Exact phrase','<p>Keeps words together, for example generative AI or consumer attitudes.</p>',true)}</label><input type="text" id="gphr" placeholder="e.g. generative AI"></div>
  <div><label class="f" for="gsite">Site or domain ${gn(3,'Limit by site or domain','<p>.gov.au finds Australian government sources. .org.au finds organisations such as industry bodies and think tanks. .edu.au finds Australian universities. You can also limit to one trusted website, such as apo.org.au.</p>')}</label><select id="gsite"><option value="">Any site</option><option value=".gov.au">.gov.au (government)</option><option value=".org.au">.org.au (organisations)</option><option value=".edu.au">.edu.au (universities)</option><option value="apo.org.au">apo.org.au (Analysis &amp; Policy Observatory)</option></select></div>
