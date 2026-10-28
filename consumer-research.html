@@ -294,7 +294,7 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
 .sdet{margin:10px 0 0;border:2px dashed var(--ink);border-radius:10px;padding:7px 12px;font-size:13.5px;background:var(--panel)}.sdh{margin:0 0 3px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .sdet dl{display:grid;grid-template-columns:auto 1fr;gap:1px 10px;margin:0}.sdet dt{font-weight:700}.sdet dd{margin:0}
 .stp{display:flex;gap:6px;align-items:center;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;margin:0}.sn{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--yellow);color:#000;border:2px solid #000;font-size:12px}
-#p5 .qstack{gap:8px}#p5 .qstack .box{padding:10px 14px}#p5 .qstack .fb{min-height:0}#p5 .route .btn{color:#000}
+.qdots{display:flex;align-items:center;gap:10px;font-size:14px;color:#444}.qdots .dots{display:inline-flex;gap:8px}.qdots i{width:12px;height:12px;border-radius:50%;border:1.5px solid #888;display:inline-block}.qdots i.d{background:#1d7a3f;border-color:#1d7a3f}.qdots i.o{background:var(--yellow);border-color:#000}.qnav{display:flex;justify-content:space-between}.qnav .btn[disabled]{opacity:.4;cursor:default}#p5 .qstack{gap:8px}#p5 .qstack .box{padding:10px 14px}#p5 .qstack .fb{min-height:0}#p5 .route .btn{color:#000}
 .ctag{display:inline-block;background:#111;color:var(--yellow);font-size:11.5px;font-weight:700;border-radius:999px;padding:0 8px;margin-right:4px}
 .advb{display:grid;grid-template-columns:minmax(0,1fr) 220px}
 @media (max-width:700px){.advb{grid-template-columns:minmax(0,1fr)}.advf{border-left:0!important;border-top:2px solid var(--line)}}
@@ -532,8 +532,9 @@ label.f{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
   <div class="sdet"><p class="sdh">Survey details</p><dl><dt>Fielded</dt><dd>January to February 2022</dd><dt>Where</dt><dd>United States</dd><dt>Who</dt><dd>1,000 adults aged 18+</dd></dl></div>
   <p class="small" style="margin:6px 0 0">Figures on this slide are illustrative, created for teaching purposes. Log in to Passport GMID to view the real data.</p>
  </div></div>
- <div class="qstack"><p class="stp"><span class="sn" aria-hidden="true">1</span>Read the data</p><div class="box" id="q4a"></div><div class="box" id="q4b"></div>
-  <p class="stp"><span class="sn" aria-hidden="true">2</span>Judge the survey</p><div class="box" id="q4c"></div><div class="box" id="q4d"></div><p class="small" id="m4" aria-live="polite"></p></div>
+ <div class="qstack qsteps"><div class="qdots"><span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="q4lbl" tabindex="-1" aria-live="polite"></span></div>
+  <div class="box" id="q4a"></div><div class="box" id="q4b" hidden></div><div class="box" id="q4c" hidden></div><div class="box" id="q4d" hidden></div>
+  <div class="qnav"><button class="btn small ghost" type="button" id="q4back">← Back</button><button class="btn small" type="button" id="q4next">Next →</button></div><p class="small" id="m4" aria-live="polite"></p></div>
 </div>
 </div></section>
 
@@ -778,6 +779,11 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
  mcq($('#q4c'),{q:'<span class="ctag">Current?</span> Is a 2022 survey current enough for a topic like AI?',shuffle:false,opts:[{t:'Yes',fb:'Not quite. Use of AI tools has changed a lot since 2022. Look for recent data.'},{t:'No',ok:1,fb:'Right. Use of AI tools has changed a lot since 2022. Look for the latest survey.'}]},()=>{d[2]=1;m()});
  mcq($('#q4d'),{q:'<span class="ctag">Relevant?</span> Why doesn’t it match Australian university students?',shuffle:false,opts:[{t:'Wrong country',fb:'Partly. Check who was asked too.'},{t:'Wrong age group',fb:'Partly. Check where it was run too.'},{t:'Both',ok:1,fb:'Right. It surveyed US adults of all ages. Compare segments in Passport to match yours.'}]},()=>{d[3]=1;m()});
  ['#q4a','#q4b','#q4c','#q4d'].forEach(id=>$(id).addEventListener('click',e=>{if(e.target.classList.contains('wrong'))w++}));
+ const IDS=['#q4a','#q4b','#q4c','#q4d'],SEC=['Read the data','Read the data','Judge the survey','Judge the survey'];let cur=0;
+ const show=(k,f)=>{cur=k;IDS.forEach((id,i)=>{$(id).hidden=i!==k});$('#q4lbl').textContent='Question '+(k+1)+' of 4, '+SEC[k];
+  document.querySelectorAll('#p5 .qdots i').forEach((el,i)=>{el.className=i===k?'o':d[i]?'d':''});$('#q4back').disabled=k===0;$('#q4next').disabled=k===3;if(f)$('#q4lbl').focus()};
+ $('#q4back').onclick=()=>show(Math.max(0,cur-1),1);$('#q4next').onclick=()=>show(Math.min(3,cur+1),1);
+ IDS.forEach(id=>$(id).addEventListener('click',()=>setTimeout(()=>show(cur),0)));show(0);
  $('#pgo').addEventListener('click',()=>{G.log('passport','Passport GMID route','Consumers > Lifestyles > Create consumer profiles > Voice of the Consumer: Lifestyles Survey 2026 > Technology > Online activities');openWin(PP)});m()})();
 
 /* ================= P5 Grey literature ================= */
