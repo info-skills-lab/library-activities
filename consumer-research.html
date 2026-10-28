@@ -814,7 +814,7 @@ function splitQ(q){const out=[];let d=0,inq=false,cur='';for(let i=0;i<q.length;
  const WHY={'Overview':'The overview summarises the company with key facts, but not the risks or rivals in detail.','News':'News reports individual events as they happen.','SWOT analysis':'SWOT pulls together strengths, weaknesses, opportunities and threats.','Financials':'Financials show how the company is performing in numbers.','Peers':'Peers lists the company’s competitors.','Related research':'Related research links to wider market and industry reports.'};
  const Q=[{q:'You want to know what could stop consumers trusting Copilot. Where would you start?',a:'SWOT analysis',here:'Strengths, weaknesses, opportunities and threats, written by MarketLine analysts. Weaknesses and threats point to risks, such as concerns about AI.'},
   {q:'You want to compare Microsoft with its rivals in AI. Where would you look?',a:'Peers',here:'A list of the company’s competitors, so you can look up their profiles too.'},
-  {q:'You need Microsoft’s latest Copilot announcements. Where would you look?',a:'News',here:'Recent news about the company, so you can follow what it’s doing now.'},
+  {q:'You need Microsoft’s latest Copilot announcements. Where would you look?',a:'News',here:'Find recent news about the company to see what’s changed since the profile was published.'},
   {q:'You want background on the wider AI software market. Where would you look?',a:'Related research',here:'Links to industry and market reports that set the company in context.'}];
  nav.innerHTML=S.map(s=>`<button type="button" data-s="${s}">${s}</button>`).join('');
  const nx=$('#mnext');
