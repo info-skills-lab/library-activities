@@ -17,7 +17,7 @@ PART A. BEFORE YOU START (rating scale, 1 to 5)
 Scale: 1 Not at all confident, 5 Very confident.
 Prompt: How confident are you that you can do the following?
 
-A1. Break down a research question into keywords and a database search.
+A1. Break down a research question into keywords and use them to search a database.
 A2. Find peer-reviewed research and consumer data in Library databases.
 A3. Evaluate a source using the CRAAP test.
 A4. Use AI tools and the information you find responsibly.
