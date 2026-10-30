@@ -1,4 +1,4 @@
-MARK2051 · Welcome Screen (with water bottle sticker)
+MARK2051 · Welcome Screen (after deadline, water bottles gone)
 =====================================================
 
 Paste into Edit "Welcome Screen" (Source view).
@@ -11,11 +11,11 @@ Paste into Edit "Welcome Screen" (Source view).
 
 <p style="color:#000000; font-size:54px !important; line-height:1.02 !important; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0"><strong style="font-size:54px !important; font-weight:bold">Consumer Behaviour research skills</strong></p>
 
-<div style="background:#111111; border:5px solid #ffffff; border-radius:18px; box-shadow:0 0 0 2px #111111, 5px 7px 0 2px rgba(0,0,0,0.28); box-sizing:border-box; display:flex; gap:14px; align-items:center; margin-top:22px; max-width:340px; padding:14px 18px 16px 16px; transform:rotate(-4deg)">
-<img alt="" src="https://info-skills-lab.github.io/library-activities/img/water-bottle.png" style="display:block; flex:none; height:84px; image-rendering:pixelated; width:42px" />
+<div style="align-items:center; background:#111111; border-radius:18px; border:5px solid #ffffff; box-shadow:0 0 0 2px #111111, 5px 7px 0 2px rgba(0,0,0,0.28); box-sizing:border-box; display:flex; gap:14px; margin-top:22px; max-width:340px; padding:14px 18px 16px 16px; transform:rotate(-4deg)"><img alt="" src="https://info-skills-lab.github.io/library-activities/img/water-bottle.png" style="display:block; flex:none; height:84px; image-rendering:pixelated; width:42px; opacity:0.5" />
 <div>
-<p style="color:#ffffff; font-size:23px !important; line-height:1.1 !important; margin:0 0 8px 0"><strong style="font-size:23px !important">Win a Library water bottle</strong></p>
-<p style="border-top:2px dashed #ffe000; color:#ffffff; font-size:15px !important; line-height:1.35; margin:0; padding-top:8px">Work through every slide, then select <strong style="color:#ffe000">Finish</strong> on the last page to submit and enter.</p>
+<p style="color:#ffffff; font-size:23px !important; line-height:1.1 !important; margin-bottom:8px; margin-left:0; margin-right:0; margin-top:0"><strong style="font-size:23px !important">Water bottles all gone</strong></p>
+
+<p style="border-top:2px dashed #ffe000; color:#ffffff; font-size:15px !important; line-height:1.35; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding-top:8px">Thanks to everyone who entered. You&rsquo;re still welcome to work through the tutorial.</p>
 </div>
 </div>
 </div>
@@ -25,10 +25,13 @@ Paste into Edit "Welcome Screen" (Source view).
 <div style="padding:18px 22px">
 <p style="color:#000000; font-size:22px !important; line-height:1.35; margin-bottom:10px; margin-left:0; margin-right:0; margin-top:0">Find research for your Microsoft AI Challenge, from credible databases and other online resources.</p>
 
-<p style="color:#333333; font-size:17px !important; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0">Select <strong>Start</strong> to begin.</p>
+<p style="color:#333333; font-size:17px !important; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0">Select <strong>Start</strong> to begin.<br />
+<br />
+<br />
+<strong>The participation deadline has now passed.</strong> You&rsquo;re still welcome to complete this tutorial in your own time. It takes about 30 minutes, including a short quiz at the end.</p>
 </div>
 </div>
 </div>
 
-<p style="color:#1a1a1a; font-size:15px !important; margin-bottom:0; margin-left:0; margin-right:0; margin-top:16px; text-align:center"><strong>The participation deadline has now passed.</strong> You’re still welcome to complete this tutorial in your own time. It takes about 30 minutes, including a short quiz at the end.</p>
+<p style="color:#1a1a1a; font-size:15px !important; margin-bottom:0; margin-left:0; margin-right:0; margin-top:16px; text-align:center">&nbsp;</p>
 </div>
