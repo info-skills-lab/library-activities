@@ -1,0 +1,52 @@
+MARK2012 embed codes (right panels)
+===================================
+
+Before you start
+- Check that marketing-research.html shows on GitHub Pages first.
+- Paste each code into the slide’s right panel (Source view).
+- Activity slides use height:100vh, the same as MARK2051.
+- Slides 2, 3 and 5 show a live Library page. Each uses two codes pasted together, the black progress bar (46px) on top and the live page under it.
+- Slide 3 loads the Library website again, so students run their search in the search bar on that slide.
+
+1. Welcome
+<iframe src="https://info-skills-lab.github.io/library-activities/marketing-research.html?part=1" title="Welcome activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+
+2. Library website (live website)
+<iframe src="https://info-skills-lab.github.io/library-activities/marketing-research.html?part=21&amp;site=https://www.library.unsw.edu.au/" title="Tutorial progress bar" style="display:block;width:100%;height:46px;border:0;"></iframe>
+<iframe src="https://www.library.unsw.edu.au/" title="UNSW Library website" style="display:block;width:100%;height:calc(100vh - 46px);border:0;"></iframe>
+
+3. Library collection (live website)
+<iframe src="https://info-skills-lab.github.io/library-activities/marketing-research.html?part=21&amp;site=https://www.library.unsw.edu.au/" title="Tutorial progress bar" style="display:block;width:100%;height:46px;border:0;"></iframe>
+<iframe src="https://www.library.unsw.edu.au/" title="UNSW Library website" style="display:block;width:100%;height:calc(100vh - 46px);border:0;"></iframe>
+
+4. Breaking down the question
+<iframe src="https://info-skills-lab.github.io/library-activities/marketing-research.html?part=4" title="Breaking down the question activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+
+5. Library subject guides (live subject guide)
+<iframe src="https://info-skills-lab.github.io/library-activities/marketing-research.html?part=21&amp;site=https://subjectguides.library.unsw.edu.au/business/core-databases" title="Tutorial progress bar" style="display:block;width:100%;height:46px;border:0;"></iframe>
+<iframe src="https://subjectguides.library.unsw.edu.au/business/core-databases" title="UNSW Library Business subject guide, core databases" style="display:block;width:100%;height:calc(100vh - 46px);border:0;"></iframe>
+
+6. IBISWorld
+<iframe src="https://info-skills-lab.github.io/library-activities/marketing-research.html?part=6" title="IBISWorld activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+
+7. Business Source Premier
+<iframe src="https://info-skills-lab.github.io/library-activities/marketing-research.html?part=7" title="Business Source Premier activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+
+8. Consumer marketing scenarios
+<iframe src="https://info-skills-lab.github.io/library-activities/marketing-research.html?part=8" title="Consumer marketing scenarios activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+
+9. Evaluating sources
+<iframe src="https://info-skills-lab.github.io/library-activities/marketing-research.html?part=9" title="Evaluating sources activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+
+10. Using AI responsibly
+<iframe src="https://info-skills-lab.github.io/library-activities/marketing-research.html?part=10" title="Using AI responsibly activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+
+11. Build a business research prompt
+<iframe src="https://info-skills-lab.github.io/library-activities/marketing-research.html?part=11" title="Business research prompt activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+
+12. Check your learning
+<iframe src="https://info-skills-lab.github.io/library-activities/marketing-research.html?part=12" title="Research log" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+
+13. Your badges
+<iframe src="https://info-skills-lab.github.io/library-activities/marketing-research.html?part=13" title="Your badges activity" style="display:block;width:100%;height:100vh;border:0;"></iframe>
+

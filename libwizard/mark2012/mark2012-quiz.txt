@@ -1,0 +1,105 @@
+MARK2012 Check your learning: LibWizard quiz
+============================================
+
+How it's set up
+- Add these to slide 12 in LibWizard, in this order, with a Page Break between each.
+- Multiple choice questions: Radios. In Answer Properties, set the correct answer (✓) and tick Display correct/wrong messages.
+- To make every question compulsory, tick Required on each question. Students can't continue until they answer it.
+- Leave Require correct answer to continue unticked, so a wrong answer doesn't stop them.
+- Settings: answers table on, retake off.
+- The quiz end points students to Finish.
+- Each question is tagged with its Digital Information Skills Framework area and source slide for your reference. Don't add the tags to LibWizard.
+
+
+QUESTIONS (10)
+--------------
+
+1. Which words are the key concepts in "What are the key elements of a marketing strategy and a marketing plan, and how do the two differ?"
+   a) marketing strategy, marketing plan, elements ✓
+   b) what, how, differ
+   c) key, two, the
+   d) marketing only
+   Correct: Correct. These are the ideas you search for. Words like "what" and "how" guide your answer but aren't searched.
+   Wrong: That’s incorrect. Key concepts are the main ideas you search for. Words like "what" and "how" aren't searched.
+   [Identify, Slide 4]
+
+2. Which search will find the most results?
+   a) "marketing plan" AND "marketing strategy" AND element*
+   b) "marketing plan" OR "marketing planning" ✓
+   c) "marketing plan" AND "marketing planning"
+   d) "key elements of a marketing plan and strategy"
+   Correct: Correct. OR joins words for the same idea, so it finds results with either phrase and broadens your search.
+   Wrong: That’s incorrect. AND narrows a search and a long phrase in quotation marks narrows it further. OR broadens it.
+   [Identify, Slide 4]
+
+3. What does the asterisk do in the search word element*?
+   a) Finds different word endings, such as element and elements ✓
+   b) Searches for the exact word only
+   c) Removes the word from your search
+   d) Limits your results to recent years
+   Correct: Correct. This is called truncation. It finds every ending of the word.
+   Wrong: That’s incorrect. The asterisk finds different word endings. This is called truncation.
+   [Identify, Slide 4]
+
+4. Where on the Library website do you find services that support your studies?
+   a) Under Services in the top menu ✓
+   b) Under Contact us
+   c) In your Research log
+   d) Under What's on
+   Correct: Correct. Services lists study support such as student workshops and Library Peer Mentors.
+   Wrong: That’s incorrect. Look under Services in the top menu of the Library website.
+   [Discover, Slide 2]
+
+5. In the Library collection, which filter helps you find more current results?
+   a) Dates ✓
+   b) Topics
+   c) Resource types
+   d) Research Assistant
+   Correct: Correct. Dates limits your results to the years you choose.
+   Wrong: That’s incorrect. Dates limits your results to the years you choose.
+   [Discover, Slide 3]
+
+6. Which database is the best place to start for a report on an Australian industry?
+   a) IBISWorld ✓
+   b) Library collection
+   c) A general search engine
+   d) Research Assistant
+   Correct: Correct. IBISWorld publishes industry reports covering performance, products and markets, competition and major companies.
+   Wrong: That’s incorrect. IBISWorld publishes industry reports for Australia. You'll find it in the Business subject guide.
+   [Discover, Slides 5 and 6]
+
+7. You search IBISWorld for soy milk. Which report covers it?
+   a) Soy and Almond Milk Production in Australia ✓
+   b) Milk and Cream Processing in Australia
+   c) Dairy Cattle Farming in Australia
+   d) There is no report, as nothing is titled Soy Milk
+   Correct: Correct. Industries aren't always named the way you search for them, so read the titles before you choose.
+   Wrong: That’s incorrect. IBISWorld groups soy, almond and other plant-based milks in one report, Soy and Almond Milk Production in Australia.
+   [Discover, Slide 6]
+
+8. What does peer reviewed mean?
+   a) Checked by experts in the field before publication ✓
+   b) Written by a university student
+   c) Published within the last five years
+   d) Available in full text
+   Correct: Correct. Peer review is a quality check by experts, which makes these articles a credible source.
+   Wrong: That’s incorrect. Peer-reviewed articles are checked by experts in the field before publication.
+   [Evaluate, Slide 7]
+
+9. A report on your industry was published 12 years ago. Which part of the CRAAP test does it fail?
+   a) Currency ✓
+   b) Authority
+   c) Purpose
+   d) Accuracy
+   Correct: Correct. Industries change quickly. Look for the most recent report.
+   Wrong: That’s incorrect. The problem is the date. Currency asks whether a source is up to date for your topic.
+   [Evaluate, Slide 9]
+
+10. An AI tool gives you a statistic with no source. What should you do?
+   a) Find and check the original source before you use it ✓
+   b) Use it, as AI tools are always accurate
+   c) Ask the AI tool to repeat the statistic
+   d) Reword the statistic so it doesn't need a source
+   Correct: Correct. AI can produce figures that are incorrect or made up. Check them against a trusted source, such as a Library database.
+   Wrong: That’s incorrect. AI can produce figures that are incorrect or made up, so find and check the original source first.
+   [Use responsibly, Slide 10]
