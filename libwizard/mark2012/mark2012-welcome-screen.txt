@@ -10,17 +10,16 @@ Paste into Edit "Welcome Screen" (Source view).
 <p style="color:#000000; font-size:16px !important; letter-spacing:0.08em; margin-bottom:10px; margin-left:0; margin-right:0; margin-top:0; text-transform:uppercase"><strong style="font-size:16px !important">MARK2012 - Library tutorial</strong></p>
 
 <p style="color:#000000; font-size:54px !important; line-height:1.02 !important; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0"><strong style="font-size:54px !important; font-weight:bold">Marketing Fundamentals research skills</strong></p>
-
 </div>
 <img alt="UNSW Sydney" src="https://d329ms1y997xa5.cloudfront.net/accounts/200907/images/new-UNSW-logo-png-vertical-crest.png" style="display:block; height:auto; margin-top:24px; width:90px" /></div>
 
 <div style="background:#ffffff; display:flex; flex-direction:column; flex:1 1 340px"><img alt="Student studying in the Library" src="https://d329ms1y997xa5.cloudfront.net/accounts/200907/images/Law-Library---study-spaces-ground-07.jpg" style="display:block; height:auto; width:100%" />
 <div style="padding:18px 22px">
-<p style="color:#000000; font-size:22px !important; line-height:1.35; margin-bottom:10px; margin-left:0; margin-right:0; margin-top:0">Find research for your marketing studies, from credible databases and other online resources.</p>
+<p style="color:#000000; font-size:22px !important; line-height:1.35; margin-bottom:10px; margin-left:0; margin-right:0; margin-top:0">Find research for your from credible databases and other online resources.</p>
 
 <p style="color:#333333; font-size:17px !important; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0">Select <strong>Start</strong> to begin.<br />
 <br />
-It takes about 30 minutes, including a short quiz at the end.</p>
+The tutorial takes 30 minutes, including a short quiz.</p>
 </div>
 </div>
 </div>
